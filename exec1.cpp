@@ -213,6 +213,7 @@ BSTreeNode *FindBiggestInTree(BSTreeNode *p)
     }
 }
 
+// TODO: Haven't check this funciton very carfully and it is not used yet.
 BSTreeNode *FindParentOfSmallest(BSTreeNode *p)
 {
     if (p == NULL)
@@ -237,11 +238,13 @@ BSTreeNode *FindParentOfSmallest(BSTreeNode *p)
 BSTreeNode *FindParentOfNode(BSTreeNode *root, BSTreeNode *p)
 {
     BSTreeNode *node = root;
-
+    
+    // INFO: Check the case when finding the parent of the root
     if (node == NULL || p == NULL || node == p)
     {
         return NULL;
     }
+    // INFO: There is only an orphan node, p is not in the tree
     else if (node->m_pLeft == NULL && node->m_pRight == NULL)
     {
         return NULL;
@@ -277,6 +280,7 @@ void TreeToLinkList(BSTreeNode *p)
         {
             if (parent->m_pLeft != NULL)
             {
+                // INFO: Adjust parent structure before we modify the smallest
                 if (smallest->m_pRight == NULL)
                 {
                     parent->m_pLeft = NULL;
@@ -286,7 +290,7 @@ void TreeToLinkList(BSTreeNode *p)
                     parent->m_pLeft = smallest->m_pRight;
                 }
 
-                // Don't overwrite the left pointer of the first node in the link list
+                // INFO: Don't overwrite the left pointer of the first node in the link list
                 if (smallest != root)
                 {
                     smallest->m_pLeft = tail;
@@ -301,6 +305,7 @@ void TreeToLinkList(BSTreeNode *p)
         {
             // We find the root of the BSTree
 
+            // INFO
             if (smallest->m_pRight != NULL)
             {
                 smallest->m_pLeft = tail;
@@ -311,7 +316,7 @@ void TreeToLinkList(BSTreeNode *p)
             }
             else
             {
-                // Here we find the last node in the BSTree and break
+                // INFO: Here we find the last node in the BSTree and break
                 smallest->m_pLeft = tail;
                 tail->m_pRight = smallest;
                 smallest = NULL;
