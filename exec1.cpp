@@ -347,7 +347,9 @@ void TreeToLinkList(BSTreeNode *p)
     }
 }
 
-void TreeToList(BSTreeNode *&head, BSTreeNode *&tail, BSTreeNode *root)
+// INFO: head and tail are a reference to a pointer
+// IMPORTANT: there is no such thing as a pointer to a reference 
+void TreeToList(BSTreeNode* &head, BSTreeNode* &tail, BSTreeNode *root)
 {
     BSTreeNode *left = NULL, *right = NULL;
 
