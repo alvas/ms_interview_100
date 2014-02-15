@@ -25,7 +25,7 @@ static int num[7] = {10, 6, 14, 4, 8, 12, 16};
 
 BSTreeNode *InitializeBST()
 {
-    BSTreeNode *head = NULL, *p = NULL;
+    BSTreeNode *root = NULL, *p = NULL;
     cout << "Initializing:" << endl;
 
     for (int i = 0; i < 7; ++i)
@@ -35,14 +35,14 @@ BSTreeNode *InitializeBST()
         node->m_pLeft = node->m_pRight = NULL;
         cout << "Creating node[" << i << "] = " << num[i] << endl;
 
-        if (head == NULL)
+        if (root == NULL)
         {
-            head = node;
+            root = node;
         }
         else
         {
-            // INFO: the first time, head not should not come here, since it is the same node
-            p = head;
+            // INFO: the first time, root not should not come here, since it is the same node
+            p = root;
 
             do
             {
@@ -76,7 +76,7 @@ BSTreeNode *InitializeBST()
         }
     }
 
-    return head;
+    return root;
 }
 
 void DFS(BSTreeNode *p)
@@ -171,13 +171,11 @@ void WFS(BSTreeNode *p)
     }
 }
 
-BSTreeNode * FindSmallestInSubTree(BSTreeNode *p)
+BSTreeNode * FindSmallestInTree(BSTreeNode *p)
 {
-    BSTreeNode *smallestNode = NULL;
-
     if (p == NULL)
     {
-        return smallestNode;
+        return NULL;
     }
     else if (p->m_pLeft == NULL)
     {
@@ -187,21 +185,18 @@ BSTreeNode * FindSmallestInSubTree(BSTreeNode *p)
     {
         do
         {
-            smallestNode = p->m_pLeft;
             p = p->m_pLeft;
         } while (p->m_pLeft != NULL);
 
-        return smallestNode;
+        return p;
     }
 }
 
-BSTreeNode *FindBiggestInSubTree(BSTreeNode *p)
+BSTreeNode *FindBiggestInTree(BSTreeNode *p)
 {
-    BSTreeNode *biggestNode = NULL;
-
     if (p == NULL)
     {
-        return biggestNode;
+        return NULL;
     }
     else if (p->m_pRight == NULL)
     {
@@ -211,16 +206,140 @@ BSTreeNode *FindBiggestInSubTree(BSTreeNode *p)
     {
         do
         {
-            biggestNode = p->m_pRight;
             p = p->m_pRight;
         } while (p->m_pRight != NULL);
 
-        return biggestNode;
+        return p;
+    }
+}
+
+BSTreeNode *FindParentOfSmallest(BSTreeNode *p)
+{
+    if (p == NULL)
+    {
+        return NULL;
+    }
+    else if (p->m_pLeft == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        while (p->m_pLeft->m_pLeft != NULL)
+        {
+            p = p->m_pLeft; 
+        }
+
+        return p;
+    }
+}
+
+BSTreeNode *FindParentOfNode(BSTreeNode *root, BSTreeNode *p)
+{
+    BSTreeNode *node = root;
+
+    if (node == NULL || p == NULL || node == p)
+    {
+        return NULL;
+    }
+    else if (node->m_pLeft == NULL && node->m_pRight == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        while (node != NULL && node->m_pLeft != p && node->m_pRight != p)
+        {
+            if (node->m_nValue > p->m_nValue)
+            {
+                node = node->m_pLeft;
+            }
+            else
+            {
+                node = node->m_pRight;
+            }
+        }
+
+        return node;
     }
 }
 
 void TreeToLinkList(BSTreeNode *p)
 {
+    BSTreeNode *smallest = FindSmallestInTree(p);
+    BSTreeNode *root = smallest, *tail = smallest;
+
+    while (smallest != NULL)
+    {
+        BSTreeNode *parent = FindParentOfNode(p, smallest);
+
+        if (parent != NULL)
+        {
+            if (parent->m_pLeft != NULL)
+            {
+                if (smallest->m_pRight == NULL)
+                {
+                    parent->m_pLeft = NULL;
+                }
+                else
+                {
+                    parent->m_pLeft = smallest->m_pRight;
+                }
+
+                // Don't overwrite the left pointer of the first node in the link list
+                if (smallest != root)
+                {
+                    smallest->m_pLeft = tail;
+                }
+
+                tail->m_pRight = smallest;
+                tail = smallest;
+                smallest = FindSmallestInTree(p);
+            }
+        }
+        else
+        {
+            // We find the root of the BSTree
+
+            if (smallest->m_pRight != NULL)
+            {
+                smallest->m_pLeft = tail;
+                tail->m_pRight = smallest;
+                tail = smallest;
+                p = smallest->m_pRight;
+                smallest = FindSmallestInTree(p);
+            }
+            else
+            {
+                // Here we find the last node in the BSTree and break
+                smallest->m_pLeft = tail;
+                tail->m_pRight = smallest;
+                smallest = NULL;
+            }
+        }
+    }
+
+    if (root != NULL)
+    {
+        BSTreeNode *node = root;
+        cout << "Start to print the link list from the left:" << endl;
+
+        while (node != NULL)
+        {
+            cout << node->m_nValue << endl;
+            tail = node;
+            node = node->m_pRight;
+        }
+
+        node = tail;
+        cout << "Start to print the link list from the right:" << endl;
+
+        while (node != NULL)
+        {
+            cout << node->m_nValue << endl;
+            node = node->m_pLeft;
+        }
+    }
 }
 
 void DestroyBSTree(BSTreeNode *p)
@@ -246,30 +365,53 @@ void DestroyBSTree(BSTreeNode *p)
     }
 }
 
+// Since we have destroy the BSTree structure and change it to Link list, we need a different mechanism to 
+// clean up the memory
+void DestroyLinkList(BSTreeNode *p)
+{
+    if (p == NULL)
+    {
+        return;
+    }
+    else
+    {
+        while (p != NULL)
+        {
+            BSTreeNode *node = p;
+            p = p->m_pLeft;
+            delete node;
+        }
+    }
+}
+
 int main()
 {
-    BSTreeNode *head = InitializeBST();
+    BSTreeNode *root = InitializeBST();
     cout << "Finish building BST" << endl;
 
-    //DFS(head);
-    //DFSWithStack(head);
-    //WFS(head);
+    //DFS(root);
+    //DFSWithStack(root);
+    //WFS(root);
 
-    //BSTreeNode *biggest = FindBiggestInSubTree(head);
+    //BSTreeNode *biggest = FindBiggestInTree(root);
 
     //if (biggest != NULL)
     //{
     //    cout << "The biggest node is " << biggest->m_nValue << endl;
     //}
 
-    //BSTreeNode *smallest = FindSmallestInSubTree(head);
+    //BSTreeNode *smallest = FindSmallestInTree(root);
 
     //if (smallest != NULL)
     //{
     //    cout << "The smallest node is " << smallest->m_nValue << endl;
     //}
-    TreeToLinkList(head);
 
-    DestroyBSTree(head);
+    //DestroyBSTree(root);
+
+    TreeToLinkList(root);
+    DestroyLinkList(root);
+
     return 0;
 }
+
