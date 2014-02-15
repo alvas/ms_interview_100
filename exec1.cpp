@@ -347,6 +347,57 @@ void TreeToLinkList(BSTreeNode *p)
     }
 }
 
+void TreeToList(BSTreeNode *&head, BSTreeNode *&tail, BSTreeNode *root)
+{
+    BSTreeNode *left = NULL, *right = NULL;
+
+    if (root == NULL)
+    {
+        head = NULL;
+        tail = NULL;
+        return;
+    }
+
+    TreeToList(head, left, root->m_pLeft);
+    TreeToList(right, tail, root->m_pRight);
+
+    if (left != NULL)
+    {
+        left->m_pRight = root;
+        root->m_pLeft = left;
+    }
+    else
+    {
+        head = root;
+    }
+
+    if (right != NULL)
+    {
+        root->m_pRight = right;
+        right->m_pLeft = root;
+    }
+    else
+    {
+        tail = root;
+    }
+}
+
+void TreeToLinkListWithRecursion(BSTreeNode *root)
+{
+    BSTreeNode *head = NULL, *tail = NULL;
+
+    TreeToList(head, tail, root);
+    
+    BSTreeNode *node = head;
+    cout << "Start to print the link list from the left:" << endl;
+
+    while (node != NULL)
+    {
+        cout << node->m_nValue << endl;
+        node = node->m_pRight;
+    }
+}
+
 void DestroyBSTree(BSTreeNode *p)
 {
     if (p == NULL)
@@ -414,7 +465,9 @@ int main()
 
     //DestroyBSTree(root);
 
-    TreeToLinkList(root);
+    //TreeToLinkList(root);
+    TreeToLinkListWithRecursion(root);
+
     DestroyLinkList(root);
 
     return 0;
