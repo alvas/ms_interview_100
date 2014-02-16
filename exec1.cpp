@@ -148,7 +148,7 @@ void DFSWithStack(BSTreeNode *p)
     } while (!treeNodeStack.empty());
 }
 
-void WFS(BSTreeNode *p)
+void BFS(BSTreeNode *p)
 {
     queue<BSTreeNode *> treeQueue;
     treeQueue.push(p);
@@ -449,7 +449,7 @@ int main()
 
     //DFS(root);
     //DFSWithStack(root);
-    //WFS(root);
+    //BFS(root);
 
     //BSTreeNode *biggest = FindBiggestInTree(root);
 
