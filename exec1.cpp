@@ -79,7 +79,7 @@ BSTreeNode *InitializeBST()
     return root;
 }
 
-void DFS(BSTreeNode *p)
+void DFT(BSTreeNode *p)
 {
     if (p == NULL)
     {
@@ -89,19 +89,19 @@ void DFS(BSTreeNode *p)
     {
         if (p->m_pLeft != NULL)
         {
-            DFS(p->m_pLeft);
+            DFT(p->m_pLeft);
         }
 
         cout << p->m_nValue << endl;
 
         if (p->m_pRight != NULL)
         {
-            DFS(p->m_pRight);
+            DFT(p->m_pRight);
         }
     }
 }
 
-void DFSWithStack(BSTreeNode *p)
+void DFTWithStack(BSTreeNode *p)
 {
     if (p == NULL)
     {
@@ -148,7 +148,7 @@ void DFSWithStack(BSTreeNode *p)
     } while (!treeNodeStack.empty());
 }
 
-void BFS(BSTreeNode *p)
+void BFT(BSTreeNode *p)
 {
     queue<BSTreeNode *> treeQueue;
     treeQueue.push(p);
@@ -447,9 +447,9 @@ int main()
     BSTreeNode *root = InitializeBST();
     cout << "Finish building BST" << endl;
 
-    //DFS(root);
-    //DFSWithStack(root);
-    //BFS(root);
+    //DFT(root);
+    //DFTWithStack(root);
+    //BFT(root);
 
     //BSTreeNode *biggest = FindBiggestInTree(root);
 
