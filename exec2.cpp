@@ -103,8 +103,8 @@ int MiniStack::pop()
     }
 
     MiniStackData *topData = top;
-    int elem = topData->getData();
-    top = topData->getNext();
+    int elem = top->getData();
+    top = top->getNext();
     delete topData;
     size--;
     return elem;
@@ -142,9 +142,11 @@ static void printStack(MiniStackData *top)
     cout << endl;
 }
 
-// !!Don't pass stack to the function, otherwise, it would be copied.
-// And the local stack would be freed at the end which would destroy
+// !!If we implement the destructor, but not copy constructor,
+// don't pass stack to the function, otherwise, it would be copied.
+// And the copied stack would be freed at the end which would destroy
 // all data in the stack!!
+// If we pass the reference, it should be ok.
 static void printStack(MiniStack &stack)
 {
     MiniStackData *ptr = stack.getTop();
@@ -163,7 +165,8 @@ static void freeStack(MiniStack stack)
 {
     while (stack.getTop() != NULL)
     {
-        stack.pop();
+        int data = stack.pop();
+//        cout << "destrying: " << data << endl;
     }
 }
 
