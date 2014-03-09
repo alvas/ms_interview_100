@@ -38,6 +38,19 @@ int Partition(int A[], int p, int r)
     return (i+1);
 }
 
+int RandomizedPartition(int A[], int p, int r)
+{
+    // !! Watch out!! The index i should be in the range of [p, r], so we need to add p behind.
+    int i = rand() % (r - p) + p;
+
+    // A[r] <-> A[i]
+    int tmp = A[r];
+    A[r] = A[i];
+    A[i] = tmp;
+
+    return Partition(A, p, r);
+}
+
 void QuickSort(int A[], int p, int r)
 {
     if (p < r)
@@ -45,6 +58,16 @@ void QuickSort(int A[], int p, int r)
         int q = Partition(A, p, r);
         QuickSort(A, p, q - 1);
         QuickSort(A, q + 1, r);
+    }
+}
+
+void RandomizedQuickSort(int A[], int p, int r)
+{
+    if (p < r)
+    {
+        int q = RandomizedPartition(A, p, r);
+        RandomizedQuickSort(A, p, q - 1);
+        RandomizedQuickSort(A, q + 1, r);
     }
 }
 
@@ -79,7 +102,8 @@ int main()
     initializeArray(A, LENGTH);
     printArray(A, LENGTH);
 
-    QuickSort(A, 0, LENGTH - 1);
+//    QuickSort(A, 0, LENGTH - 1);
+    RandomizedQuickSort(A, 0, LENGTH - 1);
 
     cout << "The array after quick sort is:" << endl;
     printArray(A, LENGTH);
