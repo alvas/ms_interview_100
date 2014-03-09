@@ -11,7 +11,8 @@ int Partition(int A[], int p, int r)
     int x = A[r];
     int i = p - 1;
 
-    for (int j = p; j < r - 1; ++j)
+    // !!Be careful!! We need to process r - 1 also. Range from p to r - 1.
+    for (int j = p; j < r; ++j)
     {
         if (A[j] <= x)
         {
