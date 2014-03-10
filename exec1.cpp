@@ -121,10 +121,12 @@ void DFTWithStack(BSTreeNode *p)
         }
         else
         {
+            // p node without left child
             p = treeNodeStack.top();
             cout << p->m_nValue << endl;
             treeNodeStack.pop();
 
+            // p node's parent is on the stack
             if (!treeNodeStack.empty())
             {
                 p = treeNodeStack.top();
@@ -132,6 +134,8 @@ void DFTWithStack(BSTreeNode *p)
                 treeNodeStack.pop();
             }
 
+            // when a right child is pushed to the stack, its
+            // parent has already been poped out of the stack
             if (p->m_pRight != NULL)
             {
                 p = p->m_pRight;
