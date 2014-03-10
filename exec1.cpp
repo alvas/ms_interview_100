@@ -110,13 +110,10 @@ void DFTWithStack(BSTreeNode *p)
 
     stack<BSTreeNode *> treeNodeStack;
 
-    // p always points to the top of the stack
     treeNodeStack.push(p);
 
     do
     {
-        p = treeNodeStack.top();
-
         if (p->m_pLeft != NULL)
         {
             p = p->m_pLeft;
@@ -124,26 +121,23 @@ void DFTWithStack(BSTreeNode *p)
         }
         else
         {
+            p = treeNodeStack.top();
             cout << p->m_nValue << endl;
             treeNodeStack.pop();
 
             if (!treeNodeStack.empty())
             {
                 p = treeNodeStack.top();
-
-                if (p->m_pRight != NULL)
-                {
-                    cout << p->m_nValue << endl;
-                    treeNodeStack.pop();
-                    p = p->m_pRight;
-                    treeNodeStack.push(p);
-                }
-                else
-                {
-                    cout << p->m_nValue << endl;
-                    treeNodeStack.pop();
-                }
+                cout << p->m_nValue << endl;
+                treeNodeStack.pop();
             }
+
+            if (p->m_pRight != NULL)
+            {
+                p = p->m_pRight;
+                treeNodeStack.push(p);
+            }
+
         }
     } while (!treeNodeStack.empty());
 }
@@ -448,7 +442,7 @@ int main()
     cout << "Finish building BST" << endl;
 
     //DFT(root);
-    //DFTWithStack(root);
+    DFTWithStack(root);
     //BFT(root);
 
     //BSTreeNode *biggest = FindBiggestInTree(root);
@@ -468,7 +462,7 @@ int main()
     //DestroyBSTree(root);
 
     //TreeToLinkList(root);
-    TreeToLinkListWithRecursion(root);
+    //TreeToLinkListWithRecursion(root);
 
     DestroyLinkList(root);
 
