@@ -141,7 +141,6 @@ void DFTWithStack(BSTreeNode *p)
                 p = p->m_pRight;
                 treeNodeStack.push(p);
             }
-
         }
     } while (!treeNodeStack.empty());
 }
