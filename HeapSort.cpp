@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define HeapSize 10
+const int HEAPSIZE = 10;
 
 // the first element A[0] of the heap array is not used.
 static int A[11] = {0, 16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
@@ -62,71 +62,6 @@ void BuildMaxHeap(int A[], int size)
     }
 }
 
-void HeapSort(int A[], int size)
-{
-    BuildMaxHeap(A, size);
-
-    for (int i = size; i > 1; --i)
-    {
-        int tmp = A[1];
-        A[1] = A[i];
-        A[i] = tmp;
-
-        size--;
-        MaxHeapify(A, size, 1);
-    }
-}
-
-int HeapMaximum(int A[])
-{
-    return A[1];
-}
-
-int HeapExtractMax(int A[], int size)
-{
-    if (size < 1)
-    {
-        cerr << "heap underflow!" << endl;
-        exit(-1);
-    }
-
-    int max = A[1];
-    A[1] = A[size];
-    size = size -1;
-    MaxHeapify(A, size, 1);
-
-    return max;
-}
-
-void HeapIncreaseKey(int A[], int i, int key)
-{
-    if (key < A[i])
-    {
-        cerr << "new key is smaller than current key!" << endl;
-        return;
-    }
-
-    A[i] = key;
-
-    while (i > 1 && A[Parent(i)] < A[i])
-    {
-        int tmp = A[i];
-        A[i] = A[Parent(i)];
-        A[Parent(i)] = tmp;
-        i = Parent(i);
-    }
-}
-
-void MaxHeapInsert(int A[], int size, int key)
-{
-    size = size + 1;
-
-    // Since HeapIncreaseKey only requires key not smaller than A[size],
-    // we can just assign key to A[size].
-    A[size] = key;
-    HeapIncreaseKey(A, size, key);
-}
-
 static void printHeapArray(int A[], int length)
 {
     cout << "Heap array is:" << endl;
@@ -146,9 +81,8 @@ static void printHeapArray(int A[], int length)
 
 int main()
 {
-    printHeapArray(A, HeapSize);
-//    BuildMaxHeap(A, HeapSize);
-    HeapSort(A, HeapSize);
-    printHeapArray(A, HeapSize);
+    printHeapArray(A, HEAPSIZE);
+    BuildMaxHeap(A, HEAPSIZE);
+    printHeapArray(A, HEAPSIZE);
     return 0;
 }

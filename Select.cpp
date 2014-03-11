@@ -4,7 +4,7 @@
 using namespace std;
 
 #define LENGTH 21
-#define I 7
+#define I 3
 
 static int A[] = {33, 26, 55, 78, 1, 28, 22, 94, 25, 35, 7, 16, 59, 98, 23, 34, 86, 61, 29, 13, 73};
 

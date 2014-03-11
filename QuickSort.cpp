@@ -1,10 +1,8 @@
 #include <iostream>
-#include <cstdlib>
+#include "RandomArray.h"
+#include "QuickSort.h"
 
 using namespace std;
-
-#define LENGTH 100
-#define MAXNUM 5000
 
 int Partition(int A[], int p, int r)
 {
@@ -71,29 +69,7 @@ void RandomizedQuickSort(int A[], int p, int r)
     }
 }
 
-static void initializeArray(int A[], int length)
-{
-    for (int i = 0; i < length; ++i)
-    {
-        A[i] = rand() % MAXNUM;
-    }
-}
-
-static void printArray(int A[], int length)
-{
-    for (int i = 0; i < length; ++i)
-    {
-        cout << A[i] << "\t";
-
-        if (i % 10 == 9)
-        {
-            cout << endl;
-        }
-    }
-
-    cout << endl;
-}
-
+#ifndef MAIN
 int main()
 {
     int A[LENGTH] = {0};
@@ -110,3 +86,4 @@ int main()
 
     return 0;
 }
+#endif
