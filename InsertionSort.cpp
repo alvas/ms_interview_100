@@ -4,7 +4,7 @@ using namespace std;
 
 void InsertionSort(int A[], int size)
 {
-    // loop from 1 to size -1
+    // loop from 1 to size - 1
     for (int j = 1; j < size; ++j)
     {
         int key = A[j];

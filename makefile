@@ -30,5 +30,8 @@ HeapSort:
 Select: QuickSort.o
 	g++ $(CFLAGS) Select.cpp QuickSort.o 
 
+InsertionSort: RandomArray.o
+	g++ $(CFLAGS) InsertionSort.cpp RandomArray.o
+
 clean:
 	rm a.out *.o
