@@ -1,17 +1,26 @@
 #include <iostream>
+#include "InsertionSort.h"
 #include "RandomArray.h"
 
 using namespace std;
 
 void InsertionSort(int A[], int size)
 {
-    // loop from 1 to size - 1
-    for (int j = 1; j < size; ++j)
+    InsertionSort(A, 0, size - 1);
+}
+
+// I: p start index
+//    r end index
+void InsertionSort(int A[], int p, int r)
+{
+    // !! be careful !! loop from p to r
+    for (int j = p; j <= r; ++j)
     {
         int key = A[j];
         int i = j - 1;
 
-        while (i >= 0 && A[i] > key)
+        // !! be careful!! i should be not smaller than p(the start index), not 0
+        while (i >= p && A[i] > key)
         {
             // !! assign A[i] to A[i+1]
             A[i + 1] = A[i];
@@ -22,18 +31,6 @@ void InsertionSort(int A[], int size)
         // Or A[i+1] is A[0].
         A[i + 1] = key;
     }
-}
-
-void InsertionSort(int A[], int p, int r)
-{
-    if (p > r)
-    {
-        cerr << "The start index is smaller than the end index!" << endl;
-        exit(-1);
-    }
-
-    int size = r - p + 1;
-    InsertionSort(A, size);
 }
 
 #ifndef MAIN
