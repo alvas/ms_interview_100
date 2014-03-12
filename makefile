@@ -27,11 +27,14 @@ exec5:
 HeapSort:
 	g++ HeapSort.cpp
 
-Select: QuickSort.o
-	g++ $(CFLAGS) Select.cpp QuickSort.o 
+InsertionSort.o: RandomArray.o
+	g++ $(CFLAGS) -c InsertionSort.cpp RandomArray.o
 
 InsertionSort: RandomArray.o
 	g++ $(CFLAGS) InsertionSort.cpp RandomArray.o
+
+Select: QuickSort.o RandomArray.o InsertionSort.o
+	g++ $(CFLAGS) Select.cpp QuickSort.o RandomArray.o InsertionSort.o
 
 clean:
 	rm a.out *.o

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// O: index of the pivot x
 int Partition(int A[], int p, int r)
 {
     int x = A[r];
@@ -33,7 +34,7 @@ int Partition(int A[], int p, int r)
     A[i + 1] = A[r];
     A[r] = tmp;
 
-    return (i+1);
+    return (i + 1);
 }
 
 int RandomizedPartition(int A[], int p, int r)

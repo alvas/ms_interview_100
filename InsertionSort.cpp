@@ -1,3 +1,4 @@
+#include <iostream>
 #include "RandomArray.h"
 
 using namespace std;
@@ -21,6 +22,18 @@ void InsertionSort(int A[], int size)
         // Or A[i+1] is A[0].
         A[i + 1] = key;
     }
+}
+
+void InsertionSort(int A[], int p, int r)
+{
+    if (p > r)
+    {
+        cerr << "The start index is smaller than the end index!" << endl;
+        exit(-1);
+    }
+
+    int size = r - p + 1;
+    InsertionSort(A, size);
 }
 
 #ifndef MAIN

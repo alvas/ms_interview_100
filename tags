@@ -1,0 +1,82 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	HeapSort.cpp	/^static int A[11] = {0, 16, 4, 10, 14, 7, 9, 3, 2, 8, 1};$/;"	v	file:
+BFT	exec1.cpp	/^void BFT(BSTreeNode *p)$/;"	f
+BSTreeNode	exec1.cpp	/^struct BSTreeNode$/;"	s	file:
+BuildMaxHeap	HeapSort.cpp	/^void BuildMaxHeap(int A[], int size)$/;"	f
+DFT	exec1.cpp	/^void DFT(BSTreeNode *p)$/;"	f
+DFTWithStack	exec1.cpp	/^void DFTWithStack(BSTreeNode *p)$/;"	f
+DestroyBSTree	exec1.cpp	/^void DestroyBSTree(BSTreeNode *p)$/;"	f
+DestroyLinkList	exec1.cpp	/^void DestroyLinkList(BSTreeNode *p)$/;"	f
+FindBiggestInTree	exec1.cpp	/^BSTreeNode *FindBiggestInTree(BSTreeNode *p)$/;"	f
+FindParentOfNode	exec1.cpp	/^BSTreeNode *FindParentOfNode(BSTreeNode *root, BSTreeNode *p)$/;"	f
+FindParentOfSmallest	exec1.cpp	/^BSTreeNode *FindParentOfSmallest(BSTreeNode *p)$/;"	f
+FindSmallestInTree	exec1.cpp	/^BSTreeNode * FindSmallestInTree(BSTreeNode *p)$/;"	f
+HEAPSIZE	HeapSort.cpp	/^const int HEAPSIZE = 10;$/;"	v
+I	Select.cpp	/^#define I /;"	d	file:
+InitializeBST	exec1.cpp	/^BSTreeNode *InitializeBST()$/;"	f
+InsertionSort	InsertionSort.cpp	/^void InsertionSort(int A[], int size)$/;"	f
+LENGTH	RandomArray.h	/^const int LENGTH = 100;$/;"	v
+Left	HeapSort.cpp	/^int Left(int i)$/;"	f
+MAXNUM	RandomArray.h	/^const int MAXNUM = 5000;$/;"	v
+MaxHeapify	HeapSort.cpp	/^void MaxHeapify(int A[], int size, int i)$/;"	f
+MiniStack	exec2.cpp	/^MiniStack::MiniStack()$/;"	f	class:MiniStack
+MiniStack	exec2.cpp	/^class MiniStack$/;"	c	file:
+MiniStackData	exec2.cpp	/^MiniStackData::MiniStackData(int num, int miniNum, MiniStackData *top)$/;"	f	class:MiniStackData
+MiniStackData	exec2.cpp	/^class MiniStackData$/;"	c	file:
+Parent	HeapSort.cpp	/^int Parent(int i)$/;"	f
+Partition	QuickSort.cpp	/^int Partition(int A[], int p, int r)$/;"	f
+QuickSort	QuickSort.cpp	/^void QuickSort(int A[], int p, int r)$/;"	f
+RandomizedPartition	QuickSort.cpp	/^int RandomizedPartition(int A[], int p, int r)$/;"	f
+RandomizedQuickSort	QuickSort.cpp	/^void RandomizedQuickSort(int A[], int p, int r)$/;"	f
+RandomizedSelect	Select.cpp	/^int RandomizedSelect(int A[], int p, int r, int i)$/;"	f
+Right	HeapSort.cpp	/^int Right(int i)$/;"	f
+Select	Select.cpp	/^void Select(int A[], int size, int i)$/;"	f
+TreeNode	exec4.cpp	/^struct TreeNode$/;"	s	file:
+TreeToLinkList	exec1.cpp	/^void TreeToLinkList(BSTreeNode *p)$/;"	f
+TreeToLinkListWithRecursion	exec1.cpp	/^void TreeToLinkListWithRecursion(BSTreeNode *root)$/;"	f
+TreeToList	exec1.cpp	/^void TreeToList(BSTreeNode* &head, BSTreeNode* &tail, BSTreeNode *root)$/;"	f
+a	exec3.cpp	/^int a[] = {1, -2, 3, 10, -4, 7, 2, -5};$/;"	v
+data	exec2.cpp	/^        int data;$/;"	m	class:MiniStackData	file:
+data	exec4.cpp	/^    int data;$/;"	m	struct:TreeNode	file:
+freeStack	exec2.cpp	/^static void freeStack(MiniStack stack)$/;"	f	file:
+getData	exec2.cpp	/^int MiniStackData::getData()$/;"	f	class:MiniStackData
+getMini	exec2.cpp	/^int MiniStackData::getMini()$/;"	f	class:MiniStackData
+getNext	exec2.cpp	/^MiniStackData *MiniStackData::getNext()$/;"	f	class:MiniStackData
+getTop	exec2.cpp	/^MiniStackData *MiniStack::getTop()$/;"	f	class:MiniStack
+helper	exec4.cpp	/^void helper(TreeNode *root, int sum, int path[], int top)$/;"	f
+initializeArray	RandomArray.cpp	/^void initializeArray(int A[], int length)$/;"	f
+left	exec4.cpp	/^    TreeNode *left;$/;"	m	struct:TreeNode	file:
+m_nValue	exec1.cpp	/^    int m_nValue;$/;"	m	struct:BSTreeNode	file:
+m_pLeft	exec1.cpp	/^    BSTreeNode *m_pLeft;$/;"	m	struct:BSTreeNode	file:
+m_pRight	exec1.cpp	/^    BSTreeNode *m_pRight;$/;"	m	struct:BSTreeNode	file:
+main	HeapSort.cpp	/^int main()$/;"	f
+main	InsertionSort.cpp	/^int main()$/;"	f
+main	QuickSort.cpp	/^int main()$/;"	f
+main	Select.cpp	/^int main()$/;"	f
+main	exec1.cpp	/^int main()$/;"	f
+main	exec2.cpp	/^int main()$/;"	f
+main	exec3.cpp	/^int main()$/;"	f
+main	exec4.cpp	/^int main()$/;"	f
+maxSubarray	exec3.cpp	/^int maxSubarray(int a[], int size)$/;"	f
+median	Select.cpp	/^int median(int A[], int p, int r)$/;"	f
+mini	exec2.cpp	/^        int mini;$/;"	m	class:MiniStackData	file:
+mini	exec2.cpp	/^int MiniStack::mini()$/;"	f	class:MiniStack
+next	exec2.cpp	/^        MiniStackData *next;$/;"	m	class:MiniStackData	file:
+num	exec1.cpp	/^static int num[7] = {10, 6, 14, 4, 8, 12, 16};$/;"	v	file:
+pop	exec2.cpp	/^int MiniStack::pop()$/;"	f	class:MiniStack
+printArray	RandomArray.cpp	/^void printArray(int A[], int length)$/;"	f
+printHeapArray	HeapSort.cpp	/^static void printHeapArray(int A[], int length)$/;"	f	file:
+printPath	exec4.cpp	/^void printPath(int path[], int top)$/;"	f
+printPaths	exec4.cpp	/^void printPaths(TreeNode *root, int sum)$/;"	f
+printStack	exec2.cpp	/^static void printStack(MiniStack &stack)$/;"	f	file:
+printStack	exec2.cpp	/^static void printStack(MiniStackData *top)$/;"	f	file:
+push	exec2.cpp	/^void MiniStack::push(int num)$/;"	f	class:MiniStack
+right	exec4.cpp	/^    TreeNode *right;$/;"	m	struct:TreeNode	file:
+root	exec4.cpp	/^static TreeNode *root = NULL;$/;"	v	file:
+size	exec2.cpp	/^        int size;$/;"	m	class:MiniStack	file:
+top	exec2.cpp	/^        MiniStackData *top;$/;"	m	class:MiniStack	file:
