@@ -1,7 +1,7 @@
 ms_interview_100
 ================
 
-This is the code implementation for Microsoft interview 100 questions
+This is the code implementation for 100 interview questions
 
 To compile the target in the make file: make target_name
 make Select
