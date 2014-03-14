@@ -24,8 +24,8 @@ exec4:
 exec5:
 	g++ exec5.cpp
 
-HeapSort:
-	g++ HeapSort.cpp
+HeapSort: RandomArray.o
+	g++ HeapSort.cpp RandomArray.o
 
 InsertionSort.o: RandomArray.o
 	g++ $(CFLAGS) -c InsertionSort.cpp RandomArray.o

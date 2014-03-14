@@ -1,4 +1,5 @@
 #include <iostream>
+#include "RandomArray.h"
 
 using namespace std;
 
@@ -81,8 +82,10 @@ static void printHeapArray(int A[], int length)
 
 int main()
 {
-    printHeapArray(A, HEAPSIZE);
+    printArray(A, HEAPSIZE);
+//    printHeapArray(A, HEAPSIZE);
     BuildMaxHeap(A, HEAPSIZE);
-    printHeapArray(A, HEAPSIZE);
+    printArray(A, HEAPSIZE);
+//    printHeapArray(A, HEAPSIZE);
     return 0;
 }

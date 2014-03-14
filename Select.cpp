@@ -59,29 +59,25 @@ int median(int A[], int p, int r)
 
     for (int j = 0; j < numGroup; ++j)
     {
-        //
+        // !! REMEMBER the index of the array starts from p!!
         InsertionSort(A, p + j * 5, p + j * 5 + 4);
-        //
         medians[numMedian++] = A[p + j * 5 + 2];
     }
 
     if (numRemain != 0)
     {
-        //
+        // !! REMEMBER the index of the array starts from p!!
         InsertionSort(A, p + numGroup * 5, p + numGroup * 5 + numRemain - 1);
-        //
         medians[numMedian++] = A[p + numGroup * 5 + numRemain / 2];
     }
     
-
-    //
     if (numMedian == 1)
     {
         return medians[0];
     }
     else
     {
-        //
+        // The start index of medians here is 0.
         return median(medians, 0, numMedian - 1);
     }
 }
@@ -94,7 +90,7 @@ int medianIndex(int A[], int p, int r, int median)
         exit(-1);
     }
 
-    //
+    // !!REMEMBER the start index!!
     for (int i = p; i <= r; ++i)
     {
         if (A[i] == median)
@@ -118,24 +114,27 @@ int Select(int A[], int p, int r, int i)
     A[r] = A[medIdx];
     A[medIdx] = tmp;
 
-    //
+    // medIdx is the index of the pivot
     medIdx = Partition(A, p, r);
-    //
+    // pivot is the kth element in the array
     int k = medIdx - p + 1;
 
     if (k == i)
     {
-        //
+        // if k is excatly the ith element we want to find,
+        // return the element under the pivot index A[medIdx]
         return A[medIdx];
     }
     else if (i < k)
     {
-        //
+        // i is smaller than k, then we recursively select it
+        // from the array before the pivot index
         return Select(A, p, medIdx - 1, i);
     }
     else
     {
-        //
+        // i is bigger than k, the we recursively select it
+        // from the array after the pivot index as the (i-k)th element
         return Select(A, medIdx + 1, r, i - k);
     }
 }
