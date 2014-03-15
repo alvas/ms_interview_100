@@ -1,4 +1,4 @@
-#CFLAGS=-DMAIN
+CFLAGS=-DMAIN
 
 exec1: 
 	g++ exec1.cpp
@@ -7,13 +7,13 @@ exec2:
 	g++ exec2.cpp
 
 RandomArray.o:
-	g++ -c RandomArray.cpp
+	g++ $(CFLAGS) -c RandomArray.cpp
 
 QuickSort.o: RandomArray.o
 	g++ $(CFLAGS) -c QuickSort.cpp
 
-QuickSort: QuickSort.o RandomArray.o
-	g++ $(CFLAGS) QuickSort.o RandomArray.o
+QuickSort: RandomArray.o
+	g++ QuickSort.cpp RandomArray.o
 
 exec3:
 	g++ exec3.cpp
@@ -31,10 +31,13 @@ InsertionSort.o: RandomArray.o
 	g++ $(CFLAGS) -c InsertionSort.cpp RandomArray.o
 
 InsertionSort: RandomArray.o
-	g++ $(CFLAGS) InsertionSort.cpp RandomArray.o
+	g++ InsertionSort.cpp RandomArray.o
 
-Select: QuickSort.o RandomArray.o InsertionSort.o
-	g++ $(CFLAGS) Select.cpp QuickSort.o RandomArray.o InsertionSort.o
+Select: QuickSort.o InsertionSort.o 
+	g++ $(CFLAGS) Select.cpp QuickSort.o InsertionSort.o RandomArray.o
+
+BinarySearchTree: QuickSort.o
+	g++ BinarySearchTree.cpp RandomArray.o QuickSort.o
 
 clean:
 	rm a.out *.o
