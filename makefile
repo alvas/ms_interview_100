@@ -39,5 +39,8 @@ Select: QuickSort.o InsertionSort.o
 BinarySearchTree: QuickSort.o
 	g++ BinarySearchTree.cpp RandomArray.o QuickSort.o
 
+MiscSort: RandomArray.o
+	g++ MiscSort.cpp RandomArray.o
+
 clean:
 	rm a.out *.o

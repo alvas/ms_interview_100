@@ -63,6 +63,81 @@ void BuildMaxHeap(int A[], int size)
     }
 }
 
+void HeapSort(int A[], int size)
+{
+    BuildMaxHeap(A, size);
+
+    for (int i = size; i >= 2; --i)
+    {
+        int tmp = A[1];
+        A[1] = A[i];
+        A[i] = tmp;
+        size = size - 1;
+        MaxHeapify(A, size, 1);
+    }
+}
+
+int HeapMaximum(int A[], int size = HEAPSIZE)
+{
+    if (size < 1)
+    {
+        cerr << "The size of the heap is smaller than 1!" << endl;
+        exit(-1);
+    }
+
+    return A[1];
+}
+
+// I:
+//    size of the array is a reference because it would reduce the size by one
+int HeapExtractMax(int A[], int &size)
+{
+    if (size < 1)
+    {
+        cerr << "The size of the heap is smaller than 1!" << endl;
+        exit(-1);
+    }
+
+    int max = A[1];
+    A[1] = A[size];
+    size = size - 1;
+    MaxHeapify(A, size, 1);
+    return max;
+}
+
+void HeapIncreaseKey(int A[], int i, int key)
+{
+    if (key < A[i])
+    {
+        cerr << "new key is smaller than current key" << endl;
+        exit(-1);
+    }
+    // If the key equals to A[i], do nothing.
+    else if (key == A[i])
+    {
+        return;
+    }
+
+    A[i] = key;
+
+    while (i > 1 && A[Parent(i)] < A[i])
+    {
+        int tmp = A[i];
+        A[i] = A[Parent(i)];
+        A[Parent(i)] = tmp;
+        i = Parent(i);
+    }
+}
+
+// I:
+//    size of the array is a reference because it would increase the size by on
+void MaxHeapInsert(int A[], int &size, int key)
+{
+    size = size + 1;
+    A[size] = key;
+    HeapIncreaseKey(A, size, key);
+}
+
 static void printHeapArray(int A[], int length)
 {
     cout << "Heap array is:" << endl;
@@ -82,10 +157,12 @@ static void printHeapArray(int A[], int length)
 
 int main()
 {
-    printArray(A, HEAPSIZE);
-//    printHeapArray(A, HEAPSIZE);
+    printHeapArray(A, HEAPSIZE);
     BuildMaxHeap(A, HEAPSIZE);
-    printArray(A, HEAPSIZE);
-//    printHeapArray(A, HEAPSIZE);
+    printHeapArray(A, HEAPSIZE);
+//    HeapSort(A, HEAPSIZE);
+    int size = HEAPSIZE;
+    cout << "The maximum of the heap is " << HeapExtractMax(A, size) << endl;
+    printHeapArray(A, size);
     return 0;
 }
