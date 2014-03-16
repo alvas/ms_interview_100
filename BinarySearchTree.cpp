@@ -72,7 +72,7 @@ int binarySearch(int A[], int p, int r, int x)
     return -1;
 }
 
-#ifndef MAIN
+#ifndef EXPORTED
 int main()
 {
     int A[LENGTH] = {0};

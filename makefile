@@ -1,4 +1,4 @@
-CFLAGS=-DMAIN
+CFLAGS=-DEXPORTED
 
 exec1: 
 	g++ exec1.cpp

@@ -31,7 +31,7 @@ void CountingSort(int A[], int B[], int size, int k)
     }
 }
 
-#ifndef MAIN
+#ifndef EXPORTED
 int main()
 {
     int A[LENGTH] = {0};

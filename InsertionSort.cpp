@@ -33,7 +33,7 @@ void InsertionSort(int A[], int p, int r)
     }
 }
 
-#ifndef MAIN
+#ifndef EXPORTED
 int main()
 {
     int A[LENGTH] = {0};

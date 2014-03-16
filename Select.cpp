@@ -139,7 +139,7 @@ int Select(int A[], int p, int r, int i)
     }
 }
 
-#ifdef MAIN
+#ifdef EXPORTED
 int main()
 {
     int A[LENGTH];

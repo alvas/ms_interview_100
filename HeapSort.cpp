@@ -155,6 +155,7 @@ static void printHeapArray(int A[], int length)
     cout << endl;
 }
 
+#ifndef EXPORTED
 int main()
 {
     printHeapArray(A, HEAPSIZE);
@@ -166,3 +167,4 @@ int main()
     printHeapArray(A, size);
     return 0;
 }
+#endif
