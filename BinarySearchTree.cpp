@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include "QuickSort.h"
 #include "RandomArray.h"
@@ -6,6 +7,8 @@ using namespace std;
 
 int binarySearchRecursive(int A[], int p, int r, int x)
 {
+    assert(p >= 0 && p <= r);
+
     if (p > r)
     {
         cerr << "start index is bigger than end index!" << endl;
@@ -51,6 +54,8 @@ int binarySearchRecursive(int A[], int p, int r, int x)
 
 int binarySearch(int A[], int p, int r, int x)
 {
+    assert(p >= 0 && p <= r);
+
     while (p <= r)
     {
         int mid = p + (r - p) / 2;

@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include "InsertionSort.h"
 #include "RandomArray.h"
@@ -13,6 +14,8 @@ void InsertionSort(int A[], int size)
 //    r end index
 void InsertionSort(int A[], int p, int r)
 {
+    assert(p >= 0 && p <= r);
+
     // !! be careful !! loop from p to r
     for (int j = p; j <= r; ++j)
     {
