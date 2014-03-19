@@ -24,6 +24,9 @@ exec4:
 exec5:
 	g++ exec5.cpp
 
+exec8:
+	g++ exec8.cpp
+
 HeapSort: RandomArray.o
 	g++ HeapSort.cpp RandomArray.o
 
