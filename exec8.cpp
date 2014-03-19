@@ -87,8 +87,10 @@ int main()
     while (ptr != NULL)
     {
         cout << ptr->a << endl;
+        Node *p = ptr;
         // Don't forget to move the to next
         ptr = ptr->next;
+        delete p;
     }
 
     return 0;
