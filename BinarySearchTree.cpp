@@ -52,9 +52,22 @@ int binarySearchRecursive(int A[], int p, int r, int x)
     }
 }
 
-int binarySearch(int A[], int p, int r, int x)
+int binarySearch(int A[], int p, int length, int x)
 {
-    assert(p >= 0 && p <= r);
+    assert(p >= 0 && length >= 0);
+
+    if (p < 0 || length < 0)
+    {
+        cerr << "The start index of and the length the array could not be negative!" << endl;
+        exit(-1);
+    }
+
+    if (length == 0)
+    {
+        return -1;
+    }
+
+    int r = p + length - 1;
 
     while (p <= r)
     {

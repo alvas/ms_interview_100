@@ -2,3 +2,5 @@
 a.out
 *.gch
 *.o
+tags
+cscope*

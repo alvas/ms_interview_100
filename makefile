@@ -45,5 +45,15 @@ BinarySearchTree: QuickSort.o
 MiscSort: RandomArray.o
 	g++ MiscSort.cpp RandomArray.o
 
+StringSearch: RandomArray.o
+	g++ StringSearch.cpp RandomArray.o
+
+ctags:
+	ctags *
+
+cscope:
+	find . -name "*.cpp" -o -name "*.h" > cscope.files
+	cscope -b -q -k
+	
 clean:
 	rm a.out *.o

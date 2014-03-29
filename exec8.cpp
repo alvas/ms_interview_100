@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 
 using namespace std;
@@ -55,6 +56,28 @@ Node *reverse(Node *head)
     return p2;
 }
 
+void reverseString(char *str, int p, int r)
+{
+    if (str == NULL)
+    {
+        return;
+    }
+    else if (p < 0 || r < 0 || r < p)
+    {
+        assert(p >= 0 && r >= 0 && r > p);
+        return;
+    }
+
+    while (p < r)
+    {
+        char c = str[p];
+        str[p] = str[r];
+        str[r] = c;
+        p++;
+        r--;
+    }
+}
+
 int main()
 {
     int count = 10;
@@ -92,6 +115,19 @@ int main()
         ptr = ptr->next;
         delete p;
     }
+
+    char abc[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+
+//    reverseString(abc, 0, 6);
+    reverseString(abc, 2, 4);
+    reverseString(abc, 0, 4);
+
+    for (int i = 0; i < 7; ++i)
+    {
+        cout << abc[i];
+    }
+
+    cout << endl;
 
     return 0;
 }
