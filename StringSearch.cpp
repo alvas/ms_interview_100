@@ -19,11 +19,18 @@ char des2[] = "ABCABCDABCF";
 
 void makeSkip(char pattern[], int patternLength, int skip[])
 {
+    // set the stride of bad character to pattern to patternLength
+    // because the bad character doesn't appear in the pattern
+    // we just skip over the whole patternLength characters string
     for (int i = 0; i < BYTESIZE; ++i)
     {
         skip[i] = patternLength;
     }
 
+    // set the stride for character of pattern; if the ith
+    // character is not matched, then we want to move forward
+    // skip[pattern[x]] steps to let the ith character in the source to
+    // aligned to the pattern[x] character in pattern
     while (patternLength != 0)
     {
         skip[*pattern++] = patternLength--;
@@ -36,6 +43,7 @@ void makeShift(char pattern[], int patternLength, int shift[])
     int *sptr = shift + patternLength - 1;
     char *pptr = pattern + patternLength - 1;
 
+    // the last character of pattern string
     char c = pattern[patternLength - 1];
     *sptr = 1;
     pptr--;
@@ -51,10 +59,20 @@ void makeShift(char pattern[], int patternLength, int shift[])
             p2 = pattern + patternLength - 2;
             p3 = p1;
 
+#ifdef DEBUG
+            cout << "p1 = " << *p1 << endl;
+#endif
+
             while (p3 >= pattern && *p3-- == *p2-- && p2 >= pptr);
         } while (p3 >= pattern && p2 >= pptr);
 
         *sptr = shift + patternLength - sptr + p2 - p3;
+
+#ifdef DEBUG
+        cout << "shift + patternLength - sptr = " << shift + patternLength - sptr << endl;
+        cout << "p2 - p3 = " << p2 - p3 << "; *p2 = " << *p2 << "; *p3 = " << *p3 << endl;
+        cout << "*sptr = " << *sptr << "; *pptr = " << *pptr << endl << endl;
+#endif
         pptr--;
     }
 }
@@ -65,6 +83,10 @@ int BMSearch(char S[], int length, char pattern[], int patternLength)
     int shift[patternLength];
     makeSkip(pattern, patternLength, skip);
     makeShift(pattern, patternLength, shift);
+
+#ifdef DEBUG
+    printArray(shift, patternLength);
+#endif
 
     int bIdx = patternLength;
 
@@ -222,10 +244,11 @@ int KMPSearch(char S[], int length, char pattern[], int patternLength)
     }
 
     int next[patternLength];
-
     makeNext(pattern, patternLength, next);
 
+#ifdef DEBUG
     printArray(next, patternLength);
+#endif
 
     int i = 0, j = 0;
 

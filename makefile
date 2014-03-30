@@ -1,4 +1,5 @@
 CFLAGS=-DEXPORTED
+#DEBUG =-DDEBUG
 
 exec1: 
 	g++ exec1.cpp
@@ -46,7 +47,7 @@ MiscSort: RandomArray.o
 	g++ MiscSort.cpp RandomArray.o
 
 StringSearch: RandomArray.o
-	g++ StringSearch.cpp RandomArray.o
+	g++ $(DEBUG) StringSearch.cpp RandomArray.o
 
 ctags:
 	ctags *
