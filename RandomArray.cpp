@@ -57,5 +57,5 @@ void printStringArray(char S[], int length)
         }
     }
 
-    cout << endl;
+    cout << endl << endl;
 }

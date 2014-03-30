@@ -56,4 +56,4 @@ cscope:
 	cscope -b -q -k
 	
 clean:
-	rm a.out *.o
+	rm a.out *.o tags
