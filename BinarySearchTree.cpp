@@ -1,7 +1,7 @@
 #include <cassert>
 #include <iostream>
 #include "QuickSort.h"
-#include "RandomArray.h"
+#include "RandomData.h"
 
 using namespace std;
 

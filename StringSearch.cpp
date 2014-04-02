@@ -1,5 +1,5 @@
 #include <iostream>
-#include "RandomArray.h"
+#include "RandomData.h"
 
 using namespace std;
 
@@ -77,6 +77,7 @@ void makeShift(char pattern[], int patternLength, int shift[])
     }
 }
 
+// Boyer-Moore algorithm
 int BMSearch(char S[], int length, char pattern[], int patternLength)
 {
     int skip[BYTESIZE] = {0};
@@ -236,6 +237,7 @@ void makeNext(char pattern[], int patternLength, int next[])
     }
 }
 
+// Knuth-Morris-Pratt algorithm
 int KMPSearch(char S[], int length, char pattern[], int patternLength)
 {
     if (length < patternLength)

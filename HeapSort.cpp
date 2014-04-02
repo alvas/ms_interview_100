@@ -1,5 +1,5 @@
 #include <iostream>
-#include "RandomArray.h"
+#include "RandomData.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ static void printHeapArray(int A[], int length);
 
 int Parent(int i)
 {
-    return i/2;
+    return i / 2;
 }
 
 int Left(int i)

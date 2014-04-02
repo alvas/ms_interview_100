@@ -1,5 +1,8 @@
-CFLAGS=-DEXPORTED
+#CFLAGS=-std=c++11 -stdlib=libc++
+CFLAGS=-std=c++11 
+#EXPORT=-DEXPORTED
 #DEBUG =-DDEBUG
+CC=/usr/local/bin/g++-4.7
 
 exec1: 
 	g++ exec1.cpp
@@ -7,14 +10,17 @@ exec1:
 exec2:
 	g++ exec2.cpp
 
-RandomArray.o:
-	g++ $(CFLAGS) -c RandomArray.cpp
+RandomData.o:
+	$(CC) $(CFLAGS) $(EXPORTED) -c RandomData.cpp
 
-QuickSort.o: RandomArray.o
+RandomData:
+	$(CC) $(CFLAGS) RandomData.cpp
+
+QuickSort.o: RandomData.o
 	g++ $(CFLAGS) -c QuickSort.cpp
 
-QuickSort: RandomArray.o
-	g++ QuickSort.cpp RandomArray.o
+QuickSort: RandomData.o
+	g++ QuickSort.cpp RandomData.o
 
 exec3:
 	g++ exec3.cpp
@@ -28,26 +34,26 @@ exec5:
 exec8:
 	g++ exec8.cpp
 
-HeapSort: RandomArray.o
-	g++ HeapSort.cpp RandomArray.o
+HeapSort: RandomData.o
+	g++ HeapSort.cpp RandomData.o
 
-InsertionSort.o: RandomArray.o
-	g++ $(CFLAGS) -c InsertionSort.cpp RandomArray.o
+InsertionSort.o: RandomData.o
+	g++ $(CFLAGS) -c InsertionSort.cpp RandomData.o
 
-InsertionSort: RandomArray.o
-	g++ InsertionSort.cpp RandomArray.o
+InsertionSort: RandomData.o
+	g++ InsertionSort.cpp RandomData.o
 
 Select: QuickSort.o InsertionSort.o 
-	g++ $(CFLAGS) Select.cpp QuickSort.o InsertionSort.o RandomArray.o
+	g++ $(CFLAGS) Select.cpp QuickSort.o InsertionSort.o RandomData.o
 
 BinarySearchTree: QuickSort.o
-	g++ BinarySearchTree.cpp RandomArray.o QuickSort.o
+	g++ BinarySearchTree.cpp RandomData.o QuickSort.o
 
-MiscSort: RandomArray.o
-	g++ MiscSort.cpp RandomArray.o
+MiscSort: RandomData.o
+	g++ MiscSort.cpp RandomData.o
 
-StringSearch: RandomArray.o
-	g++ $(DEBUG) StringSearch.cpp RandomArray.o
+StringSearch: RandomData.o
+	g++ $(DEBUG) StringSearch.cpp RandomData.o
 
 ctags:
 	ctags *

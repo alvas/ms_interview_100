@@ -1,8 +1,9 @@
 #include <iostream>
-#include "RandomArray.h"
+#include "RandomData.h"
 
 using namespace std;
 
+// I: k is the range of value from 0 to k
 void CountingSort(int A[], int B[], int size, int k)
 {
     // variable size array, which is support after C99

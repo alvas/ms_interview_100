@@ -1,6 +1,6 @@
 #include <iostream>
 #include "InsertionSort.h"
-#include "RandomArray.h"
+#include "RandomData.h"
 #include "QuickSort.h"
 
 using namespace std;
