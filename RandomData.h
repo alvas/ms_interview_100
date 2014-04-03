@@ -20,6 +20,7 @@ void printArray(int A[], int p, int r);
 
 // Template function must be in the calling site or header file,
 // otherwise it would not compile.
+// T must be a container type.
 template<class T>
 void printVector(const T &v)
 {

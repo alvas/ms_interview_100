@@ -55,6 +55,12 @@ MiscSort: RandomData.o
 StringSearch: RandomData.o
 	$(CC) $(DEBUG) StringSearch.cpp RandomData.o
 
+LinkList.o: RandomData.o
+	$(CC) $(CFLANGS) LinkList.cpp RandomData.o
+
+LinkList: RandomData.o
+	$(CC) LinkList.cpp RandomData.o
+
 ctags:
 	ctags *
 

@@ -208,8 +208,10 @@ vector<int> findTopKWithMaximumHeap(const vector<int> &v, const unsigned int k)
 
     for (vector<int>::const_iterator itr = v.begin() + k; itr != v.end(); ++itr)
     {
-        B.push_back(*itr);
+        B.push_back(B.front());
+        B[0] = *itr;
         make_heap(B.begin(), B.end(), compMax);
+        printVector(B);
         B.pop_back();
     }
 }
