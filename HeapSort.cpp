@@ -1,4 +1,6 @@
+#include <algorithm>
 #include <iostream>
+#include <cstdlib>
 #include "RandomData.h"
 
 using namespace std;
@@ -155,16 +157,83 @@ static void printHeapArray(int A[], int length)
     cout << endl;
 }
 
+// comparison function for minimum heap
+bool comp(int l, int r)
+{
+    return l > r;
+}
+
+vector<int> findTopK(const vector<int> &v, const unsigned int k)
+{
+    vector<int> B(v.begin(), v.begin() + k);
+
+    if (v.size() <= k)
+    {
+        return B;
+    }
+
+    // make a minimum heap
+    std::make_heap(B.begin(), B.end(), comp);
+
+    for (vector<int>::const_iterator itr = v.begin() + k; itr != v.end(); ++itr)
+    {
+        if (*itr > B.front())
+        {
+            // replace the smallest number and heapify again
+            B[0] = *itr;
+            make_heap(B.begin(), B.end(), comp);
+        }
+    }
+}
+
+bool compMax(int l, int r)
+{
+    return l < r;
+}
+
+// !!!! This is wrong!!!!
+// Because the heapify only exchange the element from the end of the vector,
+// it would only exchange value on one brance from the root.
+vector<int> findTopKWithMaximumHeap(const vector<int> &v, const unsigned int k)
+{
+    vector<int> B(v.begin(), v.begin() + k);
+
+    if (v.size() <= k)
+    {
+        return B;
+    }
+
+    // make a minimum heap
+    std::make_heap(B.begin(), B.end(), compMax);
+
+    for (vector<int>::const_iterator itr = v.begin() + k; itr != v.end(); ++itr)
+    {
+        B.push_back(*itr);
+        make_heap(B.begin(), B.end(), compMax);
+        B.pop_back();
+    }
+}
+
 #ifndef EXPORTED
 int main()
 {
-    printHeapArray(A, HEAPSIZE);
-    BuildMaxHeap(A, HEAPSIZE);
-    printHeapArray(A, HEAPSIZE);
+//    printHeapArray(A, HEAPSIZE);
+//    BuildMaxHeap(A, HEAPSIZE);
+//    printHeapArray(A, HEAPSIZE);
 //    HeapSort(A, HEAPSIZE);
-    int size = HEAPSIZE;
-    cout << "The maximum of the heap is " << HeapExtractMax(A, size) << endl;
-    printHeapArray(A, size);
+//    int size = HEAPSIZE;
+//    cout << "The maximum of the heap is " << HeapExtractMax(A, size) << endl;
+//    printHeapArray(A, size);
+    vector<int> S;
+    initializeVector(S, LENGTH);
+    printVector(S);
+    vector<int> C;
+    C = findTopK(S, HEAPSIZE);
+//    This is a wrong example !!
+//    C = findTopKWithMaximumHeap(S, HEAPSIZE);
+    printVector(C);
+//    sort(S.begin(), S.end());
+//    printVector(S);
     return 0;
 }
 #endif

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include <random>
+//#include <random>
 #include "RandomData.h"
 
 using namespace std;
@@ -56,24 +56,6 @@ void printArray(int A[], int p, int r)
     cout << endl;
 }
 
-template <typename T>
-void printVector(const T &v)
-{
-    int column = 0;
-
-    for (typename T::const_iterator itr = v.begin(); itr != v.end(); ++itr)
-    {
-        cout << *itr << "\t";
-
-        if (column++ % COLUMNS == COLUMNS - 1)
-        {
-            cout << endl;
-        }
-    }
-
-    cout << endl;
-}
-
 void printArray(int A[], int length)
 {
     printArray(A, 0, length - 1);
@@ -96,7 +78,7 @@ void printStringArray(char S[], int length)
     cout << endl << endl;
 }
 
-#ifndef EXPORT
+#ifndef EXPORTED
 int main()
 {
     vector<int> v;
