@@ -61,6 +61,12 @@ LinkList.o: RandomData.o
 LinkList: RandomData.o
 	$(CC) LinkList.cpp RandomData.o
 
+Bit: 
+	$(CC) Bit.cpp
+
+MinPathSum:
+	$(CC) MinPathSum.cpp
+
 ctags:
 	ctags *
 
