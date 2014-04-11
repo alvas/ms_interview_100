@@ -67,6 +67,9 @@ Bit:
 MinPathSum:
 	$(CC) MinPathSum.cpp
 
+Fibonacci:
+	$(CC) Fibonacci.cpp
+
 ctags:
 	ctags *
 
