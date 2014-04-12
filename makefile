@@ -1,8 +1,8 @@
 #CFLAGS=-std=c++11 -stdlib=libc++
-FLAGS=-std=c++11 
 EXPORTED=-DEXPORTED
 #DEBUG =-DDEBUG
 CC=/usr/local/bin/g++-4.7
+#CC=/usr/bin/g++
 
 exec1: 
 	g++ exec1.cpp
@@ -17,7 +17,7 @@ RandomData:
 	$(CC) $(CFLAGS) RandomData.cpp
 
 QuickSort.o: RandomData.o
-	$(CC) $(CFLAGS) $(EXPORTED) -c QuickSort.cpp RandomData.o
+	$(CC) $(CFLAGS) -c QuickSort.cpp RandomData.o
 
 QuickSort: RandomData.o
 	$(CC) QuickSort.cpp RandomData.o
@@ -38,7 +38,7 @@ HeapSort: RandomData.o
 	$(CC) HeapSort.cpp RandomData.o
 
 InsertionSort.o: RandomData.o
-	$(CC) $(CFLAGS) $(EXPORTED) -c InsertionSort.cpp RandomData.o
+	$(CC) $(CFLAGS) -c InsertionSort.cpp RandomData.o
 
 InsertionSort: RandomData.o
 	$(CC) InsertionSort.cpp RandomData.o
@@ -53,22 +53,34 @@ MiscSort: RandomData.o
 	$(CC) MiscSort.cpp RandomData.o
 
 StringSearch: RandomData.o
-	$(CC) $(DEBUG) StringSearch.cpp RandomData.o
+	$(CC) $(CFLAGS) StringSearch.cpp RandomData.o
 
 LinkList.o: RandomData.o
-	$(CC) $(CFLANGS) LinkList.cpp RandomData.o
+	$(CC) $(CFLAGS) $(EXPORTED) -c LinkList.cpp RandomData.o
 
 LinkList: RandomData.o
-	$(CC) LinkList.cpp RandomData.o
+	$(CC) $(CFLAGS) LinkList.cpp RandomData.o
 
 Bit: 
-	$(CC) Bit.cpp
+	$(CC) $(CFLAGS) Bit.cpp
 
 MinPathSum:
-	$(CC) MinPathSum.cpp
+	$(CC) $(CFLAGS) MinPathSum.cpp
 
 Fibonacci:
-	$(CC) Fibonacci.cpp
+	$(CC) $(CFLAGS) Fibonacci.cpp
+
+NormalData.o:
+	$(CC) $(CFLAGS) $(EXPORTED) -c NormalData.cpp
+
+CircularLinkList.o: LinkList.o
+	$(CC) $(CFLAGS) $(EXPORTED) -c CircularLinkList.cpp LinkList.o
+
+CircularLinkList: LinkList.o NormalData.o
+	$(CC) $(CFLAGS) CircularLinkList.cpp LinkList.o NormalData.o
+
+Josephus: CircularLinkList.o NormalData.o
+	$(CC) $(CFLAGS) Josephus.cpp CircularLinkList.o LinkList.o NormalData.o
 
 ctags:
 	ctags *
@@ -78,4 +90,4 @@ cscope:
 	cscope -b -q -k
 	
 clean:
-	rm a.out *.o tags
+	rm a.out *.o 

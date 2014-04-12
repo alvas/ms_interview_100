@@ -1,16 +1,36 @@
+#include <vector>
+
+using namespace std;
+
+class LinkListNode
+{
+    public:
+        LinkListNode(int);
+        LinkListNode *GetHead();
+
+        int key;
+        LinkListNode *next;
+};
+
 class LinkList
 {
     public:
-        LinkList(int);
+        LinkList() { head = NULL; };
+        LinkList(const vector<int> &S);
+        ~LinkList();
+        LinkListNode *GetHead();
 
-        int key;
-        LinkList *next;
+    private:
+        LinkListNode *head;
 };
 
-class DoubleLinkList: public LinkList
+class DoubleLinkListNode: public LinkListNode
 {
     public:
-        DoubleLinkList(int);
+        DoubleLinkListNode(int);
 
-        DoubleLinkList *prev;
+        DoubleLinkListNode *prev;
 };
+
+void destroyLinkList(LinkListNode *head);
+
