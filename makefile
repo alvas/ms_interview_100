@@ -1,15 +1,25 @@
-#CFLAGS=-std=c++11 -stdlib=libc++
-EXPORTED=-DEXPORTED
-#DEBUG=-DDEBUG
-CFLAGS=-DDEBUG -Wall
-CC=/usr/local/bin/g++-4.7
-#CC=/usr/bin/g++
+#CFLAGS =-std=c++11 -stdlib=libc++
+EXPORTED = -DEXPORTED
+#DEBUG = -DDEBUG -g
+FLAGS = -Wall
+CFLAGS = -c -Wall -DDEBUG -DEXPORTED
+DFLAGS = -Wall -g -DDEBUG
+LFLAGS = -Wall
+CC =/usr/local/bin/g++-4.7
+#CC =/usr/bin/g++
+INCLUDES = -I/usr/include -I/usr/local/include -I./
 
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-a.out: $(objects)
-	$(CC) $(CFLAGS) $(EXPORTED) $(objects)
+SRCS = *.cpp
+
+OBJS = $(SRCS:.cpp=.o)
+
+default: Josephus
+
+all: $(objects)
+	$(CC) $(CFLAGS) $(objects)
 
 exec1: 
 	g++ exec1.cpp
@@ -18,16 +28,16 @@ exec2:
 	g++ exec2.cpp
 
 RandomData.o:
-	$(CC) $(CFLAGS) $(EXPORTED) -c RandomData.cpp
+	$(CC) $(CFLAGS) -c RandomData.cpp
 
 RandomData:
-	$(CC) $(CFLAGS) RandomData.cpp
+	$(CC) $(FLAGS) RandomData.cpp
 
 QuickSort.o: RandomData.o
-	$(CC) $(CFLAGS) $(EXPORTED) -c QuickSort.cpp RandomData.o
+	$(CC) $(CFLAGS) QuickSort.cpp RandomData.o
 
 QuickSort: RandomData.o
-	$(CC) $(CFLAGS) QuickSort.cpp RandomData.o
+	$(CC) $(FLAGS) QuickSort.cpp RandomData.o
 
 exec3:
 	g++ exec3.cpp
@@ -45,13 +55,13 @@ HeapSort: RandomData.o
 	$(CC) HeapSort.cpp RandomData.o
 
 InsertionSort.o: RandomData.o
-	$(CC) $(CFLAGS) $(EXPORTED) -c InsertionSort.cpp RandomData.o
+	$(CC) $(CFLAGS) InsertionSort.cpp RandomData.o
 
 InsertionSort: RandomData.o
 	$(CC) InsertionSort.cpp RandomData.o
 
 Select: QuickSort.o InsertionSort.o 
-	$(CC) $(CFLAGS) Select.cpp QuickSort.o InsertionSort.o RandomData.o
+	$(CC) $(FLAGS) Select.cpp QuickSort.o InsertionSort.o RandomData.o
 
 BinarySearchTree: QuickSort.o
 	$(CC) BinarySearchTree.cpp RandomData.o QuickSort.o 
@@ -60,37 +70,37 @@ MiscSort: RandomData.o
 	$(CC) MiscSort.cpp RandomData.o
 
 StringSearch: RandomData.o
-	$(CC) $(CFLAGS) StringSearch.cpp RandomData.o
+	$(CC) $(FLAGS) StringSearch.cpp RandomData.o
 
 LinkList.o: RandomData.o
-	$(CC) $(CFLAGS) $(EXPORTED) -c LinkList.cpp RandomData.o
-
-LinkList: RandomData.o
 	$(CC) $(CFLAGS) LinkList.cpp RandomData.o
 
+LinkList: RandomData.o
+	$(CC) $(FLAGS) LinkList.cpp RandomData.o
+
 Bit: 
-	$(CC) $(CFLAGS) Bit.cpp
+	$(CC) $(FLAGS) Bit.cpp
 
 MinPathSum:
-	$(CC) $(CFLAGS) MinPathSum.cpp
+	$(CC) $(FLAGS) MinPathSum.cpp
 
 Fibonacci:
-	$(CC) $(CFLAGS) Fibonacci.cpp
+	$(CC) $(FLAGS) Fibonacci.cpp
 
 NormalData.o:
-	$(CC) $(CFLAGS) $(EXPORTED) -c NormalData.cpp
+	$(CC) $(CFLAGS) NormalData.cpp
 
 CircularLinkList.o: LinkList.o NormalData.o
-	$(CC) $(CFLAGS) $(EXPORTED) -c CircularLinkList.cpp LinkList.o NormalData.o
-
-CircularLinkList: LinkList.o NormalData.o
 	$(CC) $(CFLAGS) CircularLinkList.cpp LinkList.o NormalData.o
 
-Josephus.o: LinkList.o CircularLinkList.o NormalData.o
-	$(CC) $(CFLAGS) -c LinkList.o CircularLinkList.o NormalData.o Josephus.cpp
+CircularLinkList: LinkList.o NormalData.o
+	$(CC) $(FLAGS) CircularLinkList.cpp LinkList.o NormalData.o
 
-Josephus: LinkList.o CircularLinkList.o NormalData.o 
-	$(CC) $(CFLAGS) LinkList.o CircularLinkList.o NormalData.o Josephus.cpp 
+Josephus.o: LinkList.o CircularLinkList.o NormalData.o
+	$(CC) $(CFLAGS) LinkList.o CircularLinkList.o NormalData.o Josephus.cpp
+
+Josephus: LinkList.o CircularLinkList.o NormalData.o
+	$(CC) $(DFLAGS) Josephus.cpp LinkList.o CircularLinkList.o NormalData.o
 
 ctags:
 	ctags *
@@ -101,3 +111,22 @@ cscope:
 	
 clean:
 	rm a.out *.o
+
+depend: $(SRCS)
+	makedepend $(INCLUDES) $^
+
+#end
+# DO NOT DELETE
+
+BinarySearchTree.o: BinarySearchTree.h QuickSort.h RandomData.h
+CircularLinkList.o: CircularLinkList.h LinkList.h NormalData.h
+HeapSort.o: RandomData.h
+InsertionSort.o: InsertionSort.h RandomData.h
+Josephus.o: CircularLinkList.h LinkList.h NormalData.h
+LinkList.o: LinkList.h RandomData.h
+MiscSort.o: RandomData.h
+NormalData.o: NormalData.h
+QuickSort.o: RandomData.h QuickSort.h
+RandomData.o: RandomData.h
+Select.o: InsertionSort.h RandomData.h QuickSort.h
+StringSearch.o: RandomData.h

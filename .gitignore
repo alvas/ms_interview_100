@@ -5,3 +5,5 @@ a.out
 tags
 cscope*
 *~
+*.dSYM
+Makefile.bak
