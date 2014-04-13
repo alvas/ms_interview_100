@@ -26,6 +26,7 @@ CircularLinkList::CircularLinkList(const vector<int> S)
         tmp = p;
     }
 
+    // Set the last node's next to the head node.
     tmp->next = current;
 }
 
@@ -44,8 +45,6 @@ void printCircularLinkList(CircularLinkList &list)
 {
     LinkListNode *head = list.GetCurrent();
 
-    LinkListNode *p = list.GetCurrent();
-
     if (head != NULL)
     {
         do
@@ -53,6 +52,7 @@ void printCircularLinkList(CircularLinkList &list)
             cout << "Current node " << list.current->key << endl;
             list.current = list.current->next;
         } while (list.current != head);
+        // When we loop back to the head of the circular link list, we stop.
     }
 }
 

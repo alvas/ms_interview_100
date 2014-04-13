@@ -31,7 +31,14 @@ void JosephusLinkList(int n, int k)
 
     while (list.current != NULL)
     {
+        // Because this is not bidirection link list, we need to keep
+        // the previous node pointer in order to link it to the node
+        // after the deleted node.
         LinkListNode *prev = NULL;
+
+#ifdef DEBUG
+        printCircularLinkList(list);
+#endif
 
         for (int i = 0; i < k - 1 && list.current != NULL; ++i)
         {
@@ -44,13 +51,24 @@ void JosephusLinkList(int n, int k)
         if (p != NULL)
         {
             list.current = p->next;
-            prev->next = list.current;
-            cout << "delete node " << p->key << endl;
+
+            // If the prevous node is the current node, there is only
+            // one node in the circular list. We need to set the circular
+            // link list to empty after we delete the last node on the list.
+            if (prev != p)
+            {
+                prev->next = list.current;
+            }
+            else
+            {
+                list.current = NULL;
+            }
+
+#ifdef DEBUG
+            cout << "Delete node " << p->key << endl << endl;;
+#endif
             delete p;
-            p = NULL;
         }
-        
-        printCircularLinkList(list);
     }
 }
 
