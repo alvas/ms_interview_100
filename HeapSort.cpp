@@ -203,15 +203,12 @@ vector<int> findTopKWithMaximumHeap(const vector<int> &v, const unsigned int k)
         return B;
     }
 
-    // make a minimum heap
-    std::make_heap(B.begin(), B.end(), compMax);
-
     for (vector<int>::const_iterator itr = v.begin() + k; itr != v.end(); ++itr)
     {
-        B.push_back(B.front());
-        B[0] = *itr;
-        make_heap(B.begin(), B.end(), compMax);
-        printVector(B);
+        B.push_back(*itr);
+        push_heap(B.begin(), B.end());
+        sort_heap(B.begin(), B.end(), compMax);
+        pop_heap(B.begin(), B.end());
         B.pop_back();
     }
 }
@@ -230,9 +227,8 @@ int main()
     initializeVector(S, LENGTH);
     printVector(S);
     vector<int> C;
-    C = findTopK(S, HEAPSIZE);
-//    This is a wrong example !!
-//    C = findTopKWithMaximumHeap(S, HEAPSIZE);
+//    C = findTopK(S, HEAPSIZE);
+    C = findTopKWithMaximumHeap(S, HEAPSIZE);
     printVector(C);
 //    sort(S.begin(), S.end());
 //    printVector(S);

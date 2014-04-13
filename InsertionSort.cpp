@@ -3,8 +3,6 @@
 #include "InsertionSort.h"
 #include "RandomData.h"
 
-using namespace std;
-
 void InsertionSort(int A[], int size)
 {
     InsertionSort(A, 0, size - 1);
@@ -36,14 +34,35 @@ void InsertionSort(int A[], int p, int r)
     }
 }
 
+void InsertionSort(vector<int> &v)
+{
+    for (vector<int>::iterator itr = v.begin() + 1; itr != v.end(); ++itr)
+    {
+        int key = *itr;
+        vector<int>::iterator itr2 = itr - 1;
+
+        for (; itr2 >= v.begin() && key < *itr2; --itr2)
+        {
+            *(itr2 + 1) = *itr2;
+        }
+
+        *(itr2 + 1) = key;
+    }
+}
+
 #ifndef EXPORTED
 int main()
 {
-    int A[LENGTH] = {0};
-    initializeArray(A, LENGTH);
-    printArray(A, LENGTH);
-    InsertionSort(A, LENGTH);
-    printArray(A, LENGTH);
+//    int A[LENGTH] = {0};
+//    initializeArray(A, LENGTH);
+//    printArray(A, LENGTH);
+//    InsertionSort(A, LENGTH);
+//    printArray(A, LENGTH);
+    vector<int> v;
+    initializeVector(v, LENGTH);
+    printVector(v);
+    InsertionSort(v);
+    printVector(v);
     return 0;
 }
 #endif

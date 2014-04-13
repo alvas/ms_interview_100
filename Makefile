@@ -9,17 +9,19 @@ CC =/usr/local/bin/g++-4.7
 #CC =/usr/bin/g++
 INCLUDES = -I/usr/include -I/usr/local/include -I./
 
-objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
-          CircularLinkList.o NormalData.o Josephus.o
+LIBS = 
 
 SRCS = *.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-default: Josephus
+objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
+          CircularLinkList.o NormalData.o Josephus.o
+
+default: MergeSort 
 
 all: $(objects)
-	$(CC) $(CFLAGS) $(objects)
+	$(CC) $(CFLAGS) $(objects) $(LIBS)
 
 exec1: 
 	g++ exec1.cpp
@@ -62,6 +64,9 @@ InsertionSort: RandomData.o
 
 Select: QuickSort.o InsertionSort.o 
 	$(CC) $(FLAGS) Select.cpp QuickSort.o InsertionSort.o RandomData.o
+
+MergeSort: RandomData.o
+	$(CC) $(FLAGS) MergeSort.cpp RandomData.o
 
 BinarySearchTree: QuickSort.o
 	$(CC) BinarySearchTree.cpp RandomData.o QuickSort.o 

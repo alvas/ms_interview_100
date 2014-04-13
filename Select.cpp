@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include "InsertionSort.h"
 #include "RandomData.h"
@@ -139,7 +140,7 @@ int Select(int A[], int p, int r, int i)
     }
 }
 
-#ifdef EXPORTED
+#ifndef EXPORTED
 int main()
 {
     int A[LENGTH];
