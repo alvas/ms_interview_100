@@ -1,5 +1,6 @@
-#include <iostream>
+#include <algorithm>
 #include <cstdlib>
+#include <iostream>
 //#include <random>
 #include "RandomData.h"
 
@@ -14,8 +15,14 @@ void initializeArray(int A[], int length)
     }
 }
 
+int RandomNumber()
+{
+    return rand() % MAXNUM;
+}
+
 void initializeVector(vector<int> &v, int length)
 {
+#if 0
 #ifdef CPP11
     default_random_engine generator();
     uniform_int_distribution<int> distribution(0, MAXNUM - 1);
@@ -29,6 +36,17 @@ void initializeVector(vector<int> &v, int length)
         v.push_back(rand() % MAXNUM);
 #endif
     }
+#endif
+
+    srand(unsigned(time(0)));
+    v.resize(length);
+    generate(v.begin(), v.end(), RandomNumber);
+}
+
+void initializeRandomIndexVector(vector<int> &v, const int size)
+{
+    initializeIndexVector(v, size);
+    random_shuffle(v.begin(), v.end());
 }
 
 void initializeStringArray(char S[], int length)
@@ -83,11 +101,8 @@ int main()
 {
     vector<int> v;
     initializeVector(v, 20);
-
-    for (vector<int>::iterator itr = v.begin(); itr != v.end(); ++itr)
-    {
-        cout << *itr << " " ;
-    }
+//    initializeRandomIndexVector(v, 20);
+    printVector(v);
 
     cout << endl;
 }

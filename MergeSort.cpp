@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include "RandomData.h"
 
@@ -50,13 +51,34 @@ void MergeSort(vector<int> &v)
     return;
 }
 
+// Because we pass v.begin() and v.end() to this function, we can't
+// declara the parameter of these two iterators as references.
+void MergeSort(vector<int>::iterator first, vector<int>::iterator last)
+{
+    // !!WATCH OUT!! We need to check last is at least one after first.
+    // Otherwise, first equals to last, then MergeSort would get into
+    // infinte recursion when MergeSort(first, first).
+    if (first + 1 >= last)
+    {
+        return;
+    }
+
+    vector<int>::iterator middle = first + (last - first) / 2;
+
+    MergeSort(first, middle);
+    MergeSort(middle, last);
+    inplace_merge(first, middle, last);
+    return;
+}
+
 #ifndef EXPORTED
 int main()
 {
     vector<int> v;
     initializeVector(v, SIZE);
     printVector(v);
-    MergeSort(v);
+//    MergeSort(v);
+    MergeSort(v.begin(), v.end());
     printVector(v);
     return 0;
 }

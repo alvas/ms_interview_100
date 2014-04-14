@@ -29,11 +29,14 @@ exec1:
 exec2:
 	g++ exec2.cpp
 
-RandomData.o:
-	$(CC) $(CFLAGS) -c RandomData.cpp
+NormalData.o:
+	$(CC) $(CFLAGS) NormalData.cpp
 
-RandomData:
-	$(CC) $(FLAGS) RandomData.cpp
+RandomData.o: NormalData.o
+	$(CC) $(CFLAGS) -c RandomData.cpp NormalData.o
+
+RandomData: NormalData.o
+	$(CC) $(FLAGS) RandomData.cpp NormalData.o
 
 QuickSort.o: RandomData.o
 	$(CC) $(CFLAGS) QuickSort.cpp RandomData.o
@@ -91,9 +94,6 @@ MinPathSum:
 
 Fibonacci:
 	$(CC) $(FLAGS) Fibonacci.cpp
-
-NormalData.o:
-	$(CC) $(CFLAGS) NormalData.cpp
 
 CircularLinkList.o: LinkList.o NormalData.o
 	$(CC) $(CFLAGS) CircularLinkList.cpp LinkList.o NormalData.o
