@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#define I 39
+const int I = 39;
 
 // I: p start index
 //    r end index

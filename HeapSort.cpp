@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <cstdlib>
+#include "NormalData.h"
 #include "RandomData.h"
 
 using namespace std;

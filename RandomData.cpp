@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 //#include <random>
+#include "NormalData.h"
 #include "RandomData.h"
 
 using namespace std;
@@ -100,8 +101,8 @@ void printStringArray(char S[], int length)
 int main()
 {
     vector<int> v;
-    initializeVector(v, 20);
-//    initializeRandomIndexVector(v, 20);
+//    initializeVector(v, 20);
+    initializeRandomIndexVector(v, 20);
     printVector(v);
 
     cout << endl;

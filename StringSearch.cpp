@@ -1,11 +1,12 @@
 #include <iostream>
+#include "NormalData.h"
 #include "RandomData.h"
 
 using namespace std;
 
 const int BYTESIZE = 256;
 
-const int PATTERNLENGTH = 8;
+//const int PATTERNLENGTH = 8;
 
 char src[] = "ABCDACDAAHFACABCDABCDEAA";  
 char des[] = "ABCDE";
@@ -33,7 +34,7 @@ void makeSkip(char pattern[], int patternLength, int skip[])
     // aligned to the pattern[x] character in pattern
     while (patternLength != 0)
     {
-        skip[*pattern++] = patternLength--;
+        skip[(unsigned char)*pattern++] = patternLength--;
     }
 }
 
@@ -277,29 +278,129 @@ int KMPSearch(char S[], int length, char pattern[], int patternLength)
     }
 }
 
+/*
+ *  lev(|a|, |b|) = lev(i, j)
+ *
+ *  if min(i, j) = 0; = max(i, j);
+ *
+ *  oterwise; min( lev(i-1, j) + 1, lev(i, j-1) + 1, lev(i-1, j-1) ) + cost; 
+ *             cost = 1 if a[i] != b[j]; cost = 0 if a[i] == b[j]
+ *
+ *  lev(i-1, j) delete from s to t
+ *  lev(i, j-1) insert
+ *  lev(i-1, j-1) + cost; if cost == 0, the last charactor matches; otherwise, replace it with cost 1
+ */
+int LevensteinDistanceRecursive(string s, string t)
+{
+    if (s.size() == 0)
+    {
+        return t.size();
+    }
+
+    if (t.size() == 0)
+    {
+        return s.size();
+    }
+
+    int cost = 0;
+
+    if (s.back() == t.back())
+    {
+        cost = 0;
+    }
+    else
+    {
+        cost =  1;
+    }
+
+    string s1 = s;
+    s1.pop_back();
+    string t1 = t;
+    t1.pop_back();
+    int distance1 = LevensteinDistanceRecursive(s1, t) + 1;
+    int distance2 = LevensteinDistanceRecursive(s, t1) + 1;
+    int distance3 = LevensteinDistanceRecursive(s1, t1) + cost;
+
+    int min = distance1 < distance2 ? distance1 : distance2;
+    min = min < distance3 ? min : distance3;
+
+    return min;
+}
+
+int LevensteinDistance(string s, string t)
+{
+    vector< vector<int> > d;
+    // The size of d is from 0 to s.size() and t.size().
+    vector<int> v(t.size() + 1, 0);
+
+    // initilze array to 0
+    for (int i = 0; i <= s.size(); ++i)
+    {
+        d.push_back(v);
+    }
+
+    // source prefixes can be transformed into empty string ty dropping all characters
+    for (int i = 1; i <= s.size(); ++i)
+    {
+        d[i][0] = i;
+    }
+
+    // target prefixes can be reached from empty source prefix by inserting every charactors
+    for (int i = 1; i <= t.size(); ++i)
+    {
+        d[0][i] = i;
+    }
+
+    for (int j = 1; j <= t.size(); ++j)
+    {
+        for (int i = 1; i <= s.size(); ++i)
+        {
+            // !!Be careful!! The index starts from 1.
+            if (s[i - 1] == t[j - 1])
+            {
+                d[i][j] = d[i - 1][j - 1];
+            }
+            else
+            {
+                int dis1 = d[i - 1][j] + 1;
+                int dis2 = d[i][j - 1] + 1;
+                int dis3 = d[i - 1][j - 1] + 1;
+                int min = dis1 < dis2 ? dis1 : dis2;
+                d[i][j] = min < dis3 ? min : dis3;
+            }
+        }
+    }
+
+    return d[s.size()][t.size()];
+}
+
 int main()
 {
-    char S[MAXSTRLEN] = {0};
-    char pattern[] = {'D', 'W', 'F', 'C', 'A', 'Y', 'S', 'S'};
-    initializeStringArray(S, MAXSTRLEN);
+//    char S[MAXSTRLEN] = {0};
+//    char pattern[] = {'D', 'W', 'F', 'C', 'A', 'Y', 'S', 'S'};
+//    initializeStringArray(S, MAXSTRLEN);
 
-    cout << "The random source string is:" << endl;
-    printStringArray(S, MAXSTRLEN);
+//    cout << "The random source string is:" << endl;
+//    printStringArray(S, MAXSTRLEN);
 //    printStringArray(src, 24);
-    cout << "The pattern string is:" << endl;
-    printStringArray(pattern, PATTERNLENGTH);
+//    cout << "The pattern string is:" << endl;
+//    printStringArray(pattern, PATTERNLENGTH);
 //    printStringArray(des, 5);
 
-    int index = -1;
+//    int index = -1;
 //    index = Horspool(S, MAXSTRLEN, pattern, PATTERNLENGTH);
 //    index = Sunday(S, MAXSTRLEN, pattern, PATTERNLENGTH);
 //    index = Sunday(src1, 29, des1, 9);
-    index = BMSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
+//    index = BMSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
 //    index = BMSearch(src2, 29, des2, 11);
 //    index = KMPSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
 //    index = KMPSearch(src2, 29, des2, 11);
 
-    cout << "The pattern string is found at index " << index << "." << endl;
+//    cout << "The pattern string is found at index " << index << "." << endl;
+
+    string s("kitten");
+    string t("sitting");
+    cout << "The Levenstein Distance is " << LevensteinDistance(s, t) << "." << endl;
     return 0;
 }
 

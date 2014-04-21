@@ -5,8 +5,9 @@ FLAGS = -Wall
 CFLAGS = -c -Wall -DDEBUG -DEXPORTED
 DFLAGS = -Wall -g -DDEBUG
 LFLAGS = -Wall
-CC =/usr/local/bin/g++-4.7
-#CC =/usr/bin/g++
+#CC = /usr/local/bin/g++-4.7
+#CC = /usr/bin/g++
+CC = clang++
 INCLUDES = -I/usr/include -I/usr/local/include -I./
 
 LIBS = 
@@ -16,9 +17,9 @@ SRCS = *.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
-          CircularLinkList.o NormalData.o Josephus.o
+          CircularLcnkList.o NormalData.o Josephus.o
 
-default: MergeSort 
+default: StringSearch 
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -33,7 +34,7 @@ NormalData.o:
 	$(CC) $(CFLAGS) NormalData.cpp
 
 RandomData.o: NormalData.o
-	$(CC) $(CFLAGS) -c RandomData.cpp NormalData.o
+	$(CC) $(CFLAGS) RandomData.cpp NormalData.o
 
 RandomData: NormalData.o
 	$(CC) $(FLAGS) RandomData.cpp NormalData.o
@@ -56,8 +57,8 @@ exec5:
 exec8:
 	g++ exec8.cpp
 
-HeapSort: RandomData.o
-	$(CC) HeapSort.cpp RandomData.o
+HeapSort: RandomData.o NormalData.o
+	$(CC) HeapSort.cpp RandomData.o NormalData.o
 
 InsertionSort.o: RandomData.o
 	$(CC) $(CFLAGS) InsertionSort.cpp RandomData.o
@@ -77,8 +78,8 @@ BinarySearchTree: QuickSort.o
 MiscSort: RandomData.o
 	$(CC) MiscSort.cpp RandomData.o
 
-StringSearch: RandomData.o
-	$(CC) $(FLAGS) StringSearch.cpp RandomData.o
+StringSearch: RandomData.o NormalData.o
+	$(CC) $(FLAGS) $(INCLUDES) StringSearch.cpp RandomData.o NormalData.o
 
 LinkList.o: RandomData.o
 	$(CC) $(CFLAGS) LinkList.cpp RandomData.o
@@ -92,8 +93,8 @@ Bit:
 MinPathSum:
 	$(CC) $(FLAGS) MinPathSum.cpp
 
-Fibonacci:
-	$(CC) $(FLAGS) Fibonacci.cpp
+Fibonacci: RandomData.o NormalData.o
+	$(CC) $(FLAGS) Fibonacci.cpp RandomData.o NormalData.o
 
 CircularLinkList.o: LinkList.o NormalData.o
 	$(CC) $(CFLAGS) CircularLinkList.cpp LinkList.o NormalData.o
