@@ -2,6 +2,7 @@
 #include <iostream>
 #include "BinarySearchTree.h"
 #include "QuickSort.h"
+#include "NormalData.h"
 #include "RandomData.h"
 
 using namespace std;
@@ -175,7 +176,7 @@ void Transplant(BST *root, BST *u, BST *v)
     }
     else
     {
-        u->p->right - v;
+        u->p->right = v;
     }
 
     if (v != NULL)
@@ -296,14 +297,60 @@ int binarySearch(int A[], int p, int length, int x)
     return -1;
 }
 
+/*
+ *  binary search x in vector v
+ */
+int binarySearch(const vector<int> &v, int x)
+{
+    // Handle emppty vector case.
+    // Can't rely on start <= finish condition to
+    // handle this special case. Otherwise, *middle
+    // would reference to invalid data.
+    if (v.size() == 0)
+    {
+        return -1;
+    }
+
+    vector<int>::const_iterator start = v.begin();
+    vector<int>::const_iterator finish = v.end();
+
+    // !! Don't forget the equal case!!
+    while (start <= finish)
+    {
+        vector<int>::const_iterator middle = (finish - start) / 2 + start;
+
+#ifdef DEBUG
+        cout << "middle = " << middle - v.begin() << endl;
+#endif
+        if (*middle == x)
+        {
+            return middle - v.begin();
+        }
+        else if (*middle < x)
+        {
+            start = middle + 1;
+        }
+        else if (*middle > x)
+        {
+            finish = middle - 1;
+        }
+    }
+
+    return -1;
+}
+
 #ifndef EXPORTED
 int main()
 {
     int A[LENGTH] = {0};
     initializeArray(A, LENGTH);
     QuickSort(A, 0, LENGTH - 1);
-    printArray(A, LENGTH);
-    int index = binarySearch(A, 0, LENGTH - 1, 1153);
+//    printArray(A, LENGTH);
+//    int index = binarySearch(A, 0, LENGTH - 1, 1153);
+    vector<int> v(A, A + LENGTH);
+//    initializeVector(v, LENGTH);
+    printVector(v);
+    int index = binarySearch(v, 1272);
     cout << index << endl;
     return 0;
 }

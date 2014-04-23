@@ -14,12 +14,15 @@ const int ALPHABET = 26;
 // Template function must be in the calling site or header file,
 // otherwise it would not compile.
 // T must be a container type.
-template<class T>
+// Avoid to use the keyword class to define template variable name
+// here; otherwise will get "elaborated type refers to a typedef"
+// compile error.
+template<typename T>
 void printVector(const T &v)
 {
     int column = 0;
 
-    for (class T::const_iterator itr = v.begin(); itr != v.end(); ++itr)
+    for (typename T::const_iterator itr = v.begin(); itr != v.end(); ++itr)
     {
         cout << *itr << "\t";
 

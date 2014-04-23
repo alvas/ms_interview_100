@@ -170,6 +170,8 @@ int Horspool(char S[], int length, char pattern[], int patternLength)
     return -1;
 }
 
+// Whenever there is an unmatch, make a jump depending on the the character after
+// current end position of the source string.
 int Sunday(char S[], int length, char pattern[], int patternLength)
 {
     int next[ALPHABET] = {0};
@@ -374,6 +376,59 @@ int LevensteinDistance(string s, string t)
     return d[s.size()][t.size()];
 }
 
+int LevensteinDistance2(string s, string t)
+{
+    if (s == t)
+    {
+        return 0;
+    }
+    else if (s.size() == 0)
+    {
+        return t.size();
+    }
+    else if (t.size() == 0)
+    {
+        return s.size();
+    }
+
+    vector<int> v0(t.size() + 1, 0);
+    vector<int> v1(t.size() + 1, 0);
+
+    // initialize v0 the previous row of distances
+    // this row is d[0][j] edit distance for an empty s
+    // the distance is just the number of characters to delete from t
+    for (int i = 0; i < v0.size(); ++i)
+    {
+        v0[i] = i;
+    }
+
+    for (int i = 0; i <= s.size(); ++i)
+    {
+        // calculate v1 current row distances from the previous row v0
+        //
+        // first element of v1 is d[i+1][0]
+        // editing distance is delete (i+1) chars from s to match empty t
+        v1[0] = i + 1;
+
+
+        // use formular to fill in the rest of the row
+        for (int j = 0; j <= t.size(); ++j)
+        {
+            int cost = (s[i] == t[j]) ? 0 : 1;
+            int d1 = v1[j] + 1;
+            int d2 = v0[j + 1] + 1;
+            int d3 = v0[j] + cost;
+            int min = d1 < d2 ? d1 : d2;
+            v1[j + 1] = min < d3 ? min : d3;
+        }
+
+        // copy current row to previous row for next iteration
+        v0 = v1;
+    }
+
+    return v1[t.size()];
+}
+
 int main()
 {
 //    char S[MAXSTRLEN] = {0};
@@ -400,7 +455,7 @@ int main()
 
     string s("kitten");
     string t("sitting");
-    cout << "The Levenstein Distance is " << LevensteinDistance(s, t) << "." << endl;
+    cout << "The Levenstein Distance is " << LevensteinDistance2(s, t) << "." << endl;
     return 0;
 }
 

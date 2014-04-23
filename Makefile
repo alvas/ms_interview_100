@@ -19,7 +19,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: StringSearch 
+default: BinarySearchTree 
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -72,8 +72,8 @@ Select: QuickSort.o InsertionSort.o
 MergeSort: RandomData.o
 	$(CC) $(FLAGS) MergeSort.cpp RandomData.o
 
-BinarySearchTree: QuickSort.o
-	$(CC) BinarySearchTree.cpp RandomData.o QuickSort.o 
+BinarySearchTree: QuickSort.o RandomData.o  NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) BinarySearchTree.cpp RandomData.o QuickSort.o NormalData.o
 
 MiscSort: RandomData.o
 	$(CC) MiscSort.cpp RandomData.o
