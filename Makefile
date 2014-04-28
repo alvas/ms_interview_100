@@ -19,7 +19,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: StringProcess
+default: StringSearch
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)

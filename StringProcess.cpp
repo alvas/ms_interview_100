@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -219,6 +220,7 @@ void walk(vector< vector<string> > &all_path, map<string, vector<string> > kids)
             vector<string> &one_path = *itr;
             vector<string> &p = kids[one_path.back()];
 
+            // for each node connecting to the last node in one path, we build a path
             for (vector<string>::iterator itr2 = p.begin(); itr2 != p.end(); ++itr2)
             {
                 all_path.push_back(one_path);
@@ -227,6 +229,16 @@ void walk(vector< vector<string> > &all_path, map<string, vector<string> > kids)
         }
     }
 }
+
+void printFunc(string str)
+{
+    cout << str << " ";
+}
+
+struct printClass
+{
+    void operator () (string str) { cout << str << " "; }
+} printObject;
 
 vector< vector<string> > findLadders2(string start, string end, set<string> &dict)
 {
@@ -244,8 +256,22 @@ vector< vector<string> > findLadders2(string start, string end, set<string> &dic
 
         set<string> meet;
 
+        // build the connection graph with kids_from_start
         while (meet.empty() && !reach_start.empty() && !reach_end.empty())
         {
+#ifdef DEBUG
+            cout << "reach_start(" << reach_start.size() << "): ";
+
+            for_each(reach_start.begin(), reach_start.end(), printFunc);
+
+            cout << endl;
+
+            cout << "reach_end(" << reach_end.size() << "): ";
+
+            for_each(reach_end.begin(), reach_end.end(), printObject);
+
+            cout << endl;
+#endif
             if (reach_start.size() < reach_end.size())
             {
                 search_next_reach(reach_start, reach_end, meet, kids_from_start, dict);
@@ -256,8 +282,17 @@ vector< vector<string> > findLadders2(string start, string end, set<string> &dic
             }
         }
 
+        // build the path with walk
         if (!meet.empty())
         {
+#ifdef DEBUG
+            cout << "meet: ";
+
+            for_each(meet.begin(), meet.end(), printFunc);
+
+            cout << endl;
+#endif
+            // put the meet into result
             for (set<string>::iterator it = meet.begin(); it != meet.end(); ++it)
             {
                 vector<string> words(1, *it);

@@ -50,11 +50,21 @@ void initializeRandomIndexVector(vector<int> &v, const int size)
     random_shuffle(v.begin(), v.end());
 }
 
-void initializeStringArray(char S[], int length)
+void initializeRandomStringArray(char S[], int length)
 {
     for (int i = 0; i < length; ++i)
     {
         S[i] = 'A' + rand() % ALPHABET;
+    }
+}
+
+void initializeRandomString(string &S, int length)
+{
+    S.clear();
+
+    for (int i = 0; i < length; ++i)
+    {
+        S.push_back('A' + random() % ALPHABET);
     }
 }
 
@@ -100,11 +110,13 @@ void printStringArray(char S[], int length)
 #ifndef EXPORTED
 int main()
 {
-    vector<int> v;
+//    vector<int> v;
 //    initializeVector(v, 20);
-    initializeRandomIndexVector(v, 20);
-    printVector(v);
-
+//    initializeRandomIndexVector(v, 20);
+//    printVector(v);
+    string S;
+    initializeRandomString(S, 20);
+    cout << S << endl;
     cout << endl;
 }
 #endif
