@@ -36,3 +36,21 @@ void printVector(const T &v)
 }
 
 void initializeIndexVector(vector<int> &v, const int size);
+
+template <typename T>
+void printFunc(T str)
+{
+    cout << str << " ";
+}
+
+template <typename T>
+void print2DVector(const vector<vector<T> > &v)
+{
+    for (typename vector<vector<T> >::const_iterator itr = v.begin(); itr != v.end(); ++itr)
+    {
+        for_each((*itr).begin(), (*itr).end(), printFunc<T>);
+        cout << endl;
+    }
+}
+
+void initialize2DVector(vector<vector<int> > &v, int row, int column);

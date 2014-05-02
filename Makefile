@@ -19,7 +19,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: StringSearch
+default: Tree 
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -111,6 +111,14 @@ Josephus: LinkList.o CircularLinkList.o NormalData.o
 StringProcess:
 	$(CC) $(DFLAGS) StringProcess.cpp
 
+DataProcess: NormalData.o
+	$(CC) $(DFLAGS) DataProcess.cpp NormalData.o
+
+Tree:
+	$(CC) $(DFLAGS) Tree.cpp
+
+Graph:
+	$(CC) $(DFLAGS) Graph.cpp
 ctags:
 	ctags *
 

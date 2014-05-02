@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "NormalData.h"
+
 using namespace std;
 
 // T must be a container/class type which supports begin, end method and has
@@ -230,11 +232,6 @@ void walk(vector< vector<string> > &all_path, map<string, vector<string> > kids)
     }
 }
 
-void printFunc(string str)
-{
-    cout << str << " ";
-}
-
 struct printClass
 {
     void operator () (string str) { cout << str << " "; }
@@ -262,7 +259,7 @@ vector< vector<string> > findLadders2(string start, string end, set<string> &dic
 #ifdef DEBUG
             cout << "reach_start(" << reach_start.size() << "): ";
 
-            for_each(reach_start.begin(), reach_start.end(), printFunc);
+            for_each(reach_start.begin(), reach_start.end(), printFunc<string>);
 
             cout << endl;
 
@@ -288,7 +285,7 @@ vector< vector<string> > findLadders2(string start, string end, set<string> &dic
 #ifdef DEBUG
             cout << "meet: ";
 
-            for_each(meet.begin(), meet.end(), printFunc);
+            for_each(meet.begin(), meet.end(), printFunc<string>);
 
             cout << endl;
 #endif
