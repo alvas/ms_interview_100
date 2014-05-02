@@ -21,7 +21,7 @@ int RandomNumber()
     return rand() % MAXNUM;
 }
 
-void initializeVector(vector<int> &v, int length)
+void initializeRandomVector(vector<int> &v, int length)
 {
 #if 0
 #ifdef CPP11

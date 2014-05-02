@@ -4,7 +4,7 @@ using namespace std;
 
 // I: length the size of the array
 void initializeArray(int A[], int length);
-void initializeVector(vector<int> &v, int length);
+void initializeRandomVector(vector<int> &v, int length);
 void initializeRandomIndexVector(vector<int> &v, const int size);
 void initializeRandomStringArray(char S[], int length);
 void initializeRandomString(string &S, int length);

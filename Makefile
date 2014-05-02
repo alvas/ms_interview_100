@@ -1,7 +1,7 @@
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
 #DEBUG = -DDEBUG -g
-FLAGS = -Wall
+#FLAGS =
 CFLAGS = -c -Wall -DDEBUG -DEXPORTED
 DFLAGS = -Wall -g -DDEBUG
 LFLAGS = -Wall
@@ -19,7 +19,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: Tree 
+default: Graph 
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -37,13 +37,13 @@ RandomData.o: NormalData.o
 	$(CC) $(CFLAGS) RandomData.cpp NormalData.o
 
 RandomData: NormalData.o
-	$(CC) $(FLAGS) RandomData.cpp NormalData.o
+	$(CC) $(DFLAGS) RandomData.cpp NormalData.o
 
 QuickSort.o: RandomData.o
 	$(CC) $(CFLAGS) QuickSort.cpp RandomData.o
 
 QuickSort: RandomData.o
-	$(CC) $(FLAGS) QuickSort.cpp RandomData.o
+	$(CC) $(DFLAGS) QuickSort.cpp RandomData.o
 
 exec3:
 	g++ exec3.cpp
@@ -81,11 +81,11 @@ MiscSort: RandomData.o
 StringSearch: RandomData.o NormalData.o
 	$(CC) $(FLAGS) $(INCLUDES) StringSearch.cpp RandomData.o NormalData.o
 
-LinkList.o: RandomData.o
-	$(CC) $(CFLAGS) LinkList.cpp RandomData.o
+LinkList.o: RandomData.o NormalData.o
+	$(CC) $(CFLAGS) LinkList.cpp RandomData.o NormalData.o
 
-LinkList: RandomData.o
-	$(CC) $(FLAGS) LinkList.cpp RandomData.o
+LinkList: NormalData.o RandomData.o
+	$(CC) $(DFLAGS) LinkList.cpp NormalData.o RandomData.o
 
 Bit: 
 	$(CC) $(FLAGS) Bit.cpp
@@ -117,8 +117,8 @@ DataProcess: NormalData.o
 Tree:
 	$(CC) $(DFLAGS) Tree.cpp
 
-Graph:
-	$(CC) $(DFLAGS) Graph.cpp
+Graph: NormalData.o
+	$(CC) $(FLAGS) Graph.cpp NormalData.o
 ctags:
 	ctags *
 

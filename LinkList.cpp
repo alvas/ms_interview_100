@@ -1,5 +1,6 @@
 #include <iostream>
 #include "LinkList.h"
+#include "NormalData.h"
 #include "RandomData.h"
 
 LinkListNode::LinkListNode(int k)
@@ -31,9 +32,48 @@ void initializeLinkList(const vector<int> &S, LinkListNode **head)
     }
 }
 
+void initializeLinkList(LinkList &list, const vector<int> &S)
+{
+    bool initialize = true;
+
+    for (vector<int>::const_iterator itr = S.begin(); itr != S.end(); ++itr)
+    {
+        if (initialize)
+        {
+            initialize = false;
+            list.head = list.InsertNode(*itr);
+        }
+        else
+        {
+            list.InsertNode(*itr);
+        }
+    }
+}
+
 LinkList::LinkList(const vector<int> &S)
 {
     initializeLinkList(S, &head);
+}
+
+LinkListNode *LinkList::InsertNode(int value)
+{
+    if (head == NULL)
+    {
+        LinkListNode *p = new LinkListNode(value);
+        return p;
+    }
+    else
+    {
+        LinkListNode *p = head;
+
+        while (p->next != NULL)
+        {
+            p = p->next;
+        }
+
+        p->next = new LinkListNode(value);
+        return p->next;
+    }
 }
 
 // Passing the header of link list, this function would free all nodes
@@ -56,12 +96,12 @@ void destroyLinkList(LinkListNode *p)
         do
         {
             LinkListNode *tmp = p;
-            p = p->next;
 #ifdef DEBUG
             cout << "Deleting node " << tmp->key << endl;
-            cout << "Next node " << p->key << endl;
-            cout << "The address of next node is " << p << endl;
+            cout << "Next node " << p->key << "; ";
+            cout << "The address of next node is " << p->next << endl;
 #endif
+            p = p->next;
             delete tmp;
         } while (p!= NULL && p!= head);
     }
@@ -114,13 +154,19 @@ void reverseLinkList(LinkListNode **head)
 int main()
 {
     vector<int> S;
-    initializeVector(S, LENGTH);
+    initializeRandomVector(S, LENGTH);
+    /*
     printVector(S);
     LinkListNode *head = NULL;
     initializeLinkList(S, &head);
     reverseLinkList(&head);
     printLinkListNode(head);
     destroyLinkList(head);
+    */
+
+    LinkList list;
+    initializeLinkList(list, S);
+    printLinkListNode(list.head);
     return 0;
 }
 #endif

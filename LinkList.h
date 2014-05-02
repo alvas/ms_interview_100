@@ -12,18 +12,6 @@ class LinkListNode
         LinkListNode *next;
 };
 
-class LinkList
-{
-    public:
-        LinkList() { head = NULL; };
-        LinkList(const vector<int> &S);
-        ~LinkList();
-        LinkListNode *GetHead();
-
-    private:
-        LinkListNode *head;
-};
-
 class DoubleLinkListNode: public LinkListNode
 {
     public:
@@ -32,5 +20,16 @@ class DoubleLinkListNode: public LinkListNode
         DoubleLinkListNode *prev;
 };
 
-void destroyLinkList(LinkListNode *head);
+class LinkList
+{
+    public:
+        LinkList() { head = NULL; };
+        LinkList(const vector<int> &S);
+        ~LinkList();
+        LinkListNode *GetHead();
+        LinkListNode *InsertNode(int value);
 
+        LinkListNode *head;
+};
+
+void destroyLinkList(LinkListNode *head);

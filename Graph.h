@@ -1,5 +1,6 @@
 class Node 
 {
-    Node *link;
-    int data;
+    public:
+        Node *link;
+        int data;
 };
