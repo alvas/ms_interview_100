@@ -24,10 +24,22 @@ static void strongConnect(int v)
 {
     indexMap.insert(pair<int, int>(v, idx));
     lowLinkMap.insert(pair<int, int>(v, idx));
+#ifdef DEBUG
+    cout << "insert node " << v << ", index " << idx << " into indexMap!" << endl;
+    cout << "insert node " << v << ", index " << idx << " into lowLinkMap!" << endl;
+#endif
     idx++;
-    S.push(v);
-
+    visitedSet.insert(v);
     vector<int> tmp = graph[v];
+    S.push(v);
+    int *tail = &S.top() + 1;
+    int *start = tail - S.size();
+    vector<int> stackContent(start, tail);
+#ifdef DEBUG
+    cout << "stack contents: ";
+    for_each(stackContent.begin(), stackContent.end(), printFunc<int>);
+    cout << endl;
+#endif
 
     for (vector<int>::iterator itr = tmp.begin(); itr != tmp.end(); ++itr)
     {
@@ -36,11 +48,16 @@ static void strongConnect(int v)
             strongConnect(*itr);
             lowLinkMap[v] = min(lowLinkMap[v], lowLinkMap[*itr]);
         }
-        else
+        else if (find(stackContent.begin(), stackContent.end(), *itr) != stackContent.end())
         {
             lowLinkMap[v] = min(lowLinkMap[v], indexMap[*itr]);
         }
     }
+
+#ifdef DEBUG
+    cout << "lowLinkMap[" << v << "] = " << lowLinkMap[v] << endl;
+    cout << "indexMap[" << v << "] = " << indexMap[v] << endl;
+#endif
 
     map<int, int>::iterator itrIndex = indexMap.find(v);
     map<int, int>::iterator  itrLowLink= lowLinkMap.find(v);
@@ -59,16 +76,15 @@ static void strongConnect(int v)
             S.pop();
         } while (w != v && !S.empty());
 
-        cout << " }" << endl;
+        cout << "}" << endl;
     }
 }
 
 void tarjan()
 {
-
     for (map<int, vector<int> >::iterator itr = graph.begin(); itr != graph.end(); ++itr)
     {
-        if (visitedSet.find(itr->first) != visitedSet.end())
+        if (visitedSet.find(itr->first) == visitedSet.end())
         {
             strongConnect(itr->first);
         }

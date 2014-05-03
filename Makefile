@@ -118,7 +118,7 @@ Tree:
 	$(CC) $(DFLAGS) Tree.cpp
 
 Graph: NormalData.o
-	$(CC) $(FLAGS) Graph.cpp NormalData.o
+	$(CC) $(DFLAGS) Graph.cpp NormalData.o
 ctags:
 	ctags *
 
