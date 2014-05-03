@@ -7,3 +7,5 @@ cscope*
 *~
 *.dSYM
 Makefile.bak
+html/
+latex/

@@ -1,5 +1,7 @@
+#include <deque>
 #include <iostream>
 #include <map>
+#include <queue>
 #include <set>
 #include <stack>
 #include <vector>
@@ -14,10 +16,11 @@ static stack<int> S;
 static set<int> visitedSet;
 static map<int, int> indexMap;
 static map<int, int> lowLinkMap;
+static deque<int> Q;
 #ifdef MULTI_MAP
-    static multimap<int, int> graph;
+    static multimap<int, int> G;
 #else
-    static map<int, vector<int> > graph;
+    static map<int, vector<int> > G;
 #endif
 
 static void strongConnect(int v)
@@ -30,7 +33,7 @@ static void strongConnect(int v)
 #endif
     idx++;
     visitedSet.insert(v);
-    vector<int> tmp = graph[v];
+    vector<int> tmp = G[v];
     S.push(v);
     int *tail = &S.top() + 1;
     int *start = tail - S.size();
@@ -82,7 +85,7 @@ static void strongConnect(int v)
 
 void tarjan()
 {
-    for (map<int, vector<int> >::iterator itr = graph.begin(); itr != graph.end(); ++itr)
+    for (map<int, vector<int> >::iterator itr = G.begin(); itr != G.end(); ++itr)
     {
         if (visitedSet.find(itr->first) == visitedSet.end())
         {
@@ -91,31 +94,99 @@ void tarjan()
     }
 }
 
+static void DFS_VISIT(int u)
+{
+    vector<int> adj = G[u];
+    visitedSet.insert(u);
+
+    for (vector<int>::iterator itr = adj.begin(); itr != adj.end(); ++itr)
+    {
+        if (visitedSet.find(*itr) == visitedSet.end())
+        {
+            DFS_VISIT(*itr);
+        }
+    }
+
+#ifdef DEBUG
+    cout << u << " ";
+#endif
+    Q.push_front(u);
+}
+
+// DFS search the whole graph
+void DFS()
+{
+    for (map<int, vector<int> >::iterator itr = G.begin(); itr != G.end(); ++itr)
+    {
+        if (visitedSet.find(itr->first) == visitedSet.end())
+        {
+            DFS_VISIT(itr->first);
+        }
+    }
+
+    cout << endl;
+}
+
+// BFS search a graph from start node s
+void BFS(int s)
+{
+    Q.push_back(s);
+    visitedSet.insert(s);
+
+    while (!Q.empty())
+    {
+        int u = Q.front();
+        cout << u << " ";
+        Q.pop_front();
+
+        vector<int> adj = G[u];
+
+        for (vector<int>::iterator itr2 = adj.begin(); itr2 != adj.end(); ++itr2)
+        {
+            if (visitedSet.find(*itr2) == visitedSet.end())
+            {
+                Q.push_back(*itr2);
+                visitedSet.insert(*itr2);
+            }
+        }
+    }
+
+    cout << endl;
+}
+
+void TopologicalSort()
+{
+    DFS();
+
+    cout << "Topological Soring: " << endl;
+
+    for (deque<int>::iterator itr = Q.begin(); itr != Q.end(); ++itr)
+    {
+        cout << *itr << " ";
+    }
+
+    cout << endl;
+}
+
 #ifndef EXPORTED
 int main()
 {
-    int a[14][2] = {{1, 2}, {2, 3}, {3, 1}, {4, 2}, 
-                    {4, 3}, {4, 5}, {5, 4}, {5, 6}, 
-                    {6, 3}, {6, 7}, {7, 6}, {8, 5}, 
-                    {8, 7}, {8, 8}};
-
-
     for (int i = 0; i < 14; ++i)
     {
 #ifdef MULTI_MAP
-        graph.insert(pair<int, int>(a[i][0], a[i][1]));
+        G.insert(pair<int, int>(GArray[i][0], GArray[i][1]));
 #else
-        graph[a[i][0]].push_back(a[i][1]);
+        G[GArray[i][0]].push_back(GArray[i][1]);
 #endif
     }
 
 #ifdef MULTI_MAP
-    for (multimap<int, int>::iterator itr = graph.begin(); itr != graph.end(); ++itr)
+    for (multimap<int, int>::iterator itr = G.begin(); itr != G.end(); ++itr)
     {
         cout << itr->first << " => " << itr->second << endl;
     }
 #else
-    for (map<int, vector<int> >::iterator itr = graph.begin(); itr != graph.end(); ++itr)
+    for (map<int, vector<int> >::iterator itr = G.begin(); itr != G.end(); ++itr)
     {
         cout << "Node " << itr->first << " is connected to: ";
         vector<int> tmp = itr->second;
@@ -124,7 +195,12 @@ int main()
     }
 #endif
 
-    tarjan();
+//    tarjan();
+//    DFS();
+//    TopologicalSort();
+//
+    // here we manually search graph from node 1
+    BFS(1);
 
     return 0;
 }

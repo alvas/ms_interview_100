@@ -47,10 +47,14 @@ int FibonacciMatrix(int n)
 {
     // Initialize A as identity matrix in order to calculate the first result.
     // otherwise, the first result would be wrong. Don't use {1, 1, 1, 1}.
-    const int s[4] = {1, 0, 1, 0};
+    // 1 0
+    // 0 1
+    const int s[4] = {1, 0, 0, 1};
     vector<int> A(s, s + 4);
 
     // Initialize B matrix, which will be used to calculate the result
+    // 1 1
+    // 1 0
     const int r[4] = {1, 1, 1, 0};
     vector<int> B(r, r + 4);
 
@@ -89,8 +93,10 @@ int FibonacciMatrix(int n)
         B = C;
 
         n >>= 1;
+#ifdef DEBUG
         printVector(A);
         printVector(B);
+#endif
     }
 
     return A[0];
@@ -99,7 +105,7 @@ int FibonacciMatrix(int n)
 #ifndef EXPORT
 int main()
 {
-//    Fibonacci(N);
+    Fibonacci(N);
 //    cout << FibonacciRecursive(N) << endl;
     cout << FibonacciMatrix(N) << endl;
     return 0;

@@ -126,6 +126,9 @@ cscope:
 	find . -name "*.cpp" -o -name "*.h" > cscope.files
 	cscope -b -q -k
 	
+doc:
+	doxygen Doxyfile
+
 clean:
 	rm a.out *.o
 
