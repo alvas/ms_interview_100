@@ -19,8 +19,10 @@ static map<int, int> lowLinkMap;
 static deque<int> Q;
 #ifdef MULTI_MAP
     static multimap<int, int> G;
+    static multimap<int, int> GT;
 #else
     static map<int, vector<int> > G;
+    static map<int, vector<int> > GT;
 #endif
 
 static void strongConnect(int v)
@@ -33,7 +35,7 @@ static void strongConnect(int v)
 #endif
     idx++;
     visitedSet.insert(v);
-    vector<int> tmp = G[v];
+    vector<int> adj = G[v];
     S.push(v);
     int *tail = &S.top() + 1;
     int *start = tail - S.size();
@@ -44,7 +46,7 @@ static void strongConnect(int v)
     cout << endl;
 #endif
 
-    for (vector<int>::iterator itr = tmp.begin(); itr != tmp.end(); ++itr)
+    for (vector<int>::iterator itr = adj.begin(); itr != adj.end(); ++itr)
     {
         if (visitedSet.find(*itr) == visitedSet.end())
         {
@@ -168,39 +170,196 @@ void TopologicalSort()
     cout << endl;
 }
 
-#ifndef EXPORTED
-int main()
+static void InitializeGraph(int a[14][2])
 {
     for (int i = 0; i < 14; ++i)
     {
 #ifdef MULTI_MAP
-        G.insert(pair<int, int>(GArray[i][0], GArray[i][1]));
+        G.insert(pair<int, int>(a[i][0], a[i][1]));
 #else
-        G[GArray[i][0]].push_back(GArray[i][1]);
+        G[a[i][0]].push_back(a[i][1]);
 #endif
     }
+}
 
-#ifdef MULTI_MAP
-    for (multimap<int, int>::iterator itr = G.begin(); itr != G.end(); ++itr)
+#if 0
+static void TransposeGraph(int a[14][2])
+{
+    for (int i = 0; i < 14; ++i)
     {
-        cout << itr->first << " => " << itr->second << endl;
-    }
+#ifdef MULTI_MAP
+        GT.insert(pair<int, int>(a[i][1], a[i][0]));
 #else
-    for (map<int, vector<int> >::iterator itr = G.begin(); itr != G.end(); ++itr)
+        GT[a[i][1]].push_back(a[i][0]);
+#endif
+    }
+}
+#endif
+
+static void TransposeGraph(const map<int, vector<int> > &graph)
+{
+    for (map<int, vector<int> >::const_iterator itr = graph.begin(); itr != graph.end(); ++itr)
+    {
+        vector<int> adj = itr->second;
+
+        for (vector<int>::iterator itr2 = adj.begin(); itr2 != adj.end(); ++itr2)
+        {
+            GT.insert(pair<int, int>(*itr2, itr->first));
+        }
+    }
+}
+
+static void printGraph(const map<int, vector<int> > &graph)
+{
+#ifdef MULTI_MAP
+//    for (multimap<int, int>::iterator itr = G.begin(); itr != G.end(); ++itr)
+//    {
+//        cout << itr->first << " => " << itr->second << endl;
+//    }
+#else
+    for (map<int, vector<int> >::const_iterator itr = G.begin(); itr != G.end(); ++itr)
     {
         cout << "Node " << itr->first << " is connected to: ";
-        vector<int> tmp = itr->second;
-        for_each(tmp.begin(), tmp.end(), printFunc<int>);
+        vector<int> adj= itr->second;
+        for_each(adj.begin(), adj.end(), printFunc<int>);
         cout << endl;
     }
 #endif
+}
 
+static void printVertex(Vertex &v)
+{
+    cout << "id = " << v.id << "; d = " << v.d << endl;
+}
+
+static void printEdge(Edge &e)
+{
+    cout << e.u.id << " -->(" << e.w << ") " << e.v.id << endl; 
+}
+
+struct VertexCmp
+{
+    VertexCmp(int idValue): id(idValue) {}
+    bool operator () (Vertex elem) { return elem.id == id; }
+    int id;
+};
+
+static void InitializeGraph(Graph &g, int numVertex, int w[][G_V1])
+{
+    for (int i = 0; i < numVertex; ++i)
+    {
+        Vertex v;
+        g.V.push_back(v);
+    }
+
+#ifdef DEBUG
+    for_each(g.V.begin(), g.V.end(), printVertex);
+#endif
+
+    for (int i = 0; i < numVertex; ++i)
+    {
+        for (int j = 0; j < numVertex; ++j)
+        {
+
+            VertexCmp u1(i);
+            vector<Vertex>::iterator uItr = find_if(g.V.begin(), g.V.end(), u1);
+            VertexCmp v1(j);
+            vector<Vertex>::iterator vItr = find_if(g.V.begin(), g.V.end(), v1);
+
+//            Vertex u1(i);
+//            vector<Vertex>::iterator uItr = find(g.V.begin(), g.V.end(), u1);
+//            Vertex v1(j);
+//            vector<Vertex>::iterator vItr = find(g.V.begin(), g.V.end(), v1);
+
+//            vector<Vertex>::iterator uItr = FindVertex(g, i);
+//            vector<Vertex>::iterator vItr = FindVertex(g, j);
+
+            if (uItr != g.V.end() && vItr != g.V.end() && w[i][j] != 0)
+            {
+                Edge edge(*uItr, *vItr, w[i][j]);
+                g.E.push_back(edge);
+            }
+        }
+    }
+
+#ifdef DEBUG
+    for_each(g.E.begin(), g.E.end(), printEdge);
+#endif
+}
+
+static void INITIALIZE_SINGLE_SOURCE(Graph &g, Vertex &s)
+{
+    for (vector<Vertex>::iterator itr = g.V.begin(); itr != g.V.end(); ++itr)
+    {
+        Vertex &vertex = *itr;
+        vertex.d = numeric_limits<int>::max();
+        vertex.pi = NULL;
+    }
+
+    s.d = 0;
+}
+
+static void RELAX(Vertex &u, Vertex &v, int w[][G_V1])
+{
+    if (v.d > u.d + w[u.id][v.id])
+    {
+        v.d = u.d + w[u.id][v.id];
+        v.pi = &u;
+    }
+}
+
+bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex &s)
+{
+    INITIALIZE_SINGLE_SOURCE(g, s);
+
+#ifdef DEBUG
+    for_each(g.V.begin(), g.V.end(), printVertex);
+#endif
+
+    for (int i = 1; i < g.V.size(); ++i)
+    {
+        for (vector<Edge>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
+        {
+            Edge &edge = *itr;
+            RELAX(edge.u, edge.v, w);
+        }
+    }
+
+    for (vector<Edge>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
+    {
+        Edge &edge = *itr;
+
+        if (edge.u.d > edge.u.d + w[edge.u.id][edge.v.id])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+#ifndef EXPORTED
+int main()
+{
+//    InitializeGraph(GArray);
+//    printGraph(G);
+//    TransposeGraph(G);
+//    printGraph(GT);
 //    tarjan();
 //    DFS();
 //    TopologicalSort();
 //
     // here we manually search graph from node 1
-    BFS(1);
+//    BFS(1);
+
+    Graph g;
+    InitializeGraph(g, G_V1, W);
+    vector<Vertex>::iterator sItr = FindVertex(g, 0);
+    
+    if (sItr != g.V.end())
+    {
+        cout << BELLMAN_FORD(g, W, *sItr) << endl;
+    }
 
     return 0;
 }
