@@ -25,6 +25,21 @@ static deque<int> Q;
     static map<int, vector<int> > GT;
 #endif
 
+Graph::~Graph()
+{
+    for (vector<Edge *>::iterator itr = E.begin(); itr != E.end(); ++itr)
+    {
+        Edge *e = *itr;
+        delete e;
+    }
+
+    for (vector<Vertex *>::iterator itr = V.begin(); itr != V.end(); ++itr)
+    {
+        Vertex *v = *itr;
+        delete v;
+    }
+}
+
 static void strongConnect(int v)
 {
     indexMap.insert(pair<int, int>(v, idx));
@@ -227,20 +242,22 @@ static void printGraph(const map<int, vector<int> > &graph)
 #endif
 }
 
-static void printVertex(Vertex &v)
+static void printVertex(const Vertex *v)
 {
-    cout << "id = " << v.id << "; d = " << v.d << endl;
+    cout << "id = " << v->id << "; d = " << v->d << endl;
 }
 
-static void printEdge(Edge &e)
+static void printEdge(const Edge *e)
 {
-    cout << e.u.id << " -->(" << e.w << ") " << e.v.id << endl; 
+    cout << e->u->id << " -->(" << e->w << ") " << e->v->id << endl; 
 }
 
 struct VertexCmp
 {
     VertexCmp(int idValue): id(idValue) {}
-    bool operator () (Vertex elem) { return elem.id == id; }
+    VertexCmp() {}
+    bool operator () (const Vertex *v) const { return v->id == id; }
+    bool operator() (const Vertex *v, const Vertex *u) const { return u->d < v->d; }
     int id;
 };
 
@@ -248,7 +265,7 @@ static void InitializeGraph(Graph &g, int numVertex, int w[][G_V1])
 {
     for (int i = 0; i < numVertex; ++i)
     {
-        Vertex v;
+        Vertex *v = new Vertex();
         g.V.push_back(v);
     }
 
@@ -262,9 +279,9 @@ static void InitializeGraph(Graph &g, int numVertex, int w[][G_V1])
         {
 
             VertexCmp u1(i);
-            vector<Vertex>::iterator uItr = find_if(g.V.begin(), g.V.end(), u1);
+            vector<Vertex *>::iterator uItr = find_if(g.V.begin(), g.V.end(), u1);
             VertexCmp v1(j);
-            vector<Vertex>::iterator vItr = find_if(g.V.begin(), g.V.end(), v1);
+            vector<Vertex *>::iterator vItr = find_if(g.V.begin(), g.V.end(), v1);
 
 //            Vertex u1(i);
 //            vector<Vertex>::iterator uItr = find(g.V.begin(), g.V.end(), u1);
@@ -276,8 +293,8 @@ static void InitializeGraph(Graph &g, int numVertex, int w[][G_V1])
 
             if (uItr != g.V.end() && vItr != g.V.end() && w[i][j] != 0)
             {
-                Edge edge(*uItr, *vItr, w[i][j]);
-                g.E.push_back(edge);
+                Edge *e = new Edge(*uItr, *vItr, w[i][j]);
+                g.E.push_back(e);
             }
         }
     }
@@ -287,28 +304,28 @@ static void InitializeGraph(Graph &g, int numVertex, int w[][G_V1])
 #endif
 }
 
-static void INITIALIZE_SINGLE_SOURCE(Graph &g, Vertex &s)
+static void INITIALIZE_SINGLE_SOURCE(Graph &g, Vertex *s)
 {
-    for (vector<Vertex>::iterator itr = g.V.begin(); itr != g.V.end(); ++itr)
+    for (vector<Vertex *>::iterator itr = g.V.begin(); itr != g.V.end(); ++itr)
     {
-        Vertex &vertex = *itr;
-        vertex.d = numeric_limits<int>::max();
-        vertex.pi = NULL;
+        Vertex *v = *itr;
+        v->d = numeric_limits<int>::max();
+        v->pi = NULL;
     }
 
-    s.d = 0;
+    s->d = 0;
 }
 
-static void RELAX(Vertex &u, Vertex &v, int w[][G_V1])
+static void RELAX(Vertex *u, Vertex *v, int w[][G_V1])
 {
-    if (v.d > u.d + w[u.id][v.id])
+    if (u->d != numeric_limits<int>::max() && v->d > u->d + w[u->id][v->id])
     {
-        v.d = u.d + w[u.id][v.id];
-        v.pi = &u;
+        v->d = u->d + w[u->id][v->id];
+        v->pi = u;
     }
 }
 
-bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex &s)
+bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex *s)
 {
     INITIALIZE_SINGLE_SOURCE(g, s);
 
@@ -318,24 +335,49 @@ bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex &s)
 
     for (int i = 1; i < g.V.size(); ++i)
     {
-        for (vector<Edge>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
+        for (vector<Edge *>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
         {
-            Edge &edge = *itr;
-            RELAX(edge.u, edge.v, w);
+            Edge *e = *itr;
+            RELAX(e->u, e->v, w);
         }
     }
 
-    for (vector<Edge>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
+    for (vector<Edge *>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
     {
-        Edge &edge = *itr;
+        Edge *e = *itr;
 
-        if (edge.u.d > edge.u.d + w[edge.u.id][edge.v.id])
+        if (e->u->d > e->u->d + w[e->u->id][e->v->id])
         {
             return false;
         }
     }
 
     return true;
+}
+
+void Dijkstra(Graph &g, int w[][G_V1], Vertex *s)
+{
+    INITIALIZE_SINGLE_SOURCE(g, s);
+
+    set<Vertex *> S;
+
+    // !! How to conque this??
+    // Initialize Q with all vertex in g.V
+    priority_queue<Vertex *, vector<Vertex *>, VertexCmp> Q(g.V.begin(), g.V.end());
+
+    while (!Q.empty())
+    {
+        Vertex *u = (Q.top());
+        Q.pop();
+        S.insert(u);
+        
+        vector<Vertex *> adj = FindAdj(g, u);
+
+        for (vector<Vertex *>::iterator itr = adj.begin(); itr != adj.end(); ++itr)
+        {
+            RELAX(u, (*itr), w);
+        }
+    }
 }
 
 #ifndef EXPORTED
@@ -354,11 +396,15 @@ int main()
 
     Graph g;
     InitializeGraph(g, G_V1, W);
-    vector<Vertex>::iterator sItr = FindVertex(g, 0);
+    vector<Vertex *>::iterator sItr = FindVertex(g, 0);
     
     if (sItr != g.V.end())
     {
-        cout << BELLMAN_FORD(g, W, *sItr) << endl;
+//        cout << BELLMAN_FORD(g, W, *sItr) << endl;
+
+        Dijkstra(g, W, *sItr);
+        for_each(g.V.begin(), g.V.end(), printVertex);
+        cout << endl;
     }
 
     return 0;
