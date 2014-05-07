@@ -309,8 +309,12 @@ static void INITIALIZE_SINGLE_SOURCE(Graph &g, Vertex *s)
     for (vector<Vertex *>::iterator itr = g.V.begin(); itr != g.V.end(); ++itr)
     {
         Vertex *v = *itr;
-        v->d = numeric_limits<int>::max();
-        v->pi = NULL;
+        
+        if (v != NULL)
+        {
+            v->d = numeric_limits<int>::max();
+            v->pi = NULL;
+        }
     }
 
     s->d = 0;
@@ -318,7 +322,8 @@ static void INITIALIZE_SINGLE_SOURCE(Graph &g, Vertex *s)
 
 static void RELAX(Vertex *u, Vertex *v, int w[][G_V1])
 {
-    if (u->d != numeric_limits<int>::max() && v->d > u->d + w[u->id][v->id])
+    if (u->d != numeric_limits<int>::max() &&
+        v->d > (u->d + w[u->id][v->id]))
     {
         v->d = u->d + w[u->id][v->id];
         v->pi = u;
@@ -338,7 +343,11 @@ bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex *s)
         for (vector<Edge *>::iterator itr = g.E.begin(); itr != g.E.end(); ++itr)
         {
             Edge *e = *itr;
-            RELAX(e->u, e->v, w);
+
+            if (e != NULL)
+            {
+                RELAX(e->u, e->v, w);
+            }
         }
     }
 
@@ -346,7 +355,8 @@ bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex *s)
     {
         Edge *e = *itr;
 
-        if (e->u->d > e->u->d + w[e->u->id][e->v->id])
+        if (e != NULL && 
+            e->u->d > (e->u->d + w[e->u->id][e->v->id]))
         {
             return false;
         }
@@ -358,19 +368,15 @@ bool BELLMAN_FORD(Graph &g, int w[][G_V1], Vertex *s)
 void Dijkstra(Graph &g, int w[][G_V1], Vertex *s)
 {
     INITIALIZE_SINGLE_SOURCE(g, s);
-
-    set<Vertex *> S;
-
-    // !! How to conque this??
-    // Initialize Q with all vertex in g.V
+//    set<Vertex *> S;
     priority_queue<Vertex *, vector<Vertex *>, VertexCmp> Q(g.V.begin(), g.V.end());
 
     while (!Q.empty())
     {
         Vertex *u = (Q.top());
         Q.pop();
-        S.insert(u);
-        
+//        S.insert(u);
+
         vector<Vertex *> adj = FindAdj(g, u);
 
         for (vector<Vertex *>::iterator itr = adj.begin(); itr != adj.end(); ++itr)
@@ -379,6 +385,21 @@ void Dijkstra(Graph &g, int w[][G_V1], Vertex *s)
         }
     }
 }
+
+//EXTEND_SHORTEST_PATHS
+//
+//SLOW_ALL_PAIRS_SHORTEST_PATHS
+//
+//FASTER_ALL_PAIRS_SHORTEST_PATHS
+//
+//FLOYD_WARSHALL
+//
+//TRANSITIVE_CLOSURE
+//
+//JOHNSON
+//
+//FORD_FULKERSON
+//
 
 #ifndef EXPORTED
 int main()
