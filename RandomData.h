@@ -1,9 +1,10 @@
 #include <vector>
+#include "NormalData.h"
 
 using namespace std;
 
 // I: length the size of the array
-void initializeArray(int A[], int length);
+void initializeArray(int A[], int length, int maxNum = MAXNUM);
 void initializeRandomVector(vector<int> &v, int length);
 void initializeRandomIndexVector(vector<int> &v, const int size);
 void initializeRandomStringArray(char S[], int length);

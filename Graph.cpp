@@ -40,7 +40,7 @@ Graph::~Graph()
     }
 }
 
-static void strongConnect(int v)
+static void strongConnect(int v, stack<int> s)
 {
     indexMap.insert(pair<int, int>(v, idx));
     lowLinkMap.insert(pair<int, int>(v, idx));
@@ -51,8 +51,8 @@ static void strongConnect(int v)
     idx++;
     visitedSet.insert(v);
     vector<int> adj = G[v];
-    S.push(v);
-    int *tail = &S.top() + 1;
+    s.push(v);
+    int *tail = &s.top() + 1;
     int *start = tail - S.size();
     vector<int> stackContent(start, tail);
 #ifdef DEBUG
@@ -65,7 +65,7 @@ static void strongConnect(int v)
     {
         if (visitedSet.find(*itr) == visitedSet.end())
         {
-            strongConnect(*itr);
+            strongConnect(*itr, s);
             lowLinkMap[v] = min(lowLinkMap[v], lowLinkMap[*itr]);
         }
         else if (find(stackContent.begin(), stackContent.end(), *itr) != stackContent.end())
@@ -91,22 +91,25 @@ static void strongConnect(int v)
 
         do
         {
-            w = S.top();
+            w = s.top();
             cout << w << " ";
-            S.pop();
-        } while (w != v && !S.empty());
+            s.pop();
+        } while (w != v && !s.empty());
 
         cout << "}" << endl;
     }
 }
 
+// Refer to wiki for example and implementation.
 void tarjan()
 {
+    stack<int> s;
+
     for (map<int, vector<int> >::iterator itr = G.begin(); itr != G.end(); ++itr)
     {
         if (visitedSet.find(itr->first) == visitedSet.end())
         {
-            strongConnect(itr->first);
+            strongConnect(itr->first, s);
         }
     }
 }

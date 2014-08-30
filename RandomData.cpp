@@ -12,7 +12,7 @@ void initializeArray(int A[], int length)
 {
     for (int i = 0; i < length; ++i)
     {
-        A[i] = rand() % MAXNUM;
+        A[i] = rand() % maxNum;
     }
 }
 

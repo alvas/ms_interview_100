@@ -8,7 +8,8 @@ LFLAGS = -Wall
 #CC = /usr/local/bin/g++-4.7
 #CC = /usr/bin/g++
 CC = clang++
-INCLUDES = -I/usr/include -I/usr/local/include -I./
+# using boost
+INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.55.0_2/include/
 
 LIBS = 
 
@@ -19,7 +20,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: Graph 
+default: Shift 
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -117,8 +118,18 @@ DataProcess: NormalData.o
 Tree:
 	$(CC) $(DFLAGS) Tree.cpp
 
+Interval:
+	$(CC) $(DFLAGS) Interval.cpp
+
 Graph: NormalData.o
 	$(CC) $(DFLAGS) Graph.cpp NormalData.o
+
+Power:
+	$(CC) $(DFLAGS) Power.cpp
+
+Shift: NormalData.o
+	$(CC) $(DFLAG) Shift.cpp NormalData.o
+
 ctags:
 	ctags *
 

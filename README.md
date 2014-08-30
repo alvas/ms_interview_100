@@ -8,3 +8,9 @@ make target_name, for example: make Select
 
 To compile the target with debug information:
 make DEBUG=-DDEBUG target_name, for example: make DEBUG=-DDEBUG StringSearch
+
+git command to commit code:
+git status
+git add .
+git commit -m "comment"
+git push origin master
