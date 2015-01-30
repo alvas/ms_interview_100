@@ -20,7 +20,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: Shift 
+default: IntegerToRoman
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -129,6 +129,9 @@ Power:
 
 Shift: NormalData.o
 	$(CC) $(DFLAG) Shift.cpp NormalData.o
+
+IntegerToRoman:
+	$(CC) $(DFLAG) IntegerToRoman.cpp
 
 ctags:
 	ctags *

@@ -1,11 +1,14 @@
 #include <bitset>
 #include <iostream>
+#include <set>
 #include <string>
 
 using namespace std;
 
 const int ODDMASK = 0x55555555;
 const int EVENMASK = 0xAAAAAAAA;
+
+const int NUM = 100;
 
 // This fucntion swaps the odd bit and even bit of an integer.
 void swapIntOddEvenBit(int &num)
@@ -31,6 +34,7 @@ void printIntBinary(int num)
 #ifndef EXPORTED
 int main()
 {
+#if 0
     cout << "sizeof(int): " << sizeof(int) << endl;
 
     int a = 375;
@@ -47,5 +51,31 @@ int main()
     x = bitset<32>(string("0110110100"));
     cout << x << endl;
     return 0;
+#endif
+
+    set<int> idSet;
+
+    for (int i = 0; i < NUM; ++i)
+    {
+        int num = rand() % NUM;
+        idSet.insert(num);
+    }
+
+    bitset<NUM> file;
+
+    for (set<int>::iterator itr = idSet.begin(); itr != idSet.end(); ++itr)
+    {
+        file.set(*itr);
+    }
+
+    int sizeOfFile = file.size();
+
+    for (int i = 0; i < sizeOfFile; ++i)
+    {
+        if (file[i])
+        {
+            cout << i << endl;
+        }
+    }
 }
 #endif
