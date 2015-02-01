@@ -10,6 +10,7 @@ LFLAGS = -Wall
 CC = clang++
 # using boost
 INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.55.0_2/include/
+LEETCODE = ./leetcode/
 
 LIBS = 
 
@@ -20,7 +21,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: RomanToInteger
+default: MajorityElement 
 
 all: $(objects)
 	$(CC) $(CFLAGS) $(objects) $(LIBS)
@@ -131,10 +132,13 @@ Shift: NormalData.o
 	$(CC) $(DFLAG) Shift.cpp NormalData.o
 
 IntegerToRoman:
-	$(CC) $(DFLAG) IntegerToRoman.cpp
+	$(CC) $(DFLAG) $(LEETCODE)IntegerToRoman.cpp
 
 RomanToInteger:
-	$(CC) $(DFLAG) RomanToInteger.cpp
+	$(CC) $(DFLAG) $(LEETCODE)RomanToInteger.cpp
+
+MajorityElement:
+	$(CC) $(DFLAG) $(LEETCODE)MajorityElement.cpp
 
 ctags:
 	ctags *
