@@ -25,40 +25,32 @@ class Solution {
                     case 2:
                     case 3:
                     {
-                        while (digit--)
-                        {
-                            number += symbols[t1];
-                        }
-
+                        number += string(digit, symbols[t1]);
                         break;
                     }
                     case 4:
                     {
-                        number = number + symbols[t1] + symbols[5 * t1];
+                        number = number + string(1, symbols[t1]) + string(1, symbols[5 * t1]);
                         break;
                     }
                     case 5:
                     {
-                        number = number + symbols[5 * t1];
+                        number += string(1, symbols[5 * t1]);
                         break;
                     }
                     case 6:
                     case 7:
                     case 8:
                     {
-                        number += symbols[5 * t1];
+                        number += string(1, symbols[5 * t1]);
                         digit -= 5;
-
-                        while (digit--)
-                        {
-                            number += symbols[t1];
-                        }
+                        number += string(digit, symbols[t1]);
 
                         break;
                     }
                     case 9:
                     {
-                        number = number + symbols[t1] + symbols[10 * t1];
+                        number = number + string(1, symbols[t1]) + string(1, symbols[10 * t1]);
                         break;
                     }
                     default:
@@ -71,22 +63,20 @@ class Solution {
                 t1 /= 10;
             }
 
-            
-
             return number;
         }
 
         Solution() {
-            symbols[1] = "I";
-            symbols[5] = "V";
-            symbols[10] = "X";
-            symbols[50] = "L";
-            symbols[100] = "C";
-            symbols[500] = "D";
-            symbols[1000] = "M";
+            symbols[1] = 'I';
+            symbols[5] = 'V';
+            symbols[10] = 'X';
+            symbols[50] = 'L';
+            symbols[100] = 'C';
+            symbols[500] = 'D';
+            symbols[1000] = 'M';
         }
     private:
-        map<int, string> symbols;
+        map<int, char> symbols;
 };
 
 int main(int argc, char *argv[])
