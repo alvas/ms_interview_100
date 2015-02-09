@@ -81,3 +81,21 @@ void reverseWords(string &s) {
     
     reverse(s, s.begin(), s.end());
 }
+
+class Solution
+{
+public:
+    string reverseWords(string &s) 
+    {
+        string reversedString;
+
+    }
+};
+
+int main()
+{
+    Solution sln;
+
+    cout << "Original sentence: " << sentence << endl;
+    cout << "Reverse sentence: " << sln.reverseWrods(sentence) << endl;
+}

@@ -2,6 +2,7 @@
 EXPORTED = -DEXPORTED
 #DEBUG = -DDEBUG -g
 #FLAGS =
+# -c: compile or assemble the source files, but do not link.
 CFLAGS = -c -Wall -DDEBUG -DEXPORTED
 DFLAGS = -Wall -g -DDEBUG
 LFLAGS = -Wall
@@ -9,8 +10,8 @@ LFLAGS = -Wall
 #CC = /usr/bin/g++
 CC = clang++
 # using boost
-INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.55.0_2/include/
 LEETCODE = ./leetcode/
+INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.57.0/include
 
 LIBS = 
 
@@ -21,10 +22,10 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: MajorityElement 
+default: Power 
 
 all: $(objects)
-	$(CC) $(CFLAGS) $(objects) $(LIBS)
+	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
 
 exec1: 
 	g++ exec1.cpp
@@ -35,6 +36,7 @@ exec2:
 NormalData.o:
 	$(CC) $(CFLAGS) NormalData.cpp
 
+# whatever uses RandomData.o needs to use NormalData.o
 RandomData.o: NormalData.o
 	$(CC) $(CFLAGS) RandomData.cpp NormalData.o
 
@@ -44,8 +46,8 @@ RandomData: NormalData.o
 QuickSort.o: RandomData.o
 	$(CC) $(CFLAGS) QuickSort.cpp RandomData.o
 
-QuickSort: RandomData.o
-	$(CC) $(DFLAGS) QuickSort.cpp RandomData.o
+QuickSort: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) QuickSort.cpp RandomData.o NormalData.o
 
 exec3:
 	g++ exec3.cpp
@@ -129,16 +131,19 @@ Power:
 	$(CC) $(DFLAGS) Power.cpp
 
 Shift: NormalData.o
-	$(CC) $(DFLAG) Shift.cpp NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) Shift.cpp NormalData.o
 
 IntegerToRoman:
-	$(CC) $(DFLAG) $(LEETCODE)IntegerToRoman.cpp
+	$(CC) $(DFLAGS) $(LEETCODE)IntegerToRoman.cpp
 
 RomanToInteger:
-	$(CC) $(DFLAG) $(LEETCODE)RomanToInteger.cpp
+	$(CC) $(DFLAGS) $(LEETCODE)RomanToInteger.cpp
 
 MajorityElement:
-	$(CC) $(DFLAG) $(LEETCODE)MajorityElement.cpp
+	$(CC) $(DFLAGS) $(LEETCODE)MajorityElement.cpp
+
+BinarySearch: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
 ctags:
 	ctags *

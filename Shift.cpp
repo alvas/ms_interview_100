@@ -56,35 +56,26 @@ void Shift2(vector<int> &v, size_t n)
 }
 
 // Shift algorithm with gcd
-void Shift3(vector<int> &v, size_t n)
+void Shift3(vector<int> &v, int n)
 {
-    int num = v.size();
+    int size = v.size();
 
-    if (num <= n)
+    if (size <= n)
     {
         return;
     }
 
-    int gcdOfNumAndI = gcd(num, (int)n);
+    int gcdOfSizeAndN = gcd(size, n);
 
-    for (int i = 0; i < gcdOfNumAndI; ++i)
+    for (int i = 0; i < gcdOfSizeAndN; ++i)
     {
-        int index = i, index2 = i + n;
+        int index = i;
         int tmp = v[index];
-        v[index] = v[index2];
-        index = index2;
-        index2 += n;
 
-        while (index2 % num != i)
+        while (((index + n) % size) != i)
         {
-            if (index2 > num)
-            {
-                index2 %= num;
-            }
-
-            v[index] = v[index2];
-            index = index2;
-            index2 += n;
+            v[index] = v[(index + n) % size];
+            index = (index + n) % size;
         }
 
         v[index] = tmp;
@@ -123,15 +114,33 @@ void Reverse3Component(vector<int> &v, const int first, const int second)
     reverse(v.begin(), v.end());
 }
 
-int main()
+int myGCD(int a, int b)
+{
+    while (b != 0)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp % b;
+    }
+
+    return a;
+}
+
+int main(int argc, char *argv[])
 {
     vector<int> v;
     initializeIndexVector(v, 8);
+    printVector(v);
     clock_t start = clock();
     Shift3(v, 3);
 //    Reverse3Component(v, 3, 6);
     clock_t end = clock();
     printVector(v);
     printTime(end - start);
+#if 0
+    int a = atoi(argv[1]), b = atoi(argv[2]);
+    cout << "gcd of " << a << " and " << b << " is: " << gcd(a,b) << endl;
+    cout << "myGCD of " << a << " and " << b << " is: " << myGCD(a,b) << endl;
+#endif
     return 0;
 }

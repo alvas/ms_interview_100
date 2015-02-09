@@ -11,6 +11,8 @@ const int CHARCOLUMNS = 80;
 
 const int ALPHABET = 26;
 
+void initializeIndexVector(vector<int> &v, const int size);
+
 // Template function must be in the calling site or header file,
 // otherwise it would not compile.
 // T must be a container type.
@@ -18,11 +20,11 @@ const int ALPHABET = 26;
 // here; otherwise will get "elaborated type refers to a typedef"
 // compile error.
 template<typename T>
-void printVector(const T &v)
+void printVector(const vector<T> &v)
 {
     int column = 0;
 
-    for (typename T::const_iterator itr = v.begin(); itr != v.end(); ++itr)
+    for (typename vector<T>::const_iterator itr = v.begin(); itr != v.end(); ++itr)
     {
         cout << *itr << "\t";
 
@@ -34,8 +36,6 @@ void printVector(const T &v)
 
     cout << endl;
 }
-
-void initializeIndexVector(vector<int> &v, const int size);
 
 template <typename T>
 void printFunc(T str)

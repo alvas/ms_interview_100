@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <iostream>
 //#include <random>
-#include "NormalData.h"
 #include "RandomData.h"
 
 using namespace std;
@@ -12,7 +11,7 @@ void initializeArray(int A[], int length)
 {
     for (int i = 0; i < length; ++i)
     {
-        A[i] = rand() % maxNum;
+        A[i] = rand() % MAXNUM;
     }
 }
 
@@ -107,16 +106,3 @@ void printStringArray(char S[], int length)
     cout << endl << endl;
 }
 
-#ifndef EXPORTED
-int main()
-{
-//    vector<int> v;
-//    initializeVector(v, 20);
-//    initializeRandomIndexVector(v, 20);
-//    printVector(v);
-    string S;
-    initializeRandomString(S, 20);
-    cout << S << endl;
-    cout << endl;
-}
-#endif
