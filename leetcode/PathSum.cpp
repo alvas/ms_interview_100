@@ -197,34 +197,42 @@ void ReBuildFromPreIn2(int *preOrder, int *inOrder, int nTreeLen, TreeNode *&roo
     stack<TreeNode *> s;
     int pdx = 0, idx = 0;
     root = new TreeNode(preOrder[pdx++]);
-    TreeNode *p = root;
+    TreeNode *cur = root;
+    
+    // !! Remember to push the root to the stack!!
+    s.push(cur);
 
     // Indicator whether to add the node as a right child
     bool addRightChild = false;
 
     while (pdx < nTreeLen)
     {
+        // If the stack is not empty, and the top node equals to the inOrder node,
+        // set cur to top node, pop the node, and see set the addRightChild to true.
+        // The next node added is a right node of cur node.
         if (!s.empty() && s.top()->val == inOrder[idx])
         {
-            p = s.top();
+            cur = s.top();
             s.pop();
             addRightChild = true;
             idx++;
         }
         else
         {
-            if (addRightChild)
+            // If stack is empty or top node is not equal to inOrder node
+            // add node and push it to stack
+            if (!addRightChild)
             {
-                p->left = new TreeNode(preOrder[pdx++]);
-                p = p->left;
-                s.push(p);
+                cur->left = new TreeNode(preOrder[pdx++]);
+                cur = cur->left;
+                s.push(cur);
             }
             else
             {
                 addRightChild = false;
-                p->right = new TreeNode(preOrder[pdx++]);
-                p = p->right;
-                s.push(p);
+                cur->right = new TreeNode(preOrder[pdx++]);
+                cur = cur->right;
+                s.push(cur);
             }
         }
     }
