@@ -3,7 +3,7 @@
 using namespace std;
 
 const int LENGTH = 100;
-const int MAXNUM = 5000;
+const int MAXNUM = 40;
 const int MAXSTRLEN = 300;
 
 const int COLUMNS = 5;

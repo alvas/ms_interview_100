@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLcnkList.o NormalData.o Josephus.o
 
-default: Power 
+default: PathSum
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -144,6 +144,9 @@ MajorityElement:
 
 BinarySearch: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
+
+PathSum:
+	$(CC) $(DFLAGS) $(LEETCODE)PathSum.cpp
 
 ctags:
 	ctags *

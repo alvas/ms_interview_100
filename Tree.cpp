@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 TreeNode *InitializeBST(const vector<int> &v)
 {
     TreeNode *root = NULL, *p = NULL;
