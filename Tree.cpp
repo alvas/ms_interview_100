@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int TREELEN = 7;
+const int TREELEN = 9;
 
 TreeNode *InitializeBST(const vector<int> &v)
 {
@@ -211,8 +211,8 @@ void ReBuildTreeFromPreIn(int *preOrder, int *inOrder, int nTreeLen, TreeNode *&
 // addRightChild will decide whehter insert it as left child or right child.
 // 1. push the first node onto stack, set it as cur, and set addRightChild to false
 // 2. if stack is empty or top node on stack value is not equal to inOrder node,
-//        if addRightChild is false, add the next preOrder note to the LEFT child of cur
-//        if addRightChild is true, set addRightChild to false, add the next preOrder note
+//        if addRightChild is false, add the next preOrder node to the LEFT child of cur
+//        if addRightChild is true, set addRightChild to false, add the next preOrder node
 //             to the right child of cur
 // 3. if stack is not empty and top node on stack value equals to inOrder node
 //       pop the top node from stack, set it as cur, set addRightChild to true, move on inOrder
@@ -298,7 +298,7 @@ void ReBuildTreeFromPrePost(int *preOrder, int *postOrder, int nTreeLen, TreeNod
 //              push cur to stack
 //         if addRightChild is true, set it to false, add next preOrder node to right child of cur
 //              set cur to its right child, push cur to stack
-// 3. if stack is not empty and top note equals to postOrder node
+// 3. if stack is not empty and top node equals to postOrder node
 //        pop the top node, set cur to this top node, set addRightChild to true, advance postOrder 
 void ReBuildTreeFromPrePost2(int *preOrder, int *postOrder, int nTreeLen, TreeNode *&root)
 {
@@ -386,17 +386,14 @@ void ReBuildTreeFromInPost2(int *inOrder, int *postOrder, int nTreeLen, TreeNode
     TreeNode *cur = root;
     s.push(cur);
 
+    // reverse order to access node
     while (podx >= 0)
     {
         if (!s.empty() && s.top()->val == inOrder[idx])
         {
+            // !! IMPORTANT, get the top node first, then pop it out
+            cur = s.top();
             s.pop();
-
-            if (!s.empty())
-            {
-                cur = s.top();
-            }
-
             addLeftChild = true;
             --idx;
         }
@@ -507,10 +504,10 @@ void BuildPreOrderVector2(TreeNode * const root, vector<int> &v)
     s.push(cur);
     cur = cur->left;
 
-    // whenever pushing a note to stack,
+    // whenever pushing a node to stack,
     // its value has been added to vector
     // and its left child is accessed next
-    // whenever poping a note from stack,
+    // whenever poping a node from stack,
     // since its left child has been access,
     // access its right child next
     while (!s.empty() || cur != NULL)
@@ -686,14 +683,14 @@ int main()
     //TreeToLinkList(root);
     //TreeToLinkListWithRecursion(root);
 
-    int szPreOrder[TREELEN] = {5, 4, 11, 7, 2, 8, 13, 4, 1};
-    int szInOrder[TREELEN] = {7, 11, 2, 4, 5, 13, 8, 4, 1};
-    int szPostOrder[TREELEN] = {7, 2, 11, 4, 13, 1, 4, 8, 5};
-    */
-
     int szPreOrder[TREELEN] = {1, 2, 3, 4, 5, 6, 7};
     int szInOrder[TREELEN] = {3, 2, 4, 1, 6, 5, 7};
     int szPostOrder[TREELEN] = {3, 4, 2, 6, 7, 5, 1};
+    */
+
+    int szPreOrder[TREELEN] = {5, 4, 11, 7, 2, 8, 13, 4, 1};
+    int szInOrder[TREELEN] = {7, 11, 2, 4, 5, 13, 8, 4, 1};
+    int szPostOrder[TREELEN] = {7, 2, 11, 4, 13, 1, 4, 8, 5};
 
     TreeNode *root = NULL;
     //ReBuildTreeFromPreIn(szPreOrder, szInOrder, TREELEN, root);
