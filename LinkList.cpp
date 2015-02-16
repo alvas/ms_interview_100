@@ -1,6 +1,5 @@
 #include <iostream>
 #include "LinkList.h"
-#include "NormalData.h"
 #include "RandomData.h"
 
 LinkListNode::LinkListNode(int k)

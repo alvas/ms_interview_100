@@ -20,9 +20,9 @@ SRCS = *.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
-          CircularLcnkList.o NormalData.o Josephus.o
+          CircularLinkList.o NormalData.o Josephus.o
 
-default: PathSum
+default: Tree
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -118,8 +118,11 @@ StringProcess:
 DataProcess: NormalData.o
 	$(CC) $(DFLAGS) DataProcess.cpp NormalData.o
 
-Tree:
-	$(CC) $(DFLAGS) Tree.cpp
+Tree.o: NormalData.o
+	$(CC) $(CFLAGS) Tree.cpp NormalData.o
+
+Tree: NormalData.o
+	$(CC) $(DFLAGS) Tree.cpp NormalData.o
 
 Interval:
 	$(CC) $(DFLAGS) Interval.cpp
@@ -145,8 +148,8 @@ MajorityElement:
 BinarySearch: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
-PathSum:
-	$(CC) $(DFLAGS) $(LEETCODE)PathSum.cpp
+PathSum: Tree.o
+	$(CC) $(DFLAGS) $(LEETCODE)PathSum.cpp Tree.o
 
 ctags:
 	ctags *
