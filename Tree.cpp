@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int TREELEN = 9;
+const int TREELEN = 7;
 
 TreeNode *InitializeBST(const vector<int> &v)
 {
@@ -534,7 +534,66 @@ void BuildPreOrderVector2(TreeNode * const root, vector<int> &v)
     }
 }
 
-void BuildInOrderVector(const TreeNode *root, vector<int> &v)
+// Utilize a temporary link from preceding node of cur node in In-order traverse to cur node to get back
+// to cur node after finishing traversing left child subtree.
+// 1. if the left child of cur node is empty, visit cur node and set cur to its right child
+// 2. if left child of cur node is not empty, set prev to preceding node of cur node in In-order traverse
+//        if right child of prev is empty, set its right child to cur, and visit cur node, set cur to its left child
+//        if right child of prev is not empty, set it to empty to remove the linke, set cur to its right child
+void BuildPreOrderVector3(TreeNode * const root, vector<int> &v)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    TreeNode *cur = root, *prev = NULL;
+
+    while (cur != NULL)
+    {
+        // If cur node doesn't have left child, visit it and
+        // set its right child as cur node.
+        if (cur->left == NULL)
+        {
+            v.push_back(cur->val);
+            cur = cur->right;
+        }
+        else
+        {
+            // If the cur node has left child, set it as pre
+            prev = cur->left;
+
+            // find the preceding node of cur node in In-order traverse
+            while (prev->right != NULL && prev->right != cur)
+            {
+                prev = prev->right;
+            }
+
+            // if the preceding node of cur node in In-order traverse doesn't have right child,
+            // the link hasn't been established yet, link its right child to cur.
+            // set cur to its left child
+            if (prev->right == NULL)
+            {
+                prev->right = cur;
+
+                // visit node here Pre-Order
+                v.push_back(cur->val);
+                cur = cur->left;
+            }
+            // If its right child has pointed to cur, and we traverse back to it again, break the link
+            // set cur to its right child.
+            else
+            {
+                // when it breaks its left subtree link to cur, cut is reset to the root node of its
+                // right subtree.
+                prev->right = NULL;
+                cur = cur->right;
+            }
+        }
+    }
+}
+
+void BuildInOrderVector(TreeNode * const root, vector<int> &v)
 {
     if (root == NULL)
     {
@@ -582,7 +641,49 @@ void BuildInOrderVector2(TreeNode * const root, vector<int> &v)
     }
 }
 
-void BuildPostOrderVector(const TreeNode *root, vector<int> &v)
+void BuildInOrderVector3(TreeNode * const root, vector<int> &v)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    TreeNode *cur = root, *prev = NULL;
+
+    while (cur != NULL)
+    {
+        if (cur->left == NULL)
+        {
+            v.push_back(cur->val);
+            cur = cur->right;
+        }
+        else
+        {
+            prev = cur->left;
+
+            while (prev->right != NULL && prev->right != cur)
+            {
+                prev = prev->right;
+            }
+
+            if (prev->right == NULL)
+            {
+                prev->right = cur;
+                cur = cur->left;
+            }
+            else
+            {
+                prev->right = NULL;
+
+                // visit cur here In-Order
+                v.push_back(cur->val);
+                cur = cur->right;
+            }
+        }
+    }
+}
+
+void BuildPostOrderVector(TreeNode * const root, vector<int> &v)
 {
     if (root == NULL)
     {
@@ -609,14 +710,15 @@ void BuildPostOrderVector2(TreeNode * const root, vector<int> &v)
     }
 
     stack<TreeNode *> s;
+    TreeNode *cur = root;
 
-    // Need a assistant variable prev to keep track of whether we have visited
-    // right child of the top node. If the right child of the top node was just
+    // Need an assistant variable prev to keep track of whether we have visited
+    // right child of top node. If the right child of the top node was just 
     // poped out of stack, we need to pop the top node from the stack, instead of
     // push its right child onto the stack again.
-    TreeNode *cur = root, *prev = NULL;
+    TreeNode *prev = NULL;
+
     s.push(cur);
-    cout << "pushing: " << cur->val << endl;;
     cur = cur->left;
 
     while (!s.empty())
@@ -624,7 +726,6 @@ void BuildPostOrderVector2(TreeNode * const root, vector<int> &v)
         if (cur != NULL)
         {
             s.push(cur);
-            cout << "pushing: " << cur->val << endl;;
             cur = cur->left;
         }
         else
@@ -637,7 +738,6 @@ void BuildPostOrderVector2(TreeNode * const root, vector<int> &v)
             {
                 cur = top->right;
                 s.push(cur);
-                cout << "pushing: " << cur->val << endl;;
                 cur = cur->left;
             }
             else
@@ -645,10 +745,101 @@ void BuildPostOrderVector2(TreeNode * const root, vector<int> &v)
                 s.pop();
                 v.push_back(top->val);
                 prev = top;
-                cout << "poping: " << top->val << endl;
             }
         }
     }
+}
+
+void reverseLink(TreeNode *from, TreeNode *to)
+{
+    if (from == to)
+    {
+        return;
+    }
+
+    TreeNode *x = from, *y = from->right, *z = NULL;
+
+    while (x != to)
+    {
+        z = y->right;
+        y->right = x;
+        x = y;
+        y = z;
+    }
+}
+
+void visitNode(TreeNode *from, TreeNode *to, vector<int> &v)
+{
+    reverseLink(from, to);
+
+    TreeNode *p = to;
+
+    while (1)
+    {
+        v.push_back(p->val);
+
+        if (p == from)
+        {
+            break;
+        }
+
+        p = p->right;
+    }
+
+    reverseLink(to, from);
+}
+
+// 1. create an auxililiary virtual root node and set its left child to root, set cur to virutal root
+// 2. if cur is not empty, and cur's left child is NULL, set cur to its right child
+// 3. if cur's left child is not NULL, set prev to cur's left child,
+//        find the preceeding node of cur in In-Order traverse, and set it to prev
+// 4. if the prev's right child is empty, set prev's right child to cur, and set cur to its right child
+// 5. if prev's right child is not empty, but equals to cur, reverse visit cur's left child to prev
+//       set prev's right child to NULL and set cur to its right child
+void BuildPostOrderVector3(TreeNode * const root, vector<int> &v)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    // Create an auxilliary node to help to traverse
+    TreeNode *vRoot = new TreeNode(0);
+    vRoot->left = root;
+    TreeNode *cur = vRoot, *prev = NULL;
+
+    while (cur != NULL)
+    {
+        if (cur->left == NULL)
+        {
+            cur = cur->right;
+        }
+        else
+        {
+            prev = cur->left;
+
+            while (prev->right != NULL && prev->right != cur)
+            {
+                prev = prev->right;
+            }
+
+            if (prev->right == NULL)
+            {
+                prev->right = cur;
+                cur = cur->left;
+            }
+            else
+            {
+                visitNode(cur->left, prev, v);
+                prev->right = NULL;
+                cur = cur->right;
+            }
+        }
+    }
+
+    vRoot->left = NULL;
+    delete vRoot;
+    vRoot = NULL;
 }
 
 #ifndef EXPORTED
@@ -683,14 +874,14 @@ int main()
     //TreeToLinkList(root);
     //TreeToLinkListWithRecursion(root);
 
-    int szPreOrder[TREELEN] = {1, 2, 3, 4, 5, 6, 7};
-    int szInOrder[TREELEN] = {3, 2, 4, 1, 6, 5, 7};
-    int szPostOrder[TREELEN] = {3, 4, 2, 6, 7, 5, 1};
-    */
-
     int szPreOrder[TREELEN] = {5, 4, 11, 7, 2, 8, 13, 4, 1};
     int szInOrder[TREELEN] = {7, 11, 2, 4, 5, 13, 8, 4, 1};
     int szPostOrder[TREELEN] = {7, 2, 11, 4, 13, 1, 4, 8, 5};
+    */
+
+    int szPreOrder[TREELEN] = {1, 2, 3, 4, 5, 6, 7};
+    int szInOrder[TREELEN] = {3, 2, 4, 1, 6, 5, 7};
+    int szPostOrder[TREELEN] = {3, 4, 2, 6, 7, 5, 1};
 
     TreeNode *root = NULL;
     //ReBuildTreeFromPreIn(szPreOrder, szInOrder, TREELEN, root);
@@ -698,9 +889,9 @@ int main()
     ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
 
     vector<int> v;
-    BuildPreOrderVector2(root, v);
-    //BuildInOrderVector2(root, v);
-    //BuildPostOrderVector2(root, v);
+    //BuildPreOrderVector3(root, v);
+    //BuildInOrderVector3(root, v);
+    BuildPostOrderVector3(root, v);
     printVector(v);
 
     CleanUp2(root);
