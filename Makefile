@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-default: Tree
+default: ExcelSheetColumnTitle
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -150,6 +150,21 @@ BinarySearch: RandomData.o NormalData.o
 
 PathSum: Tree.o
 	$(CC) $(DFLAGS) $(LEETCODE)PathSum.cpp Tree.o
+
+LengthOfLastWord:
+	$(CC) $(DFLAGS) $(LEETCODE)LengthOfLastWord.cpp
+
+ValidParentheses:
+	$(CC) $(DFLAGS) $(LEETCODE)ValidParentheses.cpp
+
+RotateArray: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(LEETCODE)RotateArray.cpp RandomData.o NormalData.o
+
+ExcelSheetColumnNumber:
+	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnNumber.cpp
+
+ExcelSheetColumnTitle:
+	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnTitle.cpp
 
 ctags:
 	ctags *
