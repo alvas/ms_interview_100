@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-default: ExcelSheetColumnTitle
+default: IntersectionOfTwoLinkedLists
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -46,7 +46,7 @@ RandomData: NormalData.o
 QuickSort.o: RandomData.o
 	$(CC) $(CFLAGS) QuickSort.cpp RandomData.o
 
-QuickSort: RandomData.o NormalData.o
+QuickSort: RandomData.o
 	$(CC) $(DFLAGS) QuickSort.cpp RandomData.o NormalData.o
 
 exec3:
@@ -145,7 +145,7 @@ RomanToInteger:
 MajorityElement:
 	$(CC) $(DFLAGS) $(LEETCODE)MajorityElement.cpp
 
-BinarySearch: RandomData.o NormalData.o
+BinarySearch: RandomData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
 PathSum: Tree.o
@@ -157,7 +157,7 @@ LengthOfLastWord:
 ValidParentheses:
 	$(CC) $(DFLAGS) $(LEETCODE)ValidParentheses.cpp
 
-RotateArray: RandomData.o NormalData.o
+RotateArray: RandomData.o
 	$(CC) $(DFLAGS) $(LEETCODE)RotateArray.cpp RandomData.o NormalData.o
 
 ExcelSheetColumnNumber:
@@ -165,6 +165,9 @@ ExcelSheetColumnNumber:
 
 ExcelSheetColumnTitle:
 	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnTitle.cpp
+
+IntersectionOfTwoLinkedLists: LinkList.o
+	$(CC) $(DFLAGS) $(LEETCODE)IntersectionOfTwoLinkedLists.cpp LinkList.o RandomData.o NormalData.o
 
 ctags:
 	ctags *

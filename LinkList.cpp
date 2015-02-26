@@ -4,32 +4,10 @@
 
 LinkListNode::LinkListNode(int k)
 {
-    key = k;
+    val = k;
     next = NULL;
 }
 
-void initializeLinkList(const vector<int> &S, LinkListNode **head)
-{
-    bool nullHead = true;
-    LinkListNode *tmp = NULL;
-
-    for (vector<int>::const_iterator itr = S.begin(); itr != S.end(); ++itr)
-    {
-        LinkListNode *p = new LinkListNode(*itr);
-
-        if (nullHead)
-        {
-            *head = p;
-            nullHead = false;
-        }
-        else
-        {
-            tmp->next = p;
-        }
-        
-        tmp = p;
-    }
-}
 
 void initializeLinkList(LinkList &list, const vector<int> &S)
 {
@@ -51,7 +29,7 @@ void initializeLinkList(LinkList &list, const vector<int> &S)
 
 LinkList::LinkList(const vector<int> &S)
 {
-    initializeLinkList(S, &head);
+    initializeLinkList<LinkListNode>(S, &head);
 }
 
 LinkListNode *LinkList::InsertNode(int value)
@@ -75,40 +53,10 @@ LinkListNode *LinkList::InsertNode(int value)
     }
 }
 
-// Passing the header of link list, this function would free all nodes
-// on the link list. There is no need to loop through the link list
-// to call this function.
-void destroyLinkList(LinkListNode *p)
-{
-    if (p != NULL)
-    {
-
-        // 2014-04-12
-        // This is a tmp variable to save the old header in order to stop
-        // deleting circular link list.
-        LinkListNode *head = p;
-
-#ifdef DEBUG
-        cout << "The address of head is " << head << endl;
-#endif
-
-        do
-        {
-            LinkListNode *tmp = p;
-#ifdef DEBUG
-            cout << "Deleting node " << tmp->key << endl;
-            cout << "Next node " << p->key << "; ";
-            cout << "The address of next node is " << p->next << endl;
-#endif
-            p = p->next;
-            delete tmp;
-        } while (p!= NULL && p!= head);
-    }
-}
 
 LinkList::~LinkList()
 {
-    destroyLinkList(head);
+    destroyLinkList<LinkListNode>(head);
     head = NULL;
 }
 
@@ -123,7 +71,7 @@ void printLinkListNode(const LinkListNode *head)
 
     while (head != NULL)
     {
-        cout << head->key << "\t";
+        cout << head->val << "\t";
         head = head->next;
 
         if (column++ % COLUMNS == COLUMNS - 1)

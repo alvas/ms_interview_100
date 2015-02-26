@@ -69,9 +69,9 @@ int main()
     int szInOrder[TREELEN_PATHSUM] = {3, 2, 4, 1, 6, 5, 7};
 
     TreeNode *root = NULL;
-    ReBuildFromPreIn2(szPreOrder, szInOrder, TREELEN_PATHSUM, root);
-    //ReBuildFromPrePost(szPreOrder, szPostOrder, TREELEN_PATHSUM, root);
-    //ReBuildFromInPost(szInOrder, szPostOrder, TREELEN_PATHSUM, root);
+    ReBuildTreeFromPreIn2(szPreOrder, szInOrder, TREELEN_PATHSUM, root);
+    //ReBuildTreeFromPrePost(szPreOrder, szPostOrder, TREELEN_PATHSUM, root);
+    //ReBuildTreeFromInPost(szInOrder, szPostOrder, TREELEN_PATHSUM, root);
 
     cout << "Please enter the sum: ";
     int num = 0;

@@ -13,6 +13,7 @@ public:
             char c = *itr;
             c = toupper(c);
 
+            // !! Be careful how to calculate this value!!
             num = num + (c - 'A' + 1) * a;
             a *= 26;
         }
