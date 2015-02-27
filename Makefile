@@ -170,7 +170,7 @@ IntersectionOfTwoLinkedLists: LinkList.o
 	$(CC) $(DFLAGS) $(LEETCODE)IntersectionOfTwoLinkedLists.cpp LinkList.o RandomData.o NormalData.o
 
 CompareVersionNumbers:
-	$(CC) $(DFLAGS) $(LEETCODE)CompareVersionNumbers.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CompareVersionNumbers.cpp
 
 ctags:
 	ctags *
