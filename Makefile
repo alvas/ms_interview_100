@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-default: IntersectionOfTwoLinkedLists
+default: CompareVersionNumbers
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -168,6 +168,9 @@ ExcelSheetColumnTitle:
 
 IntersectionOfTwoLinkedLists: LinkList.o
 	$(CC) $(DFLAGS) $(LEETCODE)IntersectionOfTwoLinkedLists.cpp LinkList.o RandomData.o NormalData.o
+
+CompareVersionNumbers:
+	$(CC) $(DFLAGS) $(LEETCODE)CompareVersionNumbers.cpp
 
 ctags:
 	ctags *

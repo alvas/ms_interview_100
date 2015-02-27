@@ -27,18 +27,13 @@ void Shift1(vector<int> &v, size_t n)
         v[index] = v[index2];
         count++;
         index = index2;
-        index2 += n;
+        index2 = (index2 + n) % num;
 
-        while (index2 % num != start)
+        while (index2 != start)
         {
-            if (index2 > num)
-            {
-                index2 %= num;
-            }
-
             v[index] = v[index2];
             index = index2;
-            index2 += n;
+            index2 = (index2 + n) % num;
             count++;
         }
 
