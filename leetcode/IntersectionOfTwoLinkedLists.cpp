@@ -97,6 +97,32 @@ public:
 
         return node;
     }
+
+    // make circule  in first list, and traverse second list with loop
+    // count difference
+    ListNode *getIntersectionNode2(ListNode *headA, ListNode *headB) {
+    }
+
+    // swap traverse link lists with count
+    ListNode *getIntersectionNode3(ListNode *headA, ListNode *headB) {
+
+    }
+
+    // reverse first list and make equations
+    // 1. Let X be the length of 1st linked list until intersection point
+    // Let Y be the length of 2nd linked list untile intersection point
+    // Let Z be the legnth of the linked list from interstction point to end
+    // X + Z = C1
+    // Y + Z = C2
+    // 2. Reverse the 1st linked list
+    // 3. Traverse 2nd linked list. Let C3 be the lenght of 2nd linked list - 1
+    // X + Y = C3
+    // Solving these equations:
+    // X = (C1 + C3 - C2)/2
+    // Y = (C2 + C3 - C1)/2
+    // Z = (C1 + C2 - C3)/2
+    ListNode *getIntersectionNode4(ListNode *headA, ListNode *headB) {
+    }
 };
 
 int main()

@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-default: CompareVersionNumbers
+default: MaximumDepthOfBinaryTree
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -169,8 +169,23 @@ ExcelSheetColumnTitle:
 IntersectionOfTwoLinkedLists: LinkList.o
 	$(CC) $(DFLAGS) $(LEETCODE)IntersectionOfTwoLinkedLists.cpp LinkList.o RandomData.o NormalData.o
 
+NumberOf1Bits:
+	$(CC) $(DFLAGS) $(LEETCODE)NumberOf1Bits.cpp
+
 CompareVersionNumbers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CompareVersionNumbers.cpp
+
+CountAndSay:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountAndSay.cpp
+
+PascalsTriangle: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PascalsTriangle.cpp NormalData.o
+
+FactorialTrailingZeroes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FactorialTrailingZeroes.cpp
+
+MaximumDepthOfBinaryTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDepthOfBinaryTree.cpp Tree.o
 
 ctags:
 	ctags *

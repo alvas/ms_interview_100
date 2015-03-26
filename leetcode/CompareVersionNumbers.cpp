@@ -11,11 +11,12 @@ using namespace std;
 class Solution {
 public:
     int compareVersion(string version1, string version2) {
-        string str;
         int result = 0, num = 0;
 
         vector<int> token1, token2;
         istringstream str1(version1), str2(version2);
+
+        string str;
 
         // tokenize string and save tokens to a vector
         while (getline(str1, str, '.'))
@@ -98,10 +99,21 @@ public:
 void tokenize(const string &v1)
 {
     vector<string> str1;
+    // 1. boost::split
     boost::split(str1, v1, boost::is_any_of("."));
 
-    // This only works for white space token.
-    //copy(istream_iterator<string>(str1), istream_iterator<string>(), back_inserter(token1));
+    // 2. copy, only work for white space token
+    //istringstream s1(v1);
+    //copy(istream_iterator<string>(s1), istream_iterator<string>(), back_inserter(str1));
+
+    // 3. getline
+    //string s;
+    //istringstream s1(v1);
+
+    //while (getline(s1, s, '.'))
+    //{
+        //str1.push_back(s);
+    //}
     
     for (const auto& i: str1)
     {
@@ -140,7 +152,10 @@ void tokenize3(const string &v1)
         pos = v1.find(".", start);
     }
 
-    token1.push_back(v1.substr(start, pos));
+    if (v1[v1.size() - 1] != '.')
+    {
+        token1.push_back(v1.substr(start, pos));
+    }
 
     for (const auto& t: token1)
     {
@@ -153,10 +168,10 @@ void tokenize3(const string &v1)
 int main()
 {
     Solution sln;
-    string v1, v2;
+    string v1("1 2 3 45"), v2;
     cin >> v1;
     //cin >> v2;
     //cout << sln.compareVersion(v1, v2) << endl;
-    tokenize3(v1);
+    tokenize(v1);
     return 0;
 }
