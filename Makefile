@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-default: MaximumDepthOfBinaryTree
+default: ReverseBits
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -187,6 +187,45 @@ FactorialTrailingZeroes:
 MaximumDepthOfBinaryTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDepthOfBinaryTree.cpp Tree.o
 
+PalindromeNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromeNumber.cpp 
+
+ZigZagConversion:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ZigZagConversion.cpp 
+
+ReverseInteger:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseInteger.cpp 
+
+MinStack:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinStack.cpp 
+
+StringToInteger:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StringToInteger.cpp 
+
+LongestCommonPrefix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestCommonPrefix.cpp 
+
+ValidPalindrome:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidPalindrome.cpp 
+
+RemoveNthNodeFromEndOfList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveNthNodeFromEndOfList.cpp LinkList.o RandomData.o NormalData.o
+
+PascalsTriangle2: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PascalsTriangle2.cpp NormalData.o
+
+MergeTwoSortedLists: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeTwoSortedLists.cpp LinkList.o
+
+MinimumDepthOfBinaryTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumDepthOfBinaryTree.cpp Tree.o
+
+BalancedBinaryTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BalancedBinaryTree.cpp Tree.o
+
+ReverseBits:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseBits.cpp
+
 ctags:
 	ctags *
 
@@ -217,4 +256,4 @@ NormalData.o: NormalData.h
 QuickSort.o: RandomData.h QuickSort.h
 RandomData.o: RandomData.h
 Select.o: InsertionSort.h RandomData.h QuickSort.h
-StringSearch.o: RandomData.h
+SZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversionZigZagConversiontringSearch.o: RandomData.h

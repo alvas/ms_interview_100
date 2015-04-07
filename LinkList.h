@@ -37,6 +37,8 @@ struct ListNode {
     int val;
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
+    int GetValue() { return val; }
+    ListNode *GetNext() { return next; }
 };
 
 void destroyLinkList(LinkListNode *head);
@@ -161,3 +163,16 @@ void disjointList(T *listA, T *listB)
     }
 }
 
+template <typename T>
+void printLinkList(T *l)
+{
+    cout << "Printing the link list:" << endl;
+
+    while (l != NULL)
+    {
+        cout << l->GetValue() << endl;
+        l = l->GetNext();
+    }
+
+    cout << endl;
+}

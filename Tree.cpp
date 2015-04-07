@@ -1,14 +1,12 @@
 #include <iostream>
 #include <queue>
 #include <stack>
-#include <vector>
 
 #include "NormalData.h"
 #include "Tree.h"
 
 using namespace std;
 
-const int TREELEN = 7;
 
 TreeNode *InitializeBST(const vector<int> &v)
 {
@@ -158,8 +156,7 @@ void DestroyTree(TreeNode *p)
     {
         return;
     }
-    else
-    {
+    else {
         if (p->left != NULL)
         {
             DestroyTree(p->left);
@@ -204,6 +201,30 @@ void ReBuildTreeFromPreIn(int *preOrder, int *inOrder, int nTreeLen, TreeNode *&
     // Use preOrder array to calculate the position.
     ReBuildTreeFromPreIn(preOrder + 1, inOrder, i - 1, root->left);
     ReBuildTreeFromPreIn(preOrder + i, inOrder + i, nTreeLen - i, root->right);
+}
+
+
+void ReBuildTreeFromPreOrder(TreeNode *&root, const vector<string> &v, int &index)
+{
+    if (index < 0 || index > v.size())
+    {
+        return;
+    }
+
+    if (v[index] == "#")
+    {
+        index++;
+        return;
+    }
+    else
+    {
+        int num = atoi(v[index].c_str());
+        index++;
+        root = new TreeNode(num);
+        cout << "Creating node: " << num << endl;
+        ReBuildTreeFromPreOrder(root->left, v, index);
+        ReBuildTreeFromPreOrder(root->right, v, index);
+    }
 }
 
 // Construct tree from preOrder and InOrder using stack
@@ -416,6 +437,26 @@ void ReBuildTreeFromInPost2(int *inOrder, int *postOrder, int nTreeLen, TreeNode
     }
 }
 
+// caller invokes this function with INT_MIN, INT_MAX for min and max
+void ReBuildBSTree(int min, int max, TreeNode *&p, const int *address)
+{
+    if (address == NULL)
+    {
+        return;
+    }
+
+    if (*address > min && *address < max)
+    {
+        int val = *address;
+        p = new TreeNode(val);
+
+        address++;
+
+        ReBuildBSTree(min, val, p->left, address);
+        ReBuildBSTree(val, max, p->right, address);
+    }
+}
+
 void CleanUp(TreeNode *&root)
 {
     if (root == NULL)
@@ -468,7 +509,6 @@ void CleanUp2(TreeNode *&root)
     }
 }
 
-
 void BuildPreOrderVector(TreeNode * const root, vector<int> &v)
 {
     if (root == NULL)
@@ -479,6 +519,20 @@ void BuildPreOrderVector(TreeNode * const root, vector<int> &v)
     v.push_back(root->val);
     BuildPreOrderVector(root->left, v);
     BuildPreOrderVector(root->right, v);
+}
+
+void BuildPreOrderVector(TreeNode * const root, vector<string> &v)
+{
+    if (root == NULL)
+    {
+        v.push_back("#");
+    }
+    else
+    {
+        v.push_back(std::to_string(root->val));
+        BuildPreOrderVector(root->left, v);
+        BuildPreOrderVector(root->right, v);
+    }
 }
 
 // 1. visit root and push it onto stack, set cur to its left child
@@ -842,6 +896,159 @@ void BuildPostOrderVector3(TreeNode * const root, vector<int> &v)
     vRoot = NULL;
 }
 
+// Deserialization
+void ReBuildTreeFromOrderLevel(TreeNode **root, const vector<string> &s)
+{
+    int size = s.size();
+    
+    if (size == 0 || s[0] == "#")
+    {
+        *root = NULL;
+    }
+
+    queue<TreeNode *> q;
+    *root = new TreeNode(atoi(s[0].c_str()));
+    q.push(*root);
+    cout << "Creating node : " << (*root)->val << endl;
+
+    for (int i = 1; i < size; )
+    {
+        TreeNode *node = NULL;
+        bool left = true;
+
+        while (!q.empty() && i < size)
+        {
+            if (left)
+            {
+                node = q.front();
+                q.pop();
+            }
+
+            if (s[i] == "#")
+            {
+                i++;
+
+                if (left)
+                {
+                    cout << "left leaf child of " << node->val << " is empty leaf #!" << endl;
+                }
+                else
+                {
+                    cout << "right leaf child of " << node->val << " is empty leaf #!" << endl;
+                }
+            }
+            else
+            {
+                TreeNode *tmp = new TreeNode(atoi(s[i].c_str()));
+                q.push(tmp);
+
+                if (left)
+                {
+                    node->left = tmp;
+                    cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
+                }
+                else
+                {
+                    node->right = tmp;
+                    cout << "Creating node : " << tmp->val << " for as right child of " << node->val << endl;
+                }
+
+                i++;
+            }
+
+            left = !left;
+        }
+    }
+}
+
+
+void BuildOrderLevelVector(TreeNode * const root, vector<string> &v)
+{
+    if (root == NULL)
+    {
+        v.push_back("#");
+        return;
+    }
+
+    queue<TreeNode *> q;
+    v.push_back(std::to_string(root->val));
+    q.push(root);
+
+    while (!q.empty())
+    {
+        TreeNode *node = q.front();
+        q.pop();
+
+        if (node->left != NULL)
+        {
+            TreeNode *left = node->left;
+            v.push_back(std::to_string(left->val));
+            q.push(left);
+        }
+        else
+        {
+            v.push_back("#");
+        }
+
+        if (node->right != NULL)
+        {
+            TreeNode *right = node->right;
+            v.push_back(std::to_string(right->val));
+            q.push(right);
+        }
+        else
+        {
+            v.push_back("#");
+        }
+    }
+}
+
+// using low, hight range to check BST
+// caller should pass INT_MIN and INT_MAX as low, hight
+bool isBST(TreeNode *root, int low, int high)
+{
+    if (root == NULL)
+    {
+        return true;
+    }
+
+    if (low < root->val && root->val < high)
+    {
+        return isBST(root->left, low, root->val) && isBST(root->right, root->val, high);
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// using prev value and inorder traverse to check BST
+// caller should pass INT_MIN as prev
+bool isBST2(TreeNode *root, int &prev)
+{
+    if (root == NULL)
+    {
+        return true;
+    }
+
+    if (isBST2(root->left, prev))
+    {
+        if (root->val > prev)
+        {
+            prev = root->val;
+            return isBST2(root->right, prev);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
 #ifndef EXPORTED
 int main()
 {
@@ -877,22 +1084,47 @@ int main()
     int szPreOrder[TREELEN] = {5, 4, 11, 7, 2, 8, 13, 4, 1};
     int szInOrder[TREELEN] = {7, 11, 2, 4, 5, 13, 8, 4, 1};
     int szPostOrder[TREELEN] = {7, 2, 11, 4, 13, 1, 4, 8, 5};
-    */
 
+    const int TREELEN = 7;
     int szPreOrder[TREELEN] = {1, 2, 3, 4, 5, 6, 7};
     int szInOrder[TREELEN] = {3, 2, 4, 1, 6, 5, 7};
     int szPostOrder[TREELEN] = {3, 4, 2, 6, 7, 5, 1};
+    */
 
     TreeNode *root = NULL;
     //ReBuildTreeFromPreIn(szPreOrder, szInOrder, TREELEN, root);
     //ReBuildTreeFromPrePost2(szPreOrder, szPostOrder, TREELEN, root);
-    ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
+    //ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
 
-    vector<int> v;
+    //string leaf[11] = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "#", "4"};
+
+    //vector<int> v;
+    //vector<string> v(leaf, leaf + 11);
+    //ReBuildTreeFromOrderLevel(&root, v);
+    
+    //string  bst[7] = {"30", "20", "40", "10", "25", "35", "50"};
+    //vector<string> bstv(bst, bst + 7);
+
+    //ReBuildTreeFromOrderLevel(&root, bstv);
+    //cout << "Is this a BST? " << isBST(root, INT_MIN, INT_MAX) << endl;
+
+    //vector<string> s;
+    //BuildOrderLevelVector(root, s);
+    //printVector(s);
+
     //BuildPreOrderVector3(root, v);
     //BuildInOrderVector3(root, v);
-    BuildPostOrderVector3(root, v);
-    printVector(v);
+    //BuildPostOrderVector3(root, v);
+    //printVector(v);
+
+    string  s[13] = {"30", "10", "50", "#", "#", "#", "20", "45", "#", "#", "35", "#", "#"};
+    vector<string> v(s, s + 13);
+    int index = 0;
+    ReBuildTreeFromPreOrder(root, v, index);
+
+    vector<int> v2;
+    BuildPreOrderVector(root, v2);
+    printVector(v2);
 
     CleanUp2(root);
     return 0;

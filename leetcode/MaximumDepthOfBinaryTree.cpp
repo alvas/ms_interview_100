@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 #include "Tree.h"
 
@@ -10,6 +11,36 @@ class Solution {
 public:
     int maxDepth(TreeNode *root) {
         int depth = 0;
+
+        if (root != NULL)
+        {
+            queue<TreeNode *> q;
+            q.push(root);
+
+            while(!q.empty())
+            {
+                queue<TreeNode *> tmp;
+                tmp.swap(q);
+                depth++;
+
+                while (!tmp.empty())
+                {
+                    TreeNode *node = tmp.front();
+                    tmp.pop();
+
+                    if (node->left != NULL)
+                    {
+                        q.push(node->left);
+                    }
+
+                    if (node->right != NULL)
+                    {
+                        q.push(node->right);
+                    }
+                }
+            }
+        }
+
         return depth;
     }
 };
