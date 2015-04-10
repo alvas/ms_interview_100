@@ -22,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
 
-default: ReverseBits
+default: RemoveElement
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -225,6 +225,33 @@ BalancedBinaryTree: Tree.o
 
 ReverseBits:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseBits.cpp
+
+BinaryTreeLevelOrderTraversal: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversal.cpp Tree.o
+
+BinaryTreeLevelOrderTraversalII: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversalII.cpp Tree.o
+
+RemoveDuplicatesFromSortedArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArray.cpp
+
+ImplementStrStr:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStrStr.cpp
+
+SameTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SameTree.cpp Tree.o
+
+SymmetricTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SymmetricTree.cpp Tree.o
+
+HouseRobber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobber.cpp 
+
+MergeSortedArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeSortedArray.cpp 
+
+RemoveElement:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveElement.cpp 
 
 ctags:
 	ctags *

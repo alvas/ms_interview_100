@@ -61,7 +61,7 @@ TreeNode *InitializeBST(const vector<int> &v)
     return root;
 }
 
-void DFT(TreeNode *p)
+void DFS(TreeNode *p)
 {
     if (p == NULL)
     {
@@ -71,19 +71,19 @@ void DFT(TreeNode *p)
     {
         if (p->left != NULL)
         {
-            DFT(p->left);
+            DFS(p->left);
         }
 
         cout << p->val<< endl;
 
         if (p->right != NULL)
         {
-            DFT(p->right);
+            DFS(p->right);
         }
     }
 }
 
-void DFTWithStack(TreeNode *p)
+void DFSWithStack(TreeNode *p)
 {
     if (p == NULL)
     {
@@ -94,7 +94,7 @@ void DFTWithStack(TreeNode *p)
 
     treeNodeStack.push(p);
 
-    do
+    while (!treeNodeStack.empty())
     {
         if (p->left != NULL)
         {
@@ -124,10 +124,72 @@ void DFTWithStack(TreeNode *p)
                 treeNodeStack.push(p);
             }
         }
-    } while (!treeNodeStack.empty());
+    } 
 }
 
-void BFT(TreeNode *p)
+int maxDepthPostOrderWithStack(TreeNode *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    stack<TreeNode *> s;
+    s.push(root);
+
+    int depth = 0;
+    TreeNode *prev = NULL;
+
+    while (!s.empty())
+    {
+        TreeNode *cur = s.top();
+
+        if (!prev || prev->left == cur || prev->right == cur)
+        {
+            if (cur->left != NULL)
+            {
+                s.push(cur->left);
+            }
+            else if (cur->right != NULL)
+            {
+                s.push(cur->right);
+            }
+        }
+        else if (cur->left == prev)
+        {
+            // cur's left node just has been poped out from stack
+            // cur becomes parent node, prev becomes the left node
+            // of cur; we push the right node of cur to stack right 
+            // after it.
+            if (cur->right != NULL)
+            {
+                s.push(cur->right);
+            }
+        }
+        else
+        {
+            // 1. when it reach leaf, it pops out node
+            // 2. when it cur->right == prev, it pops out node.
+            s.pop();
+        }
+
+        // a node would be set to prev twice; 
+        // first time, when pop out its left child
+        //      prev becomes left child, cur becomes parent node
+        // second time, pop out its right child
+        //      the cur node would be poped out right after it.
+        prev = cur;
+
+        if (s.size() > depth)
+        {
+            depth = s.size();
+        }
+    }
+
+    return depth;
+}
+
+void BFS(TreeNode *p)
 {
     queue<TreeNode *> treeQueue;
     treeQueue.push(p);
@@ -204,6 +266,8 @@ void ReBuildTreeFromPreIn(int *preOrder, int *inOrder, int nTreeLen, TreeNode *&
 }
 
 
+// Because we can't use char to represent multiple digit number, so we use
+// vector<string> instead of vector<char>
 void ReBuildTreeFromPreOrder(TreeNode *&root, const vector<string> &v, int &index)
 {
     if (index < 0 || index > v.size())
@@ -897,23 +961,28 @@ void BuildPostOrderVector3(TreeNode * const root, vector<int> &v)
 }
 
 // Deserialization
-void ReBuildTreeFromOrderLevel(TreeNode **root, const vector<string> &s)
+void ReBuildTreeFromOrderLevel(TreeNode *&root, const vector<string> &s)
 {
     int size = s.size();
     
     if (size == 0 || s[0] == "#")
     {
-        *root = NULL;
+        root = NULL;
     }
 
     queue<TreeNode *> q;
-    *root = new TreeNode(atoi(s[0].c_str()));
-    q.push(*root);
-    cout << "Creating node : " << (*root)->val << endl;
+    root = new TreeNode(atoi(s[0].c_str()));
+    q.push(root);
+    cout << "Creating node : " << root->val << endl;
 
     for (int i = 1; i < size; )
     {
         TreeNode *node = NULL;
+
+        // for each node, we will process it two children,
+        // left first, then right. So the second time, we don't
+        // need to pop a node from the queue front yet. we need
+        // to process the right child.
         bool left = true;
 
         while (!q.empty() && i < size)
@@ -960,7 +1029,6 @@ void ReBuildTreeFromOrderLevel(TreeNode **root, const vector<string> &s)
         }
     }
 }
-
 
 void BuildOrderLevelVector(TreeNode * const root, vector<string> &v)
 {
@@ -1100,12 +1168,12 @@ int main()
 
     //vector<int> v;
     //vector<string> v(leaf, leaf + 11);
-    //ReBuildTreeFromOrderLevel(&root, v);
+    //ReBuildTreeFromOrderLevel(root, v);
     
     //string  bst[7] = {"30", "20", "40", "10", "25", "35", "50"};
     //vector<string> bstv(bst, bst + 7);
 
-    //ReBuildTreeFromOrderLevel(&root, bstv);
+    //ReBuildTreeFromOrderLevel(root, bstv);
     //cout << "Is this a BST? " << isBST(root, INT_MIN, INT_MAX) << endl;
 
     //vector<string> s;
@@ -1121,6 +1189,7 @@ int main()
     vector<string> v(s, s + 13);
     int index = 0;
     ReBuildTreeFromPreOrder(root, v, index);
+    cout << "The depth of tree is: " << maxDepthPostOrderWithStack(root) << endl;
 
     vector<int> v2;
     BuildPreOrderVector(root, v2);

@@ -19,7 +19,7 @@ void ReBuildTreeFromPrePost(int *preOrder, int *postOrder, int nTreeLen, TreeNod
 void ReBuildTreeFromPrePost2(int *preOrder, int *postOrder, int nTreeLen, TreeNode *&root);
 void ReBuildTreeFromInPost(int *inOrder, int *postOrder, int nTreeLen, TreeNode *&root);
 void ReBuildTreeFromInPost2(int *inOrder, int *postOrder, int nTreeLen, TreeNode *&root);
-void ReBuildTreeFromOrderLevel(TreeNode **root, const vector<string> &s);
+void ReBuildTreeFromOrderLevel(TreeNode *&root, const vector<string> &s);
 void BuildOrderLevelVector(TreeNode * const root, vector<string> &v);
 void CleanUp(TreeNode *&root);
 void CleanUp2(TreeNode *&root);
