@@ -1,3 +1,5 @@
+default: ImplementStrStr
+
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
 #DEBUG = -DDEBUG -g
@@ -21,8 +23,6 @@ OBJS = $(SRCS:.cpp=.o)
 
 objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
           CircularLinkList.o NormalData.o Josephus.o
-
-default: RemoveElement
 
 all: $(objects)
 	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
@@ -252,6 +252,21 @@ MergeSortedArray:
 
 RemoveElement:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveElement.cpp 
+
+RemoveDuplicatesFromSortedList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedList.cpp LinkList.o
+
+ClimbingStairs:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClimbingStairs.cpp 
+
+AddBinary:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddBinary.cpp 
+
+PlusOne:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PlusOne.cpp 
+
+ValidSudoku:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidSudoku.cpp 
 
 ctags:
 	ctags *
