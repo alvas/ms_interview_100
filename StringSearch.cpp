@@ -13,10 +13,10 @@ char src[] = "ABCDACDAAHFACABCDABCDEAA";
 char des[] = "ABCDE";
 char src1[] = "ABEEADEEABCABDABEEABCABDACFEE";
 char des1[] = "ABCABDACF";
-char src2[] = "ABEEADEEABCABDABEEABCABCDABCABDFEE";
+char src2[] = "FDABDBDABDFDABDCDABDABDABDBCABDFEE";
 //char des2[] = "ABCABCDABCF";
 //char des2[] = "ABCABD";
-char des2[] = "AFCAECDABD";
+char des2[] = "FDABDCDABD";
 char src3[] = "bacbababaabcbab";
 char des3[] = "abdabca";
 
@@ -43,9 +43,28 @@ void makeSkip(char P[], int m, int skip[])
 }
 
 // array pattern and shift have the same length
+// index   :  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14
+//
+//                          pptr(point to unmatch); j & i
+//                           |
+//                           v
+// text    :  O  O  O  O  O  X  D  A  B  D
+// pattern :  F  D  A  B  D  C  D  A  B  D 
+// shift   : 15 14 13 12 11 10  9  8  5  1
+//            ^              ^
+//            |              |
+//           p3             p2
+//
+//                       original i   >> move 10 steps >>  i
+//                           | shift+m-sptr |    p2 - p3   |
+//                           |              |              |
+//                           v              |              |                        
+// text    :  O  O  O  O  O  X  D  A  B  D  |              v
+// pattern :                 F  D  A  B  D  C  D  A  B  D  Z
 void makeShift(char P[], int m, int shift[])
 {
     char *pptr = P + m - 1;
+    // pptr points to the unmatch character
     pptr--;
 
     int *sptr = shift + m - 1;
@@ -55,30 +74,36 @@ void makeShift(char P[], int m, int shift[])
 
     while (sptr-- != shift)
     {
-        char *p1 = P + m - 2,  *p2 = NULL, *p3 = NULL;
+        char *p1 = P + m - 1,  *p2 = NULL, *p3 = NULL;
 
         do
         {
-            while (p1 >= P && *p1-- != c);
+            cout << "old *p1[" << p1 - P << "]: " << *p1 << "\t";
+
+            while (p1 > P && *--p1 != c);
 
             p3 = p1;
-            cout << "*p1[" << *p1 << "]: " << p1 - P << "\t";
 
-            p2 = P + m - 2;
+            cout << "new *p1[" << p1 - P << "]: " << *p1 << "\t" << endl;
 
-            while (p3 >= P && *p3-- == *p2-- && p2 >= pptr);
-            cout << "p2[" << *p2 << "]: " << p2 - P << "\t";
-            cout << "p3[" << *p3 << "]: " << p3 - P << "\t";
-            cout << "pptr" << "[" << *pptr << "] " << pptr - P << " - ";
-            cout << "p2" << "[" << *p2 <<  "] " << p2 - P << " : ";
-            cout << pptr - p2 << "\t" << endl;
+            p2 = P + m - 1;
 
-        } while (p3 >= P && p2 >= pptr);
+            while (p3 > P && p2 > pptr && *--p3 == *--p2);
 
-        cout << sptr - shift << ": (shift + m - sptr) " << shift + m - sptr;
+            cout << "p2[" << p2 - P << "]: " << *p2 << "\t";
+            cout << "p3[" << p3 - P << "]: " << *p3 << "\t";
+            cout << "p2[" << p2 - P <<  "] " << *p2 << " - ";
+            cout << "pptr[" << pptr - P << "] " << *pptr << " : ";
+            cout << p2 - pptr << "\t" << endl;
+
+        } while (p3 > P && p2 > pptr);
+
+        cout << "shift[" << sptr - shift << "]: (shift + m - sptr) " << shift + m - sptr;
         cout << " + (p2 - p3) " << p2 - p3 << endl << endl;;
 
-        *sptr = shift + m - sptr + p2 - p3;
+        // (shift + m - sptr) are steps to move the index to the end of pattern
+        // then (p2 - p3) are steps to align the substring to good suffix of pattern
+        *sptr = (shift + m - sptr) + (p2 - p3);
         pptr--;
     }
 }
@@ -104,8 +129,8 @@ int BMSearch(char T[], int n, char P[], int m)
 
     cout << "pattern: " << endl;
     printArray<char>(P, m);
-    cout << "skip: " << endl;
-    printArray<int>(skip, BYTESIZE);
+    //cout << "skip: " << endl;
+    //printArray<int>(skip, BYTESIZE);
     cout << "shift: " << endl;
     printArray<int>(shift, m);
 
