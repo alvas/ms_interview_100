@@ -67,28 +67,6 @@ void initializeRandomString(string &S, int length)
     }
 }
 
-void printArray(int A[], int p, int r)
-{
-    int column = 0;
-
-    for (int i = p; i <= r; ++i)
-    {
-        cout << A[i] << "\t";
-
-        if (column++ % COLUMNS == COLUMNS - 1)
-        {
-            cout << endl;
-        }
-    }
-
-    cout << endl;
-}
-
-void printArray(int A[], int length)
-{
-    printArray(A, 0, length - 1);
-}
-
 void printStringArray(char S[], int length)
 {
     int column = 0;

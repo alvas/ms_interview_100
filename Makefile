@@ -278,6 +278,8 @@ cscope:
 doc:
 	doxygen Doxyfile
 
+#declare phony target
+.PHONY: clean
 clean:
 	rm a.out *.o
 

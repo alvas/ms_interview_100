@@ -6,7 +6,7 @@ const int LENGTH = 100;
 const int MAXNUM = 40;
 const int MAXSTRLEN = 300;
 
-const int COLUMNS = 5;
+const int COLUMNS = 10;
 const int CHARCOLUMNS = 80;
 
 const int ALPHABET = 26;

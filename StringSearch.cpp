@@ -1,9 +1,10 @@
 #include <iostream>
-#include "NormalData.h"
 #include "RandomData.h"
 
 using namespace std;
 
+const int TEXTLENGTH = 34;
+const int PATTERNLENGTH = 10;
 const int BYTESIZE = 256;
 
 //const int PATTERNLENGTH = 8;
@@ -12,112 +13,119 @@ char src[] = "ABCDACDAAHFACABCDABCDEAA";
 char des[] = "ABCDE";
 char src1[] = "ABEEADEEABCABDABEEABCABDACFEE";
 char des1[] = "ABCABDACF";
-char src2[] = "ABEEADEEABCABDABEEABCABCDABCFEE";
-char des2[] = "ABCABCDABCF";
+char src2[] = "ABEEADEEABCABDABEEABCABCDABCABDFEE";
+//char des2[] = "ABCABCDABCF";
+//char des2[] = "ABCABD";
+char des2[] = "AFCAECDABD";
+char src3[] = "bacbababaabcbab";
+char des3[] = "abdabca";
 
 // WATCH OUT!! The S and pattern string must only contain capital characters.
-// Otherwise, next[pattern[i] - 'A'] would overflow the stack.
-
-void makeSkip(char pattern[], int patternLength, int skip[])
+// Otherwise, next[pattern[i] - 'A'] would access data out of boundery.
+void makeSkip(char P[], int m, int skip[])
 {
     // set the stride of bad character to pattern to patternLength
     // because the bad character doesn't appear in the pattern
     // we just skip over the whole patternLength characters string
     for (int i = 0; i < BYTESIZE; ++i)
     {
-        skip[i] = patternLength;
+        skip[i] = m;
     }
 
     // set the stride for character of pattern; if the ith
     // character is not matched, then we want to move forward
     // skip[pattern[x]] steps to let the ith character in the source to
     // aligned to the pattern[x] character in pattern
-    while (patternLength != 0)
+    while (m != 0)
     {
-        skip[(unsigned char)*pattern++] = patternLength--;
+        skip[*P++] = m--;
     }
 }
 
 // array pattern and shift have the same length
-void makeShift(char pattern[], int patternLength, int shift[])
+void makeShift(char P[], int m, int shift[])
 {
-    int *sptr = shift + patternLength - 1;
-    char *pptr = pattern + patternLength - 1;
-
-    // the last character of pattern string
-    char c = pattern[patternLength - 1];
-    *sptr = 1;
+    char *pptr = P + m - 1;
     pptr--;
+
+    int *sptr = shift + m - 1;
+    *sptr = 1;
+
+    char c = P[m - 1];
 
     while (sptr-- != shift)
     {
-        char *p1 = pattern + patternLength - 2, *p2 = NULL, *p3 = NULL;
+        char *p1 = P + m - 2,  *p2 = NULL, *p3 = NULL;
 
         do
         {
-            while (p1 >= pattern && *p1-- != c);
+            while (p1 >= P && *p1-- != c);
 
-            p2 = pattern + patternLength - 2;
             p3 = p1;
+            cout << "*p1[" << *p1 << "]: " << p1 - P << "\t";
 
-#ifdef DEBUG
-            cout << "p1 = " << *p1 << endl;
-#endif
+            p2 = P + m - 2;
 
-            while (p3 >= pattern && *p3-- == *p2-- && p2 >= pptr);
-        } while (p3 >= pattern && p2 >= pptr);
+            while (p3 >= P && *p3-- == *p2-- && p2 >= pptr);
+            cout << "p2[" << *p2 << "]: " << p2 - P << "\t";
+            cout << "p3[" << *p3 << "]: " << p3 - P << "\t";
+            cout << "pptr" << "[" << *pptr << "] " << pptr - P << " - ";
+            cout << "p2" << "[" << *p2 <<  "] " << p2 - P << " : ";
+            cout << pptr - p2 << "\t" << endl;
 
-        *sptr = shift + patternLength - sptr + p2 - p3;
+        } while (p3 >= P && p2 >= pptr);
 
-#ifdef DEBUG
-        cout << "shift + patternLength - sptr = " << shift + patternLength - sptr << endl;
-        cout << "p2 - p3 = " << p2 - p3 << "; *p2 = " << *p2 << "; *p3 = " << *p3 << endl;
-        cout << "*sptr = " << *sptr << "; *pptr = " << *pptr << endl << endl;
-#endif
+        cout << sptr - shift << ": (shift + m - sptr) " << shift + m - sptr;
+        cout << " + (p2 - p3) " << p2 - p3 << endl << endl;;
+
+        *sptr = shift + m - sptr + p2 - p3;
         pptr--;
     }
 }
 
 // Boyer-Moore algorithm
-int BMSearch(char S[], int length, char pattern[], int patternLength)
+int BMSearch(char T[], int n, char P[], int m)
 {
-    int skip[BYTESIZE] = {0};
-    int shift[patternLength];
-    makeSkip(pattern, patternLength, skip);
-    makeShift(pattern, patternLength, shift);
-
-#ifdef DEBUG
-    printArray(shift, patternLength);
-#endif
-
-    int bIdx = patternLength;
-
     // If the pattern string is empty, then return the index 0.
-    if (patternLength == 0)
+    if (m == 0)
     {
         return 0;
     }
-
-    while (bIdx <= length)
+    else if (n < m)
     {
-        int pIdx = patternLength, skipStride = 0, shiftStride = 0;
+        return -1;
+    }
 
-        while (S[--bIdx] ==  pattern[--pIdx])
+    int skip[BYTESIZE] = {0};
+    int shift[PATTERNLENGTH] = {0};
+
+    makeSkip(P, m, skip);
+    makeShift(P, m, shift);
+
+    cout << "pattern: " << endl;
+    printArray<char>(P, m);
+    cout << "skip: " << endl;
+    printArray<int>(skip, BYTESIZE);
+    cout << "shift: " << endl;
+    printArray<int>(shift, m);
+
+    int i = m;
+    
+    while (i <= n)
+    {
+        int j = m;
+
+        while (j >= 0 && T[--i] ==  P[--j])
         {
-            if (bIdx < 0)
+            if (j == 0)
             {
-                return -1;
-            }
-
-            if (pIdx == 0)
-            {
-                return bIdx;
+                return i;
+                //cout << "Found matching string at index: " << i << endl;
+                //i += shift[0];
             }
         }
 
-        skipStride = skip[(unsigned char)S[bIdx]];
-        shiftStride = shift[pIdx];
-        bIdx += (skipStride > shiftStride) ? skipStride : shiftStride;
+        i += max(skip[T[i]], shift[j]);
     }
 
     return -1;
@@ -225,6 +233,7 @@ void makeNext(char pattern[], int patternLength, int next[])
     next[0] = -1;
     int i = 0, j = -1;
 
+    // !!!
     while (i < patternLength - 1)
     {
         if (-1 == j || pattern[i] == pattern[j])
@@ -251,9 +260,7 @@ int KMPSearch(char S[], int length, char pattern[], int patternLength)
     int next[patternLength];
     makeNext(pattern, patternLength, next);
 
-#ifdef DEBUG
     printArray(next, patternLength);
-#endif
 
     int i = 0, j = 0;
 
@@ -278,6 +285,100 @@ int KMPSearch(char S[], int length, char pattern[], int patternLength)
     {
         return -1;
     }
+}
+
+// index  : 0 1 2 3 4 5
+// pattern: A B D A B C
+// pi[x]  : 0 0 0 0 1 2
+//
+// text   : A B D A B[D]
+//          0 1 2 3 4[i]
+//          A B D A B[C]
+//
+// align pattern[pi[i]] to the current index i         
+// i = 5; pi[i] = 2;
+// index  : 0 1 2 3 4 i
+// text   : A B D A B[D]
+//              +-----|
+//                    V
+// pi[x]  :       0 1[2]
+// pattern:       A B[D] A B C
+vector<int> COMPUTE_PREFIX_FUNCTION(const vector<char> &P)
+{
+    int m = P.size();
+    vector<int> pi(m, 0);
+
+    // !!!
+    int k = 0;
+
+    // pi[] is when the current position doesn't match,
+    // what should be the next nearest position we should
+    // start to match the current position.
+    for (int q = 1; q < m; ++q)
+    {
+        // !!!
+        pi[q] = k;
+        
+        // !!!
+        while (k > 0 && P[k] != P[q])
+        {
+            k = pi[k];
+        }
+
+        if (P[k] == P[q])
+        {
+            k++;
+        }
+    }
+
+    return pi;
+}
+
+int KMP_MATCHER(const vector<char> &T, const vector<char> &P)
+{
+    int n = T.size();
+    int m = P.size();
+
+    cout << "Text string: " << endl;
+    string s1(T.begin(), T.end());
+    cout << s1 << endl;
+    cout << "Pattern string: " << endl;
+    string s2(P.begin(), P.end());
+    cout << s2 << endl;
+
+    vector<int> pi = COMPUTE_PREFIX_FUNCTION(P);
+
+    cout << "Prefix function: " << endl;
+    printVector<int>(pi);
+    cout << endl;
+
+    // !!!
+    int q = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        // !!!
+        while (q > 0 && P[q] != T[i])
+        {
+            q = pi[q];
+        }
+
+        if (P[q] == T[i])
+        {
+            q++;
+        }
+
+        if (q == m)
+        {
+            // find all occurence
+            cout << "Pattern occurs at index " << i - m + 1 << "\t"; 
+            // !!!
+            q = pi[q - 1];
+            //return i - m + 1;
+        }
+    }
+
+    return -1;
 }
 
 /*
@@ -491,8 +592,8 @@ void LCS(vector< vector<int> > b, string X, int i, int j)
 
 int main()
 {
-//    char S[MAXSTRLEN] = {0};
-//    char pattern[] = {'D', 'W', 'F', 'C', 'A', 'Y', 'S', 'S'};
+    char S[TEXTLENGTH] = {'A', 'B', 'C', 'D', 'A', 'B', 'C', 'E', 'M', 'O', 'O', 'R', 'E', 'O', 'O', 'R', 'S', 'E'};
+    char pattern[PATTERNLENGTH] = {'M', 'O', 'O', 'R', 'E', 'O', 'O', 'R', 'S'};
 //    initializeRandomStringArray(S, MAXSTRLEN);
 
 //    cout << "The random source string is:" << endl;
@@ -502,31 +603,37 @@ int main()
 //    printStringArray(pattern, PATTERNLENGTH);
 //    printStringArray(des, 5);
 
-//    int index = -1;
+    int index = -1;
 //    index = Horspool(S, MAXSTRLEN, pattern, PATTERNLENGTH);
 //    index = Sunday(S, MAXSTRLEN, pattern, PATTERNLENGTH);
 //    index = Sunday(src1, 29, des1, 9);
-//    index = BMSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
+    //index = BMSearch(S, TEXTLENGTH, pattern, PATTERNLENGTH);
+    index = BMSearch(src2, TEXTLENGTH, des2, PATTERNLENGTH);
 //    index = BMSearch(src2, 29, des2, 11);
-//    index = KMPSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
-//    index = KMPSearch(src2, 29, des2, 11);
+    //index = KMPSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
+    //index = KMPSearch(src2, 34, des2, 6);
+    //vector<char> src2V(src2, src2 + 34);
+    //vector<char> des2V(des2, des2 + 8);
+    //vector<char> src3V(src3, src3 + 15);
+    //vector<char> des3V(des3, des3 + 7);
+    //index = KMP_MATCHER(src3V, des3V);
 
-//    cout << "The pattern string is found at index " << index << "." << endl;
+    cout << "The pattern string is found at index " << index << "." << endl;
 
 //    string s("kitten");
 //    string t("sitting");
 //    cout << "The Levenstein Distance is " << LevensteinDistance2(s, t) << "." << endl;
 //
 
-    string X, Y;
-    initializeRandomString(X, 30);
-    initializeRandomString(Y, 20);
-    cout << "X: " << X << endl;
-    cout << "Y: " << Y << endl;
-    pair<vector<vector<int> >, vector<vector<int> > > result = LCS_LENGTH(X, Y);
-    cout << "The length of LCS is: " << result.first[30][20] << endl;
-    LCS(result.second, X, 30, 20);
-    cout << endl;
+    //string X, Y;
+    //initializeRandomString(X, 30);
+    //initializeRandomString(Y, 20);
+    //cout << "X: " << X << endl;
+    //cout << "Y: " << Y << endl;
+    //pair<vector<vector<int> >, vector<vector<int> > > result = LCS_LENGTH(X, Y);
+    //cout << "The length of LCS is: " << result.first[30][20] << endl;
+    //LCS(result.second, X, 30, 20);
+    //cout << endl;
     return 0;
 }
 
