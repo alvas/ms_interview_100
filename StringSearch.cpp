@@ -20,8 +20,10 @@ char des2[] = "FDABDCDABD";
 char src3[] = "bacbababaabcbab";
 char des3[] = "abdabca";
 
-// WATCH OUT!! The S and pattern string must only contain capital characters.
-// Otherwise, next[pattern[i] - 'A'] would access data out of boundery.
+// After skip or shift, the new i would point to one character after
+// the end of the pattern, so skip[0] = 10 means the original i would
+// move 10 steps and pattern[0] would be moved to the pattern[9] place
+// and restart by --i
 void makeSkip(char P[], int m, int skip[])
 {
     // set the stride of bad character to pattern to patternLength
@@ -45,7 +47,7 @@ void makeSkip(char P[], int m, int skip[])
 // array pattern and shift have the same length
 // index   :  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14
 //
-//                          pptr(point to unmatch); j & i
+//                          pptr(point to unmatch), i
 //                           |
 //                           v
 // text    :  O  O  O  O  O  X  D  A  B  D
@@ -53,14 +55,17 @@ void makeSkip(char P[], int m, int skip[])
 // shift   : 15 14 13 12 11 10  9  8  5  1
 //            ^              ^
 //            |              |
-//           p3             p2
+//           p3             p2, j
 //
-//                       original i   >> move 10 steps >>  i
+//                       original i   >> move 10 steps >>  i restart here
 //                           | shift+m-sptr |    p2 - p3   |
 //                           |              |              |
-//                           v              |              |                        
-// text    :  O  O  O  O  O  X  D  A  B  D  |              v
+//                           v              |              v                        
+// text    :  O  O  O  O  O  X  D  A  B  D  O  O  O  O  O  O
 // pattern :                 F  D  A  B  D  C  D  A  B  D  Z
+//                                                         ^
+//                                                         |
+//                                                  j restart here
 void makeShift(char P[], int m, int shift[])
 {
     char *pptr = P + m - 1;
@@ -78,28 +83,28 @@ void makeShift(char P[], int m, int shift[])
 
         do
         {
-            cout << "old *p1[" << p1 - P << "]: " << *p1 << "\t";
+            //cout << "old *p1[" << p1 - P << "]: " << *p1 << "\t";
 
             while (p1 > P && *--p1 != c);
 
             p3 = p1;
 
-            cout << "new *p1[" << p1 - P << "]: " << *p1 << "\t" << endl;
+            //cout << "new *p1[" << p1 - P << "]: " << *p1 << "\t" << endl;
 
             p2 = P + m - 1;
 
             while (p3 > P && p2 > pptr && *--p3 == *--p2);
 
-            cout << "p2[" << p2 - P << "]: " << *p2 << "\t";
-            cout << "p3[" << p3 - P << "]: " << *p3 << "\t";
-            cout << "p2[" << p2 - P <<  "] " << *p2 << " - ";
-            cout << "pptr[" << pptr - P << "] " << *pptr << " : ";
-            cout << p2 - pptr << "\t" << endl;
+            //cout << "p2[" << p2 - P << "]: " << *p2 << "\t";
+            //cout << "p3[" << p3 - P << "]: " << *p3 << "\t";
+            //cout << "p2[" << p2 - P <<  "] " << *p2 << " - ";
+            //cout << "pptr[" << pptr - P << "] " << *pptr << " : ";
+            //cout << p2 - pptr << "\t" << endl;
 
         } while (p3 > P && p2 > pptr);
 
-        cout << "shift[" << sptr - shift << "]: (shift + m - sptr) " << shift + m - sptr;
-        cout << " + (p2 - p3) " << p2 - p3 << endl << endl;;
+        //cout << "shift[" << sptr - shift << "]: (shift + m - sptr) " << shift + m - sptr;
+        //cout << " + (p2 - p3) " << p2 - p3 << endl << endl;;
 
         // (shift + m - sptr) are steps to move the index to the end of pattern
         // then (p2 - p3) are steps to align the substring to good suffix of pattern
@@ -129,8 +134,8 @@ int BMSearch(char T[], int n, char P[], int m)
 
     cout << "pattern: " << endl;
     printArray<char>(P, m);
-    //cout << "skip: " << endl;
-    //printArray<int>(skip, BYTESIZE);
+    cout << "skip: " << endl;
+    printArray<int>(skip, BYTESIZE);
     cout << "shift: " << endl;
     printArray<int>(shift, m);
 
@@ -156,33 +161,49 @@ int BMSearch(char T[], int n, char P[], int m)
     return -1;
 }
 
-int Horspool(char S[], int length, char pattern[], int patternLength)
+// The value of the d array are steps to align the right most character which equals to T[m - 1]
+// to the place of P[m - 1].
+// text    : O O[D]B D C D A B C
+// pattern : F D A B D C D A B D
+// d array : 9 3 2 1[3]4 3 2 1 X
+//                     |  
+//                     |---4-->|
+//                             v
+//                   F D A B D C D A B D
+int Horspool(char T[], int n, char P[], int m)
 {
-    int d[ALPHABET] = {0};
+    int d[BYTESIZE] = {0};
 
-    // initialize all characters distance to the right end as the length of the pattern string
-    for (int i = 0; i != ALPHABET; ++i)
+    // initialize all characters distance to the right end as the n of the P string
+    for (int i = 0; i != BYTESIZE; ++i)
     {
-        d[i] = patternLength;
+        d[i] = m;
     }
 
-    // set the distance of character appears in the pattern string to the distance from
+    // set the distance of character appears in the P string to the distance from
     // its position to the right end
-    // The distance of the last character in the pattern string is not reset.
-    for (int i = 0; i != (patternLength - 1); ++i)
+    // The distance of the last character in the P string is not reset.
+    // Don't set the value for d[T[m - 1]], because it will be 0.
+    for (int i = 0; i < m - 1; ++i)
     {
-        d[pattern[i] - 'A'] = patternLength - i - 1;
+        // m - i - 1 is value of how many steps to move the character to the end of P
+        d[P[i]] = m - i - 1;
     }
+
+    cout << "d array: " << endl;
+    printArray<int>(d, BYTESIZE);
+    cout << "pattern: " << endl;
+    printArray<char>(P, m);
 
     // pos is the starting matching index of the source string
     int pos = 0;
 
-    while (pos < (length - patternLength))
+    while (pos < (n - m))
     {
-        int j = patternLength - 1;
+        int j = m - 1;
 
-        // compare the souce and pattern string
-        while (j >= 0 && S[pos + j] == pattern[j])
+        // compare the souce and P string
+        while (j >= 0 && T[pos + j] == P[j])
         {
             j--;
         }
@@ -194,9 +215,9 @@ int Horspool(char S[], int length, char pattern[], int patternLength)
         }
         else
         {
-            // not found, move forward and make the right most possible character in pattern
-            // to match the (patternLength - 1) character from pos in the source string
-            pos += d[S[pos + patternLength - 1] - 'A'];
+            // not found, move forward and make the right most possible character in P
+            // to match the (m - 1) character from pos in the source string
+            pos += d[T[pos + m - 1]];
         }
     }
 
@@ -205,37 +226,55 @@ int Horspool(char S[], int length, char pattern[], int patternLength)
 
 // Whenever there is an unmatch, make a jump depending on the the character after
 // current end position of the source string.
-int Sunday(char S[], int length, char pattern[], int patternLength)
+// The value of next array is the distance to move the character to the place
+// one behind the end of the pattern: m + 1
+// index      :  0  1  2  3  4  5  6  7  8  9
+// text       :  F  D  A  B  X  O  O  O  O  O [C]
+// pattern    :  F  D  A  B  D  C  D  A  B  D
+// next array : 10  1  3  2  1 [5] 1  3  2  1
+//                              ^
+//                              |
+//                        i restart from here
+//                        j restart from 0
+//                              |
+//                              v
+// pattern    :  |-- 5 steps -->F  D  A  B  D  C  D  A  B  D
+int Sunday(char T[], int n, char P[], int m)
 {
-    int next[ALPHABET] = {0};
+    int next[BYTESIZE] = {0};
 
-    for (int i = 0; i < ALPHABET; ++i)
+    for (int i = 0; i < BYTESIZE; ++i)
     {
-        next[i] = patternLength + 1;
+        next[i] = m + 1;
     }
 
-    for (int i = 0; i < patternLength; ++i)
+    for (int i = 0; i < m; ++i)
     {
-        next[pattern[i] - 'A'] = patternLength - i;
+        next[P[i]] = m - i;
     }
+
+    cout << "next array: " << endl;
+    printArray<int>(next, BYTESIZE);
+    cout << "pattern: " << endl;
+    printArray<char>(P, m);
 
     int pos = 0;
 
-    while (pos < (length - patternLength + 1))
+    while (pos < (n - m + 1))
     {
         int i = pos;
         int j = 0;
 
-        while (j < patternLength)
+        while (j < m)
         {
             // PITFALL!! don't increase i++ or j++ here
             // otherwise when it breaks, the j would still advance to the next position
-            // when only patternLength -1 characters matching, because of this
+            // when only m -1 characters matching, because of this
             // inaccurate moving, the checking after the while loop would return 
             // incorrect result
-            if (S[i] != pattern[j])
+            if (T[i] != P[j])
             {
-                pos += next[S[pos + patternLength] - 'A'];
+                pos += next[T[pos + m]];
                 break;
             }
 
@@ -243,7 +282,7 @@ int Sunday(char S[], int length, char pattern[], int patternLength)
             i++;
         }
 
-        if (j == patternLength)
+        if (j == m)
         {
             return pos;
         }
@@ -312,22 +351,24 @@ int KMPSearch(char S[], int length, char pattern[], int patternLength)
     }
 }
 
-// index  : 0 1 2 3 4 5
-// pattern: A B D A B C
-// pi[x]  : 0 0 0 0 1 2
+// index  : 0  1  2  3  4  5
+// text   : A  B  D  A  B  X 
+// pattern: A  B  D  A  B  C
+// pi[q]  : 0  0  0  0  1  2
 //
-// text   : A B D A B[D]
-//          0 1 2 3 4[i]
-//          A B D A B[C]
-//
-// align pattern[pi[i]] to the current index i         
-// i = 5; pi[i] = 2;
-// index  : 0 1 2 3 4 i
-// text   : A B D A B[D]
-//              +-----|
-//                    V
-// pi[x]  :       0 1[2]
-// pattern:       A B[D] A B C
+// align paitern[pi[q]] to the current index q 
+//                    i continues from here
+//                         |
+//                         v
+// index  : 0  1  2  3  4  5
+// text   : A  B  D  A  B [D]
+//                +--------|
+//                         V
+// pattern:          A  B [D] A  B  C
+// pi[x]  :          0  1 [2]
+//                         ^
+//                         |
+// q = 5; pi[q] = 2; pi[q] restart here
 vector<int> COMPUTE_PREFIX_FUNCTION(const vector<char> &P)
 {
     int m = P.size();
@@ -406,6 +447,65 @@ int KMP_MATCHER(const vector<char> &T, const vector<char> &P)
     return -1;
 }
 
+int RABIN_KARP_MATCHER(const string &T, const string &P, int d, int q)
+{
+    int n = T.size();
+    int m = P.size();
+
+    int h = 1;
+
+    for (int i = 0; i < m - 1; ++i)
+    {
+        h = (d * h) % q;
+    }
+
+    int p = 0, t = 0;
+
+    for (int i = 0; i < m; ++i)
+    {
+        p = (d * p + P[i]) % q;
+        t = (d * t + T[i]) %q;
+    }
+
+    cout << "p = " << p << endl;
+
+    for (int i = 0; i < n - m; ++i)
+    {
+        cout << "t[" << i << "] = " << t << endl;
+
+        if (p == t)
+        {
+            bool matched = true;
+
+            for (int j = 0; j < m; ++j)
+            {
+                if (P[j] != T[i + j])
+                {
+                    matched = false;
+                }
+            }
+
+            if (matched)
+            {
+                return i;
+            }
+        }
+
+        if (i < n - m)
+        {
+            t = (d * (t - T[i] * h) + T[i + m]) % q;
+
+            // make sure the hash is positive value
+            if (t < 0)
+            {
+                t = t + q;
+            }
+        }
+    }
+
+    return -1;
+}
+
 /*
  *  lev(|a|, |b|) = lev(i, j)
  *
@@ -418,27 +518,26 @@ int KMP_MATCHER(const vector<char> &T, const vector<char> &P)
  *  lev(i, j-1) insert
  *  lev(i-1, j-1) + cost; if cost == 0, the last charactor matches; otherwise, replace it with cost 1
  */
-int LevensteinDistanceRecursive(string s, string t)
+int LevensteinDistanceRecursive(const string &s, const string &t)
 {
-    if (s.size() == 0)
+    if (s == t)
+    {
+        return 0;
+    }
+    else if (s.size() == 0)
     {
         return t.size();
-    }
-
-    if (t.size() == 0)
+    } 
+    else if (t.size() == 0)
     {
         return s.size();
     }
 
     int cost = 0;
 
-    if (s.back() == t.back())
+    if (s.back() != t.back())
     {
-        cost = 0;
-    }
-    else
-    {
-        cost =  1;
+        cost = 1;
     }
 
     string s1 = s;
@@ -449,23 +548,13 @@ int LevensteinDistanceRecursive(string s, string t)
     int distance2 = LevensteinDistanceRecursive(s, t1) + 1;
     int distance3 = LevensteinDistanceRecursive(s1, t1) + cost;
 
-    int min = distance1 < distance2 ? distance1 : distance2;
-    min = min < distance3 ? min : distance3;
-
-    return min;
+    return  min(distance1, min(distance2, distance3));
 }
 
 int LevensteinDistance(string s, string t)
 {
-    vector< vector<int> > d;
     // The size of d is from 0 to s.size() and t.size().
-    vector<int> v(t.size() + 1, 0);
-
-    // initilze array to 0
-    for (int i = 0; i <= s.size(); ++i)
-    {
-        d.push_back(v);
-    }
+    vector< vector<int> > d(s.size() + 1, vector<int>(t.size() + 1, 0));;
 
     // source prefixes can be transformed into empty string ty dropping all characters
     for (int i = 1; i <= s.size(); ++i)
@@ -473,11 +562,14 @@ int LevensteinDistance(string s, string t)
         d[i][0] = i;
     }
 
-    // target prefixes can be reached from empty source prefix by inserting every charactors
+    // target prefixes can be reached from empty source prefix by inserting every characters
     for (int i = 1; i <= t.size(); ++i)
     {
         d[0][i] = i;
     }
+
+    // After dropping source/target to empty string, we can insert characters to create target/source
+    // the cost is s.size() + t.size().
 
     for (int j = 1; j <= t.size(); ++j)
     {
@@ -493,8 +585,7 @@ int LevensteinDistance(string s, string t)
                 int dis1 = d[i - 1][j] + 1;
                 int dis2 = d[i][j - 1] + 1;
                 int dis3 = d[i - 1][j - 1] + 1;
-                int min = dis1 < dis2 ? dis1 : dis2;
-                d[i][j] = min < dis3 ? min : dis3;
+                d[i][j] = min(dis1, min(dis2, dis3));
             }
         }
     }
@@ -502,6 +593,7 @@ int LevensteinDistance(string s, string t)
     return d[s.size()][t.size()];
 }
 
+// using two rows to implement Levenstein Distance
 int LevensteinDistance2(string s, string t)
 {
     if (s == t)
@@ -517,16 +609,18 @@ int LevensteinDistance2(string s, string t)
         return s.size();
     }
 
-    vector<int> v0(t.size() + 1, 0);
-    vector<int> v1(t.size() + 1, 0);
+    vector<vector<int> > v(2, vector<int>(t.size() + 1, 0));
+    int row = 0;
 
     // initialize v0 the previous row of distances
     // this row is d[0][j] edit distance for an empty s
     // the distance is just the number of characters to delete from t
-    for (int i = 0; i < v0.size(); ++i)
+    for (int i = 0; i < v[row].size(); ++i)
     {
-        v0[i] = i;
+        v[row][i] = i;
     }
+
+    row = (row + 1) % 2;
 
     for (int i = 0; i <= s.size(); ++i)
     {
@@ -534,25 +628,24 @@ int LevensteinDistance2(string s, string t)
         //
         // first element of v1 is d[i+1][0]
         // editing distance is delete (i+1) chars from s to match empty t
-        v1[0] = i + 1;
+        v[row][0] = i + 1;
 
 
         // use formular to fill in the rest of the row
         for (int j = 0; j <= t.size(); ++j)
         {
             int cost = (s[i] == t[j]) ? 0 : 1;
-            int d1 = v1[j] + 1;
-            int d2 = v0[j + 1] + 1;
-            int d3 = v0[j] + cost;
-            int min = d1 < d2 ? d1 : d2;
-            v1[j + 1] = min < d3 ? min : d3;
+            int d1 = v[row][j] + 1;
+            int d2 = v[(row + 1) % 2][j + 1] + 1;
+            int d3 = v[(row + 1) % 2][j] + cost;
+            v[row][j + 1] = min(d1, min(d2, d3));
         }
 
-        // copy current row to previous row for next iteration
-        v0 = v1;
+        // switch current row and previous row for next iteration
+        row = (row + 1) % 2;
     }
 
-    return v1[t.size()];
+    return v[(row + 1) % 2][t.size()];
 }
 
 pair<vector< vector<int> >, vector< vector<int> > > LCS_LENGTH(string X, string Y)
@@ -629,11 +722,11 @@ int main()
 //    printStringArray(des, 5);
 
     int index = -1;
-//    index = Horspool(S, MAXSTRLEN, pattern, PATTERNLENGTH);
+    //index = Horspool(src2, TEXTLENGTH, des2, PATTERNLENGTH);
 //    index = Sunday(S, MAXSTRLEN, pattern, PATTERNLENGTH);
-//    index = Sunday(src1, 29, des1, 9);
+    //index = Sunday(src2, TEXTLENGTH, des2, PATTERNLENGTH);
     //index = BMSearch(S, TEXTLENGTH, pattern, PATTERNLENGTH);
-    index = BMSearch(src2, TEXTLENGTH, des2, PATTERNLENGTH);
+    //index = BMSearch(src2, TEXTLENGTH, des2, PATTERNLENGTH);
 //    index = BMSearch(src2, 29, des2, 11);
     //index = KMPSearch(S, MAXSTRLEN, pattern, PATTERNLENGTH);
     //index = KMPSearch(src2, 34, des2, 6);
@@ -642,6 +735,8 @@ int main()
     //vector<char> src3V(src3, src3 + 15);
     //vector<char> des3V(des3, des3 + 7);
     //index = KMP_MATCHER(src3V, des3V);
+    string ss(src2, src2 + TEXTLENGTH), ds(des2, des2 + PATTERNLENGTH);
+    index = RABIN_KARP_MATCHER(ss, ds, 10, 33); 
 
     cout << "The pattern string is found at index " << index << "." << endl;
 
