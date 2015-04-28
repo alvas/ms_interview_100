@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int LENGTH = 100;
+const int LENGTH = 10;
 const int MAXNUM = 40;
 const int MAXSTRLEN = 300;
 

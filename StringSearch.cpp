@@ -463,6 +463,7 @@ int RABIN_KARP_MATCHER(const string &T, const string &P, int d, int q)
 
     for (int i = 0; i < m; ++i)
     {
+        // Computing hash value.
         p = (d * p + P[i]) % q;
         t = (d * t + T[i]) %q;
     }
@@ -482,6 +483,7 @@ int RABIN_KARP_MATCHER(const string &T, const string &P, int d, int q)
                 if (P[j] != T[i + j])
                 {
                     matched = false;
+                    break;
                 }
             }
 
@@ -493,6 +495,7 @@ int RABIN_KARP_MATCHER(const string &T, const string &P, int d, int q)
 
         if (i < n - m)
         {
+            // This is the hash function.
             t = (d * (t - T[i] * h) + T[i + m]) % q;
 
             // make sure the hash is positive value
@@ -648,20 +651,14 @@ int LevensteinDistance2(string s, string t)
     return v[(row + 1) % 2][t.size()];
 }
 
-pair<vector< vector<int> >, vector< vector<int> > > LCS_LENGTH(string X, string Y)
+pair<vector<vector<int> >, vector<vector<int> > > LCS_LENGTH(const string &X, const string &Y)
 {
-    vector<vector<int> > c, b;
-    vector<int> a(Y.size() + 1, 0);
+    vector<vector<int> > b(X.size() + 1, vector<int>(Y.size() + 1, 0));
+    vector<vector<int> > c(X.size() + 1, vector<int>(Y.size() + 1, 0));
 
-    for (int i = 0; i < X.size() + 1; ++i)
+    for (int i = 1; i <= X.size(); ++i)
     {
-        c.push_back(a);
-        b.push_back(a);
-    }
-
-    for (int i = 1; i < X.size() + 1; ++i)
-    {
-        for (int j = 1; j < Y.size() + 1; ++j)
+        for (int j = 1; j <= Y.size(); ++j)
         {
             if (X[i - 1] == Y[j - 1])
             {
@@ -686,7 +683,7 @@ pair<vector< vector<int> >, vector< vector<int> > > LCS_LENGTH(string X, string 
     return result;
 }
 
-void LCS(vector< vector<int> > b, string X, int i, int j)
+void LCS(const vector< vector<int> > &b, const string &X, int i, int j)
 {
     if (i == 0 || j == 0)
     {
@@ -721,7 +718,7 @@ int main()
 //    printStringArray(pattern, PATTERNLENGTH);
 //    printStringArray(des, 5);
 
-    int index = -1;
+    //int index = -1;
     //index = Horspool(src2, TEXTLENGTH, des2, PATTERNLENGTH);
 //    index = Sunday(S, MAXSTRLEN, pattern, PATTERNLENGTH);
     //index = Sunday(src2, TEXTLENGTH, des2, PATTERNLENGTH);
@@ -735,25 +732,25 @@ int main()
     //vector<char> src3V(src3, src3 + 15);
     //vector<char> des3V(des3, des3 + 7);
     //index = KMP_MATCHER(src3V, des3V);
-    string ss(src2, src2 + TEXTLENGTH), ds(des2, des2 + PATTERNLENGTH);
-    index = RABIN_KARP_MATCHER(ss, ds, 10, 33); 
+    //string ss(src2, src2 + TEXTLENGTH), ds(des2, des2 + PATTERNLENGTH);
+    //index = RABIN_KARP_MATCHER(ss, ds, 10, 33); 
 
-    cout << "The pattern string is found at index " << index << "." << endl;
+    //cout << "The pattern string is found at index " << index << "." << endl;
 
 //    string s("kitten");
 //    string t("sitting");
 //    cout << "The Levenstein Distance is " << LevensteinDistance2(s, t) << "." << endl;
 //
 
-    //string X, Y;
-    //initializeRandomString(X, 30);
-    //initializeRandomString(Y, 20);
-    //cout << "X: " << X << endl;
-    //cout << "Y: " << Y << endl;
-    //pair<vector<vector<int> >, vector<vector<int> > > result = LCS_LENGTH(X, Y);
-    //cout << "The length of LCS is: " << result.first[30][20] << endl;
-    //LCS(result.second, X, 30, 20);
-    //cout << endl;
+    string X, Y;
+    initializeRandomString(X, 30);
+    initializeRandomString(Y, 20);
+    cout << "X: " << X << endl;
+    cout << "Y: " << Y << endl;
+    pair<vector<vector<int> >, vector<vector<int> > > result = LCS_LENGTH(X, Y);
+    cout << "The length of LCS is: " << result.first[30][20] << endl;
+    LCS(result.second, X, 30, 20);
+    cout << endl;
     return 0;
 }
 

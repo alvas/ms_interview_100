@@ -41,8 +41,6 @@ struct ListNode {
     ListNode *GetNext() { return next; }
 };
 
-void destroyLinkList(LinkListNode *head);
-
 template<typename T>
 void initializeLinkList(const vector<int> &S, T **head)
 {
@@ -176,3 +174,167 @@ void printLinkList(T *l)
 
     cout << endl;
 }
+
+template <typename T>
+bool isCircleLinkList(T *l)
+{
+    if (l == NULL)
+    {
+        return false;
+    }
+
+    T *slow = l, *fast = l;
+
+    do
+    {
+        slow = slow->next;
+        fast = fast->next;
+
+        if (fast != NULL)
+        {
+            fast = fast->next;
+        }
+    } while (slow != NULL && fast != NULL && slow != fast);
+
+    cout << "Linked list has circle: " << (slow != NULL && fast != NULL) << endl;
+    return slow != NULL && fast != NULL;
+}
+
+// Make the tail pointing to the nth node.
+template <typename T>
+void makeCircleLinkList(T *l, int n)
+{
+    if (l == NULL || isCircleLinkList(l))
+    {
+        return;
+    }
+
+    int len = 0;
+    T *p = l, *tail = NULL;
+
+    while (p != NULL)
+    {
+        len++;
+        tail = p;
+        p = p->next;
+    }
+
+    // Because l is not null, len could not be 0.
+    n %= len;
+    p = l;
+
+    // In order to find the nth node, only need to move (n - 1) steps.
+    while (--n > 0)
+    {
+        p = p->next;
+    }
+
+    tail->next = p;
+
+    return;
+}
+
+
+template <typename T>
+int findCircleLinkListIntersection(T *l)
+{
+    int pos = 0;
+
+    if (l == NULL)
+    {
+        return pos;
+    }
+    
+    T *slow = l, *fast = l;
+
+    if (isCircleLinkList(l))
+    {
+        do
+        {
+            slow = slow->next;
+            fast = fast->next;
+
+            if (fast != NULL)
+            {
+                fast = fast->next;
+            }
+        } while (slow != NULL && fast != NULL && slow != fast);
+
+        slow = l;
+        pos++;
+
+        while (slow != fast)
+        {
+            slow = slow->next;
+            fast = fast->next;
+            pos++;
+        }
+    }
+
+    cout << pos <<  " node is intersection point with value " << slow->val << endl;
+    return pos;
+}
+
+template <typename T>
+int getCircleLengthOfLinkList(T *l)
+{
+    if (l == NULL || !isCircleLinkList(l))
+    {
+        return 0;
+    }
+
+    T *p = l, *t = l;
+    int pos = findCircleLinkListIntersection(l), len = 1;
+
+    // move p to the intersection point
+    while (--pos)
+    {
+        p = p->next;
+    }
+
+    t = p;
+    cout << "The circle is : ";
+
+    // go one round and get back to the intersection point, cound the length of the circle
+    while (t->next != p)
+    {
+        cout << t->val << "\t";
+        t = t->next;
+        len++;
+    }
+
+    cout << t->val << "\t" << endl;
+    cout << "The length of circle is " << len << endl;
+    return len;
+}
+
+template <typename T>
+void breakCircleLinkList(T *l)
+{
+    if (l == NULL)
+    {
+        return;
+    }
+
+    if (isCircleLinkList<ListNode>(l))
+    {
+        int pos = findCircleLinkListIntersection<ListNode>(l);
+        int len = getCircleLengthOfLinkList<ListNode>(l);
+
+        // Be careful about the step!!
+        // Go to the intersection point at pos need (pos - 1) steps.
+        // Then go to the tail from that point need (len - 1) steps.
+        int step = pos - 1 + len - 1;
+        T *p = l;
+
+        while (step--)
+        {
+            p = p->next;
+        }
+
+        p->next = NULL;
+    }
+
+    return;
+}
+

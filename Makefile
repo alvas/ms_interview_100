@@ -1,4 +1,4 @@
-default: ImplementStrStr
+default: CountPrimes
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -267,6 +267,37 @@ PlusOne:
 
 ValidSudoku:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidSudoku.cpp 
+
+HappyNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HappyNumber.cpp 
+
+LinkedListCycle:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
+
+AddTwoNumbers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddTwoNumbers.cpp 
+
+BinaryTreeRightSideView: Tree.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeRightSideView.cpp Tree.o NormalData.o
+
+RemoveLinkedListElements: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveLinkedListElements.cpp LinkList.o
+
+# This uses unordered_set initialier list which needs c++11 support
+WordBreak:
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreak.cpp
+
+SingleNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumber.cpp
+
+SingleNumberII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberII.cpp
+	
+CountPrimes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountPrimes.cpp
+
+ThreeSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSum.cpp
 
 ctags:
 	ctags *

@@ -101,7 +101,8 @@ void reverseLinkList(LinkListNode **head)
 int main()
 {
     vector<int> S;
-    initializeRandomVector(S, LENGTH);
+    //initializeRandomVector(S, LENGTH);
+    initializeIndexVector(S, LENGTH);
     /*
     printVector(S);
     LinkListNode *head = NULL;
@@ -111,9 +112,22 @@ int main()
     destroyLinkList(head);
     */
 
+/*
     LinkList list;
     initializeLinkList(list, S);
     printLinkListNode(list.head);
+*/
+
+    ListNode *list = NULL;
+    initializeLinkList<ListNode>(S, &list);
+    printLinkList<ListNode>(list);
+
+    int n = 5;
+    makeCircleLinkList<ListNode>(list, n);
+
+    breakCircleLinkList<ListNode>(list);
+
+    destroyLinkList<ListNode>(list);
     return 0;
 }
 #endif
