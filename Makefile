@@ -1,4 +1,4 @@
-default: CountPrimes
+default: CloneGraph
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -274,6 +274,9 @@ HappyNumber:
 LinkedListCycle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
 
+LinkedListCycleII: LinkList.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycleII.cpp LinkList.o NormalData.o
+
 AddTwoNumbers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddTwoNumbers.cpp 
 
@@ -296,8 +299,20 @@ SingleNumberII:
 CountPrimes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountPrimes.cpp
 
+TwoSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSum.cpp
+
 ThreeSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSum.cpp
+
+IsomorphicStrings:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IsomorphicStrings.cpp
+
+GasStation: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GasStation.cpp RandomData.o NormalData.o
+
+CloneGraph:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CloneGraph.cpp
 
 ctags:
 	ctags *

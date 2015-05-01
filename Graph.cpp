@@ -6,6 +6,7 @@
 #include <stack>
 #include <vector>
 #include <utility>
+
 #include "Graph.h"
 #include "NormalData.h"
 
@@ -418,19 +419,24 @@ int main()
     // here we manually search graph from node 1
 //    BFS(1);
 
-    Graph g;
-    InitializeGraph(g, G_V1, W);
-    vector<Vertex *>::iterator sItr = FindVertex(g, 0);
+    //Graph g;
+    //InitializeGraph(g, G_V1, W);
+    //vector<Vertex *>::iterator sItr = FindVertex(g, 0);
     
-    if (sItr != g.V.end())
-    {
-//        cout << BELLMAN_FORD(g, W, *sItr) << endl;
+    //if (sItr != g.V.end())
+    //{
+////        cout << BELLMAN_FORD(g, W, *sItr) << endl;
 
-        Dijkstra(g, W, *sItr);
-        for_each(g.V.begin(), g.V.end(), printVertex);
-        cout << endl;
-    }
+        //Dijkstra(g, W, *sItr);
+        //for_each(g.V.begin(), g.V.end(), printVertex);
+        //cout << endl;
+    //}
 
+    string s("012#12#22");
+    UndirectedGraphNode *g = NULL;
+    createUndirectedGraph(g, s);
+    printUndirectedGraph(g);
+    destroyUndirectedGraph(g);
     return 0;
 }
 #endif

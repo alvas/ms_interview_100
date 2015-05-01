@@ -1,6 +1,134 @@
+#include <cassert>
 #include <limits>
+#include <map>
+#include <queue>
+#include <vector>
 
 using namespace std;
+
+struct UndirectedGraphNode 
+{
+    int label;
+    vector<UndirectedGraphNode *> neighbors;
+    UndirectedGraphNode(int x) : label(x) {};
+};
+
+void createUndirectedGraph(UndirectedGraphNode *&g, const string &str)
+{
+    int size = str.size();
+    bool newNode = true;
+    UndirectedGraphNode *node = NULL;
+    map<int, UndirectedGraphNode *> m;
+
+    for (int i = 0; i < size; ++i)
+    {
+        // checking not '#' to avoid the case that the first character is #
+        // and the case that multiple # stay together
+        if (newNode && str[i] != '#')
+        {
+            int t = str[i] - 48;
+            map<int, UndirectedGraphNode *>::iterator itr = m.find(t);
+
+            // Be careful about here!!
+            // When we can find the label from map, still remember to update the node.
+            if (itr == m.end())
+            {
+                node = new UndirectedGraphNode(t);
+                m.insert(make_pair(t, node));
+            }
+            else
+            {
+                node = itr->second;
+            }
+
+            newNode = false;
+
+            if (i == 0)
+            {
+                g = node;
+            }
+        }
+        else if (str[i] == '#')
+        {
+            newNode = true;
+        }
+        else
+        {
+            int t = str[i] - 48;
+            map<int, UndirectedGraphNode *>::iterator itr = m.find(t);
+
+            if (itr  == m.end())
+            {
+                UndirectedGraphNode *p = new UndirectedGraphNode(t);
+                m.insert(make_pair(t, p));
+                node->neighbors.push_back(p);
+            }
+            else
+            {
+                node->neighbors.push_back(itr->second);
+            }
+        }
+    }
+}
+
+void printUndirectedGraph(UndirectedGraphNode *g)
+{
+    queue<UndirectedGraphNode *> q;
+    map<int, UndirectedGraphNode *> m;
+
+    q.push(g);
+    m.insert(make_pair(g->label, g));
+
+    while (!q.empty())
+    {
+        UndirectedGraphNode *node = q.front();
+        q.pop();
+        cout << "node " << node->label << " has neighbors: " << endl;
+
+        for (vector<UndirectedGraphNode *>::iterator itr = node->neighbors.begin();
+            itr != node->neighbors.end(); ++itr)
+        {
+            if (m.find((*itr)->label) == m.end())
+            {
+                m.insert(make_pair((*itr)->label, *itr));
+                q.push(*itr);
+            }
+
+            cout << (*itr)->label << "\t";
+        }
+        
+        cout << endl;
+    }
+}
+
+void destroyUndirectedGraph(UndirectedGraphNode *&g)
+{
+    queue<UndirectedGraphNode *> q;
+    map<int, UndirectedGraphNode *> m;
+
+    q.push(g);
+    m.insert(make_pair(g->label, g));
+
+    while (!q.empty())
+    {
+        UndirectedGraphNode *node = q.front();
+        q.pop();
+
+        for (vector<UndirectedGraphNode *>::iterator itr = node->neighbors.begin();
+            itr != node->neighbors.end(); ++itr)
+        {
+            if (m.find((*itr)->label) == m.end())
+            {
+                m.insert(make_pair((*itr)->label, *itr));
+                q.push(*itr);
+            }
+        }
+        
+        delete node;
+    }
+
+    g = NULL;
+}
 
 class Vertex 
 {
