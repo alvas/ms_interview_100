@@ -16,7 +16,6 @@ public:
 
         for (int i = 0; i < size; )
         {
-            vector<int> v;
             int target = -num[i];
 
             // don't need to find triples which contain previous elements
@@ -28,6 +27,7 @@ public:
 
                 if (sum == target)
                 {
+                    vector<int> v;
                     v.push_back(num[start]);
                     v.push_back(num[end]);
                     v.push_back(-target);
@@ -35,7 +35,6 @@ public:
                     result.push_back(v);
 
                     // the same target, there would be different combinations of start and end.
-                    v.clear();
                     start++;
 
                     // skip duplicate num[start]

@@ -1,3 +1,5 @@
+#ifndef NORMAL_DATA_HEADER_H
+#define NORMAL_DATA_HEADER_H
 #include <vector>
 
 using namespace std;
@@ -12,6 +14,12 @@ const int CHARCOLUMNS = 80;
 const int ALPHABET = 26;
 
 void initializeIndexVector(vector<int> &v, const int size);
+
+template <typename T>
+void printFunc(const T &p)
+{
+    cout << p << "  ";
+}
 
 // Template function must be in the calling site or header file,
 // otherwise it would not compile.
@@ -28,7 +36,7 @@ void printVector(const vector<T> &v)
     {
         cout << *itr << "\t";
 
-        if (column++ % COLUMNS == COLUMNS - 1)
+        if (++column % COLUMNS == 0)
         {
             cout << endl;
         }
@@ -37,10 +45,23 @@ void printVector(const vector<T> &v)
     cout << endl;
 }
 
-template <typename T>
-void printFunc(T str)
+// specialization
+template<typename T>
+void printVector(const vector<pair<T, T> > &v)
 {
-    cout << str << " ";
+    int column = 0;
+
+    for (typename vector<pair<int, int> >::const_iterator itr = v.begin(); itr != v.end(); ++itr)
+    {
+        cout << "(" << itr->first << ", " << itr->second << ") ";
+
+        if (++column % COLUMNS == 0)
+        {
+            cout << endl;
+        }
+    }
+
+    cout << endl;
 }
 
 template <typename T>
@@ -54,3 +75,4 @@ void print2DVector(const vector<vector<T> > &v)
 }
 
 void initialize2DVector(vector<vector<int> > &v, int row, int column);
+#endif

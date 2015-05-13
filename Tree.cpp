@@ -839,6 +839,7 @@ void BuildPostOrderVector2(TreeNode * const root, vector<int> &v)
     s.push(cur);
     cur = cur->left;
 
+    // Every time we push a node to stack, we set the cur = cur->left.
     while (!s.empty())
     {
         if (cur != NULL)
@@ -860,6 +861,7 @@ void BuildPostOrderVector2(TreeNode * const root, vector<int> &v)
             }
             else
             {
+                // After we pop the node from stack, we don't modify the cur pointer.
                 s.pop();
                 v.push_back(top->val);
                 prev = top;
@@ -977,55 +979,46 @@ void ReBuildTreeFromOrderLevel(TreeNode *&root, const vector<string> &s)
 
     for (int i = 1; i < size; )
     {
-        TreeNode *node = NULL;
-
-        // for each node, we will process it two children,
-        // left first, then right. So the second time, we don't
-        // need to pop a node from the queue front yet. we need
-        // to process the right child.
-        bool left = true;
-
-        while (!q.empty() && i < size)
+        if (!q.empty())
         {
-            if (left)
-            {
-                node = q.front();
-                q.pop();
-            }
+            TreeNode *node = q.front();
+            q.pop();
 
-            if (s[i] == "#")
+            if (i < size)
             {
-                i++;
-
-                if (left)
+                if (s[i] == "#")
                 {
                     cout << "left leaf child of " << node->val << " is empty leaf #!" << endl;
                 }
                 else
                 {
-                    cout << "right leaf child of " << node->val << " is empty leaf #!" << endl;
-                }
-            }
-            else
-            {
-                TreeNode *tmp = new TreeNode(atoi(s[i].c_str()));
-                q.push(tmp);
+                    TreeNode *tmp = new TreeNode(atoi(s[i].c_str()));
+                    q.push(tmp);
 
-                if (left)
-                {
                     node->left = tmp;
                     cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
                 }
-                else
-                {
-                    node->right = tmp;
-                    cout << "Creating node : " << tmp->val << " for as right child of " << node->val << endl;
-                }
-
-                i++;
             }
 
-            left = !left;
+            i++;
+
+            if (i < size)
+            {
+                if (s[i] == "#")
+                {
+                    cout << "right leaf child of " << node->val << " is empty leaf #!" << endl;
+                }
+                else
+                {
+                    TreeNode *tmp = new TreeNode(atoi(s[i].c_str()));
+                    q.push(tmp);
+
+                    node->right = tmp;
+                    cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
+                }
+            }
+
+            i++;
         }
     }
 }

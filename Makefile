@@ -1,4 +1,4 @@
-default: CloneGraph
+default: BinaryTreeInorderTraversal
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -271,6 +271,9 @@ ValidSudoku:
 HappyNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HappyNumber.cpp 
 
+ReverseLinkedList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedList.cpp LinkList.o
+
 LinkedListCycle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
 
@@ -305,6 +308,9 @@ TwoSum:
 ThreeSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSum.cpp
 
+FourSum: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FourSum.cpp NormalData.o
+
 IsomorphicStrings:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IsomorphicStrings.cpp
 
@@ -314,8 +320,35 @@ GasStation: RandomData.o NormalData.o
 CloneGraph:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CloneGraph.cpp
 
+ThreeSumClosest:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSumClosest.cpp
+
+PalindromePartitioning:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioning.cpp
+
+UniqueBinarySearchTrees:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTrees.cpp
+
+SurroundedRegions:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SurroundedRegions.cpp
+
+SumRootToLeafNumbers: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumRootToLeafNumbers.cpp Tree.o
+
+BestTimeToBuyAndSellStock:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStock.cpp
+
+BestTimeToBuyAndSellStockII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockII.cpp
+
+BinaryTreeInorderTraversal: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeInorderTraversal.cpp Tree.o
+
+BinaryTreePostorderTraversal: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePostorderTraversal.cpp Tree.o
+
 ctags:
-	ctags *
+	ctags -R .
 
 cscope:
 	find . -name "*.cpp" -o -name "*.h" > cscope.files

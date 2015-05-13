@@ -432,9 +432,11 @@ int main()
         //cout << endl;
     //}
 
-    string s("012#12#22");
+    const int LOCAL_LENGTH = 9;
+    string s[LOCAL_LENGTH] = {"0", "1", "2", "#", "1", "2", "#", "2", "2"};
+    vector<string> vs(s, s + LOCAL_LENGTH);
     UndirectedGraphNode *g = NULL;
-    createUndirectedGraph(g, s);
+    createUndirectedGraph(g, vs);
     printUndirectedGraph(g);
     destroyUndirectedGraph(g);
     return 0;

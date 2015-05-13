@@ -1,3 +1,5 @@
+#ifndef TREE_H
+#define TREE_H
 #include <vector>
 
 using namespace std;
@@ -23,3 +25,4 @@ void ReBuildTreeFromOrderLevel(TreeNode *&root, const vector<string> &s);
 void BuildOrderLevelVector(TreeNode * const root, vector<string> &v);
 void CleanUp(TreeNode *&root);
 void CleanUp2(TreeNode *&root);
+#endif

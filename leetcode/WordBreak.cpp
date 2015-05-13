@@ -18,6 +18,7 @@ public:
 
         // !! Pitfall !! don't use index vector, because it needs to depends on the previous value
         int size = s.size();
+        // vector v indicates that whether all characters before and include v[i] can be broken into words.
         vector<bool> v(size + 1, false);
 
         for (int i = 1; i <= size; ++i)

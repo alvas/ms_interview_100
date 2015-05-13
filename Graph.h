@@ -13,7 +13,7 @@ struct UndirectedGraphNode
     UndirectedGraphNode(int x) : label(x) {};
 };
 
-void createUndirectedGraph(UndirectedGraphNode *&g, const string &str)
+void createUndirectedGraph(UndirectedGraphNode *&g, const vector<string> &str)
 {
     int size = str.size();
     bool newNode = true;
@@ -24,9 +24,9 @@ void createUndirectedGraph(UndirectedGraphNode *&g, const string &str)
     {
         // checking not '#' to avoid the case that the first character is #
         // and the case that multiple # stay together
-        if (newNode && str[i] != '#')
+        if (newNode && str[i] != "#")
         {
-            int t = str[i] - 48;
+            int t = atoi(str[i].c_str());
             map<int, UndirectedGraphNode *>::iterator itr = m.find(t);
 
             // Be careful about here!!
@@ -48,13 +48,13 @@ void createUndirectedGraph(UndirectedGraphNode *&g, const string &str)
                 g = node;
             }
         }
-        else if (str[i] == '#')
+        else if (str[i] == "#")
         {
             newNode = true;
         }
         else
         {
-            int t = str[i] - 48;
+            int t = atoi(str[i].c_str());
             map<int, UndirectedGraphNode *>::iterator itr = m.find(t);
 
             if (itr  == m.end())
@@ -71,8 +71,14 @@ void createUndirectedGraph(UndirectedGraphNode *&g, const string &str)
     }
 }
 
-void printUndirectedGraph(UndirectedGraphNode *g)
+void printUndirectedGraph(UndirectedGraphNode * const g)
 {
+    if (g == NULL)
+    {
+        cout << "Graph is empty!" << endl;
+        return;
+    }
+
     queue<UndirectedGraphNode *> q;
     map<int, UndirectedGraphNode *> m;
 
@@ -103,6 +109,11 @@ void printUndirectedGraph(UndirectedGraphNode *g)
 
 void destroyUndirectedGraph(UndirectedGraphNode *&g)
 {
+    if (g == NULL)
+    {
+        return;
+    }
+
     queue<UndirectedGraphNode *> q;
     map<int, UndirectedGraphNode *> m;
 
