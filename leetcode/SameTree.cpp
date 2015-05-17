@@ -80,8 +80,8 @@ int main()
     string leaf2[12] = {"1", "2", "2", "3", "#", "#", "3", "7", "4", "#", "#", "4"};
     vector<string> v(leaf, leaf + 11);
     vector<string> v2(leaf2, leaf2 + 12);
-    ReBuildTreeFromOrderLevel(p, v);
-    ReBuildTreeFromOrderLevel(q, v2);
+    ReBuildTreeFromOrderLevel<TreeNode>(p, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(q, v2);
     cout << sln.isSameTree(p, q) << endl;
     return 0;
 }

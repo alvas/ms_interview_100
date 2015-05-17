@@ -79,7 +79,7 @@ int main()
 
     Solution sln;
     cout << sln.hasPathSum(root, num) << endl;
-    CleanUp2(root);
+    CleanUp2<TreeNode>(root);
     return 0;
 }
 

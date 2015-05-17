@@ -68,12 +68,12 @@ int main()
     vector<string> v(s, s + LOCAL_LENGTH);
     printVector<string>(v);
     TreeNode *root = NULL;
-    ReBuildTreeFromOrderLevel(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
     vector<string> v2;
     BuildOrderLevelVector(root, v2);
     printVector<string>(v2);
     vector<int> r = sln.postorderTraversal(root);
     printVector<int>(r);
-    CleanUp2(root);
+    CleanUp2<TreeNode>(root);
     return 0;
 }

@@ -18,7 +18,7 @@ using namespace std;
  */
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> preorderTraversal(TreeNode* root) {
         vector<int> r;
 
         if (root == NULL)
@@ -28,6 +28,7 @@ public:
 
         stack<TreeNode *> s;
         s.push(root);
+        r.push_back(root->val);
         TreeNode *prev = root;
 
         while (!s.empty())
@@ -38,28 +39,22 @@ public:
             {
                 s.pop();
                 prev = top;
-                r.push_back(top->val);
             }
             else if (top->left != NULL && prev != top->left && prev != top->right)
             {
                 s.push(top->left);
+                // Be careful to push the top->left->value, not top->val
+                r.push_back(top->left->val);
             }
             else if (top->right != NULL && prev != top->right)
             {
                 s.push(top->right);
-                r.push_back(top->val);
+                // Be careful to push the top->right->value, not top->val
+                r.push_back(top->right->val);
             }
             else
             {
                 s.pop();
-
-                // if a node doesn't have right child, when after visit its left child tree, we need to print this node
-                // {"1", "#", "3", "2", "#"}
-                if (prev != top->right)
-                {
-                    r.push_back(top->val);
-                }
-
                 prev = top;
             }
         }
@@ -71,19 +66,19 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 5;
-    //string s[LOCAL_LENGTH] = {"30", "10", "50", "#", "#", "#", "20", "45", "#", "#", "35", "#", "#"};
+    const int LOCAL_LENGTH = 13;
+    string s[LOCAL_LENGTH] = {"30", "10", "50", "#", "#", "#", "20", "45", "#", "#", "35", "#", "#"};
     //string s[LOCAL_LENGTH] = {"1", "2"};
     //string s[LOCAL_LENGTH] = {"1", "#", "2"};
     //string s[LOCAL_LENGTH] = {"1"};
     //string s[LOCAL_LENGTH] = {"1", "2", "#", "3", "#", "4", "#"};
     //string s[LOCAL_LENGTH] = {"4", "#", "3", "#", "2", "#", "1"};
     //string s[LOCAL_LENGTH] = {"1", "3", "#", "#", "2"};
-    string s[LOCAL_LENGTH] = {"1", "#", "3", "2", "#"};
+    //string s[LOCAL_LENGTH] = {"1", "#", "3", "2", "#"};
     vector<string> v(s, s + LOCAL_LENGTH);
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(root, v);
-    vector<int> r = sln.inorderTraversal(root);
+    vector<int> r = sln.preorderTraversal(root);
     printVector<int>(r);
     CleanUp2<TreeNode>(root);
     return 0;

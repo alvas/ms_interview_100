@@ -1,4 +1,4 @@
-default: BinaryTreeInorderTraversal
+default: PopulatingNextRightPointersInEachNode
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -341,11 +341,45 @@ BestTimeToBuyAndSellStock:
 BestTimeToBuyAndSellStockII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockII.cpp
 
+BinaryTreePreorderTraversal: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePreorderTraversal.cpp Tree.o
+
 BinaryTreeInorderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeInorderTraversal.cpp Tree.o
 
 BinaryTreePostorderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePostorderTraversal.cpp Tree.o
+
+SearchInsertPosition:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInsertPosition.cpp
+
+SwapNodesInPairs: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SwapNodesInPairs.cpp LinkList.o
+
+ReorderList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReorderList.cpp LinkList.o
+
+ConvertSortedArrayToBinarySearchTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedArrayToBinarySearchTree.cpp Tree.o
+
+GenerateParentheses:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GenerateParentheses.cpp
+
+MaximumSubarray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumSubarray.cpp
+
+MinimumSizeSubarraySum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumSizeSubarraySum.cpp
+
+ValidateBinarySearchTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidateBinarySearchTree.cpp Tree.o
+
+NumberOfIslands:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfIslands.cpp
+
+PopulatingNextRightPointersInEachNode:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp
+
 
 ctags:
 	ctags -R .

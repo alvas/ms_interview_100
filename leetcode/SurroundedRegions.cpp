@@ -171,7 +171,7 @@ int main()
     };
 
 /*
-    const char *a[LOCAL_WIDTH] =
+    const char *a[LOCAL_HEIGHT] =
     {
         "OXXXXXOO",
         "OOOXXXXO",

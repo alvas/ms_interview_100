@@ -57,7 +57,7 @@ int main()
     TreeNode *root = NULL;
     string leaf[11] = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "1", "4"};
     vector<string> v(leaf, leaf + 11);
-    ReBuildTreeFromOrderLevel(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
     cout << sln.isSymmetric(root) << endl;
     return 0;
 }

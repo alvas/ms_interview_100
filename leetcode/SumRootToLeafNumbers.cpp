@@ -58,8 +58,8 @@ int main()
     string node[LOCAL_LENGTH] = {"1", "2", "3", "4", "6", "2", "9", "5", "#", "#", "#", "#", "8"};
     vector<string> v(node, node + LOCAL_LENGTH);
     TreeNode *root = NULL;
-    ReBuildTreeFromOrderLevel(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
     cout << sln.sumNumbers(root) << endl;
-    CleanUp2(root);
+    CleanUp2<TreeNode>(root);
     return 0;
 }
