@@ -89,7 +89,7 @@ int main()
     TreeNode *root = NULL;
     string s[7] = {"3", "9", "20", "#", "#", "15", "7"};
     vector<string> v(s, s + 7);
-    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     vector<vector<int> > r = sln.levelOrderBottom(root);
     print2DVector<int>(r);
     return 0;

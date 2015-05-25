@@ -1,4 +1,4 @@
-default: PopulatingNextRightPointersInEachNode
+default: FindPeakElement
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -33,6 +33,18 @@ exec1:
 exec2:
 	g++ exec2.cpp
 
+exec3:
+	g++ exec3.cpp
+
+exec4:
+	g++ exec4.cpp
+
+exec5:
+	g++ exec5.cpp
+
+exec8:
+	g++ exec8.cpp
+
 NormalData.o:
 	$(CC) $(CFLAGS) NormalData.cpp
 
@@ -48,18 +60,6 @@ QuickSort.o: RandomData.o
 
 QuickSort: RandomData.o
 	$(CC) $(DFLAGS) QuickSort.cpp RandomData.o NormalData.o
-
-exec3:
-	g++ exec3.cpp
-
-exec4:
-	g++ exec4.cpp
-
-exec5:
-	g++ exec5.cpp
-
-exec8:
-	g++ exec8.cpp
 
 HeapSort: RandomData.o NormalData.o
 	$(CC) HeapSort.cpp RandomData.o NormalData.o
@@ -235,6 +235,9 @@ BinaryTreeLevelOrderTraversalII: Tree.o
 RemoveDuplicatesFromSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArray.cpp
 
+RemoveDuplicatesFromSortedArrayII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArrayII.cpp
+
 ImplementStrStr:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStrStr.cpp
 
@@ -255,6 +258,9 @@ RemoveElement:
 
 RemoveDuplicatesFromSortedList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedList.cpp LinkList.o
+
+RemoveDuplicatesFromSortedListII: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedListII.cpp LinkList.o
 
 ClimbingStairs:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClimbingStairs.cpp 
@@ -362,6 +368,9 @@ ReorderList: LinkList.o
 ConvertSortedArrayToBinarySearchTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedArrayToBinarySearchTree.cpp Tree.o
 
+ConvertSortedListToBinarySearchTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedListToBinarySearchTree.cpp
+
 GenerateParentheses:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GenerateParentheses.cpp
 
@@ -377,9 +386,53 @@ ValidateBinarySearchTree: Tree.o
 NumberOfIslands:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfIslands.cpp
 
-PopulatingNextRightPointersInEachNode:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp
+PopulatingNextRightPointersInEachNode: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp Tree.o
 
+FindMinimumInRotatedSortedArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArray.cpp
+
+FindMinimumInRotatedSortedArrayII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArrayII.cpp
+
+SearchInRotatedSortedArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInRotatedSortedArray.cpp
+
+SearchInRotatedSortedArrayII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInRotatedSortedArrayII.cpp
+
+FlattenBinaryTreeToLinkedList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenBinaryTreeToLinkedList.cpp
+
+BinarySearchTreeIterator:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinarySearchTreeIterator.cpp
+
+SortList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortList.cpp
+
+SortColors:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortColors.cpp
+
+InsertionSortList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertionSortList.cpp
+
+ContainsDuplicate:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicate.cpp
+
+Combinations:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Combinations.cpp
+
+Permutations: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Permutations.cpp NormalData.o
+
+KthLargestElementInAnArray: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthLargestElementInAnArray.cpp RandomData.o NormalData.o
+
+UniquePaths:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePaths.cpp
+
+FindPeakElement: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindPeakElement.cpp RandomData.o NormalData.o
 
 ctags:
 	ctags -R .

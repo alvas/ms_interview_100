@@ -65,7 +65,7 @@ void JosephusLinkList(int n, int k)
             }
 
 #ifdef DEBUG
-            cout << "Delete node " << p->key << endl << endl;;
+            cout << "Delete node " << p->val << endl << endl;;
 #endif
             delete p;
         }

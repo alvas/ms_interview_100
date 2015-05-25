@@ -114,7 +114,7 @@ int main()
 
     string leaf[11] = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "#", "4"};
     vector<string> s(leaf, leaf + 11);
-    ReBuildTreeFromOrderLevel<TreeNode>(root, s);
+    ReBuildTreeFromOrderLevel<TreeNode>(s, root);
     cout << sln.isBalanced(root) << endl;
     CleanUp(root);
     return 0;

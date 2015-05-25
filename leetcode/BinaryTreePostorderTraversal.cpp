@@ -68,7 +68,7 @@ int main()
     vector<string> v(s, s + LOCAL_LENGTH);
     printVector<string>(v);
     TreeNode *root = NULL;
-    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     vector<string> v2;
     BuildOrderLevelVector(root, v2);
     printVector<string>(v2);

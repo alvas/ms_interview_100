@@ -79,18 +79,10 @@ void destroyLinkList(T *p)
         // deleting circular link list.
         T *head = p;
 
-#ifdef DEBUG
-        cout << "The address of head is " << head << endl;
-#endif
 
         do
         {
             T *tmp = p;
-#ifdef DEBUG
-            cout << "Deleting node " << tmp->val << endl;
-            cout << "Next node " << p->val << "; ";
-            cout << "The address of next node is " << p->next << endl;
-#endif
             p = p->next;
             delete tmp;
         } while (p!= NULL && p!= head);

@@ -49,7 +49,7 @@ void printCircularLinkList(CircularLinkList &list)
     {
         do
         {
-            cout << "Current node " << list.current->key << endl;
+            cout << "Current node " << list.current->val << endl;
             list.current = list.current->next;
         } while (list.current != head);
         // When we loop back to the head of the circular link list, we stop.
@@ -63,7 +63,7 @@ int main()
     initializeIndexVector(v, SIZE);
     CircularLinkList list(v);
     printCircularLinkList(list);
-    cout << "The current node is: " << list.GetCurrent()->key << endl;
+    cout << "The current node is: " << list.GetCurrent()->val << endl;
     return 0;
 }
 #endif

@@ -68,7 +68,7 @@ int main()
     TreeNode *p = NULL;
     string leaf[11] = {"1", "2", "3", "#", "5", "#", "4"};
     vector<string> v(leaf, leaf + 7);
-    ReBuildTreeFromOrderLevel<TreeNode>(p, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(v, p);
     vector<int> u = sln.rightSideView(p);
     printVector<int>(u);
     return 0;

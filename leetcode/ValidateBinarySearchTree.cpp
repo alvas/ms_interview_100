@@ -49,7 +49,7 @@ int main()
     //string a[LOCAL_LENGTH] = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
     vector<string> v(a, a + LOCAL_LENGTH);
     TreeNode *root = NULL;
-    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     cout << sln.isValidBST(root) << endl;
     CleanUp2<TreeNode>(root);
     return 0;

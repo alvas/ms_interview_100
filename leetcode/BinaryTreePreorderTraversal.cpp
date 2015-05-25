@@ -77,7 +77,7 @@ int main()
     //string s[LOCAL_LENGTH] = {"1", "#", "3", "2", "#"};
     vector<string> v(s, s + LOCAL_LENGTH);
     TreeNode *root = NULL;
-    ReBuildTreeFromOrderLevel<TreeNode>(root, v);
+    ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     vector<int> r = sln.preorderTraversal(root);
     printVector<int>(r);
     CleanUp2<TreeNode>(root);

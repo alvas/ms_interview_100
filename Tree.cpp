@@ -83,48 +83,6 @@ void DFS(TreeNode *p)
     }
 }
 
-// because we need to push TreeNode * to stack, it can't be declared as const
-void printTreePreorder(TreeNode *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-
-    stack<TreeNode *> s;
-    s.push(root);
-    TreeNode *prev = root;
-    cout << root->val << "\t";
-
-    while (!s.empty())
-    {
-        TreeNode *top = s.top();
-
-        if (top->left == NULL && top->right == NULL)
-        {
-            s.pop();
-            prev = top;
-        }
-        else if (top->left != NULL && prev != top->left && prev != top->right)
-        {
-            s.push(top->left);
-            cout << top->left->val << "\t";
-        }
-        else if (top->right != NULL && prev != top->right)
-        {
-            s.push(top->right);
-            cout << top->right->val << "\t";
-        }
-        else
-        {
-            s.pop();
-            prev = top;
-        }
-    } 
-
-    cout << endl;
-}
-
 int maxDepthPostOrderWithStack(TreeNode *root)
 {
     if (root == NULL)
@@ -967,6 +925,35 @@ void BuildOrderLevelVector(TreeNode * const root, vector<string> &v)
         else
         {
             v.push_back("#");
+        }
+    }
+}
+
+void printTreeLinkOrderLevel(const TreeLinkNode *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    const TreeLinkNode *f = root;
+    cout << f->val << endl;
+
+    while (f != NULL)
+    {
+        TreeLinkNode *c = f->left;
+
+        while (c != NULL)
+        {
+            cout << c->val << "\t";
+            c = c->next;
+        }
+
+        cout << endl;
+
+        if (f != NULL)
+        {
+            f = f->left;
         }
     }
 }

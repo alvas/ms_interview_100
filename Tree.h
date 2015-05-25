@@ -1,7 +1,8 @@
 #ifndef TREE_H
 #define TREE_H
-#include <vector>
 #include <queue>
+#include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -32,11 +33,11 @@ void ReBuildTreeFromInPost(int *inOrder, int *postOrder, int nTreeLen, TreeNode 
 void ReBuildTreeFromInPost2(int *inOrder, int *postOrder, int nTreeLen, TreeNode *&root);
 void BuildOrderLevelVector(TreeNode * const root, vector<string> &v);
 void CleanUp(TreeNode *&root);
-void printTreePreorder(TreeNode *root);
+void printTreeLinkOrderLevel(const TreeLinkNode *root);
 
 // Deserialization
 template<typename T>
-void ReBuildTreeFromOrderLevel(T *&root, const vector<string> &s)
+void ReBuildTreeFromOrderLevel(const vector<string> &s, T *&root)
 {
     int size = s.size();
     
@@ -48,7 +49,7 @@ void ReBuildTreeFromOrderLevel(T *&root, const vector<string> &s)
     queue<T *> q;
     root = new T(atoi(s[0].c_str()));
     q.push(root);
-    cout << "Creating node : " << root->val << endl;
+    //cout << "Creating node : " << root->val << endl;
 
     for (int i = 1; i < size; )
     {
@@ -61,7 +62,7 @@ void ReBuildTreeFromOrderLevel(T *&root, const vector<string> &s)
             {
                 if (s[i] == "#")
                 {
-                    cout << "left leaf child of " << node->val << " is empty leaf #!" << endl;
+                    //cout << "left leaf child of " << node->val << " is empty leaf #!" << endl;
                 }
                 else
                 {
@@ -69,7 +70,7 @@ void ReBuildTreeFromOrderLevel(T *&root, const vector<string> &s)
                     q.push(tmp);
 
                     node->left = tmp;
-                    cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
+                    //cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
                 }
             }
 
@@ -79,7 +80,7 @@ void ReBuildTreeFromOrderLevel(T *&root, const vector<string> &s)
             {
                 if (s[i] == "#")
                 {
-                    cout << "right leaf child of " << node->val << " is empty leaf #!" << endl;
+                    //cout << "right leaf child of " << node->val << " is empty leaf #!" << endl;
                 }
                 else
                 {
@@ -87,7 +88,7 @@ void ReBuildTreeFromOrderLevel(T *&root, const vector<string> &s)
                     q.push(tmp);
 
                     node->right = tmp;
-                    cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
+                    //cout << "Creating node : " << tmp->val << " for as left child of " << node->val << endl;
                 }
             }
 
@@ -125,6 +126,160 @@ void CleanUp2(T *&root)
         //cout << "Freeing node: " << p->val << endl;
         delete p;
     }
+}
+
+// because we need to push TreeNode * to stack, it can't be declared as const
+template<typename T>
+void printTreePreorder(T *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    stack<T *> s;
+    s.push(root);
+    T *prev = root;
+    cout << root->val << "\t";
+
+    while (!s.empty())
+    {
+        T *top = s.top();
+
+        if (top->left == NULL && top->right == NULL)
+        {
+            s.pop();
+            prev = top;
+        }
+        else if (top->left != NULL && prev != top->left && prev != top->right)
+        {
+            s.push(top->left);
+            cout << top->left->val << "\t";
+        }
+        else if (top->right != NULL && prev != top->right)
+        {
+            s.push(top->right);
+            cout << top->right->val << "\t";
+        }
+        else
+        {
+            s.pop();
+            prev = top;
+        }
+    } 
+
+    cout << endl;
+}
+
+template<typename T>
+void printTreeInorder(T *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    stack<TreeNode *> s;
+    s.push(root);
+    TreeNode *prev = root;
+
+    while (!s.empty())
+    { 
+        TreeNode *top = s.top();
+
+        if (top->left == NULL && top->right == NULL)
+        {
+            s.pop();
+            cout << top->val << "\t";
+            prev = top;
+        }
+        else if (top->left != NULL && prev != top->left && prev != top->right)
+        {
+            s.push(top->left);
+        }
+        else if (top->right != NULL && prev != top->right)
+        {
+            s.push(top->right);
+        }
+        else
+        {
+            s.pop();
+            cout << top->val << "\t";
+            prev = top;
+        }
+    }
+
+    cout << endl;
+}
+
+template<typename T>
+void printTreePostorder(T *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    stack<TreeNode *> s;
+    s.push(root);
+    TreeNode *prev = NULL;
+
+    while (!s.empty())
+    {
+        TreeNode *top = s.top();
+
+        if (top->left != NULL && prev != top->left && (prev == NULL || prev != top->right))
+        {
+            s.push(top->left);
+        }
+        else if (top->right != NULL && prev != top->right)
+        {
+            s.push(top->right);
+        }
+        else
+        {
+            cout << top->val << "\t";
+            prev = top;
+            s.pop();
+        }
+    }
+
+    cout << endl;
+}
+
+template <typename T>
+void printTreeLevelOrder(T * const root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    queue<TreeNode *> q;
+    q.push(root);
+    cout << root->val << "\t";
+
+    while (!q.empty())
+    {
+        TreeNode *node = q.front();
+        q.pop();
+
+        if (node->left != NULL)
+        {
+            TreeNode *left = node->left;
+            q.push(left);
+            cout << left->val << "\t";
+        }
+
+        if (node->right != NULL)
+        {
+            TreeNode *right = node->right;
+            q.push(right);
+            cout << right->val << "\t";
+        }
+    }
+
+    cout << endl;
 }
 
 #endif
