@@ -74,5 +74,23 @@ void print2DVector(const vector<vector<T> > &v)
     }
 }
 
+void printString(const string &str)
+{
+    cout << str << endl;
+    return;
+}
+
+template <typename T>
+void print2DVector2(const vector<vector<T> > &v)
+{
+    for (typename vector<vector<T> >::const_iterator itr = v.begin(); itr != v.end(); ++itr)
+    {
+        for_each((*itr).begin(), (*itr).end(), printString);
+        cout << endl;
+    }
+
+    cout << endl;
+}
+
 void initialize2DVector(vector<vector<int> > &v, int row, int column);
 #endif

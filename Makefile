@@ -1,4 +1,4 @@
-default: FindPeakElement
+default: NQueensII
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -433,6 +433,15 @@ UniquePaths:
 
 FindPeakElement: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindPeakElement.cpp RandomData.o NormalData.o
+
+GrayCode:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GrayCode.cpp
+
+NQueens:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp
+
+NQueensII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueensII.cpp
 
 ctags:
 	ctags -R .

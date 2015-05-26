@@ -9,6 +9,64 @@ class Solution {
 public:
     int findPeakElement(vector<int>& nums) {
         int peak = 0;
+        int size = nums.size();
+
+        if (size == 0)
+        {
+            return peak;
+        }
+
+        // use r = size - 1 make life easier
+        int l = 0, r = size - 1;
+
+        // Be very careful about the boundary checking.
+        // At any time, elements outside of the range is smaller than the bounder inside the range.
+        while (l < r)
+        {
+            int m = (l + r) / 2;
+            
+            if (l <= m - 1 && m + 1 <= r)
+            {
+                if (nums[m - 1] < nums[m])
+                {
+                    if (nums[m] > nums[m + 1])
+                    {
+                        return m;
+                    }
+                    else
+                    {
+                        l = m;
+                    }
+                }
+                else
+                {
+                    r = m - 1;
+                }
+            }
+            else if (m + 1 <= r)
+            {
+                if (nums[m] < nums[m + 1])
+                {
+                    return m + 1;
+                }
+                else
+                {
+                    return m;
+                }
+            }
+            else if (l <= m - 1)
+            {
+                if (nums[m - 1] < nums[m])
+                {
+                    return m;
+                }
+                else
+                {
+                    return m - 1;
+                }
+            }
+        }
+
         return peak;
     }
 };
@@ -16,9 +74,11 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 9;
     vector<int> nums;
-    initializeRandomVector(nums, LOCAL_LENGTH);
+    int n = 0;
+    cout << "Please enter n: ";
+    cin >> n;
+    initializeRandomVector(nums, n);
     printVector<int>(nums);
     cout << sln.findPeakElement(nums) << endl;
     return 0;
