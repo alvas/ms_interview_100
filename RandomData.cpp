@@ -43,6 +43,18 @@ void initializeRandomVector(vector<int> &v, int length)
     generate(v.begin(), v.end(), RandomNumber);
 }
 
+void initialize2DRandomVector(vector<vector<int> > &v, int rows, int columns)
+{
+    srand(unsigned(time(0)));
+
+    for (int i = 0; i < rows; ++i)
+    {
+        vector<int> r(columns, 0);
+        generate(r.begin(), r.end(), RandomNumber);
+        v.push_back(r);
+    }
+}
+
 void initializeRandomIndexVector(vector<int> &v, const int size)
 {
     initializeIndexVector(v, size);

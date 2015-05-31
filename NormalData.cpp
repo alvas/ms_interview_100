@@ -2,6 +2,7 @@
 #include <iostream>
 #include "NormalData.h"
 
+
 struct c_unique
 {
     int current;
@@ -49,3 +50,8 @@ void initialize2DVector(vector<vector<int> > &v, int row, int column)
     }
 }
 
+void printString(const string &str)
+{
+    cout << str << endl;
+    return;
+}

@@ -1,4 +1,4 @@
-default: NQueensII
+default: ContainerWithMostWater
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -335,6 +335,9 @@ PalindromePartitioning:
 UniqueBinarySearchTrees:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTrees.cpp
 
+UniqueBinarySearchTreesII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTreesII.cpp
+
 SurroundedRegions:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SurroundedRegions.cpp
 
@@ -389,6 +392,9 @@ NumberOfIslands:
 PopulatingNextRightPointersInEachNode: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp Tree.o
 
+PopulatingNextRightPointersInEachNodeII: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNodeII.cpp Tree.o
+
 FindMinimumInRotatedSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArray.cpp
 
@@ -442,6 +448,30 @@ NQueens:
 
 NQueensII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueensII.cpp
+
+ConstructBinaryTreeFromPreorderAndInorderTraversal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructBinaryTreeFromPreorderAndInorderTraversal.cpp
+
+ConstructBinaryTreeFromInorderAndPostorderTraversal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructBinaryTreeFromInorderAndPostorderTraversal.cpp
+
+RotateImage: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateImage.cpp RandomData.o NormalData.o
+
+SpiralMatrixII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrixII.cpp
+
+SetMatrixZeroes: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SetMatrixZeroes.cpp RandomData.o NormalData.o
+
+SearchA2DMatrix: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrix.cpp RandomData.o NormalData.o
+
+SqrtX:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SqrtX.cpp
+
+ContainerWithMostWater: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainerWithMostWater.cpp RandomData.o NormalData.o
 
 ctags:
 	ctags -R .

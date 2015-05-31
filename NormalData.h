@@ -5,7 +5,7 @@
 using namespace std;
 
 const int LENGTH = 10;
-const int MAXNUM = 40;
+const int MAXNUM = 400;
 const int MAXSTRLEN = 300;
 
 const int COLUMNS = 10;
@@ -13,12 +13,14 @@ const int CHARCOLUMNS = 80;
 
 const int ALPHABET = 26;
 
+#define SIZE(a) (unsigned int)((sizeof(a)/sizeof(a[0])))
+
 void initializeIndexVector(vector<int> &v, const int size);
 
 template <typename T>
 void printFunc(const T &p)
 {
-    cout << p << "  ";
+    cout << p << "\t";
 }
 
 // Template function must be in the calling site or header file,
@@ -74,11 +76,9 @@ void print2DVector(const vector<vector<T> > &v)
     }
 }
 
-void printString(const string &str)
-{
-    cout << str << endl;
-    return;
-}
+// Don't put the definition of this function in header file.
+// Otherwise, it would cause duplicate symbol link error.
+void printString(const string &str);
 
 template <typename T>
 void print2DVector2(const vector<vector<T> > &v)

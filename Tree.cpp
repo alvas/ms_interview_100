@@ -941,7 +941,31 @@ void printTreeLinkOrderLevel(const TreeLinkNode *root)
 
     while (f != NULL)
     {
-        TreeLinkNode *c = f->left;
+        TreeLinkNode *c = NULL;
+        
+        while (c == NULL)
+        {
+            c = f->left;
+
+            if (c != NULL)
+            {
+                break;
+            }
+
+            c = f->right;
+
+            if (c != NULL)
+            {
+                break;
+            }
+
+            f = f->next;
+
+            if (f == NULL)
+            {
+                break;
+            }
+        }
 
         while (c != NULL)
         {
@@ -1055,7 +1079,7 @@ int main()
 
     //vector<int> v;
     //vector<string> v(leaf, leaf + 11);
-    //ReBuildTreeFromOrderLevel(root, v);
+    //ReBuildTreeFromOrderLevel(v, root);
     
     //string  bst[7] = {"30", "20", "40", "10", "25", "35", "50"};
     //vector<string> bstv(bst, bst + 7);
