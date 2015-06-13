@@ -1,4 +1,4 @@
-default: ContainerWithMostWater
+default: BinaryTreeMaximumPathSum
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -13,6 +13,7 @@ LFLAGS = -Wall
 CC = clang++
 # using boost
 LEETCODE = ./leetcode/
+# using this, so the header file could be found in the ms_interview_100 folder.
 INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.57.0/include
 
 LIBS = 
@@ -149,7 +150,10 @@ BinarySearch: RandomData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
 PathSum: Tree.o
-	$(CC) $(DFLAGS) $(LEETCODE)PathSum.cpp Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSum.cpp Tree.o
+
+PathSumII: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSumII.cpp Tree.o
 
 LengthOfLastWord:
 	$(CC) $(DFLAGS) $(LEETCODE)LengthOfLastWord.cpp
@@ -279,6 +283,9 @@ HappyNumber:
 
 ReverseLinkedList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedList.cpp LinkList.o
+
+ReverseLinkedListII: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedListII.cpp LinkList.o
 
 LinkedListCycle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
@@ -437,6 +444,9 @@ KthLargestElementInAnArray: RandomData.o NormalData.o
 UniquePaths:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePaths.cpp
 
+UniquePathsII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePathsII.cpp
+
 FindPeakElement: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindPeakElement.cpp RandomData.o NormalData.o
 
@@ -467,11 +477,74 @@ SetMatrixZeroes: RandomData.o NormalData.o
 SearchA2DMatrix: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrix.cpp RandomData.o NormalData.o
 
+ContainerWithMostWater: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainerWithMostWater.cpp RandomData.o NormalData.o
+
+TrappingRainWater: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TrappingRainWater.cpp RandomData.o NormalData.o
+
+LongestConsecutiveSequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestConsecutiveSequence.cpp
+
+Subsets: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Subsets.cpp NormalData.o
+
+SubsetsII: NormalData.o RandomData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubsetsII.cpp NormalData.o RandomData.o
+
+CombinationSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSum.cpp
+
+CombinationSumII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumII.cpp
+
+CombinationSumIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumIII.cpp
+
+PartitionList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PartitionList.cpp
+
+Triangle:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Triangle.cpp
+
+SearchForARange:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchForARange.cpp
+
+RectangleArea:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RectangleArea.cpp
+
+BitwiseAndOfNumbersRange:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BitwiseAndOfNumbersRange.cpp
+
+JumpGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGame.cpp
+
+JumpGameII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGameII.cpp
+
+MergeIntervals:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeIntervals.cpp
+
+ImplementStackUsingQueues:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStackUsingQueues.cpp
+
 SqrtX:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SqrtX.cpp
 
-ContainerWithMostWater: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainerWithMostWater.cpp RandomData.o NormalData.o
+PowXN:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowXN.cpp
+
+EditDistance:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EditDistance.cpp
+
+RotateList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateList.cpp LinkList.o
+
+InvertBinaryTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InvertBinaryTree.cpp Tree.o
+
+BinaryTreeMaximumPathSum: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeMaximumPathSum.cpp Tree.o
 
 ctags:
 	ctags -R .

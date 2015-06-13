@@ -18,9 +18,32 @@ class Solution {
 public:
     vector<TreeNode*> generateTrees(int n) {
         vector<TreeNode *> v;
+        vector<TreeNode *> subset;
+
+        for (int i = 1; i <= n; ++i)
+        {
+            TreeNode *node = new TreeNode(i);
+            subset.push_back(node);
+        }
 
         return v;
     }
+
+    void buildSubTree(int start, int end, vector<TreeNode *> &subset)
+    {
+        for (int i = 1; i <= n; ++i)
+        {
+            for (int j = 1; j <= n - i; ++j)
+            {
+                for (int k = j; k < i + j; ++k)
+                {
+                    TreeNode *node = new TreeNode(i);
+                    subset.push_back(node);
+                }
+            }
+        }
+    }
+
 };
 
 int main()
@@ -36,6 +59,7 @@ int main()
         TreeNode *root = *itr;
         printTreeLevelOrder(root);
         CleanUp2(root);
+        cout << endl;
     }
 
     return 0;

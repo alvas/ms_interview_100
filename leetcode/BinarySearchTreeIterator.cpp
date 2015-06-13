@@ -1,6 +1,8 @@
 #include <iostream>
+#include <stack>
 #include <vector>
 
+#include "NormalData.h"
 #include "Tree.h"
 
 using namespace std;
@@ -17,15 +19,45 @@ using namespace std;
 class BSTIterator {
 public:
     BSTIterator(TreeNode *root) {
+        if (root != NULL)
+        {
+            TreeNode *node = root;
+
+            while (node != NULL)
+            {
+                s.push(node);
+                node = node->left;
+            }
+        }
     }
 
     /** @return whether we have a next smallest number */
     bool hasNext() {
+        return !s.empty();
     }
 
     /** @return the next smallest number */
     int next() {
+        int val = 0;
+
+        if (!s.empty())
+        {
+            TreeNode *node = s.top();
+            s.pop();
+            val = node->val;
+            node = node->right;
+
+            while (node != NULL)
+            {
+                s.push(node);
+                node = node->left;
+            }
+        }
+
+        return val;
     }
+
+    stack<TreeNode *> s;
 };
 
 /**
@@ -35,18 +67,17 @@ public:
  */
 int main()
 {
-    const int LOCAL_LENGTH = 26;
     TreeNode *root = NULL;
     vector<string> v;
 
-    //string a[LOCAL_LENGTH] = {"1", "#", "2"};
-    //string a[LOCAL_LENGTH] = {"1", "#", "2", "3"};
-    //string a[LOCAL_LENGTH] = {"1", "2", "#", "3"};
-    //string a[LOCAL_LENGTH] = {"1", "2", "#", "#", "3"};
-    //string a[LOCAL_LENGTH] = {"1", "#", "2", "#", "3"};
-    //string a[LOCAL_LENGTH] = {"1", "#", "2", "#", "3", "#", "4", "5", "6"};
+    //string a[] = {"1", "#", "2"};
+    //string a[] = {"1", "#", "2", "3"};
+    //string a[] = {"1", "2", "#", "3"};
+    //string a[] = {"1", "2", "#", "#", "3"};
+    //string a[] = {"1", "#", "2", "#", "3"};
+    //string a[] = {"1", "#", "2", "#", "3", "#", "4", "5", "6"};
 
-    string a[LOCAL_LENGTH] = 
+    string a[] = 
     {
         "8", "4", "12", "2", "6",
         "10", "14", "1", "3", "5",
@@ -54,9 +85,10 @@ int main()
     };
 
     v.clear();
-    v.assign(a, a + LOCAL_LENGTH);
+    v.assign(a, a + SIZE(a));
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    printTreeLevelOrder<TreeNode>(root);
+    //printTreeLevelOrder<TreeNode>(root);
+    printTreeInorder<TreeNode>(root);
     BSTIterator i = BSTIterator(root);
 
     while (i.hasNext())

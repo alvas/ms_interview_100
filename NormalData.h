@@ -5,7 +5,7 @@
 using namespace std;
 
 const int LENGTH = 10;
-const int MAXNUM = 400;
+const int MAXNUM = 8;
 const int MAXSTRLEN = 300;
 
 const int COLUMNS = 10;

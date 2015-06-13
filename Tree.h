@@ -199,12 +199,12 @@ void printTreeInorder(T *root)
         }
         else if (top->right != NULL && prev != top->right)
         {
+            cout << top->val << "\t";
             s.push(top->right);
         }
         else
         {
             s.pop();
-            cout << top->val << "\t";
             prev = top;
         }
     }
