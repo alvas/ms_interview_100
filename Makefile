@@ -1,4 +1,4 @@
-default: BinaryTreeMaximumPathSum
+default: SudokuSolver
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -278,6 +278,9 @@ PlusOne:
 ValidSudoku:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidSudoku.cpp 
 
+SudokuSolver:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SudokuSolver.cpp 
+
 HappyNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HappyNumber.cpp 
 
@@ -545,6 +548,15 @@ InvertBinaryTree: Tree.o
 
 BinaryTreeMaximumPathSum: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeMaximumPathSum.cpp Tree.o
+
+LargestNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestNumber.cpp
+
+LargestRectangleInHistogram: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestRectangleInHistogram.cpp NormalData.o
+
+MaximalRectangle:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalRectangle.cpp
 
 ctags:
 	ctags -R .
