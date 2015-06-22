@@ -1,4 +1,4 @@
-default: SudokuSolver
+default: CopyListWithRandomPointer
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -290,6 +290,9 @@ ReverseLinkedList: LinkList.o
 ReverseLinkedListII: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedListII.cpp LinkList.o
 
+ReverseNodesInKGroup: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseNodesInKGroup.cpp LinkList.o
+
 LinkedListCycle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
 
@@ -335,6 +338,9 @@ GasStation: RandomData.o NormalData.o
 
 CloneGraph:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CloneGraph.cpp
+
+CopyListWithRandomPointer: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CopyListWithRandomPointer.cpp LinkList.o
 
 ThreeSumClosest:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSumClosest.cpp
@@ -435,6 +441,9 @@ InsertionSortList:
 ContainsDuplicate:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicate.cpp
 
+ContainsDuplicateII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateII.cpp
+
 Combinations:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Combinations.cpp
 
@@ -470,6 +479,9 @@ ConstructBinaryTreeFromInorderAndPostorderTraversal:
 
 RotateImage: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateImage.cpp RandomData.o NormalData.o
+
+SpiralMatrix: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp NormalData.o
 
 SpiralMatrixII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrixII.cpp
@@ -528,6 +540,9 @@ JumpGameII:
 MergeIntervals:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeIntervals.cpp
 
+InsertInterval:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertInterval.cpp
+
 ImplementStackUsingQueues:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStackUsingQueues.cpp
 
@@ -557,6 +572,25 @@ LargestRectangleInHistogram: NormalData.o
 
 MaximalRectangle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalRectangle.cpp
+
+MaximalSquare:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalSquare.cpp
+
+InterLeavingString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InterLeavingString.cpp
+
+SimplifyPath:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SimplifyPath.cpp
+
+FirstMissingPositive:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstMissingPositive.cpp
+
+MergeKSortedLists: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeKSortedLists.cpp RandomData.o NormalData.o
+
+LetterCombinationsOfAPhoneNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LetterCombinationsOfAPhoneNumber.cpp
+
 
 ctags:
 	ctags -R .

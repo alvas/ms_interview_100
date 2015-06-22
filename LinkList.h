@@ -1,3 +1,4 @@
+#include <cassert>
 #include <vector>
 #include <set>
 
@@ -37,24 +38,47 @@ struct ListNode {
     int val;
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
-    int GetValue() { return val; }
-    ListNode *GetNext() { return next; }
+    void Print() { cout << this->val << "\t"; }
+};
+
+struct RandomListNode {
+    int label;
+    RandomListNode *next, *random;
+    RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
+
+    void Print()
+    {
+        cout << this->label;
+        
+        if (random != NULL)
+        {
+            cout << " >> " << random->label;
+        }
+
+        cout << "\t";
+    }
 };
 
 template<typename T>
 void initializeLinkList(const vector<int> &S, T **head)
 {
-    bool nullHead = true;
+    assert(head != NULL);
+
+    if (head == NULL)
+    {
+        return;
+    }
+
+    *head = NULL;
     T *tmp = NULL;
 
     for (vector<int>::const_iterator itr = S.begin(); itr != S.end(); ++itr)
     {
         T *p = new T(*itr);
 
-        if (nullHead)
+        if (*head == NULL)
         {
             *head = p;
-            nullHead = false;
         }
         else
         {
@@ -160,8 +184,8 @@ void printLinkList(T *l)
 
     while (l != NULL)
     {
-        cout << l->GetValue() << endl;
-        l = l->GetNext();
+        l->Print();
+        l = l->next;
     }
 
     cout << endl;
@@ -330,3 +354,4 @@ void breakCircleLinkList(T *l)
     return;
 }
 
+void createRandLink(RandomListNode *head, int nodeIdx, int randIdx);

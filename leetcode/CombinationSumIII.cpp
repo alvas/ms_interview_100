@@ -6,6 +6,14 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int> > v;
+
+        if (k <= 0 || k > n || k * 9 > n)
+        {
+            return v;
+        }
+
+        return v;
     }
 };
 

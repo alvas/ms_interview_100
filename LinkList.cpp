@@ -97,6 +97,37 @@ void reverseLinkList(LinkListNode **head)
     *head = prevTmp;
 }
 
+void createRandLink(RandomListNode *head, int nodeIdx, int randIdx)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+
+    RandomListNode *p = head, *node = NULL, *rand = NULL;
+
+    while (p != NULL)
+    {
+        if (--nodeIdx == 0)
+        {
+            node = p;
+        }
+
+        if (--randIdx == 0)
+        {
+            rand = p;
+        }
+
+        if (node != NULL && rand != NULL)
+        {
+            node->random = rand;
+            break;
+        }
+
+        p = p->next;
+    }
+}
+
 #ifndef EXPORTED
 int main()
 {

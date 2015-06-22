@@ -43,6 +43,12 @@ void initializeRandomVector(vector<int> &v, int length)
     generate(v.begin(), v.end(), RandomNumber);
 }
 
+void initializeMRandomVector(vector<int> &v, int length)
+{
+    v.resize(length);
+    generate(v.begin(), v.end(), RandomNumber);
+}
+
 void initialize2DRandomVector(vector<vector<int> > &v, int rows, int columns)
 {
     srand(unsigned(time(0)));

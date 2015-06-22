@@ -216,6 +216,7 @@ int main()
     initializeLinkList<ListNode>(v2, &l2);
     ListNode *head = sln.mergeTwoLists(l1, l2);
     printLinkList<ListNode>(head);
+    destroyLinkList<ListNode>(head);
     return 0;
 }
 
