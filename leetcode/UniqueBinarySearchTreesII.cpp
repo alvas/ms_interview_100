@@ -16,34 +16,78 @@ using namespace std;
  */
 class Solution {
 public:
+    // This problem is really difficult to me. Shame on me. I can't find out the soluton.
+    // Need to improve.
     vector<TreeNode*> generateTrees(int n) {
-        vector<TreeNode *> v;
-        vector<TreeNode *> subset;
-
-        for (int i = 1; i <= n; ++i)
+        if (n == 0)
         {
-            TreeNode *node = new TreeNode(i);
-            subset.push_back(node);
+            return buildSubTree(1, 0);
         }
-
-        return v;
+        else
+        {
+            return buildSubTree(1, n);
+        }
     }
 
-    void buildSubTree(int start, int end, vector<TreeNode *> &subset)
+    vector<TreeNode *> &buildSubTree(int s, int e)
     {
-        for (int i = 1; i <= n; ++i)
+        vector<TreeNode *> *subTree = new vector<TreeNode *>();
+
+        if (s > e)
         {
-            for (int j = 1; j <= n - i; ++j)
+            subTree->push_back(NULL);
+            return *subTree;
+        }
+
+        for (int i = s; i <= e; ++i)
+        {
+            vector<TreeNode *> &left = buildSubTree(s, i - 1);
+            vector<TreeNode *> &right = buildSubTree(i + 1, e);
+            int lsz = left.size(), rsz = right.size();
+
+            for (int j = 0; j < lsz; ++j)
             {
-                for (int k = j; k < i + j; ++k)
+                for (int k = 0; k < rsz; ++k)
                 {
+                    cout << "creating node " << i << endl;
                     TreeNode *node = new TreeNode(i);
-                    subset.push_back(node);
+                    node->left = left[j];
+                    node->right = right[k];
+                    subTree->push_back(node);
                 }
             }
         }
+
+        return *subTree;
     }
 
+    //vector<TreeNode*> generateTrees(int n) {
+        //vector<TreeNode *> v;
+        //vector<TreeNode *> subset;
+
+        //for (int i = 1; i <= n; ++i)
+        //{
+            //TreeNode *node = new TreeNode(i);
+            //subset.push_back(node);
+        //}
+
+        //return v;
+    //}
+
+    //void buildSubTree(int start, int end, vector<TreeNode *> &subset)
+    //{
+        //for (int i = 1; i <= n; ++i)
+        //{
+            //for (int j = 1; j <= n - i; ++j)
+            //{
+                //for (int k = j; k < i + j; ++k)
+                //{
+                    //TreeNode *node = new TreeNode(i);
+                    //subset.push_back(node);
+                //}
+            //}
+        //}
+    //}
 };
 
 int main()
@@ -58,8 +102,13 @@ int main()
     {
         TreeNode *root = *itr;
         printTreeLevelOrder(root);
-        CleanUp2(root);
+        //CleanUp2(root);
         cout << endl;
+    }
+
+    for (vector<TreeNode *>::iterator itr = v.begin(); itr != v.end(); ++itr)
+    {
+        CleanUp2(*itr);
     }
 
     return 0;

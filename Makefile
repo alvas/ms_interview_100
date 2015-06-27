@@ -1,4 +1,4 @@
-default: CopyListWithRandomPointer
+default: UniqueBinarySearchTreesII
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -236,6 +236,9 @@ BinaryTreeLevelOrderTraversal: Tree.o
 BinaryTreeLevelOrderTraversalII: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversalII.cpp Tree.o
 
+BinaryTreeZigzagLevelOrderTraversal: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeZigzagLevelOrderTraversal.cpp Tree.o
+
 RemoveDuplicatesFromSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArray.cpp
 
@@ -253,6 +256,9 @@ SymmetricTree: Tree.o
 
 HouseRobber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobber.cpp 
+
+HouseRobberII: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberII.cpp RandomData.o NormalData.o
 
 MergeSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeSortedArray.cpp 
@@ -312,6 +318,9 @@ RemoveLinkedListElements: LinkList.o
 WordBreak:
 	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreak.cpp
 
+WordBreakII:
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreakII.cpp
+
 SingleNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumber.cpp
 
@@ -365,6 +374,12 @@ BestTimeToBuyAndSellStock:
 
 BestTimeToBuyAndSellStockII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockII.cpp
+
+BestTimeToBuyAndSellStockIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockIII.cpp
+
+BestTimeToBuyAndSellStockIV:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockIV.cpp
 
 BinaryTreePreorderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePreorderTraversal.cpp Tree.o
@@ -444,11 +459,23 @@ ContainsDuplicate:
 ContainsDuplicateII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateII.cpp
 
+ContainsDuplicateIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateIII.cpp
+
 Combinations:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Combinations.cpp
 
 Permutations: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Permutations.cpp NormalData.o
+
+PermutationsII: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationsII.cpp NormalData.o
+
+NextPermutation: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationsII.cpp NormalData.o
+
+PermutationSequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationSequence.cpp
 
 KthLargestElementInAnArray: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthLargestElementInAnArray.cpp RandomData.o NormalData.o
@@ -591,6 +618,131 @@ MergeKSortedLists: RandomData.o NormalData.o
 LetterCombinationsOfAPhoneNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LetterCombinationsOfAPhoneNumber.cpp
 
+CountCompleteTreeNodes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountCompleteTreeNodes.cpp
+
+ImplementTrie:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementTrie.cpp
+
+MedianOfTwoSortedArrays: NormalData.o RandomData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MedianOfTwoSortedArrays.cpp NormalData.o RandomData.o
+
+Candy:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Candy.cpp
+
+Anagrams:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Anagrams.cpp
+
+RecoverBinarySearchTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RecoverBinarySearchTree.cpp
+
+MaximumGap:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumGap.cpp
+
+DistinctSubsequences:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistinctSubsequences.cpp
+
+ScrambleString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ScrambleString.cpp
+
+SummaryRanges:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SummaryRanges.cpp
+
+CourseSchedule:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CourseSchedule.cpp
+
+CourseScheduleII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CourseScheduleII.cpp
+
+EvaluateReversePolishNotation:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EvaluateReversePolishNotation.cpp
+
+MultiplyStrings:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MultiplyStrings.cpp
+
+RestoreIPAddresses:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RestoreIPAddresses.cpp
+
+LongestValidParentheses:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestValidParentheses.cpp
+
+AddAndSearchWord:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddAndSearchWord.cpp
+
+LongestPalindromicSubstring:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestPalindromicSubstring.cpp
+
+RegularExpressionMatching:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RegularExpressionMatching.cpp
+
+LongestSubstringWithoutRepeatingCharacters:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithoutRepeatingCharacters.cpp
+
+WordSearch:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearch.cpp
+
+WordSearchII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearchII.cpp
+
+PalindromePartitioningII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioningII.cpp
+
+RepeatedDNASequences:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RepeatedDNASequences.cpp
+
+MaximumProductSubarray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumProductSubarray.cpp
+
+SubstringWithConcatenationOfAllWords:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubstringWithConcatenationOfAllWords.cpp
+
+WordLadder:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadder.cpp
+
+WordLadderII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadderII.cpp
+
+MinimumWindowSubstring:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumWindowSubstring.cpp
+
+BasicCalculator:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculator.cpp
+
+BasicCalculatorII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculatorII.cpp
+
+DungeonGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DungeonGame.cpp
+
+ShortestPalindrome:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestPalindrome.cpp
+
+TheSkylineProblem:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TheSkylineProblem.cpp
+
+DecodeWays:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DecodeWays.cpp
+
+WildcardMatching:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WildcardMatching.cpp
+
+LRUCache:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LRUCache.cpp
+
+DivideTwoIntegers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DivideTwoIntegers.cpp
+
+TextJustification:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TextJustification.cpp
+
+FractionToRecurringDecimal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FractionToRecurringDecimal.cpp
+
+MaxPointsOnALine:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaxPointsOnALine.cpp
+
+ValidNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidNumber.cpp
 
 ctags:
 	ctags -R .

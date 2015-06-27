@@ -32,13 +32,9 @@ public:
 
         for (int i = start; i < size; ++i)
         {
-            int tmp = nums[i];
-            nums[i] = nums[start];
-            nums[start] = tmp;
+            swap(nums[start], nums[i]);
             compute(nums, start + 1, r);
-            tmp = nums[i];
-            nums[i] = nums[start];
-            nums[start] = tmp;
+            swap(nums[start], nums[i]);
         }
     }
 };
@@ -46,7 +42,7 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 5;
+    const int LOCAL_LENGTH = 10;
     vector<int> nums;
     initializeIndexVector(nums, LOCAL_LENGTH);
     vector<vector<int> > v = sln.permute(nums);
