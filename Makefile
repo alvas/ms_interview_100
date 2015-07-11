@@ -1,4 +1,4 @@
-default: UniqueBinarySearchTreesII
+default: KthSmallestElementInABST
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -134,6 +134,9 @@ Graph: NormalData.o
 Power:
 	$(CC) $(DFLAGS) Power.cpp
 
+PowerOfTwo:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowerOfTwo.cpp
+
 Shift: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) Shift.cpp NormalData.o
 
@@ -145,6 +148,9 @@ RomanToInteger:
 
 MajorityElement:
 	$(CC) $(DFLAGS) $(LEETCODE)MajorityElement.cpp
+
+MajorityElementII: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MajorityElementII.cpp RandomData.o NormalData.o
 
 BinarySearch: RandomData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
@@ -258,7 +264,7 @@ HouseRobber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobber.cpp 
 
 HouseRobberII: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberII.cpp RandomData.o NormalData.o
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberII.cpp RandomData.o NormalData.o
 
 MergeSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeSortedArray.cpp 
@@ -472,7 +478,7 @@ PermutationsII: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationsII.cpp NormalData.o
 
 NextPermutation: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationsII.cpp NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NextPermutation.cpp NormalData.o
 
 PermutationSequence:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationSequence.cpp
@@ -573,6 +579,9 @@ InsertInterval:
 ImplementStackUsingQueues:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStackUsingQueues.cpp
 
+ImplementQueueUsingStacks:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementQueueUsingStacks.cpp
+
 SqrtX:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SqrtX.cpp
 
@@ -627,8 +636,8 @@ ImplementTrie:
 MedianOfTwoSortedArrays: NormalData.o RandomData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MedianOfTwoSortedArrays.cpp NormalData.o RandomData.o
 
-Candy:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Candy.cpp
+Candy: RandomData.o NormalData.o
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)Candy.cpp RandomData.o NormalData.o
 
 Anagrams:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Anagrams.cpp
@@ -743,6 +752,15 @@ MaxPointsOnALine:
 
 ValidNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidNumber.cpp
+
+KthSmallestElementInABST: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestElementInABST.cpp Tree.o
+
+PalindromeLinkedList: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromeLinkedList.cpp RandomData.o NormalData.o
+
+LowestCommonAncestorOfABinarySearchTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinarySearchTree.cpp Tree.o
 
 ctags:
 	ctags -R .

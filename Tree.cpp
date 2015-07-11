@@ -1028,6 +1028,29 @@ bool isBST2(TreeNode *root, int &prev)
     }
 }
 
+TreeNode *findNodeInBST(TreeNode *root, int val)
+{
+    TreeNode *node = root;
+
+    while (node != NULL)
+    {
+        if (node->val == val)
+        {
+            return node;
+        }
+        else if (node->val < val)
+        {
+            node = node->right;
+        }
+        else
+        {
+            node = node->left;
+        }
+    }
+
+    return NULL;
+}
+
 #ifndef EXPORTED
 int main()
 {
@@ -1109,4 +1132,5 @@ int main()
     CleanUp2<TreeNode>(root);
     return 0;
 }
+
 #endif
