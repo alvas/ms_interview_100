@@ -192,6 +192,24 @@ void printLinkList(T *l)
 }
 
 template <typename T>
+T *findINode(T *root, int i)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+
+    T *p = root;
+
+    while (--i && p != NULL)
+    {
+        p = p->next;
+    }
+
+    return p;
+}
+
+template <typename T>
 bool isCircleLinkList(T *l)
 {
     if (l == NULL)

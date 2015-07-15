@@ -7,6 +7,7 @@ using namespace std;
 
 class Solution {
 public:
+    // Sorry, I am totally cheating. I am using std::next_permutation().
     vector<vector<int> > permuteUnique(vector<int>& nums) {
         vector<vector<int> > v;
         int sz = nums.size();
@@ -17,10 +18,19 @@ public:
         }
 
         sort(nums.begin(), nums.end());
-        permute(nums, v, 0, sz);
+        
+        // Remember to insert the first configuration.
+        v.push_back(nums);
+
+        while (next_permutation(nums.begin(), nums.end()))
+        {
+            v.push_back(nums);
+        }
+
         return v;
     }
 
+    /* This is wrong.
     void permute(vector<int> &nums, vector<vector<int> > &v, int idx, int sz)
     {
         if (idx >= sz)
@@ -41,11 +51,13 @@ public:
             }
         }
     }
+    */
 };
 
 int main()
 {
     Solution sln;
+    //int a[] = {1, 1, 1};
     //int a[] = {1, 1, 2};
     int a[] = {3, 3, 0, 0, 2, 3, 2};
     vector<int> nums(a, a + SIZE(a));;

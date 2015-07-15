@@ -1,4 +1,4 @@
-default: KthSmallestElementInABST
+default: DeleteNodeInALinkedList
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -631,7 +631,7 @@ CountCompleteTreeNodes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountCompleteTreeNodes.cpp
 
 ImplementTrie:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementTrie.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementTrie.cpp
 
 MedianOfTwoSortedArrays: NormalData.o RandomData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MedianOfTwoSortedArrays.cpp NormalData.o RandomData.o
@@ -645,8 +645,8 @@ Anagrams:
 RecoverBinarySearchTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RecoverBinarySearchTree.cpp
 
-MaximumGap:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumGap.cpp
+MaximumGap: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumGap.cpp RandomData.o NormalData.o
 
 DistinctSubsequences:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistinctSubsequences.cpp
@@ -761,6 +761,12 @@ PalindromeLinkedList: RandomData.o NormalData.o
 
 LowestCommonAncestorOfABinarySearchTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinarySearchTree.cpp Tree.o
+
+LowestCommonAncestorOfABinaryTree: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinaryTree.cpp Tree.o
+
+DeleteNodeInALinkedList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DeleteNodeInALinkedList.cpp LinkList.o
 
 ctags:
 	ctags -R .

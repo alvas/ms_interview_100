@@ -19,7 +19,7 @@ public:
     bool isPalindrome(ListNode* head) {
         if (head == NULL)
         {
-            return false;
+            return true;
         }
 
         int len = 0;
@@ -42,7 +42,7 @@ public:
         t = reverseList(t);
         ListNode *s = head; 
 
-        while (t != NULL)
+        while (t != NULL && s != NULL)
         {
             if (s->val != t->val)
             {
@@ -63,7 +63,17 @@ public:
             return NULL;
         }
 
-        ListNode *node = root;
+        ListNode *prev = NULL, *node = root, *next = root->next;
+
+        while (next != NULL)
+        {
+            node->next = prev;
+            prev = node;
+            node = next;
+            next = next->next;
+        }
+
+        node->next = prev;
 
         return node;
     }
@@ -72,10 +82,15 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {1, 2, 3};
-    //vector<int> v(a, a + SIZE(a));
-    vector<int> v;
-    initializeRandomVector(v, LENGTH);
+    //int a[] = {1};
+    //int a[] = {1, 1};
+    //int a[] = {1, 2, 3, 2, 1};
+    //int a[] = {1, 2, 1, 3, 1};
+    int a[] = {1, 2, 1, 1, 1};
+    //int a[] = {1, 2, 3, 3, 2, 1};
+    vector<int> v(a, a + SIZE(a));
+    //vector<int> v;
+    //initializeRandomVector(v, LENGTH);
     ListNode *head = NULL;
     initializeLinkList<ListNode>(v, &head);
     printLinkList<ListNode>(head);

@@ -35,6 +35,7 @@ void BuildOrderLevelVector(TreeNode * const root, vector<string> &v);
 void CleanUp(TreeNode *&root);
 void printTreeLinkOrderLevel(const TreeLinkNode *root);
 TreeNode *findNodeInBST(TreeNode *root, int val);
+TreeNode *findNodeInBT(TreeNode *root, int val);
 
 // Deserialization
 template<typename T>

@@ -67,8 +67,8 @@ int main()
     vector<string> v(s, s + SIZE(s));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    TreeNode *p = findNodeInBST(root, 6);
-    TreeNode *q = findNodeInBST(root, 8);
+    TreeNode *p = findNodeInBST(root, 2);
+    TreeNode *q = findNodeInBST(root, 4);
 
     //printTreeLevelOrder<TreeNode>(root);
 

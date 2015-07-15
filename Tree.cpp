@@ -1051,6 +1051,32 @@ TreeNode *findNodeInBST(TreeNode *root, int val)
     return NULL;
 }
 
+TreeNode *findNodeInBT(TreeNode *root, int val)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    else if (root->val == val)
+    {
+        return root;
+    }
+
+    TreeNode *node = NULL;
+
+    if (root->left != NULL)
+    {
+        node = findNodeInBT(root->left, val);
+    }
+
+    if (node == NULL && root->right != NULL)
+    {
+        node = findNodeInBT(root->right, val);
+    }
+
+    return node;
+}
+
 #ifndef EXPORTED
 int main()
 {
