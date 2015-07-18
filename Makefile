@@ -1,4 +1,4 @@
-default: DeleteNodeInALinkedList
+default: ProductOfArrayExceptSelf
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -615,8 +615,9 @@ MaximalSquare:
 InterLeavingString:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InterLeavingString.cpp
 
+# this solution uses string pop_back which is in c++ 11
 SimplifyPath:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SimplifyPath.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)SimplifyPath.cpp
 
 FirstMissingPositive:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstMissingPositive.cpp
@@ -767,6 +768,12 @@ LowestCommonAncestorOfABinaryTree: Tree.o
 
 DeleteNodeInALinkedList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DeleteNodeInALinkedList.cpp LinkList.o
+
+ProductOfArrayExceptSelf:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ProductOfArrayExceptSelf.cpp
+
+SlidingWindowMaximum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SlidingWindowMaximum.cpp
 
 ctags:
 	ctags -R .

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stack>
 
 using namespace std;
 
@@ -12,7 +13,5 @@ public:
 int main()
 {
     Solution sln;
-    string s;
-    cout << sln.calculate(s) << endl;
     return 0;
 }

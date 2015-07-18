@@ -39,25 +39,19 @@ public:
 
         findNode(root, p, stk);
 
-        cout << "stack1: " << endl;
-
         while (!stk.empty())
         {
             TreeNode *node = stk.top();
             stk.pop();
-            cout << "node: " << node->val << endl;
             s.insert(node);
         }
 
         findNode(root, q, stk);
 
-        cout << "stack2: " << endl;
-
         while (!stk.empty())
         {
             TreeNode *node = stk.top();
             stk.pop();
-            cout << "node: " << node->val << endl;
 
             if (s.find(node) != s.end())
             {
@@ -70,6 +64,40 @@ public:
     }
 
     void findNode(TreeNode *root, TreeNode *t, stack<TreeNode *> &s)
+    {
+        if (root == NULL || t == NULL)
+        {
+            return;
+        }
+
+        TreeNode *prev = NULL;
+        s.push(root);
+
+        while (!s.empty())
+        {
+            TreeNode *node = s.top();
+
+            if (node == t)
+            {
+                return;
+            }
+            else if (node->left != NULL && node->left != prev && (prev == NULL || prev != node->right))
+            {
+                s.push(node->left);
+            }
+            else if (node->right != NULL && prev != node->right)
+            {
+                s.push(node->right);
+            }
+            else
+            {
+                s.pop();
+                prev = node;
+            }
+        }
+    }
+
+    void findNode1(TreeNode *root, TreeNode *t, stack<TreeNode *> &s)
     {
         if (root == NULL || t == NULL)
         {
@@ -90,11 +118,21 @@ public:
         if (root->left != NULL)
         {
             findNode(root->left, t, s);
+
+            if (!s.empty() && s.top() != t)
+            {
+                s.pop();
+            }
         }
 
-        if (root->right != NULL)
+        if (s.top() != t && root->right != NULL)
         {
             findNode(root->right, t, s);
+
+            if (!s.empty() && s.top() != t)
+            {
+                s.pop();
+            }
         }
     }
 };
@@ -106,8 +144,8 @@ int main()
     vector<string> v(s, s + SIZE(s));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    TreeNode *p = findNodeInBT(root, 5);
-    TreeNode *q = findNodeInBT(root, 1);
+    TreeNode *p = findNodeInBT(root, 2);
+    TreeNode *q = findNodeInBT(root, 4);
 
     //if (p != NULL)
     //{
