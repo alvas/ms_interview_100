@@ -1,4 +1,4 @@
-default: ProductOfArrayExceptSelf
+default: SummaryRanges
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -525,6 +525,9 @@ SetMatrixZeroes: RandomData.o NormalData.o
 SearchA2DMatrix: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrix.cpp RandomData.o NormalData.o
 
+SearchA2DMatrixII: RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrixII.cpp RandomData.o NormalData.o
+
 ContainerWithMostWater: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainerWithMostWater.cpp RandomData.o NormalData.o
 
@@ -737,7 +740,7 @@ WildcardMatching:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WildcardMatching.cpp
 
 LRUCache:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LRUCache.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)LRUCache.cpp
 
 DivideTwoIntegers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DivideTwoIntegers.cpp
@@ -774,6 +777,9 @@ ProductOfArrayExceptSelf:
 
 SlidingWindowMaximum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SlidingWindowMaximum.cpp
+
+NumberOfDigitOne:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfDigitOne.cpp
 
 ctags:
 	ctags -R .
