@@ -8,139 +8,65 @@ using namespace std;
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        double result = 0.0;
         int sz1 = nums1.size(), sz2 = nums2.size();
-        return findMedian(nums1, 0, sz1, nums2, 0, sz2);
+        int num = sz1 + sz2;
+        int half = num / 2;
+
+        if (num % 2 == 0)
+        {
+        }
+        else
+        {
+            if (nums1[sz1 - 1] < nums2[0])
+            {
+                if (sz1 < half)
+                {
+                    result = nums2[sz2 - half + sz1];
+                }
+                else
+                {
+                    result = nums1[half];
+                }
+            }
+            else if (nums2[sz2 - 1] < nums1[0])
+            {
+                if (sz2 < half)
+                {
+                    result = nums1[sz1 - half + sz2];
+                }
+                else
+                {
+                    result = nums2[half];
+                }
+            }
+            else
+            {
+                int i = 0;
+
+
+            }
+        }
+
+        return result;
     }
 
-    double findMedian(vector<int> &nums1, int s1, int e1, vector<int> &nums2, int s2, int e2)
-    {
-        double median = 0.0;
-        int sz1 = e1 - s1, sz2 = e2 - s2, sz3 = s1 + s2;
+    double findMedianSortedArrays_naive(vector<int>& nums1, vector<int>& nums2) {
+        nums1.insert(nums1.end(), nums2.begin(), nums2.end());
+        sort(nums1.begin(), nums1.end());
+        int sz = nums1.size();
+        double result = 0.0;
 
-        bool odd1 = sz1 & 1, odd2 = sz2 & 1, odd3 = sz3 & 1;
-        cout << s1 << "\t" << e1 << "\t" << s2 << "\t" << e2 << endl;
-
-        if (sz1 != 0 && sz2 == 0)
+        if (sz % 2 == 0)
         {
-            if (odd1)
-            {
-                int idx = sz1 / 2 + s1;
-                median = nums1[idx];
-            }
-            else
-            {
-                int idx2 = sz1 / 2 + s1, idx = idx2 - 1 + s1;
-                median = (nums1[idx] + nums1[idx2]) / 2;
-            }
+            result = (nums1[(sz - 1) / 2] + nums1[sz / 2]) /2;
         }
-        else if (sz1 == 0 && sz2 != 0)
+        else
         {
-            if (odd2)
-            {
-                int idx = sz2 / 2 + s2;
-                median = nums2[idx];
-            }
-            else
-            {
-                int idx2 = sz2 / 2 + s2, idx = idx2 - 1 + s2;
-                median = (nums2[idx] + nums2[idx2]) / 2;
-            }
-        }
-        else if (sz1 != 0 && sz2 != 0)
-        {
-            if (nums1[s1] > nums2[e2 - 1])
-            {
-                if (odd3)
-                {
-                    int idx = sz3 / 2 + s2;
-
-                    if (idx < s2 + sz2)
-                    {
-                        median = nums2[idx];
-                    }
-                    else
-                    {
-                        idx -= sz2 + s1;
-                        median = nums1[idx];
-                    }
-                }
-                else
-                {
-                    int idx2 = sz3 / 2 + s2, idx = idx2 - 1 + s2;
-
-                    if (idx2 < sz2 + s2)
-                    {
-                        median = (nums2[idx] + nums2[idx2]) / 2;
-                    }
-                    else if (idx2 == sz2 + s2)
-                    {
-                        median = (nums2[idx] + nums1[s1]) / 2;
-                    }
-                    else
-                    {
-                        idx -= sz2;
-                        idx2 -= sz2;
-                        median = (nums1[idx] + nums1[idx2]) / 2;
-                    }
-                }
-            }
-            else if (nums2[s2] > nums1[sz1 - 1])
-            {
-                if (odd3)
-                {
-                    int idx = sz3 / 2 + s1;
-
-                    if (idx < sz1 + s1)
-                    {
-                        median = nums2[idx];
-                    }
-                    else
-                    {
-                        idx -= sz2;
-                        median = nums1[idx];
-                    }
-                }
-                else
-                {
-                    int idx2 = sz3 / 2 + s1, idx = idx2 - 1 + s1;
-
-                    if (idx2 < sz1 + s1)
-                    {
-                        median = (nums1[idx] + nums1[idx2]) / 2;
-                    }
-                    else if (idx2 == sz1 + s1)
-                    {
-                        median = (nums1[idx] + nums2[s2]) / 2;
-                    }
-                    else
-                    {
-                        idx -= sz2;
-                        idx2 -= sz2;
-                        median = (nums2[idx] + nums2[idx2]) / 2;
-                    }
-                }
-            }
-            else
-            {
-                int idx = sz1 / 2 + s1, idx2 = sz2 / 2 + s1;
-                int m1 = nums1[idx], m2 = nums2[idx2];
-
-                if (m1 == m2)
-                {
-                    median = m1;
-                }
-                else if (m1 < m2)
-                {
-                    median = findMedian(nums1, idx, e1, nums2, s2, idx2);
-                }
-                else
-                {
-                    median = findMedian(nums1, s1, idx, nums2, idx2, e2);
-                }
-            }
+            result = nums1[sz / 2];
         }
 
-        return median;
+        return result;
     }
 };
 
@@ -155,6 +81,7 @@ int main()
     sort(nums2.begin(), nums2.end());
     printVector<int>(nums1);
     printVector<int>(nums2);
+    cout << sln.findMedianSortedArrays_naive(nums1, nums2) << endl;
     cout << sln.findMedianSortedArrays(nums1, nums2) << endl;
     return 0;
 }

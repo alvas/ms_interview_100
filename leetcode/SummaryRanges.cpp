@@ -21,14 +21,26 @@ public:
 
         for (int i = 0; i < sz; ++i)
         {
-            while (i + 1 < sz && nums[i] + 1 == nums[i + 1])
+            int j = i;
+
+            while (j + 1 < sz && nums[j] + 1 == nums[j + 1])
             {
-                ++i;
+                ++j;
             }
 
-            if (i + 1 < sz)
+            if (i == j)
             {
+                // use to_string instead of itoa
+                s = to_string(nums[i]);
             }
+            else
+            {
+                s = to_string(nums[i]) + "->" + to_string(nums[j]);
+            }
+
+            result.push_back(s);
+
+            i = j;
         }
 
         return result;
@@ -38,8 +50,8 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {};
-    vector<int> v(a, a + SIZE(a));
+    int a[] = {0, 1, 2, 4, 5 , 7};
+    vector<int> nums(a, a + SIZE(a));
     vector<string> v = sln.summaryRanges(nums);
     printVector<string>(v);
     return 0;

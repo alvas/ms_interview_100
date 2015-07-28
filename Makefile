@@ -1,4 +1,4 @@
-default: SummaryRanges
+default: Anagrams
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -780,6 +780,9 @@ SlidingWindowMaximum:
 
 NumberOfDigitOne:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfDigitOne.cpp
+
+DifferentWaysToAddParentheses:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DifferentWaysToAddParentheses.cpp
 
 ctags:
 	ctags -R .
