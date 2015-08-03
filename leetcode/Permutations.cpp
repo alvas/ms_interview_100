@@ -42,9 +42,11 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 10;
-    vector<int> nums;
-    initializeIndexVector(nums, LOCAL_LENGTH);
+    int a[] = {1, 2, 3, 4};
+    vector<int> nums(a, a + SIZE(a));
+    //const int LOCAL_LENGTH = 10;
+    //vector<int> nums;
+    //initializeIndexVector(nums, LOCAL_LENGTH);
     vector<vector<int> > v = sln.permute(nums);
     print2DVector<int>(v);
     cout << "size: " << v.size() << endl;

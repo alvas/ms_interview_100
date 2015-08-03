@@ -1,4 +1,4 @@
-default: Anagrams
+default: MaximumGap
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -646,6 +646,9 @@ Candy: RandomData.o NormalData.o
 Anagrams:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Anagrams.cpp
 
+ValidAnagram:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidAnagram.cpp
+
 RecoverBinarySearchTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RecoverBinarySearchTree.cpp
 
@@ -782,7 +785,7 @@ NumberOfDigitOne:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfDigitOne.cpp
 
 DifferentWaysToAddParentheses:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DifferentWaysToAddParentheses.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)DifferentWaysToAddParentheses.cpp
 
 ctags:
 	ctags -R .
