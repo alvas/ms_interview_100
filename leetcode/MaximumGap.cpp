@@ -110,7 +110,7 @@ public:
             count[i] += count[i - 1];
         }
 
-        // Be careful here, i starts from sz - 1 to 0, because count is calculated from 0 to sz;
+        // Be careful here, i starts from sz - 1 to 0, because count is calculated from 0 to sz
         for (int i = sz - 1; i >= 0; --i)
         {
             output[count[(nums[i] / j) % 10] - 1] = nums[i];

@@ -1,4 +1,4 @@
-default: MaximumGap
+default: SlidingWindowMaximum
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -15,6 +15,7 @@ CC = clang++
 LEETCODE = ./leetcode/
 # using this, so the header file could be found in the ms_interview_100 folder.
 INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.57.0/include
+OPTS=-ggdb -pg -fprofile-arcs -ftest-coverage
 
 LIBS = 
 

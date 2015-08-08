@@ -1,36 +1,72 @@
 #include <iostream> 
 #include <vector>
 
+#include "NormalData.h"
+
 using namespace std;
 
 class Solution {
 public:
     int minSubArrayLen(int s, vector<int>& nums) {
-        int min = 0, size = nums.size();
+        int sz = nums.size();
 
-        if (size == 0)
+        if (sz == 0)
         {
-            return min;
+            return 0;
         }
 
-        int sum = nums[0], start = 0, end = 1;
+        int sum = 0;
+        int start = 0, end = 0;
 
-        while (start < size)
+        // Be careful to set the initial value. If we use 0 here, then min() would alway get 0 and may be a wrong answer.
+        int minV = sz + 1;
+
+        while (end < sz)
         {
+            while (start < sz && sum < s)
+            {
+                sum += nums[start++];
+            }
+
+            // Be careful about the len = start - end.
+            if (sum >= s)
+            {
+                minV = min(minV, start - end);
+            }
+
+            while (end < start && sum >= s)
+            {
+                sum -= nums[end++];
+
+                // Be careful about the len = start - end.
+                if (sum >= s)
+                {
+                    minV = min(minV, start - end);
+                }
+            }
+
+            if (start >= sz)
+            {
+                break;
+            }
         }
 
-        return min;
+        if (minV == sz + 1)
+        {
+            minV = 0;
+        }
+
+        return minV;
     }
 };
 
 int main()
 {
     Solution sln;
-    int s = 0;
-    const int LOCAL_LENGTH = 6;
-    int a[LOCAL_LENGTH] = {2, 3, 1, 2, 4, 3};
-    vector<int> nums(a, a + LOCAL_LENGTH);
+    int a[] = {2, 3, 1, 2, 4, 3, 6};
+    vector<int> nums(a, a + SIZE(a));
     cout << "Please enter s:";
+    int s = 0;
     cin >> s;
     cout << sln.minSubArrayLen(s, nums) << endl;
     return 0;

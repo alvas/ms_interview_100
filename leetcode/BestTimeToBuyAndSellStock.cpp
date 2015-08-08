@@ -61,6 +61,7 @@ public:
     }
 
     // This implementation is supper buggy. Got a lot of failure during the testing.
+    // A few months later, I have no idea what this code does.
     int maxProfit_stupid(vector<int>& prices) {
         int profit = 0, size = prices.size();
 

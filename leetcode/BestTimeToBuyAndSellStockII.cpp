@@ -25,8 +25,6 @@ public:
         return profit;
     }
 
-    // Have no idea why OJ would say this code return wrong answer for [1, 2].
-    // The OJ says this code return 2. But my local machine return 1.
     int maxProfit1(vector<int>& prices) {
         int size = prices.size();
 
@@ -37,13 +35,15 @@ public:
 
         int max = 0;
 
-        for (int i = size - 1; i >= 0; --i)
+        // Be careful here, i must bigger than 0, because j = i - 1.
+        for (int i = size - 1; i > 0; --i)
         {
             int diff = 0;
 
             int j = i - 1;
 
-            for ( ; i >= 0; --j)
+            // Be careful about the index j here.
+            for ( ; j >= 0; --j)
             {
                 if (prices[j] > prices[j + 1])
                 {
