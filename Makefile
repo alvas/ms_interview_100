@@ -1,4 +1,4 @@
-default: SlidingWindowMaximum
+default: CountCompleteTreeNodes
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 #include <string>
 #include <vector>
 
@@ -7,6 +6,7 @@ using namespace std;
 
 class Solution {
 public:
+    // Need to improve.
     string longestPalindrome(string s) {
         int sz = s.size();
         
@@ -15,28 +15,107 @@ public:
             return s;
         }
 
-        map<char, vector<int> > m;
+        int maxL = 0;
+        int maxIdx = 0;
 
-        for (int i = 0; i < sz; ++i)
+        for (int i = sz / 2 - 1; i >= 0; --i)
         {
-            char c = s[i];
-            map<char , vector<int> >::iterator itr = m.find(c);
+            int len = 0;
+            int index = i;
 
-            if (itr == m.end())
+            for (int j = 1; i - j >= 0 && i + j < sz; ++j)
             {
-                vector<int> v;
-                v.push_back(i);
-                m.insert(make_pair(c, v));
+                if (s[i - j] != s[i + j])
+                {
+                    index = i - j + 1;
+                    break;
+                }
+
+                index = i - j;
+                ++len;
             }
-            else
+
+            if (2 * len + 1 > maxL)
             {
-                vector<int> &v = itr->second;
-                v.push_back(i);
+                maxL = 2 * len + 1;
+                maxIdx = index;
             }
         }
 
-        string r;
+        for (int i = sz / 2 - 1; i >= 0; --i)
+        {
+            int len = 0;
+            int index = i;
 
+            for (int j = 0; i - j >= 0 && i + j < sz; ++j)
+            {
+                if (s[i - j] != s[i + j + 1])
+                {
+                    index = i - j + 1;
+                    break;
+                }
+
+                index = i - j;
+
+                ++len;
+            }
+
+            if (2 * len > maxL)
+            {
+                maxL = 2 * len;
+                maxIdx = index;
+            }
+        }
+
+        for (int i = sz / 2; i < sz; ++i)
+        {
+            int len = 0;
+            int index = i;
+
+            for (int j = 1; i - j >= 0 && i + j < sz; ++j)
+            {
+                if (s[i - j] != s[i + j])
+                {
+                    index = i - j + 1;
+                    break;
+                }
+
+                index = i - j;
+                ++len;
+            }
+
+            if (2 * len + 1 > maxL)
+            {
+                maxL = 2 * len + 1;
+                maxIdx = index;
+            }
+        }
+
+        for (int i = sz / 2; i < sz; ++i)
+        {
+            int len = 0;
+            int index = i;
+
+            for (int j = 0; i - j >= 0 && i + j < sz; ++j)
+            {
+                if (s[i - j] != s[i + j + 1])
+                {
+                    index = i - j + 1;
+                    break;
+                }
+
+                index = i - j;
+                ++len;
+            }
+
+            if (2 * len > maxL)
+            {
+                maxL = 2 * len;
+                maxIdx = index;
+            }
+        }
+
+        string r(s, maxIdx, maxL);
         return r;
     }
 };
@@ -44,6 +123,8 @@ public:
 int main()
 {
     Solution sln;
+    //string s("bb");
+    //string s("ccc");
     string s("aaabcdefedcbazzz");
     cout << sln.longestPalindrome(s) << endl;
     return 0;

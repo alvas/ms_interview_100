@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -19,14 +20,98 @@ using namespace std;
 class Solution {
 public:
     int countNodes(TreeNode* root) {
-        int count = 0;
-
         if (root == NULL)
         {
-            return count;
+            return 0;
         }
 
-        return count;
+        TreeNode *p = root;
+        int h = 0;
+
+        while (p != NULL)
+        {
+            h++;
+            p = p->left;
+        }
+
+        // [l, r] is the range of number for nodes in the last level.
+        int l = 0, r = (1 << (h - 1)) - 1;
+
+        // binary search the last node on the last level.
+        while (l <= r)
+        {
+            int m = l + ((r - 1) >> 1);
+
+            if (isOK(root, h, m))
+            {
+                l = m + 1;
+            }
+            else
+            {
+                r = m - 1;
+            }
+        }
+
+        return (1 << (h - 1)) + r;
+    }
+
+    bool isOK(TreeNode *root, int h, int v)
+    {
+        TreeNode *p = root;
+
+        // there are h levels, but we need to go h - 1 steps to the last level.
+        for (int i = h - 2; i >= 0; --i)
+        {
+            if (v & (1 << i))
+            {
+                p = p->right;
+            }
+            else
+            {
+                p = p->left;
+            }
+        }
+
+        return p != NULL;
+    }
+
+    int countNodes_height_recursive(TreeNode* root) {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        int leftH = heightLeft(root);
+        int rightH = heightRight(root);
+
+        // If this is a complete binary tree.
+        if (leftH == rightH)
+        {
+            return pow(2, leftH) - 1;
+        }
+
+        // If it is not complete binary tree, recursively count node of left/right sub tree.
+        return 1 + countNodes(root->left) + countNodes(root->right);
+    }
+
+    int heightLeft(TreeNode *root)
+    {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        return 1 + heightLeft(root->left);
+    }
+
+    int heightRight(TreeNode *root)
+    {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        return 1 + heightRight(root->right);
     }
 
     int countNodes_queue(TreeNode* root) {
