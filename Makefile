@@ -1,4 +1,4 @@
-default: CountCompleteTreeNodes
+default: RepeatedDNASequences
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
