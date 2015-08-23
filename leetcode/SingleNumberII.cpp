@@ -2,17 +2,17 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+#include "NormalData.h"
 
-const int LENGTH = 19;
+using namespace std;
 
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int size = nums.size();
+        int n = nums.size();
         int x = 0, y = 0, z = 0;
 
-        for (int i = 0; i < size; ++i)
+        for (int i = 0; i < n; ++i)
         {
             //// when the number appears first time, set x to the num[i];
             x ^= ~y & nums[i];
@@ -49,8 +49,8 @@ public:
 int main()
 {
     Solution sln;
-    int a[LENGTH] = {7, 7, 7, 2, 2, 2, 9, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
-    vector<int> nums(a, a + LENGTH);
+    int a[] = {7, 7, 7, 2, 2, 2, 9, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
+    vector<int> nums(a, a + SIZE(a));
     cout << sln.singleNumber(nums) << endl;
     return 0;
 }

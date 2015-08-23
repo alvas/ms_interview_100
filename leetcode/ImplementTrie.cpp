@@ -54,6 +54,7 @@ public:
             node = &((*node)->links);
         }
 
+        // adding empty node at the end to recognize the end of a word
         if (*node == NULL)
         {
             *node = new TrieNode();

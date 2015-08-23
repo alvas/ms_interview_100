@@ -1,4 +1,4 @@
-default: RepeatedDNASequences
+default: MaximumProductSubarray
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -334,6 +334,9 @@ SingleNumber:
 SingleNumberII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberII.cpp
 	
+SingleNumberIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberIII.cpp
+
 CountPrimes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountPrimes.cpp
 
@@ -684,7 +687,7 @@ LongestValidParentheses:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestValidParentheses.cpp
 
 AddAndSearchWord:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddAndSearchWord.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)AddAndSearchWord.cpp
 
 LongestPalindromicSubstring:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestPalindromicSubstring.cpp
@@ -787,6 +790,18 @@ NumberOfDigitOne:
 
 DifferentWaysToAddParentheses:
 	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)DifferentWaysToAddParentheses.cpp
+
+AddDigits:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddDigits.cpp
+	
+BinaryTreePaths:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePaths.cpp
+
+UglyNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumber.cpp
+
+UglyNumberII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumberII.cpp
 
 ctags:
 	ctags -R .

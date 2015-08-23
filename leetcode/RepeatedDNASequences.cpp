@@ -77,6 +77,7 @@ public:
                     }
                 case 'G':
                     {
+                        // Be careful 100000000 * 3 would overlow int
                         sum -= 1000000000 * (long long)3;
                         break;
                     }
