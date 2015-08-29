@@ -20,6 +20,8 @@ public:
         for (int i = 1; i < n; ++i)
         {
             int tmp = curMax;
+
+            // if nums[i] == 0, then both curMax and curMin would become 0; 
             curMax = max(max(curMax * nums[i], curMin * nums[i]), nums[i]);
             curMin = min(min(tmp * nums[i], curMin * nums[i]), nums[i]);
             ret = max(ret, curMax);
@@ -101,7 +103,8 @@ public:
             {
                 int prod = 1;
 
-                for (int k = i; k < j; ++k)
+                // be careful about <= here
+                for (int k = i; k <= j; ++k)
                 {
                     prod *= nums[k];
                 }
@@ -117,7 +120,8 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {2, 3, -2, 4};
+    //int a[] = {2, 3, -2, 4};
+    int a[] = {-2, 3, -2, -4};
     vector<int> nums(a, a + SIZE(a));
     cout << sln.maxProduct_naive(nums) << endl;
     cout << sln.maxProduct(nums) << endl;

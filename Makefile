@@ -1,4 +1,4 @@
-default: MaximumProductSubarray
+default: WordBreakII
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -714,16 +714,16 @@ MaximumProductSubarray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumProductSubarray.cpp
 
 SubstringWithConcatenationOfAllWords:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubstringWithConcatenationOfAllWords.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)SubstringWithConcatenationOfAllWords.cpp
 
 WordLadder:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadder.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadder.cpp
 
 WordLadderII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadderII.cpp
 
 MinimumWindowSubstring:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumWindowSubstring.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumWindowSubstring.cpp
 
 BasicCalculator:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculator.cpp
@@ -802,6 +802,9 @@ UglyNumber:
 
 UglyNumberII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumberII.cpp
+
+MissingNumber:
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)MissingNumber.cpp
 
 ctags:
 	ctags -R .
