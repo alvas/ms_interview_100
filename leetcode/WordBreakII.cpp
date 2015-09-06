@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution {
 public:
-    vector<string> wordBreak(string s, unordered_set<string>& wordDict) {
+    vector<string> wordBreak_slow(string s, unordered_set<string>& wordDict) {
         vector<string> ret;
         int nS = s.size(), nD = wordDict.size();
 
@@ -23,6 +23,12 @@ public:
 
         for (int i = 0; i < nS; ++i)
         {
+            // This pruning is important. Without this, time limit would exceed. But it is slower than the algorithm below.
+            if (i != 0 && dp[i].empty())
+            {
+                continue;
+            }
+
             for (unordered_set<string>::iterator itr = wordDict.begin(); itr != wordDict.end(); ++itr)
             {
                 string c = *itr;
@@ -83,7 +89,7 @@ public:
 
     // time limit exceed
     // but using pruning, it can ipmrove performance significantly
-    vector<string> wordBreak_slow(string s, unordered_set<string>& wordDict) {
+    vector<string> wordBreak_dp(string s, unordered_set<string>& wordDict) {
         vector<string> ret;
         int nS = s.size(), nD = wordDict.size();
 
@@ -132,7 +138,7 @@ int main()
     string s("catsanddog");
     const string a[] = {"cat", "cats", "and", "sand", "dog"};
     unordered_set<string> word(a, a + SIZE(a));;
-    vector<string> v = sln.wordBreak_slow(s, word);
+    vector<string> v = sln.wordBreak_dp(s, word);
     vector<string> v1 = sln.wordBreak(s, word);
     printVector<string>(v);
     printVector<string>(v1);

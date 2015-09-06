@@ -1,4 +1,4 @@
-default: WordBreakII
+default: WildcardMatching
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -470,7 +470,7 @@ ContainsDuplicateII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateII.cpp
 
 ContainsDuplicateIII:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateIII.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateIII.cpp
 
 Combinations:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Combinations.cpp
