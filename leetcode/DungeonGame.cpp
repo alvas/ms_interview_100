@@ -7,71 +7,37 @@ class Solution {
 public:
     int calculateMinimumHP(vector<vector<int> >& dungeon) {
         int ret = 1;
-        int M = dungeon.size(), N = 0;
+        int m = dungeon.size(), n = 0;
 
-        if (M == 0)
+        if (m == 0)
         {
             return ret;
         }
 
-        N = dungeon[0].size();
-        vector<vector<int> > dp(M, vector<int>(N, 0));
+        n = dungeon[0].size();
+        vector<vector<int> > dp(m, vector<int>(n, 0));
 
-        for (int i = 1; i < N; ++i)
+        dp[m - 1][n - 1] = max(1 , 1 - dungeon[m - 1][n - 1]);
+
+        for (int i = m - 2; i >= 0; --i)
         {
-            dungeon[0][i] += dungeon[0][i - 1];
+            dp[i][n - 1] = max(1, dp[i + 1][n - 1] - dungeon[i][n - 1]);
+        }
 
-            if (dungeon[0][i] < 0)
+        for (int j = n - 2; j >= 0; --j)
+        {
+            dp[m - 1][j] = max(1, dp[m - 1][j + 1] - dungeon[m - 1][j]);
+        }
+
+        for (int i = m - 2; i >= 0; --i)
+        {
+            for (int j = n - 2; j >= 0; --j)
             {
-                dp[0][i] = dungeon[0][i];
-            }
-            else
-            {
-                dp[0][i] = dp[0][i - 1];
+                dp[i][j] = max(1, min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j]);
             }
         }
 
-        for (int i = 1; i < M; ++i)
-        {
-            dungeon[i][0] += dungeon[i- 1][0];
-
-            if (dungeon[i][0] < 0)
-            {
-                dp[i][0] = dungeon[i][0];
-            }
-            else
-            {
-                dp[i][0] = dp[i - 1][0];
-            }
-        }
-
-
-        for (int i = 1; i < M; ++i)
-        {
-            for (int j = 1; j < N; ++j)
-            {
-                int a = dungeon[i - 1][j] + dungeon[i][j];
-                int b = dungeon[i][j- 1] + dungeon[i][j];
-
-                dungeon[i][j] = max(dungeon[i - 1][j] + dungeon[i][j], dungeon[i][j- 1] + dungeon[i][j]);
-
-                if (dungeon[i][j] < 0)
-                {
-                    dp[i][j] = -dungeon[i][j];
-                }
-                else
-                {
-                    if (b < a)
-                    {
-                    }
-                    else
-                    {
-                    }
-                }
-            }
-        }
-
-        return ret;
+        return dp[0][0];
     }
 };
 

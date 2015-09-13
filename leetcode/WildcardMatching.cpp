@@ -132,7 +132,8 @@ public:
                 }
                 else if (p[j - 1] == '*')
                 {
-                    dp[i][j] = dp[i][j - 1] || (dp[i - 1][j - 1] || dp[i - 1][j]);
+                    // match 0, 1 and multiple characters
+                    dp[i][j] = dp[i][j - 1] || dp[i - 1][j - 1] || dp[i - 1][j];
                 }
             }
         }
@@ -144,7 +145,8 @@ public:
 int main()
 {
     Solution sln;
-    string s("aa"), p("aa");
+    //string s("aa"), p("aa");
+    string s("aab"), p("a*a*b");
     cout << sln.isMatch_2D(s, p) << endl;
     cout << sln.isMatch_1D(s, p) << endl;
     cout << sln.isMatch(s, p) << endl;

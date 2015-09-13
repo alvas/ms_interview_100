@@ -1,4 +1,4 @@
-default: WildcardMatching
+default: TextJustification
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -702,7 +702,7 @@ WordSearch:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearch.cpp
 
 WordSearchII:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearchII.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearchII.cpp
 
 PalindromePartitioningII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioningII.cpp
@@ -720,7 +720,7 @@ WordLadder:
 	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadder.cpp
 
 WordLadderII:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadderII.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadderII.cpp
 
 MinimumWindowSubstring:
 	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumWindowSubstring.cpp
@@ -753,7 +753,7 @@ DivideTwoIntegers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DivideTwoIntegers.cpp
 
 TextJustification:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TextJustification.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)TextJustification.cpp
 
 FractionToRecurringDecimal:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FractionToRecurringDecimal.cpp
