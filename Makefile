@@ -1,4 +1,4 @@
-default: TextJustification
+default: FractionToRecurringDecimal
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
