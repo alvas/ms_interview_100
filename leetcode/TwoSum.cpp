@@ -6,16 +6,38 @@
 
 using namespace std;
 
-const int LOCALLENGTH = 4;
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> result(2, 0);
-        multimap<int, int> m;
+        int n = nums.size();
+        vector<int> res;
 
+        if (n <= 2)
+        {
+            return res;
+        }
+
+        // a map from value to index
+        map<int, int> mp;
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (mp.find(target - nums[i]) != mp.end())
+            {
+                res.push_back(mp[target - nums[i]] + 1);
+                res.push_back(i + 1);
+                return res;
+            }
+
+            mp[nums[i]] = i;
+        }
+
+        return res;
+    }
+
+    vector<int> twoSum_sort(vector<int>& nums, int target) {
+        multimap<int, int> m;
         int size = nums.size();
-        int start = 0, end = size - 1;
 
         for (int i = 0; i < size; ++i)
         {
@@ -23,7 +45,10 @@ public:
         }
 
         // sort the nums, this algorithm only work if the array is sorted.
-        std::sort(nums.begin(), nums.begin() + size);
+        std::sort(nums.begin(), nums.end());
+
+        int start = 0, end = size - 1;
+        vector<int> result(2, 0);
 
         while (start < end)
         {
@@ -57,12 +82,15 @@ public:
 int main()
 {
     Solution sln;
-    int a[LOCALLENGTH] = {0, 4, 3, 0};
-    vector<int> nums(a, a + LOCALLENGTH);
+    int a[] = {0, 4, 3, 0};
+    vector<int> nums(a, a + SIZE(a));
     int target = 0;
     cout << "Please enter target: ";
     cin >> target;
-    vector<int> v = sln.twoSum(nums, target);
-    printVector<int>(v);
+    //vector<int> v = sln.twoSum_sort(nums, target);
+    vector<int> v1 = sln.twoSum(nums, target);
+    printVector<int>(nums);
+    //printVector<int>(v);
+    printVector<int>(v1);
     return 0;
 }

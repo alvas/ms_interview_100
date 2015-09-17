@@ -116,6 +116,13 @@ public:
         char *p1Adv = haystack;
         char *p2 = needle;
 
+        int n = strlen(haystack), m = strlen(needle);
+
+        if (n < m)
+        {
+            return -1;
+        }
+
         // don't forget to advance p2!!
         // don't forget to check the end of p1Adv
         // Be very careful about the advance of p2, it need to be ++p2,
@@ -164,12 +171,15 @@ int main()
 {
     Solution sln;
     char h[1000], n[1000];
+    //string h, n;
     cout << "Please enter haystack: ";
     //cin.getline(h, 256);
     cin >> h;
     cout << "Please enter needle: ";
     //cin.getline(n, 256);
     cin >> n;
+    // don't encourage to use const_cast<char *>() here, because h.c_str() is not guarantee that the string is zero-terminated.
+    //cout << sln.strStr(const_cast<char *>(h.c_str()), const_cast<char *>(n.c_str())) << endl;;
     cout << sln.strStr(h, n) << endl;;
     return 0;
 }

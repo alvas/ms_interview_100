@@ -1,4 +1,4 @@
-default: FractionToRecurringDecimal
+default: LongestSubstringWithoutRepeatingCharacters
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -140,6 +140,9 @@ PowerOfTwo:
 
 Shift: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) Shift.cpp NormalData.o
+
+ReverseWordsInAString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAString.cpp
 
 IntegerToRoman:
 	$(CC) $(DFLAGS) $(LEETCODE)IntegerToRoman.cpp
@@ -696,7 +699,7 @@ RegularExpressionMatching:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RegularExpressionMatching.cpp
 
 LongestSubstringWithoutRepeatingCharacters:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithoutRepeatingCharacters.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithoutRepeatingCharacters.cpp
 
 WordSearch:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearch.cpp
@@ -738,7 +741,7 @@ ShortestPalindrome:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestPalindrome.cpp
 
 TheSkylineProblem:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TheSkylineProblem.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)TheSkylineProblem.cpp
 
 DecodeWays:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DecodeWays.cpp
@@ -805,6 +808,21 @@ UglyNumberII:
 
 MissingNumber:
 	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)MissingNumber.cpp
+
+IntegerToEnglishWords:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntegerToEnglishWords.cpp
+
+FirstBadVersion:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstBadVersion.cpp
+
+HIndex:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HIndex.cpp
+
+HIndexII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HIndexII.cpp
+
+PerfectSquares:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PerfectSquares.cpp
 
 ctags:
 	ctags -R .

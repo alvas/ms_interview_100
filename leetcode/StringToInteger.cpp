@@ -33,13 +33,14 @@ public:
                 }
 
 
-                for (; i < length; ++i)
+                //for (; i < length; ++i)
+                while (i < length && isdigit(str[i]))
                 {
                     // ignore additonal non digit characters
-                    if (!isdigit(str[i]))
-                    {
-                       break;
-                    }
+                    //if (!isdigit(str[i]))
+                    //{
+                       //break;
+                    //}
 
                     a *= 10;
                     a = a + str[i] - 48;
@@ -55,6 +56,8 @@ public:
                     {
                         return INT_MIN;
                     }
+
+                    ++i;
                 }
 
                 a *= sign;
@@ -68,9 +71,9 @@ public:
 int main()
 {
     Solution sln;
-    string s;
-    cout << "Please enter str: ";
-    cin >> s;
+    string s("+77289");
+    //cout << "Please enter str: ";
+    //cin >> s;
     cout << sln.atoi(s) << endl;
     return 0;
 }
