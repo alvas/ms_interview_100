@@ -15,6 +15,96 @@ using namespace std;
 class Solution {
 public:
     ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+        ListNode *head = new ListNode(0);
+        ListNode *p = head;
+
+        while (l1 != NULL && l2 != NULL)
+        {
+            if (l1->val < l2->val)
+            {
+                p->next = l1;
+                l1 = l1->next;
+            }
+            else
+            {
+                p->next = l2;
+                l2 = l2->next;
+            }
+
+            p = p->next;
+        }
+
+        if (l1 != NULL)
+        {
+            p->next = l1;
+        }
+        else if (l2 != NULL)
+        {
+            p->next = l2;
+        }
+
+        p = head->next;
+        delete head;
+        return p;
+    }
+
+    ListNode *mergeTwoLists2(ListNode *l1, ListNode *l2) {
+        if (l1 == NULL)
+        {
+            return l2;
+        }
+        else if (l2 == NULL)
+        {
+            return l1;
+        }
+
+        ListNode *head = NULL, *p = NULL;
+
+        while (l1 != NULL && l2 != NULL)
+        {
+            if (l1->val < l2->val)
+            {
+                if (head == NULL)
+                {
+                    head = l1;
+                    p = l1;
+                }
+                else
+                {
+                    p->next = l1;
+                    l1 = l1->next;
+                    p = p->next;
+                }
+            }
+            else
+            {
+                if (head == NULL)
+                {
+                    head = l2;
+                    p = l2;
+                }
+                else
+                {
+                    p->next = l2;
+                    l2 = l2->next;
+                    p = p->next;
+                }
+            }
+        }
+
+        if (l1 != NULL)
+        {
+            p->next = l1;
+        }
+        else if (l2 != NULL)
+        {
+            p->next = l2;
+        }
+        
+        return head;
+    }
+
+    ListNode *mergeTwoLists1(ListNode *l1, ListNode *l2) {
         ListNode *head = NULL, *node = NULL;
         bool ascent = true, nondetermined = false;
 

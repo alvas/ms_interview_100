@@ -10,6 +10,15 @@ const int TREELEN = 7;
 class Solution {
 public:
     int maxDepth(TreeNode *root) {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
+    }
+
+    int maxDepth1(TreeNode *root) {
         int depth = 0;
 
         if (root != NULL)

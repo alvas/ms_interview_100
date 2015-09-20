@@ -1,4 +1,4 @@
-default: LongestSubstringWithoutRepeatingCharacters
+default: ConvertSortedListToBinarySearchTree
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -633,7 +633,7 @@ FirstMissingPositive:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstMissingPositive.cpp
 
 MergeKSortedLists: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeKSortedLists.cpp RandomData.o NormalData.o
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeKSortedLists.cpp RandomData.o NormalData.o
 
 LetterCombinationsOfAPhoneNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LetterCombinationsOfAPhoneNumber.cpp

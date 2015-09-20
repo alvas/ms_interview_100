@@ -17,6 +17,26 @@ using namespace std;
 class Solution {
 public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
+        return sortedArrayToBST(nums, 0, nums.size() - 1);
+    }
+
+    // end is the index of the last element
+    TreeNode *sortedArrayToBST(vector<int> &nums, int start, int end)
+    {
+        if (start > end)
+        {
+            return NULL;
+        }
+
+        int mid = start + ((end - start) >> 1);
+
+        TreeNode *root = new TreeNode(nums[mid]);
+        root->left = sortedArrayToBST(nums, start, mid - 1);
+        root->right = sortedArrayToBST(nums, mid + 1, end);
+        return root;
+    }
+
+    TreeNode* sortedArrayToBST1(vector<int>& nums) {
         TreeNode *root = NULL;
         int size = nums.size();
 
@@ -47,15 +67,14 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 10;
-    //int a[LOCAL_LENGTH] = {1};
-    //int a[LOCAL_LENGTH] = {1, 2};
-    //int a[LOCAL_LENGTH] = {1, 2, 3};
-    //int a[LOCAL_LENGTH] = {1, 2, 3, 4};
-    //int a[LOCAL_LENGTH] = {1, 2, 3, 4, 5};
-    //int a[LOCAL_LENGTH] = {1, 2, 3, 4, 5, 6};
-    int a[LOCAL_LENGTH] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    vector<int> nums(a, a + LOCAL_LENGTH);
+    //int a[] = {1};
+    //int a[] = {1, 2};
+    //int a[] = {1, 2, 3};
+    //int a[] = {1, 2, 3, 4};
+    //int a[] = {1, 2, 3, 4, 5};
+    //int a[] = {1, 2, 3, 4, 5, 6};
+    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    vector<int> nums(a, a + SIZE(a));
     printVector<int>(nums);
     TreeNode *root = sln.sortedArrayToBST(nums);
     //printTreePreorder(root);

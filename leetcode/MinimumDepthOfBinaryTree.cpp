@@ -17,6 +17,68 @@ using namespace std;
 class Solution {
 public:
     int minDepth(TreeNode *root) {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        queue<TreeNode *> q;
+        q.push(root);
+        TreeNode *rightMode = root;
+        int depth = 1;
+
+        while (!q.empty())
+        {
+            TreeNode *node = q.top();
+            q.pop();
+
+            if (node->left == NULL && node->right == NULL)
+            {
+                break;
+            }
+
+            if (node->left != NULL)
+            {
+                q.push(node->left);
+            }
+
+            if (node->right != NULL)
+            {
+                q.push(node->right);
+            }
+
+            // because we are finding minimum depth, so rightMost can work, because if node has no left and right child,
+            // it will break from above.
+            if (node == rightMost)
+            {
+                depth++;
+                rightMost = (node->right != NULL) ? node->right : node->left;
+            }
+        }
+
+        return depth;
+    }
+    
+    int minDepth2(TreeNode *root) {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        if (root->left == NULL)
+        {
+            return minDepth(root->right) + 1;
+        }
+
+        if (root->right == NULL)
+        {
+            return minDepth(root->left) + 1;
+        }
+
+        return min(minDepth(root->left), minDepth(root->right)) + 1;
+    }
+
+    int minDepth1(TreeNode *root) {
         int depth = 0;
         queue<TreeNode *> q;
 

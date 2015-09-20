@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "NormalData.h"
 #include "Tree.h"
 
 using namespace std;
@@ -16,18 +17,48 @@ using namespace std;
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
+        TreeNode *prev = NULL;
+        return isMonotonicIncreasing(root, prev);
+    }
+
+    bool isMonotonicIncreasing(TreeNode *p, TreeNode *&prev)
+    {
+        if (p == NULL)
+        {
+            return true;
+        }
+
+        if (isMonotonicIncreasing(p->left, prev))
+        {
+            if (prev != NULL && p->val <= prev->val)
+            {
+                return false;
+            }
+
+            prev = p;
+
+            return isMonotonicIncreasing(p->right, prev);
+        }
+
+        return false;
+    }
+
+    // This algorithm would consider duplicated nodes are valid in binary search tree.
+    bool isValidBST1(TreeNode* root) {
         // Be careful about the INT_MAX if use int type.
-        long long min = LLONG_MIN, max = LLONG_MAX;
+        //long long min = LLONG_MIN, max = LLONG_MAX;
+        int min = INT_MIN, max = INT_MAX;
         return validate(root, min, max);
     }
 
-    bool validate(TreeNode *root, long long min, long long max)
+    bool validate(TreeNode *root, int min, int max)
     {
         if (root == NULL)
         {
             return true;
         }
-        else if (min < root->val && root->val < max)
+        // if there are duplicated nodes in the BST tree.
+        else if (min <= root->val && root->val <= max)
         {
             return validate(root->left, min, root->val) && validate(root->right, root->val, max);
         }
@@ -41,16 +72,15 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 2;
-    //string a[LOCAL_LENGTH] = {"2147483647"};
-    //string a[LOCAL_LENGTH] = {"1", "2"};
-    string a[LOCAL_LENGTH] = {"2", "1"};
-    //string a[LOCAL_LENGTH] = {"1", "#", "2", "3"};
-    //string a[LOCAL_LENGTH] = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
-    vector<string> v(a, a + LOCAL_LENGTH);
+    string a[] = {"2147483647"};
+    //string a[] = {"1", "2"};
+    //string a[] = {"2", "1"};
+    //string a[] = {"1", "#", "2", "3"};
+    //string a[] = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
+    vector<string> v(a, a + SIZE(a));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    cout << sln.isValidBST(root) << endl;
+    cout << sln.isValidBST1(root) << endl;
     CleanUp2<TreeNode>(root);
     return 0;
 }

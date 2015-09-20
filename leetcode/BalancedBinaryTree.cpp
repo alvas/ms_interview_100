@@ -15,8 +15,58 @@ using namespace std;
  */
 class Solution {
 public:
+    bool isBalanced(TreeNode *root)
+    {
+        return maxDepth(root) != -1;
+    }
+
+    int maxDepth(TreeNode *root)
+    {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        int L = maxDepth(root->left);
+
+        if (L == -1)
+        {
+            return -1;
+        }
+
+        int R = maxDepth(root->right);
+
+        if (R == -1)
+        {
+            return -1;
+        }
+
+        return abs(L - R) <= 1 ? max(L, R) + 1 : -1;
+    }
+
+    bool isBalanced2(TreeNode *root)
+    {
+        if (root == NULL)
+        {
+            return true;
+        }
+
+        return abs(maxDepth2(root->left) - maxDepth2(root->right)) <= 1
+            && isBalanced(root->left) && isBalanced(root->right);
+    }
+
+    int maxDepth2(TreeNode *root)
+    {
+        if (root == NULL)
+        {
+            return true;
+        }
+
+        return max(maxDepth2(root->left), maxDepth2(root->right)) + 1;
+    }
+
     // Need to improve performance
-    bool isBalanced(TreeNode *root) {
+    bool isBalanced1(TreeNode *root) {
 
         if (root == NULL)
         {

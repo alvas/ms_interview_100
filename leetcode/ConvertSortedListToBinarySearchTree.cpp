@@ -25,6 +25,35 @@ using namespace std;
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
+        int n = 0;
+        ListNode *p = head;
+
+        while (p != NULL)
+        {
+            p = p->next;
+            n++;
+        }
+
+        return sortedListToBST(head, 0, n - 1);
+    }
+
+    TreeNode *sortedListToBST(ListNode *head, int start, int end)
+    {
+        if (start > end)
+        {
+            return NULL;
+        }
+
+        int mid = start + ((end - start) >> 1);
+        TreeNode *leftChild = sortedListToBST(head, start, mid - 1);
+        TreeNode *parent = new TreeNode (head->val);
+        parent->left = leftChild;
+        head = head->next;
+        parent->right = sortedListToBST(head, mid + 1, end);
+        return parent;
+    }
+
+    TreeNode* sortedListToBST1(ListNode* head) {
         TreeNode *root = NULL;
 
         if (head == NULL)

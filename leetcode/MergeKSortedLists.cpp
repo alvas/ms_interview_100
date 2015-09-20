@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <queue>
 #include <utility>
 #include <vector>
 
@@ -18,10 +19,123 @@ using namespace std;
  */
 class Solution {
 public:
-    // IMPORTANT!! Remember to declar myfunction as statick.
+    // IMPORTANT!! Remember to declare myfunction as static.
     static bool myfunction(pair<ListNode *, int> a, pair<ListNode *, int> b)
     {
         return a.first->val > b.first->val;
+    }
+
+    class mycomparision
+    {
+    public:
+        bool operator() (ListNode * a, ListNode * b)
+        {
+            return a->val >= b->val;
+        }
+    };
+
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int n = lists.size();
+
+        if (n == 0)
+        {
+            return NULL;
+        }
+
+        int e = n - 1;
+
+        while (e > 0)
+        {
+            int b = 0;
+
+            while (b < e)
+            {
+                lists[b] = merge2Lists(lists[b], lists[e]);
+                b++;
+                e--;
+            }
+        }
+
+        return lists[0];
+    }
+
+    ListNode *merge2Lists(ListNode *l1, ListNode *l2)
+    {
+        ListNode *dummy = new ListNode(0);
+        ListNode *p = dummy;
+
+        while (l1 != NULL && l2 != NULL)
+        {
+            if (l1->val < l2->val)
+            {
+                p->next = l1;
+                l1 = l1->next;
+            }
+            else
+            {
+                p->next = l2;
+                l2 = l2->next;
+            }
+
+            p = p->next;
+        }
+
+        if (l1 != NULL)
+        {
+            p->next = l1;
+        }
+
+        if (l2 != NULL)
+        {
+            p->next = l2;
+        }
+
+        p = dummy->next;
+        delete dummy;
+        return p;
+    }
+
+    ListNode* mergeKLists1(vector<ListNode*>& lists) {
+        int n = lists.size();
+
+        if (n == 0)
+        {
+            return NULL;
+        }
+
+        // This is wrong.
+        //priority_queue<mycomparision, vector<ListNode *> > q;
+        // This is correct.
+        // default priority_queue is max heap, so mycomparision should define >= for increasing order.
+        priority_queue<ListNode *, vector<ListNode *>, mycomparision> q;
+
+        for (auto &l : lists)
+        {
+            if (l != NULL)
+            {
+                q.push(l);
+            }
+        }
+
+        ListNode *dummy = new ListNode(0);
+        ListNode *p = dummy;
+
+        while (!q.empty())
+        {
+            ListNode *node = q.top();
+            q.pop();
+            p->next = node;
+            p = p->next;
+
+            if (node->next != NULL)
+            {
+                q.push(node->next);
+            }
+        }
+
+        p = dummy->next;
+        delete dummy;
+        return p;
     }
 
     ListNode* mergeKLists_heap(vector<ListNode*>& lists) {
@@ -189,14 +303,17 @@ int main()
     Solution sln;
     ListNode *head = NULL;
     srand(unsigned(time(0)));
-    int k = rand() % 15;
     vector<ListNode *> lists;
+    //int a[][5] = {{3, 7, 9, 12, 88}, {2, 6, 8, 10, 14}};
+    int k = rand() % 8;
+    //int k = SIZE(a);
 
     for (int i = 0; i < k; ++i)
     {
         vector<int> v;
         initializeMRandomVector(v, rand() % 18);
         sort(v.begin(), v.end());
+        //vector<int> v(a[i], a[i] + SIZE(a[i]));
         initializeLinkList<ListNode>(v, &head);
         lists.push_back(head);
         head = NULL;
