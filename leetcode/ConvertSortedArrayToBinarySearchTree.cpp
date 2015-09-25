@@ -30,6 +30,7 @@ public:
 
         int mid = start + ((end - start) >> 1);
 
+        // create parent first, then left/right child
         TreeNode *root = new TreeNode(nums[mid]);
         root->left = sortedArrayToBST(nums, start, mid - 1);
         root->right = sortedArrayToBST(nums, mid + 1, end);

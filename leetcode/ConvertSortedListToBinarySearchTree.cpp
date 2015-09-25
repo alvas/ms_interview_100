@@ -37,16 +37,17 @@ public:
         return sortedListToBST(head, 0, n - 1);
     }
 
-    TreeNode *sortedListToBST(ListNode *head, int start, int end)
+    TreeNode *sortedListToBST(ListNode *&head, int start, int end)
     {
         if (start > end)
         {
             return NULL;
         }
 
+        // create left child first, then parent, then right child
         int mid = start + ((end - start) >> 1);
         TreeNode *leftChild = sortedListToBST(head, start, mid - 1);
-        TreeNode *parent = new TreeNode (head->val);
+        TreeNode *parent = new TreeNode(head->val);
         parent->left = leftChild;
         head = head->next;
         parent->right = sortedListToBST(head, mid + 1, end);
@@ -129,8 +130,8 @@ int main()
         ListNode *head = NULL;
         initializeLinkList<ListNode>(v, &head);
         TreeNode *root = sln.sortedListToBST(head);
-        destroyLinkList<ListNode>(head);
         printTreePreorder<TreeNode>(root);
+        destroyLinkList<ListNode>(head);
         CleanUp2<TreeNode>(root);
     }
 

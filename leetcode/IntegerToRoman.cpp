@@ -12,6 +12,30 @@ const int RANGE = 3999;
 class Solution {
     public:
         string intToRoman(int num) {
+            static int values[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+            static string symbols[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+            string roman;
+
+            int i = 0;
+
+            while (num > 0)
+            {
+                int k = num / values[i];
+
+                for (int j = 0; j < k; ++j)
+                {
+                    roman += symbols[i];
+                    num -= values[i];
+                }
+
+                ++i;
+            }
+
+            return roman;
+        }
+
+        string intToRoman1(int num) {
             string number;
             int t1 = 1000;
 

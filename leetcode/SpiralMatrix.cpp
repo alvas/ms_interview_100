@@ -21,60 +21,105 @@ public:
             c = matrix[0].size();
         }
 
-        int left = 0, right = c - 1, top = 0, bottom = r - 1;
+        //int left = 0, right = c - 1, top = 0, bottom = r - 1;
 
-        // Be careful about the condition.
-        while (left <= right && top <= bottom)
+        int row = 0, col = -1;
+
+        while (true)
         {
-            for (int i = left; i <= right; ++i)
+            for (int i = 0; i < c; ++i)
             {
-                v.push_back(matrix[top][i]);
+                v.push_back(matrix[row][++col]);
             }
 
-            top++;
-
-            // Be careful about the conditon.
-            if (top > bottom)
+            if (--r)
             {
-                return v;
+                break;
             }
 
-            for (int i = top; i <= bottom; ++i)
+            for (int i = 0; i < r; ++i)
             {
-                v.push_back(matrix[i][right]);
+                v.push_back(matrix[++row][col]);
             }
 
-            right--;
-            
-            if (left > right)
+            if (--c)
             {
-                return v;
+                break;
             }
 
-            for (int i = right; i >= left; --i)
+            for (int i = 0; i < c; ++i)
             {
-                v.push_back(matrix[bottom][i]);
+                v.push_back(matrix[row][--col]);
             }
 
-            bottom--;
-
-            if (top > bottom)
+            if (--r)
             {
-                return v;
+                break;
             }
 
-            for (int i = bottom; i >= top; --i)
+            for (int i = 0; i < r; ++i)
             {
-                v.push_back(matrix[i][left]);
+                v.push_back(matrix[--row][col]);
             }
 
-            left++;
-
-            if (left > right)
+            if (--c == 0)
             {
-                return v;
+                break;
             }
         }
+
+        //// Be careful about the condition.
+        //while (left <= right && top <= bottom)
+        //{
+            //for (int i = left; i <= right; ++i)
+            //{
+                //v.push_back(matrix[top][i]);
+            //}
+
+            //top++;
+
+            //// Be careful about the conditon.
+            //if (top > bottom)
+            //{
+                //return v;
+            //}
+
+            //for (int i = top; i <= bottom; ++i)
+            //{
+                //v.push_back(matrix[i][right]);
+            //}
+
+            //right--;
+            
+            //if (left > right)
+            //{
+                //return v;
+            //}
+
+            //for (int i = right; i >= left; --i)
+            //{
+                //v.push_back(matrix[bottom][i]);
+            //}
+
+            //bottom--;
+
+            //if (top > bottom)
+            //{
+                //return v;
+            //}
+
+            //for (int i = bottom; i >= top; --i)
+            //{
+                //v.push_back(matrix[i][left]);
+            //}
+
+            //left++;
+
+            //if (left > right)
+            //{
+                //return v;
+            //}
+        //}
 
         return v;
     }

@@ -6,8 +6,28 @@ using namespace std;
 
 class Solution {
 public:
-    // be careful about the corner conditions
     int searchInsert(vector<int>& nums, int target) {
+        int l = 0, r = nums.size() - 1;
+
+        while (l < r)
+        {
+            int m = (l + r) / 2;
+
+            if (nums[m] < target)
+            {
+                l = m + 1;
+            }
+            else
+            {
+                r = m;
+            }
+        }
+
+        return nums[l] < target ? l + 1 : l;
+    }
+
+    // be careful about the corner conditions
+    int searchInsert1(vector<int>& nums, int target) {
         int size = nums.size();
 
         if (size == 0)

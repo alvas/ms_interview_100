@@ -36,7 +36,7 @@ public:
     }
 
     // Need to improve.
-    bool isPalindrome(int x) {
+    bool isPalindrome1(int x) {
         bool isP = false;
 
         if (x >= 0)

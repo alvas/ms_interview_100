@@ -14,7 +14,7 @@ public:
             return 0;
         }
 
-        int max = nums[0], sum = nums[0];
+        int maxV = nums[0], sum = nums[0];
 
         for (int i = 1; i < size; ++i)
         {
@@ -32,13 +32,10 @@ public:
                 sum += nums[i];
             }
 
-            if (max < sum)
-            {
-                max = sum;
-            }
+            maxV = max(maxV, sum);
         }
 
-        return max;
+        return maxV;
     }
 };
 

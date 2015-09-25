@@ -102,13 +102,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<string> strs;
-    strs.push_back("abcd");
-    strs.push_back("abcf");
-    strs.push_back("aec");
-    strs.push_back("bcad");
-    strs.push_back("dacd");
-    strs.push_back("eac");
+    vector<string> strs = {"abcd", "abcf", "aec", "bcad", "dacd", "eac"};
     vector<string> v =  sln.anagrams(strs);
     printVector<string>(v);
     return 0;

@@ -2,7 +2,6 @@
 #include <vector>
 
 #include "Tree.h"
-#include "NormalData.h"
 
 using namespace std;
 
@@ -37,7 +36,8 @@ public:
 int main()
 {
     TreeNode *root = NULL;
-    string a[] = 
+
+    vector<string> v = 
     {
         "1", "#", "2", "#", "3", 
         "#", "4", "5", "#", "6", 
@@ -46,7 +46,7 @@ int main()
         "#", "12", "13", "#", "#", 
         "14"
     };
-    vector<string> v(a, a + SIZE(a));
+
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     printTreeLevelOrder<TreeNode>(root);
     BSTIterator i = BSTIterator(root);

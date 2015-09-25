@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-#include "NormalData.h"
-
 using namespace std;
 
 class Solution {
@@ -166,10 +164,8 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 10;
-    int a[LOCAL_LENGTH] = {5, 4, 7, 9, 8, 1, 12, 4, 6, 6};
-    //int a[LOCAL_LENGTH] = {1, 2};
-    vector<int> prices(a, a + LOCAL_LENGTH);
+    vector<int> prices = {5, 4, 7, 9, 8, 1, 12, 4, 6, 6};
+    //vector<int> prices = {1, 2};
     cout << sln.maxProfit(prices) << endl;
     cout << sln.maxProfit1(prices) << endl;
     cout << sln.maxProfit_naive(prices) << endl;

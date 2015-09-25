@@ -1,4 +1,4 @@
-default: ConvertSortedListToBinarySearchTree
+default: BestTimeToBuyAndSellStock
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -169,7 +169,7 @@ LengthOfLastWord:
 	$(CC) $(DFLAGS) $(LEETCODE)LengthOfLastWord.cpp
 
 ValidParentheses:
-	$(CC) $(DFLAGS) $(LEETCODE)ValidParentheses.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(LEETCODE)ValidParentheses.cpp
 
 RotateArray: RandomData.o
 	$(CC) $(DFLAGS) $(LEETCODE)RotateArray.cpp RandomData.o NormalData.o
@@ -383,7 +383,7 @@ SumRootToLeafNumbers: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumRootToLeafNumbers.cpp Tree.o
 
 BestTimeToBuyAndSellStock:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStock.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStock.cpp
 
 BestTimeToBuyAndSellStockII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockII.cpp
@@ -455,7 +455,7 @@ FlattenBinaryTreeToLinkedList:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenBinaryTreeToLinkedList.cpp
 
 BinarySearchTreeIterator:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinarySearchTreeIterator.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)BinarySearchTreeIterator.cpp
 
 SortList:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortList.cpp
@@ -651,7 +651,7 @@ Candy: RandomData.o NormalData.o
 	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)Candy.cpp RandomData.o NormalData.o
 
 Anagrams:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Anagrams.cpp
+	$(CC) -std=c++11 $(DFLAGS) $(INCLUDES) $(LEETCODE)Anagrams.cpp
 
 ValidAnagram:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidAnagram.cpp

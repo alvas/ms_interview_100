@@ -17,8 +17,32 @@ using namespace std;
  */
 class Solution {
 public:
-    // This is really difficault. Got a lot of failure before tuning it right.
     int maxPathSum(TreeNode* root) {
+        int maxSum = INT_MIN;
+        findMax(root, maxSum);
+        return maxSum;
+    }
+
+    // 1. max(left subtree) + node
+    // 2. max(right subtree) + node
+    // 3. max(left subtree) + max(right subtree) + node
+    // 4. node
+    int findMax(TreeNode *root, int &maxSum)
+    {
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        int left = findMax(root->left, maxSum);
+        int right = findMax(root->right, maxSum);
+        maxSum = max(root->val + left + right, maxSum);
+        int ret = root->val + max(left, right);
+        return ret ? ret : 0;
+    }
+
+    // This is really difficault. Got a lot of failure before tuning it right.
+    int maxPathSum1(TreeNode* root) {
         int max = INT_MIN;
         traverseSum(root, max);
         return max;

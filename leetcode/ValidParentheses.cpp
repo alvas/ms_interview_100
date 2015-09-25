@@ -1,43 +1,54 @@
 #include <iostream>
+#include <map>
 #include <stack>
 
 using namespace std;
-
-const int LENGTH = 256;
 
 class Solution {
 public:
     bool isValid(string s) {
         bool valid = true;
         stack<char> stk;
+        map<char, char> m = {{'(', ')'}, {'[', ']'}, {'{', '}'}};
 
         for (string::iterator itr = s.begin(); itr != s.end(); ++itr)
         {
-            if (*itr == '(' || *itr == '{' || *itr == '[')
+            //if (*itr == '(' || *itr == '{' || *itr == '[')
+
+            if (m.find(*itr) != m.end())
             {
                 stk.push(*itr);
             }
             else
             {
-                if (!stk.empty())
+                if (stk.empty() || m[stk.top()] != *itr)
                 {
-                    if ((*itr == ')' && stk.top() == '(') ||
-                        (*itr == '}' && stk.top() == '{') ||
-                        (*itr == ']' && stk.top() == '['))
-                    {
-                        stk.pop();
-                    }
-                    else
-                    {
-                        valid = false;
-                        break;
-                    }
+                    return false;
                 }
-                else
-                {
-                    valid = false;
-                    break;
-                }
+
+                // don't forget this
+                stk.pop();
+
+                //if (!stk.empty())
+                //{
+                    ////if ((*itr == ')' && stk.top() == '(') ||
+                        ////(*itr == '}' && stk.top() == '{') ||
+                        ////(*itr == ']' && stk.top() == '['))
+                    //if (m[stk.top()] == *itr)
+                    //{
+                        //stk.pop();
+                    //}
+                    //else
+                    //{
+                        //valid = false;
+                        //break;
+                    //}
+                //}
+                //else
+                //{
+                    //valid = false;
+                    //break;
+                //}
             }
         }
 
@@ -54,9 +65,10 @@ public:
 int main(int argc, char *argv[])
 {
     Solution sln;
-    char str[LENGTH];
-    gets(str);
-    string s(str);
+    //char str[256];
+    //gets(str);
+    //string s(str);
+    string s("(())([{}])");
     cout << sln.isValid(s) << endl;
 }
 

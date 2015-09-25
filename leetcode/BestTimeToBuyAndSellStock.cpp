@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-#include "NormalData.h"
-
 using namespace std;
 
 class Solution {
@@ -186,32 +184,30 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 13;
-    //int a[LOCAL_LENGTH] = {5, 11, 7, 9, 8, 6, 12, 4, 6, 6};
-    //int a[LOCAL_LENGTH] = {2, 1, 2, 0, 1};
-    //int a[LOCAL_LENGTH] = {12, 4, 7, 2, 1};
-    //int a[LOCAL_LENGTH] = {1, 2, 3, 4, 5};
-    //int a[LOCAL_LENGTH] = {5, 4, 3, 2, 1};
-    //int a[LOCAL_LENGTH] = {5, 4, 5, 4, 5};
-    //int a[LOCAL_LENGTH] = {4, 5, 4, 5, 4};
-    //int a[LOCAL_LENGTH] = {5, 3, 4, 2, 1};
-    //int a[LOCAL_LENGTH] = {5, 5, 5, 5, 5};
-    //int a[LOCAL_LENGTH] = {5, 3, 1, 2, 4};
-    //int a[LOCAL_LENGTH] = {5, 1, 3, 2, 4};
-    //int a[LOCAL_LENGTH] = {5, 1, 2, 3, 4};
-    //int a[LOCAL_LENGTH] = {3, 1, 2, 5, 4};
-    //int a[LOCAL_LENGTH] = {3, 4, 2, 5, 1};
-    //int a[LOCAL_LENGTH] = {3, 4, 1, 5, 2};
-    //int a[LOCAL_LENGTH] = {1, 4, 3, 5, 2};
-    //int a[LOCAL_LENGTH] = {1, 5, 3, 5, 2};
-    //int a[LOCAL_LENGTH] = {7, 2, 4, 1};
-    //int a[LOCAL_LENGTH] = {2, 1};
-    //int a[LOCAL_LENGTH] = {1, 1};
-    //int a[LOCAL_LENGTH] = {1, 2};
-    //int a[LOCAL_LENGTH] = {2, 1, 2, 1, 0, 1, 2};
-    //int a[LOCAL_LENGTH] = {3, 3, 5, 0, 0, 3, 1, 4};
-    int a[LOCAL_LENGTH] = {5, 5, 4, 9, 3, 8, 5, 5, 1, 6, 8, 3, 4};
-    vector<int> prices(a, a + LOCAL_LENGTH);
+    //vector<int> prices = {5, 11, 7, 9, 8, 6, 12, 4, 6, 6};
+    //vector<int> prices = {2, 1, 2, 0, 1};
+    //vector<int> prices = {12, 4, 7, 2, 1};
+    //vector<int> prices = {1, 2, 3, 4, 5};
+    //vector<int> prices = {5, 4, 3, 2, 1};
+    //vector<int> prices = {5, 4, 5, 4, 5};
+    //vector<int> prices = {4, 5, 4, 5, 4};
+    //vector<int> prices = {5, 3, 4, 2, 1};
+    //vector<int> prices = {5, 5, 5, 5, 5};
+    //vector<int> prices = {5, 3, 1, 2, 4};
+    //vector<int> prices = {5, 1, 3, 2, 4};
+    //vector<int> prices = {5, 1, 2, 3, 4};
+    //vector<int> prices = {3, 1, 2, 5, 4};
+    //vector<int> prices = {3, 4, 2, 5, 1};
+    //vector<int> prices = {3, 4, 1, 5, 2};
+    //vector<int> prices = {1, 4, 3, 5, 2};
+    //vector<int> prices = {1, 5, 3, 5, 2};
+    //vector<int> prices = {7, 2, 4, 1};
+    //vector<int> prices = {2, 1};
+    //vector<int> prices = {1, 1};
+    //vector<int> prices = {1, 2};
+    //vector<int> prices = {2, 1, 2, 1, 0, 1, 2};
+    //vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};
+    vector<int> prices = {5, 5, 4, 9, 3, 8, 5, 5, 1, 6, 8, 3, 4};
     cout << sln.maxProfit(prices) << endl;
     return 0;
 }

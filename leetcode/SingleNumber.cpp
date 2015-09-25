@@ -8,15 +8,24 @@ const int LENGTH = 13;
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int val = 0;
-        int size = nums.size();
+        int res = 0;
 
-        for (int i = 0; i < size; ++i)
+        for (auto i : nums)
         {
-            val ^= nums[i];
+            res ^= i;
         }
 
-        return val;
+        return res;
+
+        //int val = 0;
+        //int size = nums.size();
+
+        //for (int i = 0; i < size; ++i)
+        //{
+            //val ^= nums[i];
+        //}
+
+        //return val;
     }
 };
 
