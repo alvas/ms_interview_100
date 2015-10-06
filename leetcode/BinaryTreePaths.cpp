@@ -66,8 +66,7 @@ public:
 int main()
 {
     Solution sln;
-    string a[] = {"8", "2", "6", "0", "4", "7", "9", "#", "#", "3", "5"};
-    vector<string> s(a, a + SIZE(a));
+    vector<string> s{"8", "2", "6", "0", "4", "7", "9", "#", "#", "3", "5"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);
     printTreeLevelOrder<TreeNode>(root);
