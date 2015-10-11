@@ -121,9 +121,9 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {5, 5, 4, 9, 3, 8, 5, 5, 1, 6, 8, 3, 4};
-    //int a[] = {2, 1, 2, 0, 1};
-    int a[] = {1,2,4,2,5,7,2,4,9,0};
+    //vector<int> a = {5, 5, 4, 9, 3, 8, 5, 5, 1, 6, 8, 3, 4};
+    //vector<int> a = {2, 1, 2, 0, 1};
+    vector<int> a = {1,2,4,2,5,7,2,4,9,0};
     vector<int> prices(a, a + SIZE(a));
     cout << sln.maxProfit_slow(prices) << endl;
     cout << sln.maxProfit(prices) << endl;

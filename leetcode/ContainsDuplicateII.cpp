@@ -61,11 +61,11 @@ int main()
 {
     Solution sln;
     int k = 0;
-    //int a[] = {};
-    //int a[] = {1, 2};
-    //int a[] = {1, 1};
-    //int a[] = {1, 2, 3};
-    int a[] = {1, 2, 6, 7, 2, 3};
+    //vector<int> a = {};
+    //vector<int> a = {1, 2};
+    //vector<int> a = {1, 1};
+    //vector<int> a = {1, 2, 3};
+    vector<int> a = {1, 2, 6, 7, 2, 3};
     vector<int> nums(a, a + SIZE(a));
     cout << "Please enter k: ";
     cin >> k;

@@ -116,7 +116,7 @@ int main()
 {
     Solution sln;
 
-    const string a[] = {"oaan", "etae", "ihkr", "iflv"};
+    const vector<string> a = {"oaan", "etae", "ihkr", "iflv"};
     vector<vector<char> > board;
 
     for (int i = 0; i < SIZE(a); ++i)
@@ -125,7 +125,7 @@ int main()
         board.push_back(row);
     }
 
-    const string b[] = {"oath", "pea", "eat", "rain"};
+    const vector<string> b = {"oath", "pea", "eat", "rain"};
     vector<string> words(b, b + SIZE(b));
     vector<string> v = sln.findWords(board, words);
     printVector<string>(v);

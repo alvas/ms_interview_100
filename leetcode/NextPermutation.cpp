@@ -49,7 +49,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {1, 2, 3};
+    vector<int> a = {1, 2, 3};
     vector<int> nums(a, a + SIZE(a));
     printVector<int>(nums);
     //next_permutation(nums.begin(), nums.end());

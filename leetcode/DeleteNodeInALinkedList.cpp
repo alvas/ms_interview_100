@@ -44,7 +44,7 @@ int main()
 {
     Solution sln;
     ListNode *head = NULL;
-    int a[] = {1, 2, 3, 4, 5};
+    vector<int> a = {1, 2, 3, 4, 5};
     vector<int> v(a, a + SIZE(a));
     initializeLinkList<ListNode>(v, &head);
     printLinkList<ListNode>(head);

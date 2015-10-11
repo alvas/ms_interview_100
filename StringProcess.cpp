@@ -315,7 +315,7 @@ int main()
 {
 //    string s("abcd");
 //    Permutation<string, char>(s, 0);
-    string str[] = {"hot", "hit", "dot", "dog", "cog", "lot", "log"};
+    vector<string> str = {"hot", "hit", "dot", "dog", "cog", "lot", "log"};
     set<string> dict(str, str + 7);
     vector< vector<string> > answers = findLadders2("hit", "cog", dict);
 

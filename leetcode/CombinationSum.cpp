@@ -49,7 +49,7 @@ int main()
     int target = 0;
     cout << "Please enter target: ";
     cin >> target;
-    int a[] = {2, 3, 6, 7};
+    vector<int> a = {2, 3, 6, 7};
     vector<int> candidates(a, a + SIZE(a));
     vector<vector<int> > v = sln.combinationSum(candidates, target);
     print2DVector<int>(v);

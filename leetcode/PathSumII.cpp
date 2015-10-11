@@ -70,8 +70,8 @@ int main()
     int sum = 0;
     cout << "Please enter sum: ";
     cin >> sum;
-    string s[] = {"-2", "#", "-3"};
-    //string s[] = {"5", "4", "8", "11", "#", "13", "4", "7", "2", "#", "#", "5", "1"};
+    vector<string> s = {"-2", "#", "-3"};
+    //vector<string> s = {"5", "4", "8", "11", "#", "13", "4", "7", "2", "#", "#", "5", "1"};
     vector<string> v(s, s + SIZE(s));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);

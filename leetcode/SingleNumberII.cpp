@@ -49,7 +49,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {7, 7, 7, 2, 2, 2, 9, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
+    vector<int> a = {7, 7, 7, 2, 2, 2, 9, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
     vector<int> nums(a, a + SIZE(a));
     cout << sln.singleNumber(nums) << endl;
     return 0;

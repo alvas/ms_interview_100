@@ -146,7 +146,7 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {3, 6, 9, 1};
+    //vector<int> a = {3, 6, 9, 1};
     //vector<int> nums(a, a + size(a));
     const int LEN = 30;
     vector<int> nums;

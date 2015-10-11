@@ -103,8 +103,8 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {31, 53, 55};
-    //int b[] = {1, 25, 31, 53, 55};
+    //vector<int> a = {31, 53, 55};
+    //vector<int> b = {1, 25, 31, 53, 55};
     //vector<int> nums1(a, a + SIZE(a)), nums2(b, b + SIZE(b));
     vector<int> nums1, nums2;
     srand(unsigned(time(0))); 

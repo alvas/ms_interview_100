@@ -121,10 +121,10 @@ int main()
 {
     Solution sln;
     vector<vector<int> > triangle;
-    int a1[] = {2};
-    int a2[] = {3, 4};
-    int a3[] = {6, 5, 7};
-    int a4[] = {4, 1, 8, 3};
+    vector<int> a1 = {2};
+    vector<int> a2 = {3, 4};
+    vector<int> a3 = {6, 5, 7};
+    vector<int> a4 = {4, 1, 8, 3};
     vector<int> a(a1, a1 + SIZE(a1));
     triangle.push_back(a);
     a.assign(a2, a2 + SIZE(a2));

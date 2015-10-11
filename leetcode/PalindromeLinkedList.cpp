@@ -82,12 +82,12 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {1};
-    //int a[] = {1, 1};
-    //int a[] = {1, 2, 3, 2, 1};
-    //int a[] = {1, 2, 1, 3, 1};
-    int a[] = {1, 2, 1, 1, 1};
-    //int a[] = {1, 2, 3, 3, 2, 1};
+    //vector<int> a = {1};
+    //vector<int> a = {1, 1};
+    //vector<int> a = {1, 2, 3, 2, 1};
+    //vector<int> a = {1, 2, 1, 3, 1};
+    vector<int> a = {1, 2, 1, 1, 1};
+    //vector<int> a = {1, 2, 3, 3, 2, 1};
     vector<int> v(a, a + SIZE(a));
     //vector<int> v;
     //initializeRandomVector(v, LENGTH);

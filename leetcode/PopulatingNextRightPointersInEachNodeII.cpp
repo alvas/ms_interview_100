@@ -118,10 +118,10 @@ public:
 int main()
 {
     Solution sln;
-    //string a[] = {"1", "2"};
-    //string a[] = {"1", "#", "2"};
-    string a[] = {"7", "-10", "2", "-4", "3", "-8", "#", "#", "#", "#", "-1", "11"};
-    //string a[] = {"1", "2", "3", "4", "5", "#", "7"};
+    //vector<string> a = {"1", "2"};
+    //vector<string> a = {"1", "#", "2"};
+    vector<string> a = {"7", "-10", "2", "-4", "3", "-8", "#", "#", "#", "#", "-1", "11"};
+    //vector<string> a = {"1", "2", "3", "4", "5", "#", "7"};
     vector<string> v(a, a + SIZE(a));
     TreeLinkNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeLinkNode>(v, root);

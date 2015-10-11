@@ -41,7 +41,7 @@ public:
 int main()
 {
     Solution sln;
-    string a[] = {"4", "2", "7", "1", "3", "6", "9"};
+    vector<string> a = {"4", "2", "7", "1", "3", "6", "9"};
     vector<string> s(a, a + SIZE(a));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);

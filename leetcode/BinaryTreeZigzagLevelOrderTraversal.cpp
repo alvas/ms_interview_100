@@ -90,7 +90,7 @@ public:
 int main()
 {
     Solution sln;
-    string a[] = {"3", "9", "20", "#", "#", "15", "7"};
+    vector<string> a = {"3", "9", "20", "#", "#", "15", "7"};
     vector<string> s(a, a + SIZE(a));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);

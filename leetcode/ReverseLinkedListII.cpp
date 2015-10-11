@@ -125,11 +125,11 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {1, 2, 3, 4, 5};
-    //int a[] = {};
-    //int a[] = {1};
-    //int a[] = {1, 2};
-    //int a[] = {1, 2, 3};
+    vector<int> a = {1, 2, 3, 4, 5};
+    //vector<int> a = {};
+    //vector<int> a = {1};
+    //vector<int> a = {1, 2};
+    //vector<int> a = {1, 2, 3};
     vector<int> v(a, a + SIZE(a));
     int m = 0, n = 0;
     cout << "Please enter m[1, " << SIZE(a) << "]: ";

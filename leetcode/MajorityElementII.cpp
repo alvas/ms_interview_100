@@ -122,22 +122,22 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {1, 1};
-    //int a[] = {3, 2, 3};
-    //int a[] = {1, 1, 2, 3};
-    //int a[] = {1, 2, 3, 4};
-    int a[] = {-1, 1, 1, 1, 2, 1};
-    //int a[] = {1, 2, 1, 3};
-    //int a[] = {1, 2, 1, 2, 3};
-    //int a[] = {1, 1, 2, 2, 3};
-    //int a[] = {3, 1, 1, 2, 2};
-    //int a[] = {1, 2, 1, 2, 3, 3};
-    //int a[] = {1, 1, 1, 2, 2, 3, 3};
-    //int a[] = {2, 2, 3, 3, 1, 1, 1};
-    //int a[] = {2, 2, 3, 3, 1, 1, 1};
-    //int a[] = {2, 2, 1, 1, 1, 3, 3};
-    //int a[] = {2, 2, 2, 1, 1, 1, 3, 3};
-    //int a[] = {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3};
+    //vector<int> a = {1, 1};
+    //vector<int> a = {3, 2, 3};
+    //vector<int> a = {1, 1, 2, 3};
+    //vector<int> a = {1, 2, 3, 4};
+    vector<int> a = {-1, 1, 1, 1, 2, 1};
+    //vector<int> a = {1, 2, 1, 3};
+    //vector<int> a = {1, 2, 1, 2, 3};
+    //vector<int> a = {1, 1, 2, 2, 3};
+    //vector<int> a = {3, 1, 1, 2, 2};
+    //vector<int> a = {1, 2, 1, 2, 3, 3};
+    //vector<int> a = {1, 1, 1, 2, 2, 3, 3};
+    //vector<int> a = {2, 2, 3, 3, 1, 1, 1};
+    //vector<int> a = {2, 2, 3, 3, 1, 1, 1};
+    //vector<int> a = {2, 2, 1, 1, 1, 3, 3};
+    //vector<int> a = {2, 2, 2, 1, 1, 1, 3, 3};
+    //vector<int> a = {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3};
     vector<int> nums(a, a + SIZE(a));
     //vector<int> nums;
     //initializeRandomVector(nums, 15);

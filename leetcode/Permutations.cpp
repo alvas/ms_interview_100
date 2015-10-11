@@ -42,7 +42,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {1, 2, 3, 4};
+    vector<int> a = {1, 2, 3, 4};
     vector<int> nums(a, a + SIZE(a));
     //const int LOCAL_LENGTH = 10;
     //vector<int> nums;

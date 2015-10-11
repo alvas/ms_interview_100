@@ -129,12 +129,12 @@ int main()
     //int maxWidth = 12;
     //cout << "Please enter maxWidth: ";
     //cin >> maxWidth;
-    //const string a[] = {"This", "is", "an", "example", "of", "text", "justification."};
-    //const string a[] = {"a", "b", "c", "d", "e"};
-    const string a[] = {"a"};
-    //const string a[] = {};
-    //const string a[] = {""};
-    //const string a[] = {"What", "must", "be", "shall", "be."};
+    //const vector<string> a = {"This", "is", "an", "example", "of", "text", "justification."};
+    //const vector<string> a = {"a", "b", "c", "d", "e"};
+    const vector<string> a = {"a"};
+    //const vector<string> a = {};
+    //const vector<string> a = {""};
+    //const vector<string> a = {"What", "must", "be", "shall", "be."};
     vector<string> words(a, a + SIZE(a));;
     vector<string> v = sln.fullJustify(words, maxWidth);
 

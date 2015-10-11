@@ -141,11 +141,11 @@ public:
 int main()
 {
     Solution sln;
-    //string a[] = {"0"};
-    //string a[] = {"0", "1"};
-    //string a[] = {"2", "#", "3", "1"};
-    //string a[] = {"3", "1", "2"};
-    string a[] = {"8", "2", "6", "0", "4", "7", "9", "#", "#", "3", "5"};
+    //vector<string> a = {"0"};
+    //vector<string> a = {"0", "1"};
+    //vector<string> a = {"2", "#", "3", "1"};
+    //vector<string> a = {"3", "1", "2"};
+    vector<string> a = {"8", "2", "6", "0", "4", "7", "9", "#", "#", "3", "5"};
     vector<string> s(a, a + SIZE(a));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);

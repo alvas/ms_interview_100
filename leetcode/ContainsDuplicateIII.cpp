@@ -69,7 +69,7 @@ int main()
     cin >> k;
     cout << "Please enter t: ";
     cin >> t;
-    //int a[] = {1, 100, 1000, 10000, 100000, 1000000};
+    //vector<int> a = {1, 100, 1000, 10000, 100000, 1000000};
     //vector<int> nums(a, a + SIZE(a));
 
     const int A = 1000, B = 10000;

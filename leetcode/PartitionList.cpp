@@ -67,7 +67,7 @@ int main()
     int x = 0;
     cout << "Please enter x: ";
     cin >> x;
-    int a[] = {1, 4, 3, 2, 5, 2};
+    vector<int> a = {1, 4, 3, 2, 5, 2};
     vector<int> v(a, a + SIZE(a));
     ListNode *head = NULL;
     initializeLinkList<ListNode>(v, &head);

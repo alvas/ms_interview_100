@@ -77,9 +77,9 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {2, 0, 0};
-    //int a[] = {2, 3, 1, 1, 4};
-    int a[] = {3, 2, 1, 0, 4};
+    //vector<int> a = {2, 0, 0};
+    //vector<int> a = {2, 3, 1, 1, 4};
+    vector<int> a = {3, 2, 1, 0, 4};
     vector<int> nums(a, a + SIZE(a));
     cout << sln.canJump_slow(nums) << endl;
     cout << sln.canJump(nums) << endl;

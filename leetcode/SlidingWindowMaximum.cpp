@@ -118,8 +118,8 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {1, 3, -1, -3, 5, 3, 6, 7};
-    int a[] = {1,-9,8,-6,6,4,0,5};
+    //vector<int> a = {1, 3, -1, -3, 5, 3, 6, 7};
+    vector<int> a = {1,-9,8,-6,6,4,0,5};
     vector<int> nums(a, a + SIZE(a));
     printVector<int>(nums);
     int k = 0;

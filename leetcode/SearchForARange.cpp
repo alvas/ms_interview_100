@@ -95,7 +95,7 @@ int main()
     int target = 0;
     cout << "Please enter target: ";
     cin >> target;
-    int a[] = {5, 7, 7, 8, 8, 10};
+    vector<int> a = {5, 7, 7, 8, 8, 10};
     vector<int> nums(a, a + SIZE(a));
     printVector<int>(nums);
     vector<int> r = sln.searchRange(nums, target);

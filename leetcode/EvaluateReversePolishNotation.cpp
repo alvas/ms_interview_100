@@ -88,8 +88,8 @@ public:
 int main()
 {
     Solution sln;
-    //string a[] = {"2", "1", "+", "3", "*"};
-    string a[] = {"4", "13", "5", "/", "+"};
+    //vector<string> a = {"2", "1", "+", "3", "*"};
+    vector<string> a = {"4", "13", "5", "/", "+"};
     vector<string> tokens(a, a + SIZE(a));
     cout << sln.evalRPN(tokens) << endl;
     return 0;

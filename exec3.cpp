@@ -1,8 +1,9 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-int a[] = {1, -2, 3, 10, -4, 7, 2, -5};
+vector<int> a = {1, -2, 3, 10, -4, 7, 2, -5};
 
 int maxSubarray(int a[], int size)
 {

@@ -72,11 +72,11 @@ public:
 int main()
 {
     Solution sln;
-    string a[] = {"2147483647"};
-    //string a[] = {"1", "2"};
-    //string a[] = {"2", "1"};
-    //string a[] = {"1", "#", "2", "3"};
-    //string a[] = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
+    vector<string> a = {"2147483647"};
+    //vector<string> a = {"1", "2"};
+    //vector<string> a = {"2", "1"};
+    //vector<string> a = {"1", "#", "2", "3"};
+    //vector<string> a = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
     vector<string> v(a, a + SIZE(a));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);

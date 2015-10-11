@@ -109,7 +109,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {2, 1, 5, 6, 2, 3};
+    vector<int> a = {2, 1, 5, 6, 2, 3};
     vector<int> height(a, a + SIZE(a));
     initializeIndexVector(height, 20000);
     printVector<int>(height);

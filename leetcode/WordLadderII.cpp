@@ -104,7 +104,7 @@ int main()
 {
     Solution sln;
     string s("hit"), e("cog");
-    const string a[] = {"hot", "dot", "dog", "lot", "log"};
+    const vector<string> a = {"hot", "dot", "dog", "lot", "log"};
     unordered_set<string> dict(a, a + SIZE(a));;
     vector<vector<string> > v = sln.findLadders(s, e, dict);
     print2DVector<string>(v);

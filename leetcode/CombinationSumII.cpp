@@ -58,7 +58,7 @@ int main()
     int target = 0;
     cout << "Please enter target: ";
     cin >> target;
-    int a[] = {10, 1, 2, 7, 6, 1, 5};
+    vector<int> a = {10, 1, 2, 7, 6, 1, 5};
     vector<int> candidates(a, a + SIZE(a));
     //vector<int> candidates;
     //initializeRandomVector(candidates, 10);

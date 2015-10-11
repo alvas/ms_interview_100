@@ -107,17 +107,17 @@ public:
 int main()
 {
     Solution sln;
-    string a[] = {"-3"};
-    //string a[] = {"-2", "-1"};
-    //string a[] = {"-2", "1"};
-    //string a[] = {"2", "-1", "-2"};
-    //string a[] = {"2", "-1"};
-    //string a[] = {"2", "-1", "-2"};
-    //string a[] = {"4", "2", "7", "1", "3", "8", "9"};
-    //string a[] = {"-1", "5", "#", "4", "#", "#", "2", "-4"};
-    //string a[] = {"-3", "2", "#", "3", "-6", "#", "#", "2"};
-    //string a[] = {"9", "6", "-3", "#", "#", "-6", "2", "#", "#", "2", "#", "-6", "-6", "-6"};
-    //string a[] = {"5", "6", "-6", "3", "5", "3", "#", "-7"};
+    vector<string> a = {"-3"};
+    //vector<string> a = {"-2", "-1"};
+    //vector<string> a = {"-2", "1"};
+    //vector<string> a = {"2", "-1", "-2"};
+    //vector<string> a = {"2", "-1"};
+    //vector<string> a = {"2", "-1", "-2"};
+    //vector<string> a = {"4", "2", "7", "1", "3", "8", "9"};
+    //vector<string> a = {"-1", "5", "#", "4", "#", "#", "2", "-4"};
+    //vector<string> a = {"-3", "2", "#", "3", "-6", "#", "#", "2"};
+    //vector<string> a = {"9", "6", "-3", "#", "#", "-6", "2", "#", "#", "2", "#", "-6", "-6", "-6"};
+    //vector<string> a = {"5", "6", "-6", "3", "5", "3", "#", "-7"};
     vector<string> s(a, a + SIZE(a));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);

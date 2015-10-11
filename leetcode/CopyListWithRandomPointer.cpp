@@ -100,7 +100,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {1, 2, 3, 4, 5};
+    vector<int> a = {1, 2, 3, 4, 5};
     vector<int> v(a, a + SIZE(a));
     RandomListNode *head = NULL;
     initializeLinkList<RandomListNode>(v, &head);

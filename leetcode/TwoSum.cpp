@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <unordered_map>
 #include <vector>
 
 #include "NormalData.h"
@@ -9,20 +10,15 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        int n = nums.size();
         vector<int> res;
 
-        if (n <= 2)
-        {
-            return res;
-        }
-
         // a map from value to index
-        map<int, int> mp;
+        unordered_map<int, int> mp;
+        int n = nums.size();
 
         for (int i = 0; i < n; ++i)
         {
-            if (mp.find(target - nums[i]) != mp.end())
+            if (mp.count(target - nums[i]) != 0)
             {
                 res.push_back(mp[target - nums[i]] + 1);
                 res.push_back(i + 1);
@@ -82,8 +78,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {0, 4, 3, 0};
-    vector<int> nums(a, a + SIZE(a));
+    vector<int> nums = {0, 4, 3, 0};
     int target = 0;
     cout << "Please enter target: ";
     cin >> target;

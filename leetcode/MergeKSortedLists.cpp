@@ -304,7 +304,7 @@ int main()
     ListNode *head = NULL;
     srand(unsigned(time(0)));
     vector<ListNode *> lists;
-    //int a[][5] = {{3, 7, 9, 12, 88}, {2, 6, 8, 10, 14}};
+    //vector<int> a[5] = {{3, 7, 9, 12, 88}, {2, 6, 8, 10, 14}};
     int k = rand() % 8;
     //int k = SIZE(a);
 

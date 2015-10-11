@@ -120,8 +120,8 @@ public:
 int main()
 {
     Solution sln;
-    //int a[] = {2, 3, -2, 4};
-    int a[] = {-2, 3, -2, -4};
+    //vector<int> a = {2, 3, -2, 4};
+    vector<int> a = {-2, 3, -2, -4};
     vector<int> nums(a, a + SIZE(a));
     cout << sln.maxProduct_naive(nums) << endl;
     cout << sln.maxProduct(nums) << endl;

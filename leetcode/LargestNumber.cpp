@@ -116,11 +116,11 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {3, 30, 34, 5, 9};
-    //int a[] = {3, 303, 3034, 5, 9};
-    //int a[] = {3, 303};
-    //int a[] = {0, 0, 0};
-    //int a[] = {20, 1};
+    vector<int> a = {3, 30, 34, 5, 9};
+    //vector<int> a = {3, 303, 3034, 5, 9};
+    //vector<int> a = {3, 303};
+    //vector<int> a = {0, 0, 0};
+    //vector<int> a = {20, 1};
     string b = to_string(12345);
 
     for (int i = 0; i < b.size(); ++i)

@@ -63,7 +63,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {2, 3, 1, 2, 4, 3, 6};
+    vector<int> a = {2, 3, 1, 2, 4, 3, 6};
     vector<int> nums(a, a + SIZE(a));
     cout << "Please enter s:";
     int s = 0;

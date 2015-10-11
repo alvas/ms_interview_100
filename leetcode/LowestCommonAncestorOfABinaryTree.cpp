@@ -140,7 +140,7 @@ public:
 int main()
 {
     Solution sln;
-    string s[] = {"3", "5", "1", "6", "2", "0", "8", "#", "#", "7", "4"};
+    vector<string> s = {"3", "5", "1", "6", "2", "0", "8", "#", "#", "7", "4"};
     vector<string> v(s, s + SIZE(s));
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);

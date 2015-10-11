@@ -74,6 +74,8 @@ int main()
     Solution sln;
     //string s("abcabcbb");
     string s("bbb");
+    //string s("");
+    //string s("a");
     cout << sln.lengthOfLongestSubstring(s) << endl;
     return 0;
 }

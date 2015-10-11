@@ -50,10 +50,10 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {1, 2, 3, 4, 5};
-    //int a[] = {1};
-    //int a[] = {1, 2};
-    //int a[] = {1, 2, 3};
+    vector<int> a = {1, 2, 3, 4, 5};
+    //vector<int> a = {1};
+    //vector<int> a = {1, 2};
+    //vector<int> a = {1, 2, 3};
     vector<int> v(a, a + SIZE(a));
     int k = 0;
     cout << "Please enter k[1, " << SIZE(a) << "]: ";

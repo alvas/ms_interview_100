@@ -178,11 +178,11 @@ int main()
 {
     Solution sln;
     //string begin("hit"), end("cog");
-    //const string a[] = {"hot", "dot", "dog", "lot", "log"};
+    //const vector<string> a = {"hot", "dot", "dog", "lot", "log"};
     string begin("a"), end("c");
-    const string a[] = {"a", "b", "c"};
+    const vector<string> a = {"a", "b", "c"};
     //string begin("hot"), end("dog");
-    //const string a[] = {"hot", "dog"};
+    //const vector<string> a = {"hot", "dog"};
     unordered_set<string> word(a, a + SIZE(a));;
     cout << sln.ladderLength(begin, end, word) << endl;
     return 0;

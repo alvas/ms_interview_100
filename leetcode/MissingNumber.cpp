@@ -34,7 +34,7 @@ public:
 int main()
 {
     Solution sln;
-    int a[] = {0, 1, 3};
+    vector<int> a = {0, 1, 3};
     vector<int> nums(a, a + SIZE(a));
     cout << sln.missingNumber(nums) << endl;
     return 0;
