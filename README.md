@@ -1,16 +1,14 @@
 ms_interview_100
 ================
+[![Coverage Status](https://coveralls.io/repos/alvas/ms_interview_100/badge.svg?branch=master&service=github)](https://coveralls.io/github/alvas/ms_interview_100?branch=master)
 
 This is the code implementation for 100 interview questions
 
 To compile the target in the make file:
 make target_name, for example: make Select
 
-To compile the target with debug information:
-make DEBUG=-DDEBUG target_name, for example: make DEBUG=-DDEBUG StringSearch
+leetcode solutions in leetcode folder are assigned a number according to the question number on leetcode website.
+Build leetcode solution by specifying its number:
+make 1, is the same as make TwoSum
 
-git command to commit code:
-git status
-git add .
-git commit -m "comment"
-git push origin master
+
