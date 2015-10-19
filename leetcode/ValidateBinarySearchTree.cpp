@@ -72,12 +72,11 @@ public:
 int main()
 {
     Solution sln;
-    vector<string> a = {"2147483647"};
-    //vector<string> a = {"1", "2"};
-    //vector<string> a = {"2", "1"};
-    //vector<string> a = {"1", "#", "2", "3"};
-    //vector<string> a = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
-    vector<string> v(a, a + SIZE(a));
+    vector<string> v = {"2147483647"};
+    //vector<string> v = {"1", "2"};
+    //vector<string> v = {"2", "1"};
+    //vector<string> v = {"1", "#", "2", "3"};
+    //vector<string> v = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     cout << sln.isValidBST1(root) << endl;

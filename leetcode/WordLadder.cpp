@@ -182,8 +182,7 @@ int main()
     string begin("a"), end("c");
     const vector<string> a = {"a", "b", "c"};
     //string begin("hot"), end("dog");
-    //const vector<string> a = {"hot", "dog"};
-    unordered_set<string> word(a, a + SIZE(a));;
+    //const vector<string> word = {"hot", "dog"};
     cout << sln.ladderLength(begin, end, word) << endl;
     return 0;
 }

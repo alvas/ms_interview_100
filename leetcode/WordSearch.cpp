@@ -93,10 +93,10 @@ int main()
 {
     Solution sln;
 
-    const char *a[] = {"ABCE", "SFCS", "ADEE"};
+    vector<const char *> a = {"ABCE", "SFCS", "ADEE"};
     vector<vector<char> > board;
 
-    for (int i = 0; i < SIZE(a); ++i)
+    for (int i = 0; i < a.size(); ++i)
     {
         const char *b = a[i];
         int len = strlen(b);

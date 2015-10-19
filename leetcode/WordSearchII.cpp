@@ -119,14 +119,13 @@ int main()
     const vector<string> a = {"oaan", "etae", "ihkr", "iflv"};
     vector<vector<char> > board;
 
-    for (int i = 0; i < SIZE(a); ++i)
+    for (int i = 0; i < a.size(); ++i)
     {
         vector<char> row(a[i].begin(), a[i].end());
         board.push_back(row);
     }
 
-    const vector<string> b = {"oath", "pea", "eat", "rain"};
-    vector<string> words(b, b + SIZE(b));
+    const vector<string> words = {"oath", "pea", "eat", "rain"};
     vector<string> v = sln.findWords(board, words);
     printVector<string>(v);
     return 0;

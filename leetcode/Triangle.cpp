@@ -125,13 +125,13 @@ int main()
     vector<int> a2 = {3, 4};
     vector<int> a3 = {6, 5, 7};
     vector<int> a4 = {4, 1, 8, 3};
-    vector<int> a(a1, a1 + SIZE(a1));
+    vector<int> a = a1;
     triangle.push_back(a);
-    a.assign(a2, a2 + SIZE(a2));
+    a = a2;
     triangle.push_back(a);
-    a.assign(a3, a3 + SIZE(a3));
+    a = a3;
     triangle.push_back(a);
-    a.assign(a4, a4 + SIZE(a4));
+    a = a4;
     triangle.push_back(a);
     print2DVector<int>(triangle);
     cout << sln.minimumTotal_recursive(triangle) << endl;

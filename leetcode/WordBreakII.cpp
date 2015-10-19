@@ -136,8 +136,7 @@ int main()
 {
     Solution sln;
     string s("catsanddog");
-    const vector<string> a = {"cat", "cats", "and", "sand", "dog"};
-    unordered_set<string> word(a, a + SIZE(a));;
+    const vector<string> word = {"cat", "cats", "and", "sand", "dog"};
     vector<string> v = sln.wordBreak_dp(s, word);
     vector<string> v1 = sln.wordBreak(s, word);
     printVector<string>(v);
