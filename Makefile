@@ -1,4 +1,4 @@
-default: all
+default: 1
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -21,10 +21,10 @@ LIBS =
 
 SRCS = *.cpp
 
-OBJS = $(SRCS:.cpp=.o)
+#OBJS = $(SRCS:.cpp=.o)
 
 all:
-	$(CC) $(INCLUDES) $(CFLAGS) $(OBJS) $(LIBS)
+	$(CC) $(INCLUDES) $(CFLAGS) $(LIBS)
 
 exec1: 
 	g++ exec1.cpp
