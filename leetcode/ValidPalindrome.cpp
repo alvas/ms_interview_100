@@ -45,8 +45,8 @@ int main()
 {
     Solution sln;
     string s;
-    cout << "Please enter string: ";
+    std::cout << "Please enter string: ";
     getline(cin, s);
-    cout << sln.isPalindrome(s) << endl;
+    std::cout << sln.isPalindrome(s) << endl;
     return 0;
 }

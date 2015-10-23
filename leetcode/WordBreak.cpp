@@ -116,26 +116,26 @@ int main()
 
 /*
     string s;
-    cout << "Please enter your string: ";
+    std::cout << "Please enter your string: ";
     getline(cin, s);
 
 
     unordered_set<string> dict;
 
     string w;
-    cout << "Please enter your word: ";
+    std::cout << "Please enter your word: ";
     getline(cin, w);
 
     while (!w.empty())
     {
         dict.insert(w);
-        cout << "Please enter your word: ";
+        std::cout << "Please enter your word: ";
         getline(cin, w);
     }
 */
 
-    //cout << sln.wordBreak_naive(s, dict) << endl;
-    //cout << sln.wordBreak(s, dict) << endl;
-    cout << sln.wordBreak(s1, dict1) << endl;
+    //std::cout << sln.wordBreak_naive(s, dict) << endl;
+    //std::cout << sln.wordBreak(s, dict) << endl;
+    std::cout << sln.wordBreak(s1, dict1) << endl;
     return 0;
 }

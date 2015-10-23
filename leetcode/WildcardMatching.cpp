@@ -147,8 +147,8 @@ int main()
     Solution sln;
     //string s("aa"), p("aa");
     string s("aab"), p("a*a*b");
-    cout << sln.isMatch_2D(s, p) << endl;
-    cout << sln.isMatch_1D(s, p) << endl;
-    cout << sln.isMatch(s, p) << endl;
+    std::cout << sln.isMatch_2D(s, p) << endl;
+    std::cout << sln.isMatch_1D(s, p) << endl;
+    std::cout << sln.isMatch(s, p) << endl;
     return 0;
 }

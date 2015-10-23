@@ -63,8 +63,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<string> s = {"6", "2", "8", "0", "4", "7", "9", "#", "#", "3", "5"};
-    vector<string> v(s, s + SIZE(s));
+    vector<string> v = {"6", "2", "8", "0", "4", "7", "9", "#", "#", "3", "5"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     TreeNode *p = findNodeInBST(root, 2);
@@ -74,19 +73,19 @@ int main()
 
     //if (p != NULL)
     //{
-        //cout << "find p: " << p->val << endl;
+        //std::cout << "find p: " << p->val << endl;
     //}
 
     //if (q != NULL)
     //{
-        //cout << "find q: " << q->val << endl;
+        //std::cout << "find q: " << q->val << endl;
     //}
 
     TreeNode *node = sln.lowestCommonAncestor(root, p, q);
 
     if (node != NULL)
     {
-        cout << "The lowest common ancestor: " << node->val << endl;
+        std::cout << "The lowest common ancestor: " << node->val << endl;
     }
     
     CleanUp2<TreeNode>(root);

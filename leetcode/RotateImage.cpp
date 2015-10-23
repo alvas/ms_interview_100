@@ -59,7 +59,7 @@ int main()
     Solution sln;
     vector<vector<int> > matrix;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
 
     for (int i = 0; i < n; ++i)
@@ -72,7 +72,7 @@ int main()
     print2DVector<int>(matrix);
     //sln.rotate_common(matrix);
     sln.rotate(matrix);
-    cout << endl;
+    std::cout << endl;
     print2DVector<int>(matrix);
     return 0;
 }

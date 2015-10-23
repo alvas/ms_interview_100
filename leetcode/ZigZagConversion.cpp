@@ -71,10 +71,10 @@ int main()
     Solution sln;
     int r = 0;
     string z;
-    cout << "Please enter string: ";
+    std::cout << "Please enter string: ";
     cin >> z;
-    cout << "Please enter rows: ";
+    std::cout << "Please enter rows: ";
     cin >> r;
-    cout << sln.convert(z, r) << endl;
+    std::cout << sln.convert(z, r) << endl;
     return 0;
 }

@@ -63,11 +63,10 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {2, 3, 1, 2, 4, 3, 6};
-    vector<int> nums(a, a + SIZE(a));
-    cout << "Please enter s:";
+    vector<int> nums = {2, 3, 1, 2, 4, 3, 6};
+    std::cout << "Please enter s:";
     int s = 0;
     cin >> s;
-    cout << sln.minSubArrayLen(s, nums) << endl;
+    std::cout << sln.minSubArrayLen(s, nums) << endl;
     return 0;
 }

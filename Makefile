@@ -25,7 +25,10 @@ SRCS = *.cpp
 #OBJS = $(SRCS:.cpp=.o)
 
 all:
-	$(CC) $(INCLUDES) $(CFLAGS) $(LIBS)
+	@for i in {1..290}; \
+		do \
+			make $$i; \
+		done
 
 exec1: 
 	g++ exec1.cpp

@@ -78,10 +78,10 @@ int main()
 {
     Solution sln;
     string w1("dinitrophenylhydrazine"), w2("acetylphenylhydrazine");
-    //cout << "Please enter w1: ";
+    //std::cout << "Please enter w1: ";
     //cin >> w1;
-    //cout << "Please enter w2: ";
+    //std::cout << "Please enter w2: ";
     //cin >> w2;
-    cout << sln.minDistance(w1, w2) << endl;
+    std::cout << sln.minDistance(w1, w2) << endl;
     return 0;
 }

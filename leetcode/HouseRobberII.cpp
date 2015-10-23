@@ -106,17 +106,17 @@ int main()
 
     //for (auto n : nums)
     //{
-        //cout << n << "\t";
+        //std::cout << n << "\t";
     //}
     
-    //cout << endl;
+    //std::cout << endl;
     
     for_each(nums.begin(), nums.end(), [](int n){
-        cout << n << "\t";
+        std::cout << n << "\t";
     });
 
-    cout << endl;
-    cout << sln.rob_recursive(nums) << endl;
-    cout << sln.rob(nums) << endl;
+    std::cout << endl;
+    std::cout << sln.rob_recursive(nums) << endl;
+    std::cout << sln.rob(nums) << endl;
     return 0;
 }

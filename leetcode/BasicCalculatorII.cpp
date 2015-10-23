@@ -197,6 +197,6 @@ int main()
     //string s("1-1+1");
     //string s("2*3+4");
     string s("1*2-3/4+5*6-7*8+9/10");
-    cout << sln.calculate(s) << endl;
+    std::cout << sln.calculate(s) << endl;
     return 0;
 }

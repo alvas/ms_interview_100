@@ -48,10 +48,10 @@ int main()
 {
     Solution sln;
     string s, t;
-    cout << "Please enter s: ";
+    std::cout << "Please enter s: ";
     cin >> s;
-    cout << "Please enter t: ";
+    std::cout << "Please enter t: ";
     cin >> t;
-    cout << sln.isIsomorphic(s, t) << endl;
+    std::cout << sln.isIsomorphic(s, t) << endl;
     return 0;
 }

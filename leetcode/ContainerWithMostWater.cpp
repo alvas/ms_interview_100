@@ -135,12 +135,12 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<int> height;
     initializeRandomVector(height, n);
     printVector<int>(height);
-    cout << sln.maxArea(height) << endl;
-    cout << sln.maxArea_slow(height) << endl;
+    std::cout << sln.maxArea(height) << endl;
+    std::cout << sln.maxArea_slow(height) << endl;
     return 0;
 }

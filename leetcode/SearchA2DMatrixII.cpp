@@ -102,15 +102,15 @@ public:
 int main()
 {
     Solution sln;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     int target = 0;
     cin >> target;
     vector<vector<int> > matrix;
 
     //int m = 0, n = 0;
-    //cout << "Please enter m: ";
+    //std::cout << "Please enter m: ";
     //cin >> m;
-    //cout << "Please enter n: ";
+    //std::cout << "Please enter n: ";
     //cin >> n;
     //initialize2DRandomVector(matrix, n, m);
 
@@ -152,7 +152,7 @@ int main()
     }
 
     print2DVector<int>(matrix);
-    cout << sln.searchMatrix_navie(matrix, target) << endl;
-    cout << sln.searchMatrix(matrix, target) << endl;
+    std::cout << sln.searchMatrix_navie(matrix, target) << endl;
+    std::cout << sln.searchMatrix(matrix, target) << endl;
     return 0;
 }

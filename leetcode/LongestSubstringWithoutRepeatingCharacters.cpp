@@ -76,6 +76,6 @@ int main()
     string s("bbb");
     //string s("");
     //string s("a");
-    cout << sln.lengthOfLongestSubstring(s) << endl;
+    std::cout << sln.lengthOfLongestSubstring(s) << endl;
     return 0;
 }

@@ -87,7 +87,7 @@ int main()
 {
     Solution sln;
     int num = 0;
-    cout << "Please enter num of courses: ";
+    std::cout << "Please enter num of courses: ";
     cin >> num;
     vector<pair<int, int> > pre;
     //pre.push_back(make_pair(1, 0));
@@ -96,6 +96,6 @@ int main()
     //pre.push_back(make_pair(2, 0));
     pre.push_back(make_pair(0, 2));
     pre.push_back(make_pair(1, 2));
-    cout << sln.canFinish(num, pre) << endl;
+    std::cout << sln.canFinish(num, pre) << endl;
     return 0;
 }

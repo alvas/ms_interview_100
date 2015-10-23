@@ -137,12 +137,11 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {1, 2};
-    //vector<int> a = {2, 0, 0};
-    vector<int> a = {2, 3, 1, 1, 4};
-    //vector<int> a = {3, 2, 1, 0, 4};
-    vector<int> nums(a, a + SIZE(a));
-    cout << sln.jump_slow(nums) << endl;
-    cout << sln.jump(nums) << endl;
+    //vector<int> nums = {1, 2};
+    //vector<int> nums = {2, 0, 0};
+    vector<int> nums = {2, 3, 1, 1, 4};
+    //vector<int> nums = {3, 2, 1, 0, 4};
+    std::cout << sln.jump_slow(nums) << endl;
+    std::cout << sln.jump(nums) << endl;
     return 0;
 }

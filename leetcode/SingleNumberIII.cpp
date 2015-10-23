@@ -27,8 +27,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {1, 2, 1, 3, 2, 5};
-    vector<int> nums(a, a + SIZE(a));
+    vector<int> nums = {1, 2, 1, 3, 2, 5};
     vector<int> v = sln.singleNumber(nums);
     printVector<int>(v);
     return 0;

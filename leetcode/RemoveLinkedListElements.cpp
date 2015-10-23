@@ -62,19 +62,19 @@ int main()
     ListNode *root = NULL;
     vector<int> v;
     int n = 0;
-    cout << "Please enter the number of nodes in linked list: ";
+    std::cout << "Please enter the number of nodes in linked list: ";
     cin >> n;
 
     for (int i = 0; i < n; ++i)
     {
         int t = 0;
-        cout << "Please enter value: ";
+        std::cout << "Please enter value: ";
         cin >> t;
         v.push_back(t);
     }
 
     int val = 0;
-    cout << "Please enter the value you want to remove: ";
+    std::cout << "Please enter the value you want to remove: ";
     cin >> val;
 
     initializeLinkList<ListNode>(v, &root);

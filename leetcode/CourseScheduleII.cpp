@@ -119,7 +119,7 @@ int main()
 {
     Solution sln;
     int num = 3;
-    //cout << "Please enter num of courses: ";
+    //std::cout << "Please enter num of courses: ";
     //cin >> num;
     //int a[4][2] = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
     //int a[1][2] = {{1, 0}};

@@ -65,7 +65,7 @@ int main()
 {
     Solution sln;
     string digits;
-    cout << "Please enter digits: ";
+    std::cout << "Please enter digits: ";
     cin >> digits;
     vector<string> v = sln.letterCombinations(digits);
     printVector<string>(v);

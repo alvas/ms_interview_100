@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     Solution sln;
     char s[LENGTH];
     gets(s);
-    cout << "The length of last word is: " << sln.lengthOfLastWord(s) << endl;
+    std::cout << "The length of last word is: " << sln.lengthOfLastWord(s) << endl;
     return 0;
 }
 

@@ -56,10 +56,9 @@ int main()
 {
     Solution sln;
     int target = 0;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     cin >> target;
-    vector<int> a = {10, 1, 2, 7, 6, 1, 5};
-    vector<int> candidates(a, a + SIZE(a));
+    vector<int> candidates = {10, 1, 2, 7, 6, 1, 5};
     //vector<int> candidates;
     //initializeRandomVector(candidates, 10);
     vector<vector<int> > v = sln.combinationSum2(candidates, target);

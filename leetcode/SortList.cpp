@@ -45,7 +45,7 @@ public:
 
         assert(h2 == NULL && m2 == 0 || h2 != NULL && m2 > 0);
 
-        //cout << "h: " << h->val << ", h2: " << h2->val << endl;
+        //std::cout << "h: " << h->val << ", h2: " << h2->val << endl;
 
         h = mergeSortList(h, m1);
         h2 = mergeSortList(h2, m2);

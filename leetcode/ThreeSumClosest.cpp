@@ -86,9 +86,9 @@ int main()
     int a[LOCAL_LENGTH] = {-1, -3, 2, 0, 1, -4, 54, -9};
     vector<int> nums(a, a + LOCAL_LENGTH);
     int target = 0;
-    cout << "Please enter your target: ";
+    std::cout << "Please enter your target: ";
     cin >> target;
-    cout << sln.threeSumClosest(nums, target) << endl;
-    cout << sln.threeSumClosest_naive(nums, target) << endl;
+    std::cout << sln.threeSumClosest(nums, target) << endl;
+    std::cout << sln.threeSumClosest_naive(nums, target) << endl;
     return 0;
 }

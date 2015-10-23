@@ -149,7 +149,7 @@ int main()
         board.push_back(row);
     }
 
-    cout << sln.isValidSudoku(board) << endl;
+    std::cout << sln.isValidSudoku(board) << endl;
     return 0;
 }
 

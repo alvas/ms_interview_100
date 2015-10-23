@@ -277,26 +277,26 @@ int main()
     // 4. l1 l2 are the same;
     // 5. l1 multiple elements, l2 mutiple elements; swap l1 and l2;
     // 6. ascent or descent order; assume order of l1 and l2 are the compatible
-    cout << "Please enter number of node of l1: ";
+    std::cout << "Please enter number of node of l1: ";
     int n1 = 0;
     cin >> n1;
 
     for (int i = 0; i < n1; ++i)
     {
-        cout << "Please enter element of l1: ";
+        std::cout << "Please enter element of l1: ";
         int a = 0;
         cin >> a;
         v1.push_back(a);
     }
 
-    cout << endl;
-    cout << "Please enter number of node of l2: ";
+    std::cout << endl;
+    std::cout << "Please enter number of node of l2: ";
     int n2 = 0;
     cin >> n2;
 
     for (int i = 0; i < n2; ++i)
     {
-        cout << "Please enter element of l2: ";
+        std::cout << "Please enter element of l2: ";
         int a = 0;
         cin >> a;
         v2.push_back(a);

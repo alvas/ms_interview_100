@@ -16,6 +16,6 @@ int main()
 {
     Solution sln;
     string s("anagram"), t("nagaram");
-    cout << sln.isAnagram(s, t) << endl;
+    std::cout << sln.isAnagram(s, t) << endl;
     return 0;
 }

@@ -117,17 +117,17 @@ int main()
 {
     Solution sln;
     int m = 0, n = 2147483647;
-    cout << "Please enter m: ";
+    std::cout << "Please enter m: ";
     cin >> m;
-    cout << "Please enter n > " << m << ": ";
+    std::cout << "Please enter n > " << m << ": ";
     cin >> n;
 
     bitset<32> bm(m);
     bitset<32> bn(n);
-    cout << bm << endl;
-    cout << bn << endl;
+    std::cout << bm << endl;
+    std::cout << bn << endl;
 
-    cout << sln.rangeBitwiseAnd_naive(m, n) << endl;
-    cout << sln.rangeBitwiseAnd(m, n) << endl;
+    std::cout << sln.rangeBitwiseAnd_naive(m, n) << endl;
+    std::cout << sln.rangeBitwiseAnd(m, n) << endl;
     return 0;
 }

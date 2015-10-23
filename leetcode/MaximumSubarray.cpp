@@ -53,6 +53,6 @@ int main()
     //int a[LOCAL_LENGTH] = {-1, -3, -2};
     int a[LOCAL_LENGTH] = {-1, -3, -2, 2};
     vector<int> v(a, a + LOCAL_LENGTH);
-    cout << sln.maxSubArray(v) << endl;
+    std::cout << sln.maxSubArray(v) << endl;
     return 0;
 }

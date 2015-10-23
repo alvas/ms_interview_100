@@ -44,13 +44,12 @@ int main()
 {
     Solution sln;
     ListNode *head = NULL;
-    vector<int> a = {1, 2, 3, 4, 5};
-    vector<int> v(a, a + SIZE(a));
+    vector<int> v = {1, 2, 3, 4, 5};
     initializeLinkList<ListNode>(v, &head);
     printLinkList<ListNode>(head);
 
     int i = 0;
-    cout << "Please select the i [1, " << SIZE(a) << ") node to delete: ";
+    std::cout << "Please select the i [1, " << v.size() << ") node to delete: ";
     cin >> i;
 
     ListNode *node = findINode<ListNode>(head, i);

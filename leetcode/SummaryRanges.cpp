@@ -50,8 +50,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {0, 1, 2, 4, 5 , 7};
-    vector<int> nums(a, a + SIZE(a));
+    vector<int> nums = {0, 1, 2, 4, 5 , 7};
     vector<string> v = sln.summaryRanges(nums);
     printVector<string>(v);
     return 0;

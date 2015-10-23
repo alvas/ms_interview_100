@@ -77,11 +77,10 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {2, 0, 0};
-    //vector<int> a = {2, 3, 1, 1, 4};
-    vector<int> a = {3, 2, 1, 0, 4};
-    vector<int> nums(a, a + SIZE(a));
-    cout << sln.canJump_slow(nums) << endl;
-    cout << sln.canJump(nums) << endl;
+    //vector<int> nums = {2, 0, 0};
+    //vector<int> nums = {2, 3, 1, 1, 4};
+    vector<int> nums = {3, 2, 1, 0, 4};
+    std::cout << sln.canJump_slow(nums) << endl;
+    std::cout << sln.canJump(nums) << endl;
     return 0;
 }

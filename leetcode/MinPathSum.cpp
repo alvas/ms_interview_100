@@ -19,7 +19,7 @@ void findMinPathRecursive(const vector< vector<int> > &grid, int x, int y, int s
     {
         sum += grid[x][y];
 #ifdef DEBUG
-        cout << "sum = " << sum << endl;
+        std::cout << "sum = " << sum << endl;
 #endif
         if (min == 0 || sum < min)
         {
@@ -31,7 +31,7 @@ void findMinPathRecursive(const vector< vector<int> > &grid, int x, int y, int s
     {
         sum += grid[x][y];
 #ifdef DEBUG
-        cout << "x = " << x << "; y = " << y << endl;
+        std::cout << "x = " << x << "; y = " << y << endl;
 #endif
         findMinPathRecursive(grid, x + 1, y, sum, min);
     }
@@ -40,7 +40,7 @@ void findMinPathRecursive(const vector< vector<int> > &grid, int x, int y, int s
     {
         sum += grid[x][y];
 #ifdef DEBUG
-        cout << "x = " << x << "; y = " << y << endl;
+        std::cout << "x = " << x << "; y = " << y << endl;
 #endif
         findMinPathRecursive(grid, x, y + 1, sum, min);
     }
@@ -49,7 +49,7 @@ void findMinPathRecursive(const vector< vector<int> > &grid, int x, int y, int s
     {
         sum +=grid[x][y];
 #ifdef DEBUG
-        cout << "x = " << x << "; y = " << y << endl;
+        std::cout << "x = " << x << "; y = " << y << endl;
 #endif
         findMinPathRecursive(grid, x + 1, y, sum, min);
         findMinPathRecursive(grid, x, y + 1, sum, min);
@@ -136,13 +136,13 @@ int main()
 
         for (vector<int>::iterator itr2 = (*itr).begin(); itr2 != (*itr).end(); ++itr2)
         {
-            cout << *itr2 << "\t";
+            std::cout << *itr2 << "\t";
         }
 
-        cout << endl;
+        std::cout << endl;
     }
 
-    cout << "The min path sum is : " << minPathSum(grid) << endl;
+    std::cout << "The min path sum is : " << minPathSum(grid) << endl;
     return 0;
 }
 #endif

@@ -174,13 +174,12 @@ public:
 int main()
 {
     Solution sln;
-    vector<string> a = {"4", "2", "7", "1", "3", "6", "9"};
-    vector<string> s(a, a + SIZE(a));
+    vector<string> s = {"4", "2", "7", "1", "3", "6", "9"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);
     printTreeLevelOrder<TreeNode>(root);
-    cout << sln.countNodes_recursive(root) << endl;
-    cout << sln.countNodes(root) << endl;
+    std::cout << sln.countNodes_recursive(root) << endl;
+    std::cout << sln.countNodes(root) << endl;
     CleanUp2(root);
     return 0;
 }

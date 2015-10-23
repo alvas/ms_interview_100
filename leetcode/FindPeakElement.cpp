@@ -76,10 +76,10 @@ int main()
     Solution sln;
     vector<int> nums;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     initializeRandomVector(nums, n);
     printVector<int>(nums);
-    cout << sln.findPeakElement(nums) << endl;
+    std::cout << sln.findPeakElement(nums) << endl;
     return 0;
 }

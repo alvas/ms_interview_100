@@ -14,6 +14,6 @@ int main()
 {
     Solution sln;
     vector<int> nums = {};
-    cout << sln.findDuplicate(nums) << endl;
+    std::cout << sln.findDuplicate(nums) << endl;
     return 0;
 }

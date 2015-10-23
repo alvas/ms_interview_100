@@ -27,7 +27,7 @@ int main()
     Solution sln;
     int n = 0;
     cin >> n;
-    cout << sln.convertToTitle(n) << endl;
+    std::cout << sln.convertToTitle(n) << endl;
     return 0;
 }
 

@@ -44,6 +44,6 @@ int main()
     vector<int> a = {3, 4, -1, 1};
     //vector<int> a = {1};
     vector<int> nums(a, a + SIZE(a));
-    cout << sln.firstMissingPositive(nums) << endl;
+    std::cout << sln.firstMissingPositive(nums) << endl;
     return 0;
 }

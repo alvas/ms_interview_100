@@ -81,7 +81,7 @@ int main()
     Solution sln;
     vector<int> nums = {0, 4, 3, 0};
     int target = 0;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     cin >> target;
     //vector<int> v = sln.twoSum_sort(nums, target);
     vector<int> v1 = sln.twoSum(nums, target);

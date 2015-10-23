@@ -30,7 +30,7 @@ int main()
     Solution sln;
     const int LENGTH = 8;
     int A[LENGTH] = {1, 2, 2, 2, 3, 4, 5, 6};
-    cout << sln.removeDuplicates(A, LENGTH) << endl;
+    std::cout << sln.removeDuplicates(A, LENGTH) << endl;
     return 0;
 }
 

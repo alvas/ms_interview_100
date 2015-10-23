@@ -68,14 +68,13 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {1};
-    //vector<int> a = {1, 2};
-    //vector<int> a = {1, 2, 3};
-    //vector<int> a = {1, 2, 3, 4};
-    //vector<int> a = {1, 2, 3, 4, 5};
-    //vector<int> a = {1, 2, 3, 4, 5, 6};
-    vector<int> a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    vector<int> nums(a, a + SIZE(a));
+    //vector<int> nums = {1};
+    //vector<int> nums = {1, 2};
+    //vector<int> nums = {1, 2, 3};
+    //vector<int> nums = {1, 2, 3, 4};
+    //vector<int> nums = {1, 2, 3, 4, 5};
+    //vector<int> nums = {1, 2, 3, 4, 5, 6};
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     printVector<int>(nums);
     TreeNode *root = sln.sortedArrayToBST(nums);
     //printTreePreorder(root);

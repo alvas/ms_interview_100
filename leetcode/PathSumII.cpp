@@ -68,11 +68,10 @@ int main()
 {
     Solution sln;
     int sum = 0;
-    cout << "Please enter sum: ";
+    std::cout << "Please enter sum: ";
     cin >> sum;
-    vector<string> s = {"-2", "#", "-3"};
-    //vector<string> s = {"5", "4", "8", "11", "#", "13", "4", "7", "2", "#", "#", "5", "1"};
-    vector<string> v(s, s + SIZE(s));
+    vector<string> v = {"-2", "#", "-3"};
+    //vector<string> v = {"5", "4", "8", "11", "#", "13", "4", "7", "2", "#", "#", "5", "1"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     printTreePreorder<TreeNode>(root);

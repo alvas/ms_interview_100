@@ -66,6 +66,6 @@ int main()
     //string s("aa"), p(".*"); 
     //string s("ab"), p(".*"); 
     //string s("aab"), p("c*a*b"); 
-    cout << sln.isMatch(s, p) << endl;
+    std::cout << sln.isMatch(s, p) << endl;
     return 0;
 }

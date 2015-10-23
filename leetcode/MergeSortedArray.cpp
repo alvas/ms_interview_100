@@ -76,15 +76,15 @@ int main()
 
     for (int i = 0; i < m + n; ++i)
     {
-        cout << A[i] << "\t";
+        std::cout << A[i] << "\t";
 
         if ((i + 1) % 10 == 0)
         {
-            cout << endl;
+            std::cout << endl;
         }
     }
 
-    cout << endl;
+    std::cout << endl;
 
     return 0;
 }

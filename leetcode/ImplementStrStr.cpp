@@ -172,15 +172,15 @@ int main()
     Solution sln;
     char h[1000], n[1000];
     //string h, n;
-    cout << "Please enter haystack: ";
+    std::cout << "Please enter haystack: ";
     //cin.getline(h, 256);
     cin >> h;
-    cout << "Please enter needle: ";
+    std::cout << "Please enter needle: ";
     //cin.getline(n, 256);
     cin >> n;
     // don't encourage to use const_cast<char *>() here, because h.c_str() is not guarantee that the string is zero-terminated.
-    //cout << sln.strStr(const_cast<char *>(h.c_str()), const_cast<char *>(n.c_str())) << endl;;
-    cout << sln.strStr(h, n) << endl;;
+    //std::cout << sln.strStr(const_cast<char *>(h.c_str()), const_cast<char *>(n.c_str())) << endl;;
+    std::cout << sln.strStr(h, n) << endl;;
     return 0;
 }
 

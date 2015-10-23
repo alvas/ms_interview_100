@@ -80,10 +80,10 @@ int main()
     int num = 1, denominator = 6;
     //int num = -50, denominator = 8;
     //int num = -1, denominator = -2147483648;
-    //cout << "Please enter numerator: ";
+    //std::cout << "Please enter numerator: ";
     //cin >> num;
-    //cout << "Please enter denominator: ";
+    //std::cout << "Please enter denominator: ";
     //cin >> denominator;
-    cout << sln.fractionToDecimal(num, denominator) << endl;
+    std::cout << sln.fractionToDecimal(num, denominator) << endl;
     return 0;
 }

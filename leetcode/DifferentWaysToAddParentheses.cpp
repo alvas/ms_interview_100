@@ -86,7 +86,7 @@ int main()
     Solution sln;
     //string input("2-1-1");
     string input("2*3-4*5");
-    //cout << "Please enter input: ";
+    //std::cout << "Please enter input: ";
     //cin >> input;
     vector<int> v = sln.diffWaysToCompute(input);
     printVector<int>(v);

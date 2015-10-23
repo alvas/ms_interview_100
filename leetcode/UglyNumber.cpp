@@ -42,8 +42,8 @@ int main()
 {
     Solution sln;
     int num = 0;
-    cout << "Please enter num: ";
+    std::cout << "Please enter num: ";
     cin >> num;
-    cout << sln.isUgly(num) << endl;
+    std::cout << sln.isUgly(num) << endl;
     return 0;
 }

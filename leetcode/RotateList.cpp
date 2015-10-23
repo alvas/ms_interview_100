@@ -50,13 +50,12 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {1, 2, 3, 4, 5};
-    //vector<int> a = {1};
-    //vector<int> a = {1, 2};
-    //vector<int> a = {1, 2, 3};
-    vector<int> v(a, a + SIZE(a));
+    vector<int> v = {1, 2, 3, 4, 5};
+    //vector<int> v = {1};
+    //vector<int> v = {1, 2};
+    //vector<int> v = {1, 2, 3};
     int k = 0;
-    cout << "Please enter k[1, " << SIZE(a) << "]: ";
+    std::cout << "Please enter k[1, " << v.size() << "]: ";
     cin >> k;
     ListNode *head = NULL;
     initializeLinkList<ListNode>(v, &head);

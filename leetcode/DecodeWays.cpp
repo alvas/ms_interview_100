@@ -115,7 +115,7 @@ int main()
     //string s("12120");
     //string s("5114");
     string s("24726");
-    cout << sln.numDecodings(s) << endl;
-    cout << sln.numDecodings_slow(s) << endl;
+    std::cout << sln.numDecodings(s) << endl;
+    std::cout << sln.numDecodings_slow(s) << endl;
     return 0;
 }

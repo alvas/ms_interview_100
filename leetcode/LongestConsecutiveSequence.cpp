@@ -131,10 +131,9 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {1, 2, 0, 1};
-    //vector<int> a = {100, 4, 200, 1, 3, 2};
-    vector<int> a = {100, 4, 10, 9, 7, 200, 1, 3, 11, 12, 8, 2};
-    vector<int> nums(a, a + SIZE(a));
-    cout << sln.longestConsecutive(nums) << endl;
+    //vector<int> nums = {1, 2, 0, 1};
+    //vector<int> nums = {100, 4, 200, 1, 3, 2};
+    vector<int> nums = {100, 4, 10, 9, 7, 200, 1, 3, 11, 12, 8, 2};
+    std::cout << sln.longestConsecutive(nums) << endl;
     return 0;
 }

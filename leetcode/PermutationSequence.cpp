@@ -91,11 +91,11 @@ int main()
 {
     Solution sln;
     int k = 0, n = 0;
-    cout << "Please enter n <= 9: ";
+    std::cout << "Please enter n <= 9: ";
     cin >> n;
-    cout << "Please enter k < " << n << "!: ";
+    std::cout << "Please enter k < " << n << "!: ";
     cin >> k;
-    //cout << sln.getPermutation_recursive(n, k) << endl;
-    cout << sln.getPermutation(n, k) << endl;
+    //std::cout << sln.getPermutation_recursive(n, k) << endl;
+    std::cout << sln.getPermutation(n, k) << endl;
     return 0;
 }

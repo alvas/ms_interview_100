@@ -78,11 +78,11 @@ int main()
         //int a = rand() % 15;
         //int b = rand() % 15;
         //Interval c(min(a, b), max(a, b));
-        //cout << "c.start: " << c.start << ", c.end: " << c.end << "\t";
+        //std::cout << "c.start: " << c.start << ", c.end: " << c.end << "\t";
         //intervals.push_back(c);
     //}
 
-    //cout << endl;
+    //std::cout << endl;
 
     //Interval b(2, 5);
     Interval b(4, 9);
@@ -91,10 +91,10 @@ int main()
 
     for (int i = 0; i < sz; ++i)
     {
-        cout << "(" << v[i].start << ", " << v[i].end << ")" << "\t";
+        std::cout << "(" << v[i].start << ", " << v[i].end << ")" << "\t";
     }
 
-    cout << endl;
+    std::cout << endl;
     
     return 0;
 }

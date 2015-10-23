@@ -139,7 +139,7 @@ int main()
 
     if (node != NULL)
     {
-        cout << "The join node is: " << node->val << endl;
+        std::cout << "The join node is: " << node->val << endl;
     }
 
     disjointList<ListNode>(headA, headB);

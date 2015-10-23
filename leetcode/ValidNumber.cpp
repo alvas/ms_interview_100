@@ -96,6 +96,6 @@ int main()
     //string s("abc");
     string s("1 a");
     //string s("2e10");
-    cout << sln.isNumber(s) << endl;
+    std::cout << sln.isNumber(s) << endl;
     return 0;
 }

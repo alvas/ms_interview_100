@@ -108,21 +108,20 @@ int main()
 {
     Solution sln;
     vector<string> a = {"-3"};
-    //vector<string> a = {"-2", "-1"};
-    //vector<string> a = {"-2", "1"};
-    //vector<string> a = {"2", "-1", "-2"};
-    //vector<string> a = {"2", "-1"};
-    //vector<string> a = {"2", "-1", "-2"};
-    //vector<string> a = {"4", "2", "7", "1", "3", "8", "9"};
-    //vector<string> a = {"-1", "5", "#", "4", "#", "#", "2", "-4"};
-    //vector<string> a = {"-3", "2", "#", "3", "-6", "#", "#", "2"};
-    //vector<string> a = {"9", "6", "-3", "#", "#", "-6", "2", "#", "#", "2", "#", "-6", "-6", "-6"};
-    //vector<string> a = {"5", "6", "-6", "3", "5", "3", "#", "-7"};
-    vector<string> s(a, a + SIZE(a));
+    //vector<string> s = {"-2", "-1"};
+    //vector<string> s = {"-2", "1"};
+    //vector<string> s = {"2", "-1", "-2"};
+    //vector<string> s = {"2", "-1"};
+    //vector<string> s = {"2", "-1", "-2"};
+    //vector<string> s = {"4", "2", "7", "1", "3", "8", "9"};
+    //vector<string> s = {"-1", "5", "#", "4", "#", "#", "2", "-4"};
+    //vector<string> s = {"-3", "2", "#", "3", "-6", "#", "#", "2"};
+    //vector<string> s = {"9", "6", "-3", "#", "#", "-6", "2", "#", "#", "2", "#", "-6", "-6", "-6"};
+    //vector<string> s = {"5", "6", "-6", "3", "5", "3", "#", "-7"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);
     printTreeLevelOrder<TreeNode>(root);
-    cout << sln.maxPathSum(root) << endl;
+    std::cout << sln.maxPathSum(root) << endl;
     CleanUp2(root);
     return 0;
 }

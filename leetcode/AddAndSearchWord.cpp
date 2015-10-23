@@ -208,46 +208,46 @@ int main()
 
     wordDictionary.addWord("a");
     wordDictionary.addWord("a");
-    cout << wordDictionary.search(".") << endl;
-    cout << wordDictionary.search("a") << endl;
-    cout << wordDictionary.search("aa") << endl;
-    cout << wordDictionary.search("a") << endl;
-    cout << wordDictionary.search(".a") << endl;
-    cout << wordDictionary.search("a.") << endl;
+    std::cout << wordDictionary.search(".") << endl;
+    std::cout << wordDictionary.search("a") << endl;
+    std::cout << wordDictionary.search("aa") << endl;
+    std::cout << wordDictionary.search("a") << endl;
+    std::cout << wordDictionary.search(".a") << endl;
+    std::cout << wordDictionary.search("a.") << endl;
 
     //wordDictionary.addWord("word");
     //wordDictionary.addWord("bad");
     //wordDictionary.addWord("dad");
     //wordDictionary.addWord("mad");
-    //cout << wordDictionary.search("pad") << endl;
-    //cout << wordDictionary.search("bad") << endl;
-    //cout << wordDictionary.search(".ad") << endl;
-    //cout << wordDictionary.search("b..") << endl;
+    //std::cout << wordDictionary.search("pad") << endl;
+    //std::cout << wordDictionary.search("bad") << endl;
+    //std::cout << wordDictionary.search(".ad") << endl;
+    //std::cout << wordDictionary.search("b..") << endl;
     
     //wordDictionary.addWord("a");
     //wordDictionary.addWord("ab");
-    //cout << wordDictionary.search("a") << endl;
-    //cout << wordDictionary.search("a.") << endl;
-    //cout << wordDictionary.search("ab") << endl;
-    //cout << wordDictionary.search(".a") << endl;
-    //cout << wordDictionary.search(".b") << endl;
-    //cout << wordDictionary.search("ab.") << endl;
-    //cout << wordDictionary.search(".") << endl;
-    //cout << wordDictionary.search("..") << endl;
+    //std::cout << wordDictionary.search("a") << endl;
+    //std::cout << wordDictionary.search("a.") << endl;
+    //std::cout << wordDictionary.search("ab") << endl;
+    //std::cout << wordDictionary.search(".a") << endl;
+    //std::cout << wordDictionary.search(".b") << endl;
+    //std::cout << wordDictionary.search("ab.") << endl;
+    //std::cout << wordDictionary.search(".") << endl;
+    //std::cout << wordDictionary.search("..") << endl;
 
     //wordDictionary.addWord("at");
     //wordDictionary.addWord("and");
     //wordDictionary.addWord("an");
     //wordDictionary.addWord("add");
-    //cout << wordDictionary.search("a") << endl;
-    //cout << wordDictionary.search(".at") << endl;
+    //std::cout << wordDictionary.search("a") << endl;
+    //std::cout << wordDictionary.search(".at") << endl;
     //wordDictionary.addWord("bat");
-    //cout << wordDictionary.search(".at") << endl;
-    //cout << wordDictionary.search("an.") << endl;
-    //cout << wordDictionary.search("a.d.") << endl;
-    //cout << wordDictionary.search("b.") << endl;
-    //cout << wordDictionary.search("a.d") << endl;
-    //cout << wordDictionary.search(".") << endl;
+    //std::cout << wordDictionary.search(".at") << endl;
+    //std::cout << wordDictionary.search("an.") << endl;
+    //std::cout << wordDictionary.search("a.d.") << endl;
+    //std::cout << wordDictionary.search("b.") << endl;
+    //std::cout << wordDictionary.search("a.d") << endl;
+    //std::cout << wordDictionary.search(".") << endl;
 
     return 0;
 }

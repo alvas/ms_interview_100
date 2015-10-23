@@ -48,7 +48,7 @@ int main()
     Solution sln;
     int numbers[NUM] = {7, 3, 5, 7, 0, 7, 7, 7, 4, 2, 7};
     vector<int> v(numbers, numbers + NUM);
-    cout << "The majority Element of vector is: " << sln.majorityElement(v) << endl;
+    std::cout << "The majority Element of vector is: " << sln.majorityElement(v) << endl;
     return 0;
 }
 

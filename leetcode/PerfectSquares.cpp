@@ -13,6 +13,6 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << sln.numSquares(n) << endl;
+    std::cout << sln.numSquares(n) << endl;
     return 0;
 }

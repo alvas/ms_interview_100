@@ -19,9 +19,9 @@ public:
             //// when the number appaers second time, set x to 0, and y to num[i];
             y ^= ~x & nums[i];
             //// when the number appears the third time, set y to 0;
-            //cout << "x: " << x << "\ty: " << y << "\tnums[i]: " << nums[i] << endl;
+            //std::cout << "x: " << x << "\ty: " << y << "\tnums[i]: " << nums[i] << endl;
             //bitset<32> x1(x), y1(y), n1(nums[i]);
-            //cout << "x: " << x1 << "\ty: " << y1 << "\tnums[" << i << "]:\t" << n1 << endl;
+            //std::cout << "x: " << x1 << "\ty: " << y1 << "\tnums[" << i << "]:\t" << n1 << endl;
             //
             //this can be extended to n numbers
             //x ^= (~y & ~z & a);
@@ -35,9 +35,9 @@ public:
             //y |= x & nums[i];
             //x ^= nums[i];
             //z = ~(x & y);
-            //cout << "x: " << x << "\ty: " << y << "\tz: " << z << endl;
+            //std::cout << "x: " << x << "\ty: " << y << "\tz: " << z << endl;
             //bitset<32> x1(x), y1(y), z1(z);
-            //cout << "x: " << x1 << "\ty: " << y1 << "\tz:" << z1 << endl;
+            //std::cout << "x: " << x1 << "\ty: " << y1 << "\tz:" << z1 << endl;
             //x &= z;
             //y &= z;
         }
@@ -49,8 +49,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {7, 7, 7, 2, 2, 2, 9, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
-    vector<int> nums(a, a + SIZE(a));
-    cout << sln.singleNumber(nums) << endl;
+    vector<int> nums = {7, 7, 7, 2, 2, 2, 9, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
+    std::cout << sln.singleNumber(nums) << endl;
     return 0;
 }

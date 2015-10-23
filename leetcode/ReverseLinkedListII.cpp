@@ -125,16 +125,15 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {1, 2, 3, 4, 5};
-    //vector<int> a = {};
-    //vector<int> a = {1};
-    //vector<int> a = {1, 2};
-    //vector<int> a = {1, 2, 3};
-    vector<int> v(a, a + SIZE(a));
+    vector<int> v = {1, 2, 3, 4, 5};
+    //vector<int> v = {};
+    //vector<int> v = {1};
+    //vector<int> v = {1, 2};
+    //vector<int> v = {1, 2, 3};
     int m = 0, n = 0;
-    cout << "Please enter m[1, " << SIZE(a) << "]: ";
+    std::cout << "Please enter m[1, " << v.size() << "]: ";
     cin >> m;
-    cout << "Please enter n[" << m << ", " << SIZE(a) << "]: ";
+    std::cout << "Please enter n[" << m << ", " << v.size() << "]: ";
     cin >> n;
     ListNode *head = NULL;
     initializeLinkList<ListNode>(v, &head);

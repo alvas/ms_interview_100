@@ -76,10 +76,10 @@ int main()
 {
     Solution sln;
     int dividend = 0, divisor = 0;
-    cout << "Please enter dividend: ";
+    std::cout << "Please enter dividend: ";
     cin >> dividend;
-    cout << "Please enter divisor: ";
+    std::cout << "Please enter divisor: ";
     cin >> divisor;
-    cout << sln.divide(dividend, divisor) << endl;
+    std::cout << sln.divide(dividend, divisor) << endl;
     return 0;
 }

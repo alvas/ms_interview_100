@@ -48,9 +48,9 @@ int main()
 {
     Solution sln;
     int k = 0, n = 0;
-    cout << "Please enter k: ";
+    std::cout << "Please enter k: ";
     cin >> k;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<vector<int> > v = sln.combinationSum3(k, n);
     print2DVector<int>(v);

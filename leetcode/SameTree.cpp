@@ -82,7 +82,7 @@ int main()
     vector<string> v2(leaf2, leaf2 + 12);
     ReBuildTreeFromOrderLevel<TreeNode>(v, p);
     ReBuildTreeFromOrderLevel<TreeNode>(v2, q);
-    cout << sln.isSameTree(p, q) << endl;
+    std::cout << sln.isSameTree(p, q) << endl;
     return 0;
 }
 

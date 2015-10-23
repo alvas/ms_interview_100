@@ -133,8 +133,8 @@ int main()
     vector<int> nums(a, a + LOCAL_LENGTH);;
     printVector<int>(nums);
     int target = 0;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     cin >> target;
-    cout << sln.searchInsert(nums, target) << endl;
+    std::cout << sln.searchInsert(nums, target) << endl;
     return 0;
 }

@@ -135,19 +135,19 @@ public:
         else if (root->left == NULL && root->right != NULL)
         {
             int h = highOfTree(root->right);
-            //cout << "node " << root->val << "; high " << 1 + h << endl;
+            //std::cout << "node " << root->val << "; high " << 1 + h << endl;
             return 1 + h;
         }
         else if (root->left != NULL && root->right == NULL)
         {
             int h = highOfTree(root->left);
-            //cout << "node " << root->val << "; high " << 1 + h << endl;
+            //std::cout << "node " << root->val << "; high " << 1 + h << endl;
             return 1 + h;
         }
         else
         {
             int h = max(highOfTree(root->right), highOfTree(root->left));
-            //cout << "node " << root->val <<  "; high " << 1 + h << endl;
+            //std::cout << "node " << root->val <<  "; high " << 1 + h << endl;
             return 1 + h;
         }
     }
@@ -165,7 +165,7 @@ int main()
     string leaf[11] = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "#", "4"};
     vector<string> s(leaf, leaf + 11);
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);
-    cout << sln.isBalanced(root) << endl;
+    std::cout << sln.isBalanced(root) << endl;
     CleanUp(root);
     return 0;
 }

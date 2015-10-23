@@ -66,9 +66,9 @@ int main()
 {
     Solution sln;
     int x = 0;
-    cout << "Please input n: ";
+    std::cout << "Please input n: ";
     cin >> x;
-    cout << sln.isPalindrome(x) << endl;
+    std::cout << sln.isPalindrome(x) << endl;
     return 0;
 }
 

@@ -27,7 +27,7 @@ public:
 
         stack<TreeNode *> s;
         s.push(root);
-        //cout << "pushing " << root->val << endl;
+        //std::cout << "pushing " << root->val << endl;
         TreeNode *prev = NULL;
 
         while (!s.empty())
@@ -40,12 +40,12 @@ public:
             if (top->left != NULL && prev != top->left && (prev == NULL || prev != top->right))
             {
                 s.push(top->left);
-                //cout << "pushing " << top->val << endl;
+                //std::cout << "pushing " << top->val << endl;
             }
             else if (top->right != NULL && prev != top->right)
             {
                 s.push(top->right);
-                //cout << "pushing " << top->val << endl;
+                //std::cout << "pushing " << top->val << endl;
             }
             else
             {

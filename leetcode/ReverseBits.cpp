@@ -25,13 +25,13 @@ int main()
 {
     Solution sln;
     uint32_t n = 0;
-    cout << "Please input n: ";
+    std::cout << "Please input n: ";
     cin >> n;
     bitset<32> r(n);
-    cout << r << endl;
+    std::cout << r << endl;
     n = sln.reverseBits(n);
     bitset<32> r2(n);
-    cout << n << "\t" << r2 << endl;
+    std::cout << n << "\t" << r2 << endl;
     return 0;
 }
 

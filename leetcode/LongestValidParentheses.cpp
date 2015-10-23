@@ -191,7 +191,7 @@ int main()
     string s("((())()())");
     //string s(")()())()()(");
     //string s("(()(((()");
-    cout << s << endl;
-    cout << sln.longestValidParentheses(s) << endl;
+    std::cout << s << endl;
+    std::cout << sln.longestValidParentheses(s) << endl;
     return 0;
 }

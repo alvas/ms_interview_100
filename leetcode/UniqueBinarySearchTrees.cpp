@@ -57,10 +57,10 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
-    cout << sln.numTrees_recursive(n) << endl;
-    cout << sln.numTrees(n) << endl;
+    std::cout << sln.numTrees_recursive(n) << endl;
+    std::cout << sln.numTrees(n) << endl;
     return 0;
 }
 

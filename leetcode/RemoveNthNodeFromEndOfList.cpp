@@ -125,13 +125,13 @@ int main()
     vector<int> va;
     
     int size = 0;
-    cout << "Please enter the size of the list: ";
+    std::cout << "Please enter the size of the list: ";
     cin >> size;
 
     for (int i = 0; i < size; ++i)
     {
         int a = 0;
-        cout << "please enter value of node on the list: ";
+        std::cout << "please enter value of node on the list: ";
         cin >> a;
         va.push_back(a);
     }
@@ -140,7 +140,7 @@ int main()
     initializeLinkList<ListNode>(va, &head);
 
     int n = 0;
-    cout << "Pleae enter the nth node to remove: ";
+    std::cout << "Pleae enter the nth node to remove: ";
     cin >> n;
 
     head = sln.removeNthFromEnd(head, n);

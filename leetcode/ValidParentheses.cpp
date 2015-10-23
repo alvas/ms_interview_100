@@ -69,6 +69,6 @@ int main(int argc, char *argv[])
     //gets(str);
     //string s(str);
     string s("(())([{}])");
-    cout << sln.isValid(s) << endl;
+    std::cout << sln.isValid(s) << endl;
 }
 

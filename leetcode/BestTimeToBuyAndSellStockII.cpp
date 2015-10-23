@@ -166,8 +166,8 @@ int main()
     Solution sln;
     vector<int> prices = {5, 4, 7, 9, 8, 1, 12, 4, 6, 6};
     //vector<int> prices = {1, 2};
-    cout << sln.maxProfit(prices) << endl;
-    cout << sln.maxProfit1(prices) << endl;
-    cout << sln.maxProfit_naive(prices) << endl;
+    std::cout << sln.maxProfit(prices) << endl;
+    std::cout << sln.maxProfit1(prices) << endl;
+    std::cout << sln.maxProfit_naive(prices) << endl;
     return 0;
 }

@@ -128,8 +128,8 @@ int main()
     for (vector<vector<int> >::iterator itr = v.begin(); itr != v.end(); ++itr)
     {
         printVector<int>(*itr);
-        //cout << sln.findMin_complicated(*itr) << endl << endl;
-        cout << sln.findMin(*itr) << endl << endl;
+        //std::cout << sln.findMin_complicated(*itr) << endl << endl;
+        std::cout << sln.findMin(*itr) << endl << endl;
     }
 
     return 0;

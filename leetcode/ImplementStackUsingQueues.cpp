@@ -83,11 +83,11 @@ int main()
         s.push(i);
     }
 
-    cout << "Is stack empty: " << s.empty() << endl;
+    std::cout << "Is stack empty: " << s.empty() << endl;
 
     while (!s.empty())
     {
-        cout << "Top of the stack: " << s.top() << endl;
+        std::cout << "Top of the stack: " << s.top() << endl;
         s.pop();
     }
 

@@ -114,10 +114,10 @@ int main()
     sort(nums2.begin(), nums2.end());
     printVector<int>(nums1);
     printVector<int>(nums2);
-    cout << sln.findMedianSortedArrays(nums1, nums2) << endl;
+    std::cout << sln.findMedianSortedArrays(nums1, nums2) << endl;
 
     // because the naive algorithm would merge the nums1 and nums2, it should not be called
     // before findMedianSortedArrays
-    cout << sln.findMedianSortedArrays_naive(nums1, nums2) << endl;
+    std::cout << sln.findMedianSortedArrays_naive(nums1, nums2) << endl;
     return 0;
 }

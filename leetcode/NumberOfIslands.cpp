@@ -110,6 +110,6 @@ int main()
     }
 
     print2DVector<char>(grid);
-    cout << sln.numIslands(grid) << endl;
+    std::cout << sln.numIslands(grid) << endl;
     return 0;
 }

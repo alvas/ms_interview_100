@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         cin >> str;;
     }
 
-    cout << str << ": " << sln.romanToInt(str) << endl;
+    std::cout << str << ": " << sln.romanToInt(str) << endl;
     return 0;
 }
 

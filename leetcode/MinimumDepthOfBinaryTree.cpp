@@ -158,7 +158,7 @@ int main()
     int szPostOrder[TREELEN] = {3, 2, 1};
 
     ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
-    cout << sln.minDepth(root) << endl;
+    std::cout << sln.minDepth(root) << endl;
     CleanUp(root);
     return 0;
 }

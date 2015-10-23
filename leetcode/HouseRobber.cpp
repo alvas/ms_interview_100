@@ -67,17 +67,17 @@ int main()
     
     /*
     string  n;
-    cout << "Please enter number: ";
+    std::cout << "Please enter number: ";
     getline(cin, n);
 
     while (!n.empty())
     {
         num.push_back(atoi(n.c_str()));
-        cout << "Please enter number: ";
+        std::cout << "Please enter number: ";
         getline(cin, n);
     }
     */
 
-    cout << sln.rob1(num) << endl;
+    std::cout << sln.rob1(num) << endl;
     return 0;
 }

@@ -63,7 +63,7 @@ public:
 /**
  * Your BSTIterator will be called like this:
  * BSTIterator i = BSTIterator(root);
- * while (i.hasNext()) cout << i.next();
+ * while (i.hasNext()) std::cout << i.next();
  */
 int main()
 {
@@ -85,7 +85,7 @@ int main()
     };
 
     v.clear();
-    v.assign(a, a + SIZE(a));
+    v = a;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     //printTreeLevelOrder<TreeNode>(root);
     printTreeInorder<TreeNode>(root);
@@ -93,10 +93,10 @@ int main()
 
     while (i.hasNext())
     {
-        cout << i.next() << "\t";
+        std::cout << i.next() << "\t";
     }
 
-    cout << endl;
+    std::cout << endl;
     CleanUp2<TreeNode>(root);
     return 0;
 }

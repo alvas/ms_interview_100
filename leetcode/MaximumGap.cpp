@@ -152,9 +152,9 @@ int main()
     vector<int> nums;
     initializeRandomVector(nums, rand() % LEN);
     printVector<int>(nums);
-    //cout << sln.maximumGap_sort(nums) << endl;
-    cout << sln.maximumGap(nums) << endl;
-    cout << sln.maximumGap_sort(nums) << endl;
-    cout << sln.maximumGap_radix_sort(nums) << endl;
+    //std::cout << sln.maximumGap_sort(nums) << endl;
+    std::cout << sln.maximumGap(nums) << endl;
+    std::cout << sln.maximumGap_sort(nums) << endl;
+    std::cout << sln.maximumGap_radix_sort(nums) << endl;
     return 0;
 }

@@ -165,7 +165,7 @@ int main()
     Solution sln;
     //string s("ADOBECODEBANC"), t("ABC");
     string s("aa"), t("aa");
-    cout << sln.minWindow_slow(s, t) << endl;
-    cout << sln.minWindow(s, t) << endl;
+    std::cout << sln.minWindow_slow(s, t) << endl;
+    std::cout << sln.minWindow(s, t) << endl;
     return 0;
 }

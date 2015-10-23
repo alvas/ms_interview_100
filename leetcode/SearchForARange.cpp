@@ -93,10 +93,9 @@ int main()
 {
     Solution sln;
     int target = 0;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     cin >> target;
-    vector<int> a = {5, 7, 7, 8, 8, 10};
-    vector<int> nums(a, a + SIZE(a));
+    vector<int> nums = {5, 7, 7, 8, 8, 10};
     printVector<int>(nums);
     vector<int> r = sln.searchRange(nums, target);
     printVector<int>(r);

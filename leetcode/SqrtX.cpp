@@ -99,9 +99,9 @@ int main()
 {
     Solution sln;
     int x = 0;
-    cout << "Please enter x: ";
+    std::cout << "Please enter x: ";
     cin >> x;
-    cout << sln.mySqrt(x) << endl;
-    cout << sqrt(x) << endl;
+    std::cout << sln.mySqrt(x) << endl;
+    std::cout << sqrt(x) << endl;
     return 0;
 }

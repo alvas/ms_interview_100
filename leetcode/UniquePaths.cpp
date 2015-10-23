@@ -90,10 +90,10 @@ int main()
 {
     Solution sln;
     int m = 0, n = 0;
-    cout << "Please enter m: ";
+    std::cout << "Please enter m: ";
     cin >> m;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
-    cout << sln.uniquePaths(m, n) << endl;
+    std::cout << sln.uniquePaths(m, n) << endl;
     return 0;
 }

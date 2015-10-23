@@ -24,8 +24,8 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
-    cout << "n! = " << tgamma(n + 1) << " : " << sln.trailingZeroes(n) << endl;
+    std::cout << "n! = " << tgamma(n + 1) << " : " << sln.trailingZeroes(n) << endl;
     return 0;
 }

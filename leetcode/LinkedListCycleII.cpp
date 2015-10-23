@@ -70,11 +70,11 @@ int main()
 
     if (p == NULL)
     {
-        cout << "There is no circle!" << endl;
+        std::cout << "There is no circle!" << endl;
     }
     else
     {
-        cout << "The circle begins from: " << p->val << endl;
+        std::cout << "The circle begins from: " << p->val << endl;
     }
 
     breakCircleLinkList<ListNode>(list);

@@ -83,11 +83,11 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<int> height;
     initializeRandomVector(height, n);
     printVector<int>(height);
-    cout << sln.trap(height) << endl;
+    std::cout << sln.trap(height) << endl;
     return 0;
 }

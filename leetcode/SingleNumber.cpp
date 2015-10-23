@@ -34,6 +34,6 @@ int main()
     Solution sln;
     int a[LENGTH] = {1, 1, 2, 2, 9, 3, 3, 4, 4, 5, 5, 6, 6};
     vector<int> nums(a, a + LENGTH);
-    cout << sln.singleNumber(nums) << endl;
+    std::cout << sln.singleNumber(nums) << endl;
     return 0;
 }

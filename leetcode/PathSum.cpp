@@ -14,7 +14,7 @@ public:
 
         if (root == NULL)
         {
-            cout << "root == NULL" << endl;
+            std::cout << "root == NULL" << endl;
             return false;
         }
         else if (root->left == NULL && root->right == NULL)
@@ -73,12 +73,12 @@ int main()
     //ReBuildTreeFromPrePost(szPreOrder, szPostOrder, TREELEN_PATHSUM, root);
     //ReBuildTreeFromInPost(szInOrder, szPostOrder, TREELEN_PATHSUM, root);
 
-    cout << "Please enter the sum: ";
+    std::cout << "Please enter the sum: ";
     int num = 0;
     cin >> num;
 
     Solution sln;
-    cout << sln.hasPathSum(root, num) << endl;
+    std::cout << sln.hasPathSum(root, num) << endl;
     CleanUp2<TreeNode>(root);
     return 0;
 }

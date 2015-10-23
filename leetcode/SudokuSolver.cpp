@@ -152,7 +152,7 @@ int main()
     }
 
     print2DVector<char>(board);
-    cout << endl << endl;
+    std::cout << endl << endl;
     sln.solveSudoku(board);
     print2DVector<char>(board);
 

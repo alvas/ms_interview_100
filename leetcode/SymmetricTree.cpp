@@ -19,8 +19,8 @@ public:
         string s1, s2;
         DFS(root, s1);
         DFS2(root, s2);
-        cout << "s1: " << s1 << endl;
-        cout << "s2: " << s2 << endl;
+        std::cout << "s1: " << s1 << endl;
+        std::cout << "s2: " << s2 << endl;
         return s1 == s2;
     }
 
@@ -58,7 +58,7 @@ int main()
     string leaf[11] = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "1", "4"};
     vector<string> v(leaf, leaf + 11);
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    cout << sln.isSymmetric(root) << endl;
+    std::cout << sln.isSymmetric(root) << endl;
     return 0;
 }
 

@@ -121,10 +121,9 @@ int main()
 {
     Solution sln;
     //string s("barfoothefoobarmana");
-    //const string a[] = {"foo", "bar"};
+    //const vector<string> words = {"foo", "bar"};
     string s("wordgoodgoodgoodbestword");
-    const string a[] = {"word","good","best","good"};
-    vector<string> words(a, a + SIZE(a));;
+    const vector<string> words = {"word","good","best","good"};
     //vector<int> v = sln.findSubstring_slow(s, words);
     vector<int> v = sln.findSubstring(s, words);
     printVector<int>(v);

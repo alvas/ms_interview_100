@@ -209,6 +209,6 @@ int main()
     //vector<int> prices = {2, 1, 2, 1, 0, 1, 2};
     //vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};
     vector<int> prices = {5, 5, 4, 9, 3, 8, 5, 5, 1, 6, 8, 3, 4};
-    cout << sln.maxProfit(prices) << endl;
+    std::cout << sln.maxProfit(prices) << endl;
     return 0;
 }

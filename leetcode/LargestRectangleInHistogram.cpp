@@ -109,12 +109,11 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {2, 1, 5, 6, 2, 3};
-    vector<int> height(a, a + SIZE(a));
+    vector<int> height = {2, 1, 5, 6, 2, 3};
     initializeIndexVector(height, 20000);
     printVector<int>(height);
-    cout << sln.largestRectangleArea_slow(height) << endl;
-    cout << sln.largestRectangleArea_prune(height) << endl;
-    cout << sln.largestRectangleArea(height) << endl;
+    std::cout << sln.largestRectangleArea_slow(height) << endl;
+    std::cout << sln.largestRectangleArea_prune(height) << endl;
+    std::cout << sln.largestRectangleArea(height) << endl;
     return 0;
 }

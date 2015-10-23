@@ -47,10 +47,9 @@ int main()
 {
     Solution sln;
     int target = 0;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     cin >> target;
-    vector<int> a = {2, 3, 6, 7};
-    vector<int> candidates(a, a + SIZE(a));
+    vector<int> candidates = {2, 3, 6, 7};
     vector<vector<int> > v = sln.combinationSum(candidates, target);
     print2DVector<int>(v);
     return 0;

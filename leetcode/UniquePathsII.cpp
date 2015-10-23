@@ -106,9 +106,9 @@ int main()
 {
     Solution sln;
     int m = 0, n = 0;
-    cout << "Please enter m: ";
+    std::cout << "Please enter m: ";
     cin >> m;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<vector<int> > grid(m, vector<int>(n, 0));
     srand(unsigned(time(0)));
@@ -123,8 +123,8 @@ int main()
     }
 
     print2DVector<int>(grid);
-    cout << endl;
-    cout << sln.uniquePathsWithObstacles(grid) << endl;
-    //cout << sln.uniquePathsWithObstacles_slow(grid) << endl;
+    std::cout << endl;
+    std::cout << sln.uniquePathsWithObstacles(grid) << endl;
+    //std::cout << sln.uniquePathsWithObstacles_slow(grid) << endl;
     return 0;
 }

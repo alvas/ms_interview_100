@@ -92,6 +92,6 @@ int main()
         matrix.push_back(b);
     }
 
-    cout << sln.maximalSquare(matrix) << endl;
+    std::cout << sln.maximalSquare(matrix) << endl;
     return 0;
 }

@@ -26,9 +26,9 @@ int main()
 {
     Solution sln;
     uint32_t n = 0;
-    cout << "Please enter number: ";
+    std::cout << "Please enter number: ";
     cin >> n;
     bitset<sizeof(n) * 8> b(n);
-    cout << sln.hammingWeight(n) << " : " << b << endl;
+    std::cout << sln.hammingWeight(n) << " : " << b << endl;
     return 0;
 }

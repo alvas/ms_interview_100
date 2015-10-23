@@ -150,13 +150,13 @@ int main()
     int a[LOCAL_LENGTH] = {1, 1, 0, 0, -1, -1, 0, 0, -2, -2, 2, 2};
     vector<int> nums(a, a + LOCAL_LENGTH);
     int target = 0;
-    cout << "Please enter target: ";
+    std::cout << "Please enter target: ";
     cin >> target;
     vector<vector<int> > v = sln.fourSum_naive(nums, target);
-    cout << "fourSum_naive:" << endl;
+    std::cout << "fourSum_naive:" << endl;
     print2DVector(v);
     vector<vector<int> > v1 = sln.fourSum(nums, target);
-    cout << "better solution:" << endl;
+    std::cout << "better solution:" << endl;
     print2DVector(v1);
     return 0;
 }

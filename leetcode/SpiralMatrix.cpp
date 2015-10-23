@@ -129,14 +129,14 @@ int main()
 {
     Solution sln;
     int m = 0, n = 0;
-    cout << "Please enter m: ";
+    std::cout << "Please enter m: ";
     cin >> m;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<vector<int> > matrix;
     initialize2DVector(matrix, m, n);
     print2DVector<int>(matrix);
-    cout << endl;
+    std::cout << endl;
     vector<int> r = sln.spiralOrder(matrix);
     printVector<int>(r);
     return 0;

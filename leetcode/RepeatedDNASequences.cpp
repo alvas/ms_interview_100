@@ -145,7 +145,7 @@ int main()
     Solution sln;
     //string s("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT");
     string s("AAAAAAAAAAAA");
-    cout << s << endl;
+    std::cout << s << endl;
     vector<string> v = sln.findRepeatedDnaSequences(s);
     printVector<string>(v);
     return 0;

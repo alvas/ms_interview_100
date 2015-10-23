@@ -193,7 +193,7 @@ int main()
     }
 
     print2DVector<char>(board);
-    cout << endl;
+    std::cout << endl;
 
     sln.solve(board);
     //print2DVector<char>(board);

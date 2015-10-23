@@ -174,7 +174,7 @@ int main()
     //string s("ab");
     //string s("aba");
     //string s("aa");
-    cout << sln.shortestPalindrome_slow(s) << endl;
-    cout << sln.shortestPalindrome(s) << endl;
+    std::cout << sln.shortestPalindrome_slow(s) << endl;
+    std::cout << sln.shortestPalindrome(s) << endl;
     return 0;
 }

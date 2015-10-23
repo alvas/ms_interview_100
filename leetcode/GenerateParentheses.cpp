@@ -45,7 +45,7 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n:";
+    std::cout << "Please enter n:";
     cin >> n;
     vector<string> v = sln.generateParenthesis(n);
     printVector<string>(v);

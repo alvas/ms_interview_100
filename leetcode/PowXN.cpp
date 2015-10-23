@@ -53,11 +53,11 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     double x = 0.0;
-    cout << "Please enter x: ";
+    std::cout << "Please enter x: ";
     cin >> x;
-    cout << sln.myPow(x, n) << endl;
+    std::cout << sln.myPow(x, n) << endl;
     return 0;
 }

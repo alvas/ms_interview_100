@@ -79,7 +79,7 @@ int main()
     //vector<string> v = {"2", "2", "3", "#", "#", "#", "4", "#", "5"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    cout << sln.isValidBST1(root) << endl;
+    std::cout << sln.isValidBST1(root) << endl;
     CleanUp2<TreeNode>(root);
     return 0;
 }

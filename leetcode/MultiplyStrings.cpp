@@ -96,10 +96,10 @@ int main()
 {
     Solution sln;
     string num1, num2;
-    cout << "Please enter num1: ";
+    std::cout << "Please enter num1: ";
     cin >> num1;
-    cout << "Please enter num2: ";
+    std::cout << "Please enter num2: ";
     cin >> num2;
-    cout << sln.multiply(num1, num2) << endl;
+    std::cout << sln.multiply(num1, num2) << endl;
     return 0;
 }

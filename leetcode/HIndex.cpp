@@ -14,8 +14,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {3, 0, 6, 1, 5};
-    vector<int> citations(a, a + SIZE(a));
-    cout << sln.hIndex(citations) << endl;
+    vector<int> citations = {3, 0, 6, 1, 5};
+    std::cout << sln.hIndex(citations) << endl;
     return 0;
 }

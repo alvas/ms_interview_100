@@ -59,7 +59,7 @@ int main()
     vector<string> v(node, node + LOCAL_LENGTH);
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    cout << sln.sumNumbers(root) << endl;
+    std::cout << sln.sumNumbers(root) << endl;
     CleanUp2<TreeNode>(root);
     return 0;
 }

@@ -27,7 +27,7 @@ int main()
     Solution sln;
     string str;
     cin >> str;
-    cout << sln.titleToNumber(str) << endl;
+    std::cout << sln.titleToNumber(str) << endl;
     return 0;
 }
 

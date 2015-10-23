@@ -151,7 +151,7 @@ int main()
     //string s1("aabcc"), s2("dbbca"), s3("aadbbbaccc");
     //string s1("aa"), s2("ab"), s3("aaba");
     //string s1("bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa"), s2("babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab"), s3("babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab");
-    //cout << sln.isInterleave_recursive(s1, s2, s3) << endl;
-    cout << sln.isInterleave(s1, s2, s3) << endl;
+    //std::cout << sln.isInterleave_recursive(s1, s2, s3) << endl;
+    std::cout << sln.isInterleave(s1, s2, s3) << endl;
     return 0;
 }

@@ -48,7 +48,7 @@ int main()
     s.push(4);
     s.push(1);
     s.push(6);
-    cout << "top() " << s.top() << endl;
-    cout << "getMin() " << s.getMin() << endl;
+    std::cout << "top() " << s.top() << endl;
+    std::cout << "getMin() " << s.getMin() << endl;
     return 0;
 }

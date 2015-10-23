@@ -134,8 +134,8 @@ int main()
     a = a4;
     triangle.push_back(a);
     print2DVector<int>(triangle);
-    cout << sln.minimumTotal_recursive(triangle) << endl;
-    cout << sln.minimumTotal_slow(triangle) << endl;
-    cout << sln.minimumTotal(triangle) << endl;
+    std::cout << sln.minimumTotal_recursive(triangle) << endl;
+    std::cout << sln.minimumTotal_slow(triangle) << endl;
+    std::cout << sln.minimumTotal(triangle) << endl;
     return 0;
 }

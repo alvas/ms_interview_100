@@ -54,6 +54,6 @@ int main()
         dungeon.push_back(b);
     }
 
-    cout << sln.calculateMinimumHP(dungeon) << endl;
+    std::cout << sln.calculateMinimumHP(dungeon) << endl;
     return 0;
 }

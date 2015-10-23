@@ -54,8 +54,8 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
-    cout << sln.countAndSay(n) << endl;
+    std::cout << sln.countAndSay(n) << endl;
     return 0;
 }

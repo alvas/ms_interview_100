@@ -14,6 +14,6 @@ int main()
 {
     Solution sln;
     int num = 0;
-    cout << sln.numberToWords(num) << endl;
+    std::cout << sln.numberToWords(num) << endl;
     return 0;
 }

@@ -66,7 +66,7 @@ int main()
     //int a[LOCAL_LENGTH] = {1, 2, 2, 2, 2, 2, 3};
     int a[LOCAL_LENGTH] = {1, 1, 1, 2, 2, 2, 3, 3, 3};
     vector<int> nums(a, a + LOCAL_LENGTH);
-    cout << sln.removeDuplicates(nums) << endl;
+    std::cout << sln.removeDuplicates(nums) << endl;
     printVector<int>(nums);
     return 0;
 }

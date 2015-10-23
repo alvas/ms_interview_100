@@ -126,7 +126,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a[2] = {{0, -12}, {5, 2}, {2, 5}, {0, -5}, {1, 5}, {2, -2}, {5, -4}, {3, 4}, {-2, 4}, {-1, 4}, {0, -5}, {0, -8}, {-2, -1}, {0, -11}, {0, -9}};
+    int a[][2] = {{0, -12}, {5, 2}, {2, 5}, {0, -5}, {1, 5}, {2, -2}, {5, -4}, {3, 4}, {-2, 4}, {-1, 4}, {0, -5}, {0, -8}, {-2, -1}, {0, -11}, {0, -9}};
     vector<Point> points;
 
     for (int i = 0; i < SIZE(a); ++i)
@@ -162,15 +162,15 @@ int main()
     //for (vector<Point>::iterator itr = points.begin();
          //itr != points.end(); ++itr)
     //{
-        //cout << itr->x << "\t" << itr->y << endl;
+        //std::cout << itr->x << "\t" << itr->y << endl;
     //}
 
-    cout << sln.maxPoints(points) << endl;
+    std::cout << sln.maxPoints(points) << endl;
 
     for (vector<Point>::iterator itr = points.begin();
          itr != points.end(); ++itr)
     {
-        cout << itr->x << "\t" << itr->y << endl;
+        std::cout << itr->x << "\t" << itr->y << endl;
     }
 
     return 0;

@@ -49,7 +49,7 @@ public:
             {
                 for (int k = 0; k < rsz; ++k)
                 {
-                    cout << "creating node " << i << endl;
+                    std::cout << "creating node " << i << endl;
                     TreeNode *node = new TreeNode(i);
                     node->left = left[j];
                     node->right = right[k];
@@ -94,7 +94,7 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<TreeNode *> v = sln.generateTrees(n);
 
@@ -103,7 +103,7 @@ int main()
         TreeNode *root = *itr;
         printTreeLevelOrder(root);
         //CleanUp2(root);
-        cout << endl;
+        std::cout << endl;
     }
 
     for (vector<TreeNode *>::iterator itr = v.begin(); itr != v.end(); ++itr)

@@ -57,10 +57,9 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {1, 1, 1};
-    //vector<int> a = {1, 1, 2};
-    vector<int> a = {3, 3, 0, 0, 2, 3, 2};
-    vector<int> nums(a, a + SIZE(a));;
+    //vector<int> nums = {1, 1, 1};
+    //vector<int> nums = {1, 1, 2};
+    vector<int> nums = {3, 3, 0, 0, 2, 3, 2};
     vector<vector<int> > v = sln.permuteUnique(nums);
     print2DVector<int>(v);
     return 0;

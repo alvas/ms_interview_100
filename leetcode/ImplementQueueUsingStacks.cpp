@@ -67,11 +67,11 @@ int main()
     q.push(2);
     q.push(3);
     q.push(4);
-    cout << "Is queue empty? " << q.empty() << endl;
+    std::cout << "Is queue empty? " << q.empty() << endl;
 
     while (!q.empty())
     {
-        cout << "poping " << q.peek() << " from front of the queue." << endl;
+        std::cout << "poping " << q.peek() << " from front of the queue." << endl;
         q.pop();
     }
 

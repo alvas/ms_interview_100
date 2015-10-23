@@ -135,10 +135,10 @@ int main()
 {
     Solution sln;
     string a, b;
-    cout << "Please enter a: ";
+    std::cout << "Please enter a: ";
     cin >> a;
-    cout << "Please enter b: ";
+    std::cout << "Please enter b: ";
     cin >> b;
-    cout << sln.addBinary(a, b) << endl;
+    std::cout << sln.addBinary(a, b) << endl;
     return 0;
 }

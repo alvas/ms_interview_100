@@ -85,16 +85,16 @@ int main()
     Solution sln;
     //string s("abcbabc"), t("abc");
     string s("aba"), t("ab");
-    cout << "s: " << s << endl;
-    cout << "t: " << t << endl;
+    std::cout << "s: " << s << endl;
+    std::cout << "t: " << t << endl;
     //string s("rabbbit"), t("rabbit");
     //string s("ABCDE"), t("AEC");
     //string s("daacaedaceacabbaabdccdaaeaebacddadcaeaacadbceaecddecdeedcebcdacdaebccdeebcbdeaccabcecbeeaadbccbaeccbbdaeadecabbbedceaddcdeabbcdaeadcddedddcececbeeabcbecaeadddeddccbdbcdcbceabcacddbbcedebbcaccac"), t("ceadbaa");
-    //cout << "Please enter S: " << endl;
+    //std::cout << "Please enter S: " << endl;
     //cin >> s;
-    //cout << "Please enter T: " << endl;
+    //std::cout << "Please enter T: " << endl;
     //cin >> t;
-    //cout << sln.numDistinct_naive(s, t) << endl;
-    cout << sln.numDistinct(s, t) << endl;
+    //std::cout << sln.numDistinct_naive(s, t) << endl;
+    std::cout << sln.numDistinct(s, t) << endl;
     return 0;
 }

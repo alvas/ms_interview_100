@@ -117,10 +117,10 @@ void tokenize(const string &v1)
     
     for (const auto& i: str1)
     {
-        cout << i << "\t";
+        std::cout << i << "\t";
     }
 
-    cout << endl;
+    std::cout << endl;
 
 }
 
@@ -131,10 +131,10 @@ void tokenize2(const string &v1)
 
     for (const auto& t: token1)
     {
-        cout << t << "\t";
+        std::cout << t << "\t";
     }
 
-    cout << endl;
+    std::cout << endl;
 }
 
 void tokenize3(const string &v1)
@@ -159,10 +159,10 @@ void tokenize3(const string &v1)
 
     for (const auto& t: token1)
     {
-        cout << t << "\t";
+        std::cout << t << "\t";
     }
 
-    cout << endl;
+    std::cout << endl;
 }
 
 int main()
@@ -171,7 +171,7 @@ int main()
     string v1("1 2 3 45"), v2;
     cin >> v1;
     //cin >> v2;
-    //cout << sln.compareVersion(v1, v2) << endl;
+    //std::cout << sln.compareVersion(v1, v2) << endl;
     tokenize(v1);
     return 0;
 }

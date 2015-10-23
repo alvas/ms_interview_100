@@ -127,7 +127,7 @@ int main()
     Solution sln;
     int maxWidth = 1;
     //int maxWidth = 12;
-    //cout << "Please enter maxWidth: ";
+    //std::cout << "Please enter maxWidth: ";
     //cin >> maxWidth;
     //const vector<string> words = {"This", "is", "an", "example", "of", "text", "justification."};
     //const vector<string> words = {"a", "b", "c", "d", "e"};
@@ -139,7 +139,7 @@ int main()
 
     for (auto &s : v)
     {
-        cout << s << endl;
+        std::cout << s << endl;
     }
 
     return 0;

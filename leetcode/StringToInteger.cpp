@@ -72,8 +72,8 @@ int main()
 {
     Solution sln;
     string s("+77289");
-    //cout << "Please enter str: ";
+    //std::cout << "Please enter str: ";
     //cin >> s;
-    cout << sln.atoi(s) << endl;
+    std::cout << sln.atoi(s) << endl;
     return 0;
 }

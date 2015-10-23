@@ -32,6 +32,6 @@ int main()
     Solution sln;
     //int A = -3, B = 0, C = 3, D = 4, E = 0, F = -1, G = 9, H = 2;
     int A = -2, B = -2, C = 2, D = 2, E = -3, F = 3, G = -4, H = 4;
-    cout << sln.computeArea(A, B, C, D, E, F, G, H) << endl;
+    std::cout << sln.computeArea(A, B, C, D, E, F, G, H) << endl;
     return 0;
 }

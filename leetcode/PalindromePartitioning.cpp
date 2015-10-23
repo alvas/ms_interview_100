@@ -58,9 +58,9 @@ int main()
     Solution sln;
     //string s("aab");
     string s("ABCCBABBDFGGFDBBABC");
-    //cout << "Please enter string: ";
+    //std::cout << "Please enter string: ";
     //cin >> s;
-    cout << s << endl;
+    std::cout << s << endl;
     vector<vector<string> > v = sln.partition(s);
     print2DVector<string>(v);
     return 0;

@@ -184,8 +184,8 @@ int main()
     Solution sln;
     //string sentence("the sky is blue");
     string sentence("the sky   xxx  is a blue");
-    cout << "Original sentence: " << sentence << endl;
+    std::cout << "Original sentence: " << sentence << endl;
     sln.reverseWords(sentence);
-    cout << "Reverse sentence: " << sentence << endl;
+    std::cout << "Reverse sentence: " << sentence << endl;
     return 0;
 }

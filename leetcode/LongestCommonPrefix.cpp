@@ -79,7 +79,7 @@ int main()
     vector<string> v;
 
     string s;
-    cout << "Please enter string: ";
+    std::cout << "Please enter string: ";
     // Use getline to get input for string.
     // get rid of the nasty side effect of cin >> s; which can't recognize empty input
     // so can't use empty string to stop input.
@@ -88,11 +88,11 @@ int main()
     while (!s.empty())
     {
         v.push_back(s);
-        cout << "Please enter string: ";
+        std::cout << "Please enter string: ";
         getline(cin, s);
     }
 
-    cout << sln.longestCommonPrefix(v) << endl;
+    std::cout << sln.longestCommonPrefix(v) << endl;
     return 0;
 }
 

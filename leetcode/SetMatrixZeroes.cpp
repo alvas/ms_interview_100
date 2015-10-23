@@ -154,9 +154,9 @@ int main()
     Solution sln;
 
     int m = 0, n = 0;
-    cout << "Please enter m: ";
+    std::cout << "Please enter m: ";
     cin >> m;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
 
     vector<vector<int> > matrix;
@@ -173,14 +173,14 @@ int main()
     {
         int j = rand() % m;
         int k = rand() % n;
-        cout << j << ", " << k << endl;
+        std::cout << j << ", " << k << endl;
 
         matrix[j][k] = 0;
     }
 
     print2DVector<int>(matrix);
     sln.setZeroes(matrix);
-    cout << endl;
+    std::cout << endl;
     print2DVector<int>(matrix);
     return 0;
 }

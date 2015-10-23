@@ -33,7 +33,7 @@ int main()
 {
     Solution sln;
     int r = 0;
-    cout << "Please enter the number of row: ";
+    std::cout << "Please enter the number of row: ";
     cin >> r;
     vector<int> v = sln.getRow(r);
     printVector<int>(v);

@@ -39,7 +39,7 @@ int main()
 {
     Solution sln;
     int num = 0;
-    cout << "Please enter num: ";
+    std::cout << "Please enter num: ";
     cin >> num;
 
     vector<int> d;

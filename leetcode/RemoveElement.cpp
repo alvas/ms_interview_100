@@ -48,10 +48,10 @@ int main()
     int n = 0, elem = 0;
     string s;
 
-    cout << "Please enter numbers: ";
+    std::cout << "Please enter numbers: ";
     getline(cin, s);
 
-    cout << "Please enter elem: ";
+    std::cout << "Please enter elem: ";
     cin >> elem;
 
     istringstream str(s);
@@ -62,6 +62,6 @@ int main()
         A[n++] = atoi(sub.c_str());
     }
 
-    cout << sln.removeElement(A, n, elem) << endl;
+    std::cout << sln.removeElement(A, n, elem) << endl;
     return 0;
 }

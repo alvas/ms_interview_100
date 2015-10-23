@@ -183,6 +183,6 @@ int main()
     const vector<string> a = {"a", "b", "c"};
     //string begin("hot"), end("dog");
     //const vector<string> word = {"hot", "dog"};
-    cout << sln.ladderLength(begin, end, word) << endl;
+    std::cout << sln.ladderLength(begin, end, word) << endl;
     return 0;
 }

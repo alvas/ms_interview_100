@@ -53,14 +53,14 @@ int main()
 {
     Solution sln;
     int n = 0, k = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
-    cout << "Please enter k: ";
+    std::cout << "Please enter k: ";
     cin >> k;
     vector<int> nums;
     initializeRandomVector(nums, n);
     printVector<int>(nums);
-    cout << sln.findKthLargest(nums, k) << endl;
+    std::cout << sln.findKthLargest(nums, k) << endl;
     sort(nums.begin(), nums.end());
     printVector<int>(nums);
     return 0;

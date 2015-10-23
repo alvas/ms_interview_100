@@ -108,9 +108,9 @@ int main()
     //string word("ABCCED");
     //string word("SEE");
     string word("ABCB");
-    //cout << "Please enter the word: ";
+    //std::cout << "Please enter the word: ";
     //cin >> word;
 
-    cout << sln.exist(board, word) << endl;
+    std::cout << sln.exist(board, word) << endl;
     return 0;
 }

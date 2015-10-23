@@ -95,18 +95,17 @@ int main()
 {
     Solution sln;
     ListNode *head = NULL;
-    vector<int> a = {1};
-    //vector<int> a = {1, 2};
-    //vector<int> a = {1, 2, 3};
-    //vector<int> a = {1, 2, 3, 4};
-    //vector<int> a = {1, 2, 3, 4, 5};
-    //vector<int> a = {1, 2, 3, 4, 5, 6};
-    vector<int> v(a, a + SIZE(a));
+    vector<int> v = {1};
+    //vector<int> v = {1, 2};
+    //vector<int> v = {1, 2, 3};
+    //vector<int> v = {1, 2, 3, 4};
+    //vector<int> v = {1, 2, 3, 4, 5};
+    //vector<int> v = {1, 2, 3, 4, 5, 6};
     initializeLinkList<ListNode>(v, &head);
     printLinkList<ListNode>(head);
 
     int k = 0;
-    cout << "Please enter k: ";
+    std::cout << "Please enter k: ";
     cin >> k;
 
     head = sln.reverseKGroup(head,k);

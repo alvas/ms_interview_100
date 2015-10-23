@@ -212,8 +212,8 @@ int main()
     //initializeRandomVector(gas, 400);
     //initializeRandomVector(cost, 400);
     printVector<int>(gas);
-    cout << endl;
+    std::cout << endl;
     printVector<int>(cost);
-    cout << sln.canCompleteCircuit(gas, cost) << endl;
+    std::cout << sln.canCompleteCircuit(gas, cost) << endl;
     return 0;
 }

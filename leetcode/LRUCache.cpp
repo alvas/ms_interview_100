@@ -149,21 +149,21 @@ int main()
     //cache.set(4, 0);
     //cache.set(5, 6);
 
-    //for_each(cache.l.begin(), cache.l.end(), [](LRUCache::CacheNode *e){cout << "key: " << e->key << ", value: " << e->value << endl;});
+    //for_each(cache.l.begin(), cache.l.end(), [](LRUCache::CacheNode *e){std::cout << "key: " << e->key << ", value: " << e->value << endl;});
 
     LRUCache cache(2);
     cache.set(2, 1);
     cache.set(1, 1);
-    cout << cache.get(2) << endl;
+    std::cout << cache.get(2) << endl;
     cache.set(4, 1);
-    cout << cache.get(1) << endl;
-    cout << cache.get(2) << endl;
+    std::cout << cache.get(1) << endl;
+    std::cout << cache.get(2) << endl;
 
     //LRUCache::CacheNode *p = cache.m_head;
 
     //while (p != NULL)
     //{
-        //cout << "key: " << p->key << ", value: " << p->value << endl;
+        //std::cout << "key: " << p->key << ", value: " << p->value << endl;
         //p = p->next;
     //}
 
@@ -174,12 +174,12 @@ int main()
 
     //while (p != NULL)
     //{
-        //cout << "key: " << p->key << ", value: " << p->value << endl;
+        //std::cout << "key: " << p->key << ", value: " << p->value << endl;
         //p = p->next;
     //}
 
-    //cout << cache.get(2) << endl;
-    //cout << cache.get(1) << endl;
-    //cout << cache.get(6) << endl;
+    //std::cout << cache.get(2) << endl;
+    //std::cout << cache.get(1) << endl;
+    //std::cout << cache.get(6) << endl;
     return 0;
 }

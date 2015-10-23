@@ -132,6 +132,6 @@ int main()
         matrix.push_back(b);
     }
 
-    cout << sln.maximalRectangle(matrix) << endl;
+    std::cout << sln.maximalRectangle(matrix) << endl;
     return 0;
 }

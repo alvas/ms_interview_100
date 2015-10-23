@@ -126,6 +126,6 @@ int main()
     //string s("bb");
     //string s("ccc");
     string s("aaabcdefedcbazzz");
-    cout << sln.longestPalindrome(s) << endl;
+    std::cout << sln.longestPalindrome(s) << endl;
     return 0;
 }

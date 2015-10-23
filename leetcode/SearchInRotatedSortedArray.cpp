@@ -282,7 +282,7 @@ int main()
 
         for (int j = 0; j < 9; ++j)
         {
-            cout << "Target: " << targets[j] << ", result: " << sln.search(v[i], targets[j]) << endl;
+            std::cout << "Target: " << targets[j] << ", result: " << sln.search(v[i], targets[j]) << endl;
         }
     }
 

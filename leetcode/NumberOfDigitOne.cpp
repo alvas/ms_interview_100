@@ -49,9 +49,9 @@ public:
 int main()
 {
     Solution sln;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     int n = 0;
     cin >> n;
-    cout << sln.countDigitOne(n) << endl;
+    std::cout << sln.countDigitOne(n) << endl;
     return 0;
 }

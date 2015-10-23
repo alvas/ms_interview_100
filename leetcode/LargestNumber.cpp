@@ -116,22 +116,21 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {3, 30, 34, 5, 9};
-    //vector<int> a = {3, 303, 3034, 5, 9};
-    //vector<int> a = {3, 303};
-    //vector<int> a = {0, 0, 0};
-    //vector<int> a = {20, 1};
+    vector<int> nums = {3, 30, 34, 5, 9};
+    //vector<int> nums = {3, 303, 3034, 5, 9};
+    //vector<int> nums = {3, 303};
+    //vector<int> nums = {0, 0, 0};
+    //vector<int> nums = {20, 1};
     string b = to_string(12345);
 
     for (int i = 0; i < b.size(); ++i)
     {
-        cout << b[i] << "\t";
+        std::cout << b[i] << "\t";
     }
 
-    cout << endl;
+    std::cout << endl;
 
-    vector<int> nums(a, a + SIZE(a));
     printVector<int>(nums);
-    cout << sln.largestNumber(nums) << endl;
+    std::cout << sln.largestNumber(nums) << endl;
     return 0;
 }

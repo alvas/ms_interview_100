@@ -112,8 +112,7 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {1, 2, 3, 4};
-    vector<int> nums(a, a + SIZE(a));
+    vector<int> nums = {1, 2, 3, 4};
     vector<int> v1 = sln.productExceptSelf1(nums);
     printVector<int>(v1);
     vector<int> v = sln.productExceptSelf(nums);

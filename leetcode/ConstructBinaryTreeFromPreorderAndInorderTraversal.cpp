@@ -85,10 +85,8 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> a = {5, 4, 11, 7, 2, 8, 13, 4, 1};
-    vector<int> b = {7, 11, 2, 4, 5, 13, 8, 4, 1};
-    vector<int> preorder(a, a + SIZE(a));
-    vector<int> inorder(b, b + SIZE(b));
+    vector<int> preorder {5, 4, 11, 7, 2, 8, 13, 4, 1};
+    vector<int> inorder = {7, 11, 2, 4, 5, 13, 8, 4, 1};
     TreeNode *root = sln.buildTree(preorder, inorder);
     printTreeLevelOrder(root);
     CleanUp2<TreeNode>(root);

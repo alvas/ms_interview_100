@@ -77,7 +77,7 @@ int main()
     //string s("cabababcbc");
     //string s("abcccb");
     //string s("eegiicgaeadbcfacfhifdbiehbgejcaeggcgbahfcajfhjjdgj");
-    cout << s << endl;
-    cout << sln.minCut(s) << endl;
+    std::cout << s << endl;
+    std::cout << sln.minCut(s) << endl;
     return 0;
 }

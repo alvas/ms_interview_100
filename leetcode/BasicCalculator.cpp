@@ -101,6 +101,6 @@ int main()
     //string s("(1+(4+5+2)-3)+(6+8)");
     //string s("2147483647");
     //string s("2-(5-6)");
-    cout << sln.calculate(s) << endl;
+    std::cout << sln.calculate(s) << endl;
     return 0;
 }

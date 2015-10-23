@@ -118,12 +118,11 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {1, 3, -1, -3, 5, 3, 6, 7};
-    vector<int> a = {1,-9,8,-6,6,4,0,5};
-    vector<int> nums(a, a + SIZE(a));
+    //vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
+    vector<int> nums = {1,-9,8,-6,6,4,0,5};
     printVector<int>(nums);
     int k = 0;
-    cout << "Please enter k(1 <= k <= " << SIZE(a) << "): ";
+    std::cout << "Please enter k(1 <= k <= " << nums.size() << "): ";
     cin >> k;
     vector<int> v = sln.maxSlidingWindow(nums, k);
     printVector<int>(v);

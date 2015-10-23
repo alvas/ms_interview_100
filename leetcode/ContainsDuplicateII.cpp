@@ -65,10 +65,9 @@ int main()
     //vector<int> a = {1, 2};
     //vector<int> a = {1, 1};
     //vector<int> a = {1, 2, 3};
-    vector<int> a = {1, 2, 6, 7, 2, 3};
-    vector<int> nums(a, a + SIZE(a));
-    cout << "Please enter k: ";
+    vector<int> nums = {1, 2, 6, 7, 2, 3};
+    std::cout << "Please enter k: ";
     cin >> k;
-    cout << sln.containsNearbyDuplicate(nums, k) << endl;
+    std::cout << sln.containsNearbyDuplicate(nums, k) << endl;
     return 0;
 }

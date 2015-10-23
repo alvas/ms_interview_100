@@ -53,9 +53,9 @@ int main()
 {
     Solution sln;
     int num = 0;
-    cout << "Please enter num: ";
+    std::cout << "Please enter num: ";
     cin >> num;
-    cout << sln.addDigits_naive(num) << endl;
-    cout << sln.addDigits(num) << endl;
+    std::cout << sln.addDigits_naive(num) << endl;
+    std::cout << sln.addDigits(num) << endl;
     return 0;
 }

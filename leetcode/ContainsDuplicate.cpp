@@ -33,6 +33,6 @@ int main()
     //int a[LOCAL_LENGTH] = {1, 2, 3};
     int a[LOCAL_LENGTH] = {1, 2, 2, 3};
     vector<int> nums(a, a + LOCAL_LENGTH);
-    cout << sln.containsDuplicate(nums) << endl;
+    std::cout << sln.containsDuplicate(nums) << endl;
     return 0;
 }

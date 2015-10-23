@@ -14,6 +14,6 @@ int main()
 {
     Solution sln;
     string pattern, str;
-    cout << sln.wordPattern(pattern, str) << endl;
+    std::cout << sln.wordPattern(pattern, str) << endl;
     return 0;
 }

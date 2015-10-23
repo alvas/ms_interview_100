@@ -65,10 +65,9 @@ int main()
 {
     Solution sln;
     int x = 0;
-    cout << "Please enter x: ";
+    std::cout << "Please enter x: ";
     cin >> x;
-    vector<int> a = {1, 4, 3, 2, 5, 2};
-    vector<int> v(a, a + SIZE(a));
+    vector<int> v = {1, 4, 3, 2, 5, 2};
     ListNode *head = NULL;
     initializeLinkList<ListNode>(v, &head);
     printLinkList<ListNode>(head);

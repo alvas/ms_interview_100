@@ -65,9 +65,9 @@ int main()
 {
     Solution sln;
     int k = 0, t = 0;
-    cout << "Please enter k: ";
+    std::cout << "Please enter k: ";
     cin >> k;
-    cout << "Please enter t: ";
+    std::cout << "Please enter t: ";
     cin >> t;
     //vector<int> a = {1, 100, 1000, 10000, 100000, 1000000};
     //vector<int> nums(a, a + SIZE(a));
@@ -87,7 +87,7 @@ int main()
 
     printVector<int>(nums);
 
-    cout << sln.containsNearbyAlmostDuplicate(nums, k, t) << endl;
-    cout << sln.containsNearbyAlmostDuplicate_slow(nums, k, t) << endl;
+    std::cout << sln.containsNearbyAlmostDuplicate(nums, k, t) << endl;
+    std::cout << sln.containsNearbyAlmostDuplicate_slow(nums, k, t) << endl;
     return 0;
 }

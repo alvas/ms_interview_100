@@ -40,7 +40,7 @@ int main()
 {
     Solution sln;
     int rows = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> rows;
     vector<vector<int> > tri = sln.generate(rows);
     print2DVector<int>(tri);

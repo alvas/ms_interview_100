@@ -50,20 +50,20 @@ int main()
     Solution sln;
     ListNode *head = NULL;
     int num = 0;
-    cout << "Please enter node number: ";
+    std::cout << "Please enter node number: ";
     cin >> num;
     vector<int> v;
 
     for (int i = 0; i < num; ++i)
     {
         int t = 0;
-        cout << "Please enter val: ";
+        std::cout << "Please enter val: ";
         cin >> t;
         v.push_back(t);
     }
 
     initializeLinkList<ListNode>(v, &head);
-    cout << sln.hasCycle(head) << endl;
+    std::cout << sln.hasCycle(head) << endl;
     destroyLinkList<ListNode>(head);
     return 0;
 }

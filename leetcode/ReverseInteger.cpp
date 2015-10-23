@@ -42,7 +42,7 @@ public:
         {
             int t = z * 10;
 
-            //cout << "z: " << z << " t: " << t << endl;
+            //std::cout << "z: " << z << " t: " << t << endl;
 
             // Be careful!! Overflow
             // checking addtion overflow a + b < b, a and b are both positive
@@ -54,7 +54,7 @@ public:
 
             z = t + y % 10;
 
-            //cout << "z: " << z << " y: " << y << endl;
+            //std::cout << "z: " << z << " y: " << y << endl;
 
             y /= 10;
         }
@@ -72,9 +72,9 @@ int main()
 {
     Solution sln;
     int x = 0;
-    cout << "Please enter x: ";
+    std::cout << "Please enter x: ";
     cin >> x;
     // 1534236469 and -2147483648 would cause overflow
-    cout << sln.reverse(x) << endl;
+    std::cout << sln.reverse(x) << endl;
     return 0;
 }

@@ -80,7 +80,7 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
     vector<vector<string> > v = sln.solveNQueens(n);
     print2DVector2<string>(v);

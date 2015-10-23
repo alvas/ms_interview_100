@@ -54,8 +54,8 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter number: ";
+    std::cout << "Please enter number: ";
     cin >> n;
-    cout << sln.climbStairs(n) << endl;
+    std::cout << sln.climbStairs(n) << endl;
     return 0;
 }

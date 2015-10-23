@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
         //cin >> num;
     }
 
-    cout << num << ": " << sln.intToRoman(num) << endl;
+    std::cout << num << ": " << sln.intToRoman(num) << endl;
     return 0;
 }
 

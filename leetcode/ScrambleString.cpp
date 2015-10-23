@@ -59,13 +59,13 @@ public:
             {
                 for (int k = 0; k < sz1; ++k)
                 {
-                    cout << c[i][j][k] << "\t";
+                    std::cout << c[i][j][k] << "\t";
                 }
 
-                cout << endl;
+                std::cout << endl;
             }
 
-            cout << endl;
+            std::cout << endl;
         }
 
         return c[sz1 - 1][0][0];
@@ -121,9 +121,9 @@ int main()
     Solution sln;
     string s1("rgtae"), s2("great");
     //string s1("abcd"), s2("bdac");
-    cout << "s1: " << s1 << endl;
-    cout << "s2: " << s2 << endl;
+    std::cout << "s1: " << s1 << endl;
+    std::cout << "s2: " << s2 << endl;
     //string s1("xstjzkfpkggnhjzkpfjoguxvkbuopi"), s2("xbouipkvxugojfpkzjhnggkpfkzjts");
-    cout << sln.isScramble(s1, s2) << endl;
+    std::cout << sln.isScramble(s1, s2) << endl;
     return 0;
 }

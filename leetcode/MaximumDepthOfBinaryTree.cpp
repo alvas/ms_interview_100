@@ -63,7 +63,7 @@ int main()
     int szPostOrder[TREELEN] = {3, 4, 2, 6, 7, 5, 1};
 
     ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
-    cout << sln.maxDepth(root) << endl;
+    std::cout << sln.maxDepth(root) << endl;
     CleanUp(root);
     return 0;
 }

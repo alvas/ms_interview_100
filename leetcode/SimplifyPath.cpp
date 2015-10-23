@@ -105,6 +105,6 @@ int main()
     //string path("/a");
     //string path("/a/b/c");
     string path("/a/b/c/");
-    cout << sln.simplifyPath(path) << endl;
+    std::cout << sln.simplifyPath(path) << endl;
     return 0;
 }

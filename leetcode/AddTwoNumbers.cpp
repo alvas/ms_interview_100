@@ -114,24 +114,24 @@ int main()
     vector<int> v1, v2;
 
     int num = 0;
-    cout << "Please enter number of digit of first input: ";
+    std::cout << "Please enter number of digit of first input: ";
     cin >> num;
 
     for (int i = 0; i < num; ++i)
     {
         int t = 0;
-        cout << "Please enter val: ";
+        std::cout << "Please enter val: ";
         cin >> t;
         v1.push_back(t);
     }
 
-    cout << "Please enter number of digit of second input: ";
+    std::cout << "Please enter number of digit of second input: ";
     cin >> num;
 
     for (int i = 0; i < num; ++i)
     {
         int t = 0;
-        cout << "Please enter val: ";
+        std::cout << "Please enter val: ";
         cin >> t;
         v2.push_back(t);
     }

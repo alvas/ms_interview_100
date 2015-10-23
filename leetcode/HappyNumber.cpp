@@ -41,8 +41,8 @@ int main()
 {
     Solution sln;
     int n = 0;
-    cout << "Please enter n: ";
+    std::cout << "Please enter n: ";
     cin >> n;
-    cout << sln.isHappy(n) << endl;
+    std::cout << sln.isHappy(n) << endl;
     return 0;
 }
