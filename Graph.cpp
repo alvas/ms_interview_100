@@ -223,7 +223,7 @@ static void TransposeGraph(const map<int, vector<int> > &graph)
 
         for (vector<int>::iterator itr2 = adj.begin(); itr2 != adj.end(); ++itr2)
         {
-            GT.insert(pair<int, int>(*itr2, itr->first));
+            GT.emplace(make_pair(*itr2, itr->second));
         }
     }
 }
