@@ -13,8 +13,9 @@ LFLAGS = -Wall
 CC = clang++
 # using boost
 LEETCODE = ./leetcode/
+mkfile_path :=$(shell pwd)
 # using this, so the header file could be found in the ms_interview_100 folder.
-INCLUDES = -I/usr/include -I/usr/local/include -I/Users/qingyun/Downloads/project/ms_interview_100
+INCLUDES = -I/usr/include -I/usr/local/include -I$(mkfile_path)
 OPTS=-ggdb -pg -fprofile-arcs -ftest-coverage
 
 LIBS = 
