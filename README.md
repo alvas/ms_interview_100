@@ -12,4 +12,4 @@ leetcode solutions in leetcode folder are assigned a number according to the que
 Build leetcode solution by specifying its number:
 make 1, is the same as make TwoSum
 
-
+In order to create configure script, use the command touch configure.ac and then use autoconf to generate an empty configure script file.
