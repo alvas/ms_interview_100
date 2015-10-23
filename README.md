@@ -1,5 +1,6 @@
 ms_interview_100
 ================
+[![Build Status](https://travis-ci.org/topcpporg/cinatra.svg?branch=master)](https://travis-ci.org/topcpporg/cinatra)
 [![Coverage Status](https://coveralls.io/repos/alvas/ms_interview_100/badge.svg?branch=master&service=github)](https://coveralls.io/github/alvas/ms_interview_100?branch=master)
 
 This is the code implementation for 100 interview questions
