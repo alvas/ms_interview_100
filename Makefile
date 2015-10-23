@@ -1,4 +1,4 @@
-default: BestTimeToBuyAndSellStock
+default: all
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -14,7 +14,7 @@ CC = clang++
 # using boost
 LEETCODE = ./leetcode/
 # using this, so the header file could be found in the ms_interview_100 folder.
-INCLUDES = -I/usr/include -I/usr/local/include -I./ -I/usr/local/Cellar/boost/1.57.0/include
+INCLUDES = -I/usr/include -I/usr/local/include -I/Users/qingyun/Downloads/project/ms_interview_100
 OPTS=-ggdb -pg -fprofile-arcs -ftest-coverage
 
 LIBS = 
@@ -23,11 +23,8 @@ SRCS = *.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-objects = RandomData.o QuickSort.o InsertionSort.o LinkList.o \
-          CircularLinkList.o NormalData.o Josephus.o
-
-all: $(objects)
-	$(CC) $(INCLUDES) $(CFLAGS) $(objects) $(LIBS)
+all:
+	$(CC) $(INCLUDES) $(CFLAGS) $(OBJS) $(LIBS)
 
 exec1: 
 	g++ exec1.cpp
@@ -127,7 +124,7 @@ Interval:
 	$(CC) $(DFLAGS) Interval.cpp
 
 Graph: NormalData.o
-	$(CC) $(DFLAGS) Graph.cpp NormalData.o
+	$(CC) -std=c++11 $(DFLAGS) Graph.cpp NormalData.o
 
 Power:
 	$(CC) $(DFLAGS) Power.cpp
@@ -1505,6 +1502,9 @@ GameOfLife:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordPattern.cpp
 WordPattern:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordPattern.cpp
+
+test:
+	echo "test test!!"
 
 tags:
 	ctags -R .
