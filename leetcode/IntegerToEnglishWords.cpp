@@ -6,7 +6,8 @@ using namespace std;
 class Solution {
 public:
     string numberToWords(int num) {
-
+        string words;
+        return words;
     }
 };
 

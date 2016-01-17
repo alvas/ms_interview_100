@@ -24,12 +24,12 @@ public:
 
         queue<TreeNode *> q;
         q.push(root);
-        TreeNode *rightMode = root;
+        TreeNode *rightMost = root;
         int depth = 1;
 
         while (!q.empty())
         {
-            TreeNode *node = q.top();
+            TreeNode *node = q.front();
             q.pop();
 
             if (node->left == NULL && node->right == NULL)

@@ -125,8 +125,8 @@ int main()
         board.push_back(row);
     }
 
-    const vector<string> words = {"oath", "pea", "eat", "rain"};
-    vector<string> v = sln.findWords(board, words);
+    std::vector<string> words = {"oath", "pea", "eat", "rain"};
+    std::vector<string> v = sln.findWords(board, words);
     printVector<string>(v);
     return 0;
 }

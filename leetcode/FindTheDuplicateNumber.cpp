@@ -1,19 +1,18 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 class Solution {
 public:
-    int findDuplicate(vector<int>& nums) {
-
+    int findDuplicate(std::vector<int>& nums) {
+        int dup = 0;
+        return dup;
     }
 };
 
 int main()
 {
     Solution sln;
-    vector<int> nums = {};
-    std::cout << sln.findDuplicate(nums) << endl;
+    std::vector<int> nums = {};
+    std::cout << sln.findDuplicate(nums) << std::endl;
     return 0;
 }

@@ -4,8 +4,6 @@
 #include "NormalData.h"
 #include "Tree.h"
 
-using namespace std;
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -107,17 +105,17 @@ public:
 int main()
 {
     Solution sln;
-    vector<string> a = {"-3"};
-    //vector<string> s = {"-2", "-1"};
-    //vector<string> s = {"-2", "1"};
-    //vector<string> s = {"2", "-1", "-2"};
-    //vector<string> s = {"2", "-1"};
-    //vector<string> s = {"2", "-1", "-2"};
-    //vector<string> s = {"4", "2", "7", "1", "3", "8", "9"};
-    //vector<string> s = {"-1", "5", "#", "4", "#", "#", "2", "-4"};
-    //vector<string> s = {"-3", "2", "#", "3", "-6", "#", "#", "2"};
-    //vector<string> s = {"9", "6", "-3", "#", "#", "-6", "2", "#", "#", "2", "#", "-6", "-6", "-6"};
-    //vector<string> s = {"5", "6", "-6", "3", "5", "3", "#", "-7"};
+    std::vector<string> s = {"-3"};
+    //std::vector<string> s = {"-2", "-1"};
+    //std::vector<string> s = {"-2", "1"};
+    //std::vector<string> s = {"2", "-1", "-2"};
+    //std::vector<string> s = {"2", "-1"};
+    //std::vector<string> s = {"2", "-1", "-2"};
+    //std::vector<string> s = {"4", "2", "7", "1", "3", "8", "9"};
+    //std::vector<string> s = {"-1", "5", "#", "4", "#", "#", "2", "-4"};
+    //std::vector<string> s = {"-3", "2", "#", "3", "-6", "#", "#", "2"};
+    //std::vector<string> s = {"9", "6", "-3", "#", "#", "-6", "2", "#", "#", "2", "#", "-6", "-6", "-6"};
+    //std::vector<string> s = {"5", "6", "-6", "3", "5", "3", "#", "-7"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);
     printTreeLevelOrder<TreeNode>(root);

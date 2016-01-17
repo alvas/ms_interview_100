@@ -29,6 +29,8 @@ public:
                 g[j] = max(g[j], l[j]);
             }
         }
+
+        return profit;
     }
 
     int maxProfit_two_way(vector<int>& prices) {

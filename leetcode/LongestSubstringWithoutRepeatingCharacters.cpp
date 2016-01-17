@@ -15,7 +15,8 @@ public:
             return 0;
         }
 
-        int len = 0, maxL = 0, rpIdx = 0;
+        //int len = 0;
+        int maxL = 0, rpIdx = 0;
         map<char, int> m;
 
         for (int i = 0; i < sz; ++i)

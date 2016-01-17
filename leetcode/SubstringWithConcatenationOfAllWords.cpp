@@ -123,9 +123,9 @@ int main()
     //string s("barfoothefoobarmana");
     //const vector<string> words = {"foo", "bar"};
     string s("wordgoodgoodgoodbestword");
-    const vector<string> words = {"word","good","best","good"};
+    std::vector<string> words = {"word","good","best","good"};
     //vector<int> v = sln.findSubstring_slow(s, words);
-    vector<int> v = sln.findSubstring(s, words);
+    std::vector<int> v = sln.findSubstring(s, words);
     printVector<int>(v);
     return 0;
 }

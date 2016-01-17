@@ -71,7 +71,7 @@ public:
         }
 
         // missing !found here causes exceed time limit.
-        if (!found i < row - 1 && board[i + 1][j] && board[i + 1][j] == word[idx])
+        if (!found && i < row - 1 && board[i + 1][j] && board[i + 1][j] == word[idx])
         {
             board[i + 1][j] = 0;
             found = search(board, word, i + 1, j, row, col, idx + 1, sz);
@@ -111,6 +111,6 @@ int main()
     //std::cout << "Please enter the word: ";
     //cin >> word;
 
-    std::cout << sln.exist(board, word) << endl;
+    std::cout << sln.exist_recursive(board, word) << endl;
     return 0;
 }

@@ -40,10 +40,9 @@ public:
 int main()
 {
     Solution sln;
-    //vector<int> a = {1, 2, 0};
-    vector<int> a = {3, 4, -1, 1};
-    //vector<int> a = {1};
-    vector<int> nums(a, a + SIZE(a));
+    //vector<int> nums = {1, 2, 0};
+    vector<int> nums = {3, 4, -1, 1};
+    //vector<int> nums = {1};
     std::cout << sln.firstMissingPositive(nums) << endl;
     return 0;
 }

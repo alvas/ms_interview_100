@@ -101,11 +101,12 @@ public:
     // make circule  in first list, and traverse second list with loop
     // count difference
     ListNode *getIntersectionNode2(ListNode *headA, ListNode *headB) {
+        return NULL;
     }
 
     // swap traverse link lists with count
     ListNode *getIntersectionNode3(ListNode *headA, ListNode *headB) {
-
+        return NULL;
     }
 
     // reverse first list and make equations
@@ -122,6 +123,7 @@ public:
     // Y = (C2 + C3 - C1)/2
     // Z = (C1 + C2 - C3)/2
     ListNode *getIntersectionNode4(ListNode *headA, ListNode *headB) {
+        return NULL;
     }
 };
 

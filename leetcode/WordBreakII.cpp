@@ -135,10 +135,10 @@ public:
 int main()
 {
     Solution sln;
-    string s("catsanddog");
-    const vector<string> word = {"cat", "cats", "and", "sand", "dog"};
-    vector<string> v = sln.wordBreak_dp(s, word);
-    vector<string> v1 = sln.wordBreak(s, word);
+    std::string s("catsanddog");
+    std::unordered_set<string> word = {"cat", "cats", "and", "sand", "dog"};
+    std::vector<string> v = sln.wordBreak_dp(s, word);
+    std::vector<string> v1 = sln.wordBreak_slow(s, word);
     printVector<string>(v);
     printVector<string>(v1);
     return 0;

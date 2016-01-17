@@ -6,7 +6,8 @@ using namespace std;
 class Solution {
 public:
     bool wordPattern(string pattern, string str) {
-
+        bool res = false;
+        return res;
     }
 };
 

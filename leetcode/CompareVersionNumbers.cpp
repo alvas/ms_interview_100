@@ -168,10 +168,10 @@ void tokenize3(const string &v1)
 int main()
 {
     Solution sln;
-    string v1("1 2 3 45"), v2;
-    cin >> v1;
-    //cin >> v2;
-    //std::cout << sln.compareVersion(v1, v2) << endl;
+    std::string v1("1 2 3 45"), v2;
+    std::cin >> v1;
+    cin >> v2;
+    std::cout << sln.compareVersion(v1, v2) << endl;
     tokenize(v1);
     return 0;
 }

@@ -3,19 +3,18 @@
 
 #include "NormalData.h"
 
-using namespace std;
-
 class Solution {
 public:
     int hIndex(vector<int>& citations) {
-
+        int idx = 0;
+        return idx;
     }
 };
 
 int main()
 {
     Solution sln;
-    vector<int> citations = {};
+    std::vector<int> citations = {};
     std::cout << sln.hIndex(citations) << endl;
     return 0;
 }

@@ -103,9 +103,9 @@ public:
 int main()
 {
     Solution sln;
-    string s("hit"), e("cog");
-    const vector<string> dict = {"hot", "dot", "dog", "lot", "log"};
-    vector<vector<string> > v = sln.findLadders(s, e, dict);
+    std::string s("hit"), e("cog");
+    std::unordered_set<string> dict = {"hot", "dot", "dog", "lot", "log"};
+    std::vector<vector<string> > v = sln.findLadders(s, e, dict);
     print2DVector<string>(v);
     return 0;
 }

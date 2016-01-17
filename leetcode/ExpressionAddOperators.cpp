@@ -9,7 +9,8 @@ using namespace std;
 class Solution {
 public:
     vector<string> addOperators(string num, int target) {
-
+        std::vector<std::string> res;
+        return res;
     }
 };
 

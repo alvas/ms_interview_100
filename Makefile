@@ -1,4 +1,4 @@
-default: 1
+default: all
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
@@ -10,6 +10,10 @@ DFLAGS = -std=c++11 -Wall -g -DDEBUG
 LFLAGS = -Wall
 #CC = /usr/local/bin/g++-4.7
 #CC = /usr/bin/g++
+# use ccache speed up compile time
+#CC = ccache clang++
+# use distcc to distribute compile
+#CC = distcc clang++
 CC = clang++
 # using boost
 LEETCODE = ./leetcode/
@@ -17,6 +21,7 @@ mkfile_path :=$(shell pwd)
 # using this, so the header file could be found in the ms_interview_100 folder.
 INCLUDES = -I/usr/include -I/usr/local/include -I$(mkfile_path)
 OPTS=-ggdb -pg -fprofile-arcs -ftest-coverage
+UNITE_TEST = -L/usr/local/lib/ -lboost_unit_test_framework
 
 LIBS = 
 
@@ -140,9 +145,9 @@ BinarySearch: RandomData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
 1:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSum.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNITE_TEST) $(LEETCODE)TwoSum.cpp
 TwoSum:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSum.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNITE_TEST) $(LEETCODE)TwoSum.cpp
 
 2:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddTwoNumbers.cpp 
@@ -389,10 +394,10 @@ GroupAnagrams:
 PowXN:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowXN.cpp
 
-51:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp
-NQueens:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp
+51: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp NormalData.o
+NQueens: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp NormalData.o
 
 52:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueensII.cpp
@@ -404,10 +409,10 @@ NQueensII:
 MaximumSubarray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumSubarray.cpp
 
-54:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp
-SpiralMatrix:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp
+54: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp NormalData.o
+SpiralMatrix: NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp NormalData.o
 
 55:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGame.cpp
@@ -1009,10 +1014,40 @@ BinarySearchTreeIterator:
 DungeonGame:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DungeonGame.cpp
 
+175:
+	echo "No 175"
+
+176:
+	echo "No 176"
+
+177:
+	echo "No 177"
+
+178:
+	echo "No 178"
+
 179:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestNumber.cpp
 LargestNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestNumber.cpp
+
+180:
+	echo "No 180"
+
+181:
+	echo "No 181"
+
+182:
+	echo "No 182"
+
+183:
+	echo "No 183"
+
+184:
+	echo "No 184"
+
+185:
+	echo "No 185"
 
 186:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAStringII.cpp
@@ -1043,6 +1078,24 @@ ReverseBits:
 	$(CC) $(DFLAGS) $(LEETCODE)NumberOf1Bits.cpp
 NumberOf1Bits:
 	$(CC) $(DFLAGS) $(LEETCODE)NumberOf1Bits.cpp
+
+192:
+	echo "No 192"
+
+193:
+	echo "No 193"
+
+194:
+	echo "No 194"
+
+195:
+	echo "No 195"
+
+196:
+	echo "No 196"
+
+197:
+	echo "No 197"
 
 198:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobber.cpp 
