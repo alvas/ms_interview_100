@@ -5,8 +5,47 @@ using namespace std;
 
 class Solution {
 public:
-    // Need to improve.
     string convert(string s, int nRows) {
+        if (nRows <= 1)
+        {
+            return s;
+        }
+
+        string zz;
+        size_t sz = s.size();
+        int group = 2 * nRows - 2;
+        int numGroup = (sz + group - 1) / group;
+        
+        for (int i = 0; i < nRows; ++i)
+        {
+            for (int j = 0; j < numGroup; ++j)
+            {
+                if (i == 0)
+                {
+                    zz.append(1, s[group * j]);
+                }
+                else if (i == nRows - 1 && (group * j + nRows - 1) < sz)
+                {
+                    zz.append(1, s[group * j + nRows - 1]);
+                }
+                // boundary checking
+                else if ((group * j + i) < sz)
+                {
+                    zz.append(1, s[group * j + i]);
+
+                    if ((group * (j + 1) - i) < sz)
+                    {
+                        zz.append(1, s[group * (j + 1) - i]);
+                    }
+                }
+            }
+        }
+
+        return zz;
+    }
+
+    // Need to improve.
+    string convert1(string s, int nRows) {
         string zz;
         int length = s.length();
 
@@ -69,12 +108,14 @@ public:
 int main()
 {
     Solution sln;
-    int r = 0;
-    string z;
-    std::cout << "Please enter string: ";
-    cin >> z;
-    std::cout << "Please enter rows: ";
-    cin >> r;
+    int r = 4;
+    string z("PAYPALISHIRING");
+    //int r = 4;
+    //string z("PAYPALISHIRING");
+    //std::cout << "Please enter string: ";
+    //cin >> z;
+    //std::cout << "Please enter rows: ";
+    //cin >> r;
     std::cout << sln.convert(z, r) << endl;
     return 0;
 }

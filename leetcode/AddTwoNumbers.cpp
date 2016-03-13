@@ -3,8 +3,6 @@
 
 #include "LinkList.h"
 
-using namespace std;
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -111,28 +109,28 @@ int main()
 {
     Solution sln;
     ListNode *head = NULL, *l1 = NULL, *l2 = NULL;
-    vector<int> v1, v2;
+    std::vector<int> v1, v2;
 
     int num = 0;
     std::cout << "Please enter number of digit of first input: ";
-    cin >> num;
+    std::cin >> num;
 
     for (int i = 0; i < num; ++i)
     {
         int t = 0;
         std::cout << "Please enter val: ";
-        cin >> t;
+        std::cin >> t;
         v1.push_back(t);
     }
 
     std::cout << "Please enter number of digit of second input: ";
-    cin >> num;
+    std::cin >> num;
 
     for (int i = 0; i < num; ++i)
     {
         int t = 0;
         std::cout << "Please enter val: ";
-        cin >> t;
+        std::cin >> t;
         v2.push_back(t);
     }
 

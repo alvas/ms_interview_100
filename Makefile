@@ -30,7 +30,7 @@ SRCS = *.cpp
 #OBJS = $(SRCS:.cpp=.o)
 
 all:
-	@for i in {1..290}; \
+	@for i in {1..292}; \
 		do \
 			make $$i; \
 		done
@@ -1555,10 +1555,245 @@ UniqueWordAbbreviation:
 GameOfLife:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GameOfLife.cpp
 
-290:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordPattern.cpp
+.PHONY: 290
+290: WordPattern
 WordPattern:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordPattern.cpp
+
+.PHONY: 291
+291: WordPatternII
+WordPatternII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordPatternII.cpp
+
+.PHONY: 292
+292: NimGame
+NimGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NimGame.cpp
+
+.PHONY: 293
+293: FlipGame
+FlipGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlipGame.cpp
+
+.PHONY: 294
+294: FlipGameII
+FlipGameII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlipGameII.cpp
+
+.PHONY: 295
+295: FindMedianFromDataStream
+FindMedianFromDataStream:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMedianFromDataStream.cpp
+
+.PHONY: 296
+296: BestMeetingPoint
+BestMeetingPoint:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestMeetingPoint.cpp
+
+.PHONY: 297
+297: SerializeAndDeserializeBinaryTree
+SerializeAndDeserializeBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SerializeAndDeserializeBinaryTree.cpp
+
+.PHONY: 298
+298: BinaryTreeLongestConsecutiveSequence
+BinaryTreeLongestConsecutiveSequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLongestConsecutiveSequence.cpp
+
+.PHONY: 299
+299: BullsAndCows
+BullsAndCows:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BullsAndCows.cpp
+
+.PHONY: 300
+300: LongestIncreasingSubsequence
+LongestIncreasingSubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestIncreasingSubsequence.cpp
+
+.PHONY: 301
+301: RemoveInvalidParenthese
+RemoveInvalidParenthese:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveInvalidParenthese.cpp
+
+.PHONY: 302
+302: SmallestRectangleEnclosingBlackPixels
+SmallestRectangleEnclosingBlackPixels:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SmallestRectangleEnclosingBlackPixels.cpp
+
+.PHONY: 303
+303: RangeSumQueryImmutable
+RangeSumQueryImmutable:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RangeSumQueryImmutable.cpp
+
+.PHONY: 304
+304: RangeSumQuery2DImmutable
+RangeSumQuery2DImmutable:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RangeSumQuery2DImmutable.cpp
+
+.PHONY: 305
+305: NumberOfIslandsII
+NumberOfIslandsII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfIslandsII.cpp
+
+.PHONY: 306
+306: AdditiveNumber
+AdditiveNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AdditiveNumber.cpp
+
+.PHONY: 307
+307: RangeSumQueryMutable
+RangeSumQueryMutable:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RangeSumQueryMutable.cpp
+
+.PHONY: 308
+308: RangeSumQuery2DMutable
+RangeSumQuery2DMutable:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RangeSumQuery2DMutable.cpp
+
+.PHONY: 309
+309: BestTimeToBuyAndSellStockWithCooldown
+BestTimeToBuyAndSellStockWithCooldown:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockWithCooldown.cpp
+
+.PHONY: 310
+310: MinimumHeightTrees
+MinimumHeightTrees:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumHeightTrees.cpp
+
+.PHONY: 311
+311: SparseMatrixMultiplication
+SparseMatrixMultiplication:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SparseMatrixMultiplication.cpp
+
+.PHONY: 312
+312: BurstBalloons
+BurstBalloons:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BurstBalloons.cpp
+
+.PHONY: 313
+313: SuperUglyNumber
+SuperUglyNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SuperUglyNumber.cpp
+
+.PHONY: 314
+314: BinaryTreeVerticalOrderTraversal
+BinaryTreeVerticalOrderTraversal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeVerticalOrderTraversal.cpp
+
+.PHONY: 315
+315: CountOfSmallerNumbersAfterSelf
+CountOfSmallerNumbersAfterSelf:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountOfSmallerNumbersAfterSelf.cpp
+
+.PHONY: 316
+316: RemoveDuplicateLetters
+RemoveDuplicateLetters:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicateLetters.cpp
+
+.PHONY: 317
+317: ShortestDistanceFromAllBuildings
+ShortestDistanceFromAllBuildings:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestDistanceFromAllBuildings.cpp
+
+.PHONY: 318
+318: MaximumProductOfWordLengths
+MaximumProductOfWordLengths:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumProductOfWordLengths.cpp
+
+.PHONY: 319
+319: BulbSwitcher
+BulbSwitcher:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BulbSwitcher.cpp
+
+.PHONY: 320
+320: GeneralizedAbbreviation
+GeneralizedAbbreviation:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GeneralizedAbbreviation.cpp
+
+.PHONY: 321
+321: CreateMaximumNumber
+CreateMaximumNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CreateMaximumNumber.cpp
+
+.PHONY: 322
+322: CoinChange
+CoinChange:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CoinChange.cpp
+
+.PHONY: 323
+323: NumberOfConnectedComponentsInAnUndirectedGraph
+NumberOfConnectedComponentsInAnUndirectedGraph:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfConnectedComponentsInAnUndirectedGraph.cpp
+
+.PHONY: 324
+324: WiggleSortII
+WiggleSortII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WiggleSortII.cpp
+
+.PHONY: 325
+325: MaximumSizeSubarraySumEqualsK
+MaximumSizeSubarraySumEqualsK:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumSizeSubarraySumEqualsK.cpp
+
+.PHONY: 326
+326: PowerOfThree
+PowerOfThree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowerOfThree.cpp
+
+.PHONY: 327
+327: CountOfRangeSum
+CountOfRangeSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountOfRangeSum.cpp
+
+.PHONY: 328
+328: OddEvenLinkedList
+OddEvenLinkedList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OddEvenLinkedList.cpp
+
+.PHONY: 329
+329: LongestIncreasingPathInAMatrix
+LongestIncreasingPathInAMatrix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestIncreasingPathInAMatrix.cpp
+
+.PHONY: 330
+330: PatchingArray
+PatchingArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PatchingArray.cpp
+
+.PHONY: 331
+331: VerifyPreorderSerializationOfABinaryTree
+VerifyPreorderSerializationOfABinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)VerifyPreorderSerializationOfABinaryTree.cpp
+
+.PHONY: 332
+332: ReconstructItinerary
+ReconstructItinerary:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReconstructItinerary.cpp
+
+.PHONY: 333
+333: LargestBSTSubtree
+LargestBSTSubtree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestBSTSubtree.cpp
+
+.PHONY: 334
+334: IncreasingTripletSubsequence
+IncreasingTripletSubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IncreasingTripletSubsequence.cpp
+
+.PHONY: 335
+335: SelfCrossing
+SelfCrossing:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SelfCrossing.cpp
+
+.PHONY: 336
+336: PalindromePairs
+PalindromePairs:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePairs.cpp
+
+.PHONY: 337
+337: HouseRobberIII
+HouseRobberIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberIII.cpp
 
 test:
 	echo "test test!!"

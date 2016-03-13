@@ -6,8 +6,6 @@
 
 #include "NormalData.h"
 
-using namespace std;
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -21,8 +19,8 @@ public:
         {
             if (mp.count(target - nums[i]) != 0)
             {
-                res.push_back(mp[target - nums[i]] + 1);
-                res.push_back(i + 1);
+                res.push_back(mp[target - nums[i]]);
+                res.push_back(i);
                 return res;
             }
 
@@ -79,12 +77,12 @@ public:
 int main()
 {
     Solution sln;
-    vector<int> nums = {0, 4, 3, 0};
+    std::vector<int> nums = {0, 4, 3, 0};
     int target = 0;
     std::cout << "Please enter target: ";
-    cin >> target;
+    std::cin >> target;
     //vector<int> v = sln.twoSum_sort(nums, target);
-    vector<int> v1 = sln.twoSum(nums, target);
+    std::vector<int> v1 = sln.twoSum(nums, target);
     printVector<int>(nums);
     //printVector<int>(v);
     printVector<int>(v1);
