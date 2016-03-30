@@ -8,6 +8,12 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> res;
+
+        return res;
+    }
+
+    vector<vector<int> > fourSum1(vector<int>& nums, int target) {
         int size = nums.size();
         vector<vector<int> > sum;
 
@@ -146,17 +152,18 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 12;
-    int a[LOCAL_LENGTH] = {1, 1, 0, 0, -1, -1, 0, 0, -2, -2, 2, 2};
-    vector<int> nums(a, a + LOCAL_LENGTH);
-    int target = 0;
-    std::cout << "Please enter target: ";
-    cin >> target;
-    vector<vector<int> > v = sln.fourSum_naive(nums, target);
-    std::cout << "fourSum_naive:" << endl;
-    print2DVector(v);
-    vector<vector<int> > v1 = sln.fourSum(nums, target);
-    std::cout << "better solution:" << endl;
-    print2DVector(v1);
+    std::vector<int> nums = {1, 1, 0, 0, -1, -1, 0, 0, -2, -2, 2, 2};
+    std::vector<int> targets = {0, 1, 2, 3, 4, 5, 6};
+
+    for (auto t : targets)
+    {
+        std::cout << "target is : " << t << std::endl;
+        vector<vector<int> > v = sln.fourSum_naive(nums, t);
+        std::cout << "fourSum_naive:" << endl;
+        print2DVector(v);
+        vector<vector<int> > v1 = sln.fourSum(nums, t);
+        std::cout << "better solution:" << endl;
+        print2DVector(v1);
+    }
     return 0;
 }

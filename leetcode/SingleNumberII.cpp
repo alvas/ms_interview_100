@@ -18,6 +18,16 @@ public:
             x ^= ~y & nums[i];
             //// when the number appaers second time, set x to 0, and y to num[i];
             y ^= ~x & nums[i];
+            //
+            //
+            // int ones = 0, twos = 0, threes = 0;
+            // twos |= ones & nums[i];
+            // ones ^= nums[i];
+            // threes = ones & twos;
+            // ones &= ~threes;
+            // twos &= ~threes;
+            //
+            //
             //// when the number appears the third time, set y to 0;
             //std::cout << "x: " << x << "\ty: " << y << "\tnums[i]: " << nums[i] << endl;
             //bitset<32> x1(x), y1(y), n1(nums[i]);

@@ -6,31 +6,64 @@ using namespace std;
 class NumArray {
 public:
     NumArray(vector<int> &nums) {
-        v = nums;
+        int sz = nums.size();
+        v.reserve(sz);
+
+        for (int i = 0; i < sz; ++i)
+        {
+            if (i == 0)
+            {
+                v[i] = nums[i];
+            }
+            else
+            {
+                v[i] = v[i - 1] + nums[i];
+            }
+        }
     }
 
     int sumRange(int i, int j) {
-        if (i < 0)
+        if (i <= 0)
         {
-            return 0;
+            return v[j];
         }
-        else if (i >= v.size())
+        else
         {
-            return 0;
+            return v[j] - v[i - 1];
         }
-
-        int sum = 0;
-
-        for (int s = i; s <= j; ++s)
-        {
-            sum += v[s];
-        }
-
-        return sum;
     }
 private:
     vector<int> v;
 };
+
+//class NumArray {
+//public:
+    //NumArray(vector<int> &nums) {
+        //int sz = nums.size();
+        //v.assign(sz, vector<int>(sz, 0));
+
+        //for (int i = 0; i < sz; ++i)
+        //{
+            //for (int j = i; j < sz; ++j)
+            //{
+                //if (i == j)
+                //{
+                    //v[i][j] = nums[i];
+                //}
+                //else
+                //{
+                    //v[i][j] = v[i][j - 1] + nums[j];
+                //}
+            //}
+        //}
+    //}
+
+    //int sumRange(int i, int j) {
+        //return v[i][j];
+    //}
+//private:
+    //vector<vector<int>> v;
+//};
 
 
 // Your NumArray object will be instantiated and called as such:

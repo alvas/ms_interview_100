@@ -8,6 +8,42 @@ class Solution {
 public:
     string longestCommonPrefix(vector<string> &strs) {
         string prefix;
+        int m = strs.size();
+
+        // because we use INT_MAX to initialize len, so we have to check m
+        // otherwise, len would be INT_MAX and overflow
+        if (m == 0)
+        {
+            return prefix;
+        }
+
+        size_t len = INT_MAX;
+        
+        for (auto s: strs)
+        {
+            len = std::min(len, s.size());
+        }
+
+        for (int i = 0; i < len; ++i)
+        {
+            char c = strs[0][i];
+
+            for (int j = 1; j < m; ++j)
+            {
+                if (strs[j][i] != c)
+                {
+                    return prefix;
+                }
+            }
+
+            prefix.append(1, c);
+        }
+
+        return prefix;
+    }
+
+    string longestCommonPrefix1(vector<string> &strs) {
+        string prefix;
         int lengthOfS1 = 0;
         int numOfStr = strs.size();
 
@@ -76,22 +112,24 @@ public:
 int main()
 {
     Solution sln;
-    vector<string> v;
+    std::vector<string> v = {};
+    //std::vector<string> v = {"abcdef", "abce", "abcfg", "abcekk"};
 
-    string s;
-    std::cout << "Please enter string: ";
-    // Use getline to get input for string.
-    // get rid of the nasty side effect of cin >> s; which can't recognize empty input
-    // so can't use empty string to stop input.
-    getline(cin, s);
+    //string s;
+    //std::cout << "Please enter string: ";
+    //// Use getline to get input for string.
+    //// get rid of the nasty side effect of cin >> s; which can't recognize empty input
+    //// so can't use empty string to stop input.
+    //getline(cin, s);
 
-    while (!s.empty())
-    {
-        v.push_back(s);
-        std::cout << "Please enter string: ";
-        getline(cin, s);
-    }
+    //while (!s.empty())
+    //{
+        //v.push_back(s);
+        //std::cout << "Please enter string: ";
+        //getline(cin, s);
+    //}
 
+    std::cout << sln.longestCommonPrefix1(v) << endl;
     std::cout << sln.longestCommonPrefix(v) << endl;
     return 0;
 }

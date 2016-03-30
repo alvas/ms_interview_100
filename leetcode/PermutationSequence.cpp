@@ -9,6 +9,46 @@ using namespace std;
 class Solution {
 public:
     string getPermutation(int n, int k) {
+        vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+        int a = 1;
+
+        for (int i = 1; i <= n; ++i)
+        {
+            a *= i;
+        }
+
+        // a = (n - 1)!
+        int r = 0;
+
+        // why?? change k from (1, n) to (0, n - 1) to accord to index??
+        k--;
+
+        // the range here is important, make sure to loop through n times
+        for (int i = n; i > 0; --i)
+        {
+            a /= i;
+            int d = k / a;
+            
+            // This is wrong, because the index is not right. Need to shift
+            // number to left.
+            //while (nums[d] == 0)
+            //{
+                //d++;
+            //}
+
+            r = r * 10 + nums[d];
+
+            // shift it to left
+            nums.erase(nums.begin() + d);
+
+            k %= a;
+        }
+
+        return std::to_string(r);
+    }
+
+    string getPermutation1(int n, int k) {
         string a;
 
         if (n == 0 || k == 0)
@@ -90,12 +130,18 @@ public:
 int main()
 {
     Solution sln;
-    int k = 0, n = 0;
-    std::cout << "Please enter n <= 9: ";
-    cin >> n;
-    std::cout << "Please enter k < " << n << "!: ";
-    cin >> k;
-    //std::cout << sln.getPermutation_recursive(n, k) << endl;
-    std::cout << sln.getPermutation(n, k) << endl;
+    std::vector<int> k = {1, 2, 3, 4, 5, 6};
+    std::vector<int> n = {3, 4, 5};
+
+    for (auto n1 : n)
+    {
+        for (auto k1 : k)
+        {
+            std::cout << "n: " << n1 << ", k: " << k1 << ", ";
+            std::cout << sln.getPermutation(n1, k1) << std::endl;
+        }
+
+        std::cout << endl;
+    }
     return 0;
 }

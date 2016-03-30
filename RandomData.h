@@ -1,6 +1,8 @@
 #include <vector>
 #include "NormalData.h"
 
+#pragma once
+
 using namespace std;
 
 // I: length the size of the array

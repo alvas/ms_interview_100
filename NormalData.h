@@ -2,6 +2,8 @@
 #define NORMAL_DATA_HEADER_H
 #include <vector>
 
+#pragma once
+
 using namespace std;
 
 const int LENGTH = 10;
@@ -78,6 +80,8 @@ void print2DVector(const vector<vector<T> > &v)
 
 // Don't put the definition of this function in header file.
 // Otherwise, it would cause duplicate symbol link error.
+// Or define this function as inline
+//inline void printString(const string &str)
 void printString(const string &str);
 
 template <typename T>
@@ -93,4 +97,16 @@ void print2DVector2(const vector<vector<T> > &v)
 }
 
 void initialize2DVector(vector<vector<int> > &v, int row, int column);
+
+// Template to calculate factorial of n, n!
+template <unsigned int n>
+struct factorial {
+  enum { value = n * factorial<n - 1>::value };  
+};
+
+template <>
+struct factorial<0> {
+    enum { value = 1 };
+};
+
 #endif

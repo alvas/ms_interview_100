@@ -34,6 +34,7 @@ all:
 		do \
 			make $$i; \
 		done
+	rm *.o
 
 exec1: 
 	g++ exec1.cpp
@@ -144,1414 +145,1430 @@ Shift: NormalData.o
 BinarySearch: RandomData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
-1:
-	$(CC) $(DFLAGS) $(INCLUDES) $(UNITE_TEST) $(LEETCODE)TwoSum.cpp
+.PHONY: 1
+1: TwoSum
 TwoSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(UNITE_TEST) $(LEETCODE)TwoSum.cpp
 
-2:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddTwoNumbers.cpp 
+.PHONY: 2
+2: AddTwoNumbers
 AddTwoNumbers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddTwoNumbers.cpp 
 
-3:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithoutRepeatingCharacters.cpp
+.PHONY: 3
+3: LongestSubstringWithoutRepeatingCharacters
 LongestSubstringWithoutRepeatingCharacters:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithoutRepeatingCharacters.cpp
 
-4: NormalData.o RandomData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MedianOfTwoSortedArrays.cpp NormalData.o RandomData.o
+.PHONY: 4
+4: MedianOfTwoSortedArrays
 MedianOfTwoSortedArrays: NormalData.o RandomData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MedianOfTwoSortedArrays.cpp NormalData.o RandomData.o
 
-5:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestPalindromicSubstring.cpp
+.PHONY: 5
+5: LongestPalindromicSubstring
 LongestPalindromicSubstring:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestPalindromicSubstring.cpp
 
-6:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ZigZagConversion.cpp 
+.PHONY: 6
+6: ZigZagConversion
 ZigZagConversion:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ZigZagConversion.cpp 
 
-7:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseInteger.cpp 
+.PHONY: 7
+7: ReverseInteger
 ReverseInteger:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseInteger.cpp 
 
-8:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StringToInteger.cpp 
+.PHONY: 8
+8: StringToInteger
 StringToInteger:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StringToInteger.cpp 
 
-9:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromeNumber.cpp 
+.PHONY: 9
+9: PalindromeNumber
 PalindromeNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromeNumber.cpp 
 
-10:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RegularExpressionMatching.cpp
+.PHONY: 10
+10: RegularExpressionMatching
 RegularExpressionMatching:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RegularExpressionMatching.cpp
 
-11: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainerWithMostWater.cpp RandomData.o NormalData.o
+.PHONY: 11
+11: ContainerWithMostWater
 ContainerWithMostWater: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainerWithMostWater.cpp RandomData.o NormalData.o
 
-12:
-	$(CC) $(DFLAGS) $(LEETCODE)IntegerToRoman.cpp
+.PHONY: 12
+12: IntegerToRoman
 IntegerToRoman:
 	$(CC) $(DFLAGS) $(LEETCODE)IntegerToRoman.cpp
 
-13:
-	$(CC) $(DFLAGS) $(LEETCODE)RomanToInteger.cpp
+.PHONY: 13
+13: RomanToInteger
 RomanToInteger:
 	$(CC) $(DFLAGS) $(LEETCODE)RomanToInteger.cpp
 
-14:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestCommonPrefix.cpp 
+.PHONY: 14
+14: LongestCommonPrefix
 LongestCommonPrefix:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestCommonPrefix.cpp 
 
-15:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSum.cpp
+.PHONY: 15
+15: ThreeSum
 ThreeSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSum.cpp
 
-16:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSumClosest.cpp
+.PHONY: 16
+16: ThreeSumClosest
 ThreeSumClosest:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSumClosest.cpp
 
-17:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LetterCombinationsOfAPhoneNumber.cpp
+.PHONY: 17
+17: LetterCombinationsOfAPhoneNumber
 LetterCombinationsOfAPhoneNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LetterCombinationsOfAPhoneNumber.cpp
 
-18: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FourSum.cpp NormalData.o
+.PHONY: 18
+18: FourSum
 FourSum: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FourSum.cpp NormalData.o
 
-19: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveNthNodeFromEndOfList.cpp LinkList.o RandomData.o NormalData.o
+.PHONY: 19
+19: RemoveNthNodeFromEndOfList
 RemoveNthNodeFromEndOfList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveNthNodeFromEndOfList.cpp LinkList.o RandomData.o NormalData.o
 
-20:
-	$(CC) $(DFLAGS) $(LEETCODE)ValidParentheses.cpp
+.PHONY: 20
+20: ValidParentheses
 ValidParentheses:
 	$(CC) $(DFLAGS) $(LEETCODE)ValidParentheses.cpp
 
-21: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeTwoSortedLists.cpp LinkList.o
+.PHONY: 21
+21: MergeTwoSortedLists
 MergeTwoSortedLists: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeTwoSortedLists.cpp LinkList.o
 
-22:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GenerateParentheses.cpp
+.PHONY: 22
+22: GenerateParentheses
 GenerateParentheses:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GenerateParentheses.cpp
 
-23: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeKSortedLists.cpp RandomData.o NormalData.o
+.PHONY: 23
+23: MergeKSortedLists
 MergeKSortedLists: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeKSortedLists.cpp RandomData.o NormalData.o
 
-24: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SwapNodesInPairs.cpp LinkList.o
+.PHONY: 24
+24: SwapNodesInPairs
 SwapNodesInPairs: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SwapNodesInPairs.cpp LinkList.o
 
-25: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseNodesInKGroup.cpp LinkList.o
+.PHONY: 25
+25: ReverseNodesInKGroup
 ReverseNodesInKGroup: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseNodesInKGroup.cpp LinkList.o
 
-26:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArray.cpp
+.PHONY: 26
+26: RemoveDuplicatesFromSortedArray
 RemoveDuplicatesFromSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArray.cpp
 
-27:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveElement.cpp 
+.PHONY: 27
+27: RemoveElement
 RemoveElement:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveElement.cpp 
 
-28:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStrStr.cpp
+.PHONY: 28
+28: ImplementStrStr
 ImplementStrStr:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStrStr.cpp
 
-29:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DivideTwoIntegers.cpp
+.PHONY: 29
+29: DivideTwoIntegers
 DivideTwoIntegers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DivideTwoIntegers.cpp
 
-30:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubstringWithConcatenationOfAllWords.cpp
+.PHONY: 30
+30: SubstringWithConcatenationOfAllWords
 SubstringWithConcatenationOfAllWords:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubstringWithConcatenationOfAllWords.cpp
 
-31: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NextPermutation.cpp NormalData.o
+.PHONY: 31
+31: NextPermutation
 NextPermutation: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NextPermutation.cpp NormalData.o
 
-32:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestValidParentheses.cpp
+.PHONY: 32
+32: LongestValidParentheses
 LongestValidParentheses:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestValidParentheses.cpp
 
-33:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInRotatedSortedArray.cpp
+.PHONY: 33
+33: SearchInRotatedSortedArray
 SearchInRotatedSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInRotatedSortedArray.cpp
 
-34:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchForARange.cpp
+.PHONY: 34
+34: SearchForARange
 SearchForARange:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchForARange.cpp
 
-35:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInsertPosition.cpp
+.PHONY: 35
+35: SearchInsertPosition
 SearchInsertPosition:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInsertPosition.cpp
 
-36:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidSudoku.cpp 
+.PHONY: 36
+36: ValidSudoku
 ValidSudoku:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidSudoku.cpp 
 
-37:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SudokuSolver.cpp 
+.PHONY: 37
+37: SudokuSolver
 SudokuSolver:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SudokuSolver.cpp 
 
-38:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountAndSay.cpp
+.PHONY: 38
+38: CountAndSay
 CountAndSay:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountAndSay.cpp
 
-39:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSum.cpp
+.PHONY: 39
+39: CombinationSum
 CombinationSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSum.cpp
 
-40:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumII.cpp
+.PHONY: 40
+40: CombinationSumII
 CombinationSumII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumII.cpp
 
-41:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstMissingPositive.cpp
+.PHONY: 41
+41: FirstMissingPositive
 FirstMissingPositive:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstMissingPositive.cpp
 
-42: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TrappingRainWater.cpp RandomData.o NormalData.o
+.PHONY: 42
+42: TrappingRainWater
 TrappingRainWater: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TrappingRainWater.cpp RandomData.o NormalData.o
 
-43:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MultiplyStrings.cpp
+.PHONY: 43
+43: MultiplyStrings
 MultiplyStrings:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MultiplyStrings.cpp
 
-44:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WildcardMatching.cpp
+.PHONY: 44
+44: WildcardMatching
 WildcardMatching:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WildcardMatching.cpp
 
-45:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGameII.cpp
+.PHONY: 45
+45: JumpGameII
 JumpGameII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGameII.cpp
 
-46:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Permutations.cpp
+.PHONY: 46
+46: Permutations
 Permutations:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Permutations.cpp
 
-47:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationsII.cpp
+.PHONY: 47
+47: PermutationsII
 PermutationsII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationsII.cpp
 
-48: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateImage.cpp RandomData.o NormalData.o
+.PHONY: 48
+48: RotateImage
 RotateImage: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateImage.cpp RandomData.o NormalData.o
 
-49:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GroupAnagrams.cpp
+.PHONY: 49
+49: GroupAnagrams
 GroupAnagrams:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GroupAnagrams.cpp
 
-50:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowXN.cpp
+.PHONY: 50
+50: PowXN
 PowXN:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowXN.cpp
 
-51: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp NormalData.o
+.PHONY: 51
+51: NQueens
 NQueens: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueens.cpp NormalData.o
 
-52:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueensII.cpp
+.PHONY: 52
+52: NQueensII
 NQueensII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NQueensII.cpp
 
-53:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumSubarray.cpp
+.PHONY: 53
+53: MaximumSubarray
 MaximumSubarray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumSubarray.cpp
 
-54: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp NormalData.o
+.PHONY: 54
+54: SpiralMatrix
 SpiralMatrix: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrix.cpp NormalData.o
 
-55:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGame.cpp
+.PHONY: 55
+55: JumpGame
 JumpGame:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JumpGame.cpp
 
-56:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeIntervals.cpp
+.PHONY: 56
+56: MergeIntervals
 MergeIntervals:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeIntervals.cpp
 
-57:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertInterval.cpp
+.PHONY: 57
+57: InsertInterval
 InsertInterval:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertInterval.cpp
 
-58:
-	$(CC) $(DFLAGS) $(LEETCODE)LengthOfLastWord.cpp
+.PHONY: 58
+58: LengthOfLastWord
 LengthOfLastWord:
 	$(CC) $(DFLAGS) $(LEETCODE)LengthOfLastWord.cpp
 
-59:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrixII.cpp
+.PHONY: 59
+59: SpiralMatrixII
 SpiralMatrixII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SpiralMatrixII.cpp
 
-60:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationSequence.cpp
+.PHONY: 60
+60: PermutationSequence
 PermutationSequence:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PermutationSequence.cpp
 
-61: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateList.cpp LinkList.o
+.PHONY: 61
+61: RotateList
 RotateList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateList.cpp LinkList.o
 
-62:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePaths.cpp
+.PHONY: 62
+62: UniquePaths
 UniquePaths:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePaths.cpp
 
-63:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePathsII.cpp
+.PHONY: 63
+63: UniquePathsII
 UniquePathsII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniquePathsII.cpp
 
-64:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumPathSum.cpp
+.PHONY: 64
+64: MinimumPathSum
 MinimumPathSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumPathSum.cpp
 
-65:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidNumber.cpp
+.PHONY: 65
+65: ValidNumber
 ValidNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidNumber.cpp
 
-66:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PlusOne.cpp 
+.PHONY: 66
+66: PlusOne
 PlusOne:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PlusOne.cpp 
 
-67:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddBinary.cpp 
+.PHONY: 67
+67: AddBinary
 AddBinary:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddBinary.cpp 
 
-68:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TextJustification.cpp
+.PHONY: 68
+68: TextJustification
 TextJustification:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TextJustification.cpp
 
-69:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SqrtX.cpp
+.PHONY: 69
+69: SqrtX
 SqrtX:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SqrtX.cpp
 
-70:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClimbingStairs.cpp 
+.PHONY: 70
+70: ClimbingStairs
 ClimbingStairs:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClimbingStairs.cpp 
 
-71:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SimplifyPath.cpp
+.PHONY: 71
+71: SimplifyPath
 SimplifyPath:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SimplifyPath.cpp
 
-72:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EditDistance.cpp
+.PHONY: 72
+72: EditDistance
 EditDistance:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EditDistance.cpp
 
-73: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SetMatrixZeroes.cpp RandomData.o NormalData.o
+.PHONY: 73
+73: SetMatrixZeroes
 SetMatrixZeroes: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SetMatrixZeroes.cpp RandomData.o NormalData.o
 
-74: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrix.cpp RandomData.o NormalData.o
+.PHONY: 74
+74: SearchA2DMatrix
 SearchA2DMatrix: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrix.cpp RandomData.o NormalData.o
 
-75:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortColors.cpp
+.PHONY: 75
+75: SortColors
 SortColors:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortColors.cpp
 
-76:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumWindowSubstring.cpp
+.PHONY: 76
+76: MinimumWindowSubstring
 MinimumWindowSubstring:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumWindowSubstring.cpp
 
-77:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Combinations.cpp
+.PHONY: 77
+77: Combinations
 Combinations:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Combinations.cpp
 
-78: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Subsets.cpp NormalData.o
+.PHONY: 78
+78: Subsets
 Subsets: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Subsets.cpp NormalData.o
 
-79:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearch.cpp
+.PHONY: 79
+79: WordSearch
 WordSearch:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearch.cpp
 
-80:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArrayII.cpp
+.PHONY: 80
+80: RemoveDuplicatesFromSortedArrayII
 RemoveDuplicatesFromSortedArrayII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedArrayII.cpp
 
-81:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInRotatedSortedArrayII.cpp
+.PHONY: 81
+81: SearchInRotatedSortedArrayII
 SearchInRotatedSortedArrayII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchInRotatedSortedArrayII.cpp
 
-82: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedListII.cpp LinkList.o
+.PHONY: 82
+82: RemoveDuplicatesFromSortedListII
 RemoveDuplicatesFromSortedListII: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedListII.cpp LinkList.o
 
-83: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedList.cpp LinkList.o
+.PHONY: 83
+83: RemoveDuplicatesFromSortedList
 RemoveDuplicatesFromSortedList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveDuplicatesFromSortedList.cpp LinkList.o
 
-84: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestRectangleInHistogram.cpp NormalData.o
+.PHONY: 84
+84: LargestRectangleInHistogram
 LargestRectangleInHistogram: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestRectangleInHistogram.cpp NormalData.o
 
-85:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalRectangle.cpp
+.PHONY: 85
+85: MaximalRectangle
 MaximalRectangle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalRectangle.cpp
 
-86:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PartitionList.cpp
+.PHONY: 86
+86: PartitionList
 PartitionList:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PartitionList.cpp
 
-87:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ScrambleString.cpp
+.PHONY: 87
+87: ScrambleString
 ScrambleString:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ScrambleString.cpp
 
-88:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeSortedArray.cpp 
+.PHONY: 88
+88: MergeSortedArray
 MergeSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeSortedArray.cpp 
 
-89:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GrayCode.cpp
+.PHONY: 89
+89: GrayCode
 GrayCode:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GrayCode.cpp
 
-90: NormalData.o RandomData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubsetsII.cpp NormalData.o RandomData.o
+.PHONY: 90
+90: SubsetsII
 SubsetsII: NormalData.o RandomData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubsetsII.cpp NormalData.o RandomData.o
 
-91:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DecodeWays.cpp
+.PHONY: 91
+91: DecodeWays
 DecodeWays:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DecodeWays.cpp
 
-92: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedListII.cpp LinkList.o
+.PHONY: 92
+92: ReverseLinkedListII
 ReverseLinkedListII: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedListII.cpp LinkList.o
 
-93:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RestoreIPAddresses.cpp
+.PHONY: 93
+93: RestoreIPAddresses
 RestoreIPAddresses:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RestoreIPAddresses.cpp
 
-94: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeInorderTraversal.cpp Tree.o
+.PHONY: 94
+94: BinaryTreeInorderTraversal
 BinaryTreeInorderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeInorderTraversal.cpp Tree.o
 
-95:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTreesII.cpp
+.PHONY: 95
+95: UniqueBinarySearchTreesII
 UniqueBinarySearchTreesII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTreesII.cpp
 
-96:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTrees.cpp
+.PHONY: 96
+96: UniqueBinarySearchTrees
 UniqueBinarySearchTrees:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueBinarySearchTrees.cpp
 
-97:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InterleavingString.cpp
+.PHONY: 97
+97: InterleavingString
 InterleavingString:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InterleavingString.cpp
 
-98: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidateBinarySearchTree.cpp Tree.o
+.PHONY: 98
+98: ValidateBinarySearchTree
 ValidateBinarySearchTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidateBinarySearchTree.cpp Tree.o
 
-99:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RecoverBinarySearchTree.cpp
+.PHONY: 99
+99: RecoverBinarySearchTree
 RecoverBinarySearchTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RecoverBinarySearchTree.cpp
 
-100: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SameTree.cpp Tree.o
+.PHONY: 100
+100: SameTree
 SameTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SameTree.cpp Tree.o
 
-101: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SymmetricTree.cpp Tree.o
+.PHONY: 101
+101: SymmetricTree
 SymmetricTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SymmetricTree.cpp Tree.o
 
-102: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversal.cpp Tree.o
+.PHONY: 102
+102: BinaryTreeLevelOrderTraversal
 BinaryTreeLevelOrderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversal.cpp Tree.o
 
-103: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeZigzagLevelOrderTraversal.cpp Tree.o
+.PHONY: 103
+103: BinaryTreeZigzagLevelOrderTraversal
 BinaryTreeZigzagLevelOrderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeZigzagLevelOrderTraversal.cpp Tree.o
 
-104: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDepthOfBinaryTree.cpp Tree.o
+.PHONY: 104
+104: MaximumDepthOfBinaryTree
 MaximumDepthOfBinaryTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDepthOfBinaryTree.cpp Tree.o
 
-105:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructBinaryTreeFromPreorderAndInorderTraversal.cpp
+.PHONY: 105
+105: ConstructBinaryTreeFromPreorderAndInorderTraversal
 ConstructBinaryTreeFromPreorderAndInorderTraversal:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructBinaryTreeFromPreorderAndInorderTraversal.cpp
 
-106:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructBinaryTreeFromInorderAndPostorderTraversal.cpp
+.PHONY: 106
+106: ConstructBinaryTreeFromInorderAndPostorderTraversal
 ConstructBinaryTreeFromInorderAndPostorderTraversal:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructBinaryTreeFromInorderAndPostorderTraversal.cpp
 
-107: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversalII.cpp Tree.o
+.PHONY: 107
+107: BinaryTreeLevelOrderTraversalII
 BinaryTreeLevelOrderTraversalII: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversalII.cpp Tree.o
 
-108: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedArrayToBinarySearchTree.cpp Tree.o
+.PHONY: 108
+108: ConvertSortedArrayToBinarySearchTree
 ConvertSortedArrayToBinarySearchTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedArrayToBinarySearchTree.cpp Tree.o
 
-109:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedListToBinarySearchTree.cpp
+.PHONY: 109
+109: ConvertSortedListToBinarySearchTree
 ConvertSortedListToBinarySearchTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedListToBinarySearchTree.cpp
 
-110: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BalancedBinaryTree.cpp Tree.o
+.PHONY: 110
+110: BalancedBinaryTree
 BalancedBinaryTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BalancedBinaryTree.cpp Tree.o
 
-111: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumDepthOfBinaryTree.cpp Tree.o
+.PHONY: 111
+111: MinimumDepthOfBinaryTree
 MinimumDepthOfBinaryTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumDepthOfBinaryTree.cpp Tree.o
 
-112: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSum.cpp Tree.o
+.PHONY: 112
+112: PathSum
 PathSum: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSum.cpp Tree.o
 
-113: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSumII.cpp Tree.o
+.PHONY: 113
+113: PathSumII
 PathSumII: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSumII.cpp Tree.o
 
-114:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenBinaryTreeToLinkedList.cpp
+.PHONY: 114
+114: FlattenBinaryTreeToLinkedList
 FlattenBinaryTreeToLinkedList:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenBinaryTreeToLinkedList.cpp
 
-115:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistinctSubsequences.cpp
+.PHONY: 115
+115: DistinctSubsequences
 DistinctSubsequences:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistinctSubsequences.cpp
 
-116: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp Tree.o
+.PHONY: 116
+116: PopulatingNextRightPointersInEachNode
 PopulatingNextRightPointersInEachNode: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp Tree.o
 
-117: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNodeII.cpp Tree.o
+.PHONY: 117
+117: PopulatingNextRightPointersInEachNodeII
 PopulatingNextRightPointersInEachNodeII: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNodeII.cpp Tree.o
 
-118: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PascalsTriangle.cpp NormalData.o
+.PHONY: 118
+118: PascalsTriangle
 PascalsTriangle: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PascalsTriangle.cpp NormalData.o
 
-119: NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PascalsTriangle2.cpp NormalData.o
+.PHONY: 119
+119: PascalsTriangle2 
 PascalsTriangle2: NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PascalsTriangle2.cpp NormalData.o
 
-120:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Triangle.cpp
+.PHONY: 120
+120: Triangle
 Triangle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Triangle.cpp
 
-121:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStock.cpp
+.PHONY: 121
+121: BestTimeToBuyAndSellStock
 BestTimeToBuyAndSellStock:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStock.cpp
 
-122:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockII.cpp
+.PHONY: 122
+122: BestTimeToBuyAndSellStockII
 BestTimeToBuyAndSellStockII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockII.cpp
 
-123:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockIII.cpp
+.PHONY: 123
+123: BestTimeToBuyAndSellStockIII
 BestTimeToBuyAndSellStockIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockIII.cpp
 
-124: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeMaximumPathSum.cpp Tree.o
+.PHONY: 124
+124: BinaryTreeMaximumPathSum
 BinaryTreeMaximumPathSum: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeMaximumPathSum.cpp Tree.o
 
-125:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidPalindrome.cpp 
+.PHONY: 125
+125: ValidPalindrome
 ValidPalindrome:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidPalindrome.cpp 
 
-126:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadderII.cpp
+.PHONY: 126
+126: WordLadderII
 WordLadderII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadderII.cpp
 
-127:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadder.cpp
+.PHONY: 127
+127: WordLadder
 WordLadder:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordLadder.cpp
 
-128:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestConsecutiveSequence.cpp
+.PHONY: 128
+128: LongestConsecutiveSequence
 LongestConsecutiveSequence:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestConsecutiveSequence.cpp
 
-129: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumRootToLeafNumbers.cpp Tree.o
+.PHONY: 129
+129: SumRootToLeafNumbers
 SumRootToLeafNumbers: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumRootToLeafNumbers.cpp Tree.o
 
-130:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SurroundedRegions.cpp
+.PHONY: 130
+130: SurroundedRegions
 SurroundedRegions:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SurroundedRegions.cpp
 
-131:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioning.cpp
+.PHONY: 131
+131: PalindromePartitioning
 PalindromePartitioning:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioning.cpp
 
-132:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioningII.cpp
+.PHONY: 132
+132: PalindromePartitioningII
 PalindromePartitioningII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePartitioningII.cpp
 
-133:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CloneGraph.cpp
+.PHONY: 133
+133: CloneGraph
 CloneGraph:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CloneGraph.cpp
 
-134: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GasStation.cpp RandomData.o NormalData.o
+.PHONY: 134
+134: GasStation
 GasStation: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GasStation.cpp RandomData.o NormalData.o
 
-135: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Candy.cpp RandomData.o NormalData.o
+.PHONY: 135
+135: Candy
 Candy: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Candy.cpp RandomData.o NormalData.o
 
-136:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumber.cpp
+.PHONY: 136
+136: SingleNumber
 SingleNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumber.cpp
 
-137:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberII.cpp
+.PHONY: 137
+137: SingleNumberII
 SingleNumberII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberII.cpp
 
-138: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CopyListWithRandomPointer.cpp LinkList.o
+.PHONY: 138
+138: CopyListWithRandomPointer
 CopyListWithRandomPointer: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CopyListWithRandomPointer.cpp LinkList.o
 
-139:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreak.cpp
+.PHONY: 139
+139: WordBreak
 WordBreak:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreak.cpp
 
-140:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreakII.cpp
+.PHONY: 140
+140: WordBreakII
 WordBreakII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordBreakII.cpp
 
-141:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
+.PHONY: 141
+141: LinkedListCycle
 LinkedListCycle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycle.cpp 
 
-142: LinkList.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycleII.cpp LinkList.o NormalData.o
+.PHONY: 142
+142: LinkedListCycleII
 LinkedListCycleII: LinkList.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListCycleII.cpp LinkList.o NormalData.o
 
-143: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReorderList.cpp LinkList.o
+.PHONY: 143
+143: ReorderList
 ReorderList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReorderList.cpp LinkList.o
 
-144: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePreorderTraversal.cpp Tree.o
+.PHONY: 144
+144: BinaryTreePreorderTraversal
 BinaryTreePreorderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePreorderTraversal.cpp Tree.o
 
-145: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePostorderTraversal.cpp Tree.o
+.PHONY: 145
+145: BinaryTreePostorderTraversal
 BinaryTreePostorderTraversal: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePostorderTraversal.cpp Tree.o
 
-146:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LRUCache.cpp
+.PHONY: 146
+146: LRUCache
 LRUCache:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LRUCache.cpp
 
-147:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertionSortList.cpp
+.PHONY: 147
+147: InsertionSortList
 InsertionSortList:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertionSortList.cpp
 
-148:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortList.cpp
+.PHONY: 148
+148: SortList
 SortList:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortList.cpp
 
-149:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaxPointsOnALine.cpp
+.PHONY: 149
+149: MaxPointsOnALine
 MaxPointsOnALine:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaxPointsOnALine.cpp
 
-150:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EvaluateReversePolishNotation.cpp
+.PHONY: 150
+150: EvaluateReversePolishNotation
 EvaluateReversePolishNotation:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EvaluateReversePolishNotation.cpp
 
-151:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAString.cpp
+.PHONY: 151
+151: ReverseWordsInAString
 ReverseWordsInAString:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAString.cpp
 
-152:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumProductSubarray.cpp
+.PHONY: 152
+152: MaximumProductSubarray
 MaximumProductSubarray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumProductSubarray.cpp
 
-153:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArray.cpp
+.PHONY: 153
+153: FindMinimumInRotatedSortedArray
 FindMinimumInRotatedSortedArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArray.cpp
 
-154:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArrayII.cpp
+.PHONY: 154
+154: FindMinimumInRotatedSortedArrayII
 FindMinimumInRotatedSortedArrayII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindMinimumInRotatedSortedArrayII.cpp
 
-155:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinStack.cpp 
+.PHONY: 155
+155: MinStack
 MinStack:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinStack.cpp 
 
-156:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeUpsideDown.cpp 
+.PHONY: 156
+156: BinaryTreeUpsideDown
 BinaryTreeUpsideDown:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeUpsideDown.cpp 
 	
-157:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead4.cpp 
-ReadNCharactersGivenRead4:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead4.cpp 
+.PHONY: 157
+157: ReadNCharactersGivenRead
+ReadNCharactersGivenRead: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead.cpp 
 
-158:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead4II.cpp 
-ReadNCharactersGivenRead4II:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead4II.cpp 
+.PHONY: 158
+158: ReadNCharactersGivenReadII
+ReadNCharactersGivenReadII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenReadII.cpp
 
-159:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithAtMostTwoDistinctCharacters.cpp 
+.PHONY: 159
+159: LongestSubstringWithAtMostTwoDistinctCharacters
 LongestSubstringWithAtMostTwoDistinctCharacters:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithAtMostTwoDistinctCharacters.cpp 
 
-160: LinkList.o
-	$(CC) $(DFLAGS) $(LEETCODE)IntersectionOfTwoLinkedLists.cpp LinkList.o RandomData.o NormalData.o
+.PHONY: 160
+160: IntersectionOfTwoLinkedLists
 IntersectionOfTwoLinkedLists: LinkList.o
 	$(CC) $(DFLAGS) $(LEETCODE)IntersectionOfTwoLinkedLists.cpp LinkList.o RandomData.o NormalData.o
 
-161:
-	$(CC) $(DFLAGS) $(LEETCODE)OneEditDistance.cpp
+.PHONY: 161
+161: OneEditDistance
 OneEditDistance:
 	$(CC) $(DFLAGS) $(LEETCODE)OneEditDistance.cpp
 
-162: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindPeakElement.cpp RandomData.o NormalData.o
+.PHONY: 162
+162: FindPeakElement
 FindPeakElement: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindPeakElement.cpp RandomData.o NormalData.o
 
-163:
-	$(CC) $(DFLAGS) $(LEETCODE)MissingRanges.cpp
+.PHONY: 163
+163: MissingRanges
 MissingRanges:
 	$(CC) $(DFLAGS) $(LEETCODE)MissingRanges.cpp
 
-164: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumGap.cpp RandomData.o NormalData.o
+.PHONY: 164
+164: MaximumGap
 MaximumGap: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumGap.cpp RandomData.o NormalData.o
 
-165:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CompareVersionNumbers.cpp
+.PHONY: 165
+165: CompareVersionNumbers
 CompareVersionNumbers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CompareVersionNumbers.cpp
 
-166:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FractionToRecurringDecimal.cpp
+.PHONY: 166
+166: FractionToRecurringDecimal
 FractionToRecurringDecimal:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FractionToRecurringDecimal.cpp
 
-167:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSumII.cpp
+.PHONY: 167
+167: TwoSumII
 TwoSumII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSumII.cpp
 
-168:
-	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnTitle.cpp
+.PHONY: 168
+168: ExcelSheetColumnTitle
 ExcelSheetColumnTitle:
 	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnTitle.cpp
 
-169:
-	$(CC) $(DFLAGS) $(LEETCODE)MajorityElement.cpp
+.PHONY: 169
+169: MajorityElement
 MajorityElement:
 	$(CC) $(DFLAGS) $(LEETCODE)MajorityElement.cpp
 
-170:
-	$(CC) $(DFLAGS) $(LEETCODE)TwoSumIII.cpp
+.PHONY: 170
+170: TwoSumIII
 TwoSumIII:
 	$(CC) $(DFLAGS) $(LEETCODE)TwoSumIII.cpp
 
-171:
-	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnNumber.cpp
+.PHONY: 171
+171: ExcelSheetColumnNumber
 ExcelSheetColumnNumber:
 	$(CC) $(DFLAGS) $(LEETCODE)ExcelSheetColumnNumber.cpp
 
-172:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FactorialTrailingZeroes.cpp
+.PHONY: 172
+172: FactorialTrailingZeroes
 FactorialTrailingZeroes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FactorialTrailingZeroes.cpp
 
-173:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinarySearchTreeIterator.cpp
+.PHONY: 173
+173: BinarySearchTreeIterator
 BinarySearchTreeIterator:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinarySearchTreeIterator.cpp
 
-174:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DungeonGame.cpp
+.PHONY: 174
+174: DungeonGame
 DungeonGame:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DungeonGame.cpp
 
+.PHONY: 175
 175:
 	echo "No 175"
 
+.PHONY: 176
 176:
 	echo "No 176"
 
+.PHONY: 177
 177:
 	echo "No 177"
 
+.PHONY: 178
 178:
 	echo "No 178"
 
-179:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestNumber.cpp
+.PHONY: 179
+179: LargestNumber
 LargestNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestNumber.cpp
 
+.PHONY: 180
 180:
 	echo "No 180"
 
+.PHONY: 181
 181:
 	echo "No 181"
 
+.PHONY: 182
 182:
 	echo "No 182"
 
+.PHONY: 183
 183:
 	echo "No 183"
 
+.PHONY: 184
 184:
 	echo "No 184"
 
+.PHONY: 185
 185:
 	echo "No 185"
 
-186:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAStringII.cpp
+.PHONY: 186
+186: ReverseWordsInAStringII
 ReverseWordsInAStringII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAStringII.cpp
 
-187:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RepeatedDNASequences.cpp
+.PHONY: 187
+187: RepeatedDNASequences
 RepeatedDNASequences:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RepeatedDNASequences.cpp
 
-188:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockIV.cpp
+.PHONY: 188
+188: BestTimeToBuyAndSellStockIV
 BestTimeToBuyAndSellStockIV:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BestTimeToBuyAndSellStockIV.cpp
 
+.PHONY: 189
 189: RandomData.o
-	$(CC) $(DFLAGS) $(LEETCODE)RotateArray.cpp RandomData.o NormalData.o
 RotateArray: RandomData.o
 	$(CC) $(DFLAGS) $(LEETCODE)RotateArray.cpp RandomData.o NormalData.o
 
-190:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseBits.cpp
+.PHONY: 190
+190: ReverseBits
 ReverseBits:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseBits.cpp
 
-191:
-	$(CC) $(DFLAGS) $(LEETCODE)NumberOf1Bits.cpp
+.PHONY: 191
+191: NumberOf1Bits
 NumberOf1Bits:
 	$(CC) $(DFLAGS) $(LEETCODE)NumberOf1Bits.cpp
 
+.PHONY: 192
 192:
 	echo "No 192"
 
+.PHONY: 193
 193:
 	echo "No 193"
 
+.PHONY: 194
 194:
 	echo "No 194"
 
+.PHONY: 195
 195:
 	echo "No 195"
 
+.PHONY: 196
 196:
 	echo "No 196"
 
+.PHONY: 197
 197:
 	echo "No 197"
 
-198:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobber.cpp 
+.PHONY: 198
+198: HouseRobber
 HouseRobber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobber.cpp 
 
-199: Tree.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeRightSideView.cpp Tree.o NormalData.o
+.PHONY: 199
+199: BinaryTreeRightSideView
 BinaryTreeRightSideView: Tree.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeRightSideView.cpp Tree.o NormalData.o
 
-200:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfIslands.cpp
+.PHONY: 200
+200: NumberOfIslands
 NumberOfIslands:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfIslands.cpp
 
-201:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BitwiseAndOfNumbersRange.cpp
+.PHONY: 201
+201: BitwiseAndOfNumbersRange
 BitwiseAndOfNumbersRange:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BitwiseAndOfNumbersRange.cpp
 
-202:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HappyNumber.cpp 
+.PHONY: 202
+202: HappyNumber
 HappyNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HappyNumber.cpp 
 
-203: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveLinkedListElements.cpp LinkList.o
+.PHONY: 203
+203: RemoveLinkedListElements
 RemoveLinkedListElements: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveLinkedListElements.cpp LinkList.o
 
-204:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountPrimes.cpp
+.PHONY: 204
+204: CountPrimes
 CountPrimes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountPrimes.cpp
 
-205:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IsomorphicStrings.cpp
+.PHONY: 205
+205: IsomorphicStrings
 IsomorphicStrings:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IsomorphicStrings.cpp
 
-206: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedList.cpp LinkList.o
+.PHONY: 206
+206: ReverseLinkedList
 ReverseLinkedList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseLinkedList.cpp LinkList.o
 
-207:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CourseSchedule.cpp
+.PHONY: 207
+207: CourseSchedule
 CourseSchedule:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CourseSchedule.cpp
 
-208:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementTrie.cpp
+.PHONY: 208
+208: ImplementTrie
 ImplementTrie:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementTrie.cpp
 
-209:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumSizeSubarraySum.cpp
+.PHONY: 209
+209: MinimumSizeSubarraySum
 MinimumSizeSubarraySum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumSizeSubarraySum.cpp
 
-210:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CourseScheduleII.cpp
+.PHONY: 210
+210: CourseScheduleII
 CourseScheduleII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CourseScheduleII.cpp
 
-211:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddAndSearchWord.cpp
+.PHONY: 211
+211: AddAndSearchWord
 AddAndSearchWord:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddAndSearchWord.cpp
 
-212:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearchII.cpp
+.PHONY: 212
+212: WordSearchII
 WordSearchII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSearchII.cpp
 
-213: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberII.cpp RandomData.o NormalData.o
+.PHONY: 213
+213: HouseRobberII
 HouseRobberII: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberII.cpp RandomData.o NormalData.o
 
-214:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestPalindrome.cpp
+.PHONY: 214
+214: ShortestPalindrome
 ShortestPalindrome:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestPalindrome.cpp
 
-215: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthLargestElementInAnArray.cpp RandomData.o NormalData.o
+.PHONY: 215
+215: KthLargestElementInAnArray
 KthLargestElementInAnArray: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthLargestElementInAnArray.cpp RandomData.o NormalData.o
 
-216:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumIII.cpp
+.PHONY: 216
+216: CombinationSumIII
 CombinationSumIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumIII.cpp
 
-217:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicate.cpp
+.PHONY: 217
+217: ContainsDuplicate
 ContainsDuplicate:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicate.cpp
 
-218:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TheSkylineProblem.cpp
+.PHONY: 218
+218: TheSkylineProblem
 TheSkylineProblem:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TheSkylineProblem.cpp
 
-219:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateII.cpp
+.PHONY: 219
+219: ContainsDuplicateII
 ContainsDuplicateII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateII.cpp
 
-220:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateIII.cpp
+.PHONY: 220
+220: ContainsDuplicateIII
 ContainsDuplicateIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ContainsDuplicateIII.cpp
 
-221:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalSquare.cpp
+.PHONY: 221
+221: MaximalSquare
 MaximalSquare:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalSquare.cpp
 
-222:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountCompleteTreeNodes.cpp
+.PHONY: 222
+222: CountCompleteTreeNodes
 CountCompleteTreeNodes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountCompleteTreeNodes.cpp
 
-223:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RectangleArea.cpp
+.PHONY: 223
+223: RectangleArea
 RectangleArea:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RectangleArea.cpp
 
-224:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculator.cpp
+.PHONY: 224
+224: BasicCalculator
 BasicCalculator:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculator.cpp
 
-225:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStackUsingQueues.cpp
+.PHONY: 225
+225: ImplementStackUsingQueues
 ImplementStackUsingQueues:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementStackUsingQueues.cpp
 
-226: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InvertBinaryTree.cpp Tree.o
+.PHONY: 226
+226: InvertBinaryTree
 InvertBinaryTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InvertBinaryTree.cpp Tree.o
 
-227:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculatorII.cpp
+.PHONY: 227
+227: BasicCalculatorII
 BasicCalculatorII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BasicCalculatorII.cpp
 
-228:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SummaryRanges.cpp
+.PHONY: 228
+228: SummaryRanges
 SummaryRanges:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SummaryRanges.cpp
 
-229: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MajorityElementII.cpp RandomData.o NormalData.o
+.PHONY: 229
+229: MajorityElementII
 MajorityElementII: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MajorityElementII.cpp RandomData.o NormalData.o
 
-230: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestElementInABST.cpp Tree.o
+.PHONY: 230
+230: KthSmallestElementInABST
 KthSmallestElementInABST: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestElementInABST.cpp Tree.o
 
-231:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowerOfTwo.cpp
+.PHONY: 231
+231: PowerOfTwo
 PowerOfTwo:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowerOfTwo.cpp
 
-232:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementQueueUsingStacks.cpp
+.PHONY: 232
+232: ImplementQueueUsingStacks
 ImplementQueueUsingStacks:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImplementQueueUsingStacks.cpp
 
-233:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfDigitOne.cpp
+.PHONY: 233
+233: NumberOfDigitOne
 NumberOfDigitOne:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfDigitOne.cpp
 
-234: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromeLinkedList.cpp RandomData.o NormalData.o
+.PHONY: 234
+234: PalindromeLinkedList
 PalindromeLinkedList: RandomData.o NormalData.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromeLinkedList.cpp RandomData.o NormalData.o
 
-235: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinarySearchTree.cpp Tree.o
+.PHONY: 235
+235: LowestCommonAncestorOfABinarySearchTree
 LowestCommonAncestorOfABinarySearchTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinarySearchTree.cpp Tree.o
 
-236: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinaryTree.cpp Tree.o
+.PHONY: 236
+236: LowestCommonAncestorOfABinaryTree
 LowestCommonAncestorOfABinaryTree: Tree.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinaryTree.cpp Tree.o
 
-237: LinkList.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DeleteNodeInALinkedList.cpp LinkList.o
+.PHONY: 237
+237: DeleteNodeInALinkedList
 DeleteNodeInALinkedList: LinkList.o
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DeleteNodeInALinkedList.cpp LinkList.o
 
-238:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ProductOfArrayExceptSelf.cpp
+.PHONY: 238
+238: ProductOfArrayExceptSelf
 ProductOfArrayExceptSelf:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ProductOfArrayExceptSelf.cpp
 
-239:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SlidingWindowMaximum.cpp
+.PHONY: 239
+239: SlidingWindowMaximum
 SlidingWindowMaximum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SlidingWindowMaximum.cpp
 
-240: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrixII.cpp RandomData.o NormalData.o
+.PHONY: 240
+240: SearchA2DMatrixII
 SearchA2DMatrixII: RandomData.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrixII.cpp RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SearchA2DMatrixII.cpp
 
 Anagrams:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Anagrams.cpp
 
-241:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DifferentWaysToAddParentheses.cpp
+.PHONY: 241
+241: DifferentWaysToAddParentheses
 DifferentWaysToAddParentheses:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DifferentWaysToAddParentheses.cpp
 
-242:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidAnagram.cpp
+.PHONY: 242
+242: ValidAnagram
 ValidAnagram:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidAnagram.cpp
 
-243:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestWordDistance.cpp
+.PHONY: 243
+243: ShortestWordDistance
 ShortestWordDistance:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestWordDistance.cpp
 
-244:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestWordDistanceII.cpp
+.PHONY: 244
+244: ShortestWordDistanceII
 ShortestWordDistanceII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestWordDistanceII.cpp
 
-245:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestWordDistanceIII.cpp
+.PHONY: 245
+245: ShortestWordDistanceIII
 ShortestWordDistanceIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestWordDistanceIII.cpp
 
-246:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrobogrammaticNumber.cpp
+.PHONY: 246
+246: StrobogrammaticNumber
 StrobogrammaticNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrobogrammaticNumber.cpp
 
-247:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrobogrammaticNumberII.cpp
+.PHONY: 247
+247: StrobogrammaticNumberII
 StrobogrammaticNumberII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrobogrammaticNumberII.cpp
 
-248:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrobogrammaticNumberIII.cpp
+.PHONY: 248
+248: StrobogrammaticNumberIII
 StrobogrammaticNumberIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrobogrammaticNumberIII.cpp
 
-249:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GroupShiftedStrings.cpp
+.PHONY: 249
+249: GroupShiftedStrings
 GroupShiftedStrings:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GroupShiftedStrings.cpp
 
-250:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountUnivalueSubtrees.cpp
+.PHONY: 250
+250: CountUnivalueSubtrees
 CountUnivalueSubtrees:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountUnivalueSubtrees.cpp
 
-251:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Flatten2DVector.cpp
+.PHONY: 251
+251: Flatten2DVector
 Flatten2DVector:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Flatten2DVector.cpp
 
-252:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MeetingRooms.cpp
+.PHONY: 252
+252: MeetingRooms
 MeetingRooms:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MeetingRooms.cpp
 
-253:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MeetingRoomsII.cpp
+.PHONY: 253
+253: MeetingRoomsII
 MeetingRoomsII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MeetingRoomsII.cpp
 
-254:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FactorCombinations.cpp
+.PHONY: 254
+254: FactorCombinations
 FactorCombinations:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FactorCombinations.cpp
 
-255:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)VerifyPreOrderSequenceInBinarySearchTree.cpp
+.PHONY: 255
+255: VerifyPreOrderSequenceInBinarySearchTree
 VerifyPreOrderSequenceInBinarySearchTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)VerifyPreOrderSequenceInBinarySearchTree.cpp
 
-256:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PaintHouse.cpp
+.PHONY: 256
+256: PaintHouse
 PaintHouse:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PaintHouse.cpp
 
-257:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePaths.cpp
+.PHONY: 257
+257: BinaryTreePaths
 BinaryTreePaths:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePaths.cpp
 
-258:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddDigits.cpp
+.PHONY: 258
+258: AddDigits
 AddDigits:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddDigits.cpp
 	
-259:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSumSmaller.cpp
+.PHONY: 259
+259: ThreeSumSmaller
 ThreeSumSmaller:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThreeSumSmaller.cpp
 	
-260:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberIII.cpp
+.PHONY: 260
+260: SingleNumberIII
 SingleNumberIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleNumberIII.cpp
 
-261:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GraphValidTree.cpp
+.PHONY: 261
+261: GraphValidTree
 GraphValidTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GraphValidTree.cpp
 
-263:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumber.cpp
+.PHONY: 263
+263: UglyNumber
 UglyNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumber.cpp
 
-264:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumberII.cpp
+.PHONY: 264
+264: UglyNumberII
 UglyNumberII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UglyNumberII.cpp
 
-265:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PaintHouseII.cpp
+.PHONY: 265
+265: PaintHouseII
 PaintHouseII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PaintHouseII.cpp
 
-266:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePermutation.cpp
+.PHONY: 266
+266: PalindromePermutation
 PalindromePermutation:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePermutation.cpp
 
-267:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePermutationII.cpp
+.PHONY: 267
+267: PalindromePermutationII
 PalindromePermutationII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromePermutationII.cpp
 
-268:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MissingNumber.cpp
+.PHONY: 268
+268: MissingNumber
 MissingNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MissingNumber.cpp
 
-269:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AlienDictonary.cpp
+.PHONY: 269
+269: AlienDictonary
 AlienDictonary:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AlienDictonary.cpp
 
-270:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClosestBinarySearchTreeValue.cpp
+.PHONY: 270
+270: ClosestBinarySearchTreeValue
 ClosestBinarySearchTreeValue:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClosestBinarySearchTreeValue.cpp
 
-271:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EncodeAndDecodeStrings.cpp
+.PHONY: 271
+271: EncodeAndDecodeStrings
 EncodeAndDecodeStrings:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EncodeAndDecodeStrings.cpp
 
-272:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClosestBinarySearchTreeValueII.cpp
+.PHONY: 272
+272: ClosestBinarySearchTreeValueII
 ClosestBinarySearchTreeValueII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ClosestBinarySearchTreeValueII.cpp
 
-273:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntegerToEnglishWords.cpp
+.PHONY: 273
+273: IntegerToEnglishWords
 IntegerToEnglishWords:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntegerToEnglishWords.cpp
 
-274:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HIndex.cpp
+.PHONY: 274
+274: HIndex
 HIndex:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HIndex.cpp
 
-275:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HIndexII.cpp
+.PHONY: 275
+275: HIndexII
 HIndexII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HIndexII.cpp
 
-276:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PaintFence.cpp
+.PHONY: 276
+276: PaintFence
 PaintFence:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PaintFence.cpp
 
-277:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindTheCelebrity.cpp
+.PHONY: 277
+277: FindTheCelebrity
 FindTheCelebrity:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindTheCelebrity.cpp
 
-278:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstBadVersion.cpp
+.PHONY: 278
+278: FirstBadVersion
 FirstBadVersion:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstBadVersion.cpp
 
-279:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PerfectSquares.cpp
+.PHONY: 279
+279: PerfectSquares
 PerfectSquares:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PerfectSquares.cpp
 
-280:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WiggleSort.cpp
+.PHONY: 280
+280: WiggleSort
 WiggleSort:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WiggleSort.cpp
 
-281:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ZigzagIterator.cpp
+.PHONY: 281
+281: ZigzagIterator
 ZigzagIterator:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ZigzagIterator.cpp
 
-282:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ExpressionAddOperators.cpp
+.PHONY: 282
+282: ExpressionAddOperators
 ExpressionAddOperators:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ExpressionAddOperators.cpp
 
-283:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MoveZeros.cpp
+.PHONY: 283
+283: MoveZeros
 MoveZeros:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MoveZeros.cpp
 
-284:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PeekingIterator.cpp
+.PHONY: 284
+284: PeekingIterator
 PeekingIterator:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PeekingIterator.cpp
 
-285:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InorderSuccessorInBST.cpp
+.PHONY: 285
+285: InorderSuccessorInBST
 InorderSuccessorInBST:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InorderSuccessorInBST.cpp
 
-286:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WallsAndGates.cpp
+.PHONY: 286
+286: WallsAndGates
 WallsAndGates:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WallsAndGates.cpp
 
-287:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindTheDuplicateNumber.cpp
+.PHONY: 287
+287: FindTheDuplicateNumber
 FindTheDuplicateNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindTheDuplicateNumber.cpp
 
-288:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueWordAbbreviation.cpp
+.PHONY: 288
+288: UniqueWordAbbreviation
 UniqueWordAbbreviation:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UniqueWordAbbreviation.cpp
 
-289:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GameOfLife.cpp
+.PHONY: 289
+289: GameOfLife
 GameOfLife:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GameOfLife.cpp
 
@@ -1747,8 +1764,8 @@ CountOfRangeSum:
 
 .PHONY: 328
 328: OddEvenLinkedList
-OddEvenLinkedList:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OddEvenLinkedList.cpp
+OddEvenLinkedList: LinkList.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OddEvenLinkedList.cpp LinkList.o
 
 .PHONY: 329
 329: LongestIncreasingPathInAMatrix
@@ -1794,6 +1811,16 @@ PalindromePairs:
 337: HouseRobberIII
 HouseRobberIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberIII.cpp
+
+.PHONY: 338
+338: CountingBits
+CountingBits:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountingBits.cpp
+
+.PHONY: 339
+339: NestedListWeightSum
+NestedListWeightSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NestedListWeightSum.cpp
 
 test:
 	echo "test test!!"

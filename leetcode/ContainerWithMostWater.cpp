@@ -1,5 +1,7 @@
+#include <cassert>
 #include <iostream>
 #include <map>
+#include <random>
 #include <vector>
 
 #include "RandomData.h"
@@ -9,6 +11,58 @@ using namespace std;
 class Solution {
 public:
     int maxArea(vector<int>& height) {
+        int n = height.size();
+
+        if (n <= 0)
+        {
+            return 0;
+        }
+
+        int l = 0, r = n - 1;
+        int maxA = (n - 1) * min(height[l], height[r]);
+
+        while (l < r)
+        {
+            int area = 0;
+
+            if (height[l] < height[r])
+            {
+                int tmp = height[l];
+                while (++l < r && height[l] <= tmp);
+                area = (r - l) * min(height[l], height[r]);
+            }
+            else
+            {
+                int tmp = height[r];
+                while (l < --r && height[r] <= tmp);
+                area = (r - l) * min(height[r], height[l]);
+            }
+
+            maxA = max(maxA, area);
+
+        }
+
+        return maxA;
+    }
+
+    int maxArea_normal(vector<int>& height) {
+        int ma = 0;
+        int n = height.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = i + 1; j < n; ++j)
+            {
+                int w = j - i;
+                int area = w * min(height[i], height[j]);
+                ma = max(ma, area);
+            }
+        }
+
+        return ma;
+    }
+
+    int maxArea1(vector<int>& height) {
         int max = 0, size = height.size();
 
         if (size == 0)
@@ -134,13 +188,29 @@ public:
 int main()
 {
     Solution sln;
-    int n = 0;
-    std::cout << "Please enter n: ";
-    cin >> n;
-    vector<int> height;
-    initializeRandomVector(height, n);
-    printVector<int>(height);
-    std::cout << sln.maxArea(height) << endl;
-    std::cout << sln.maxArea_slow(height) << endl;
-    return 0;
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed);
+    std::uniform_int_distribution<int> distribution(0, 50);
+    int m = distribution(generator);
+
+    for (int i = 0; i < m; ++i)
+    {
+        int n = distribution(generator);
+        std::vector<int> height;
+        initializeRandomVector(height, n);
+        std::cout << "n: " << n << std::endl;
+        printVector<int>(height);
+
+        int r1 = sln.maxArea1(height);
+        std::cout << r1 << endl;
+
+        int r2 = sln.maxArea(height);
+        std::cout << r2 << endl;
+
+        assert(r1 == r2);
+        //std::cout << sln.maxArea_slow(height) << endl;
+        std::cout << endl;
+    }
+
+return 0;
 }

@@ -5,11 +5,73 @@
 
 using namespace std;
 
-const int LOCALLENGTH = 6;
-
 class Solution {
 public:
     vector<vector<int> > threeSum(vector<int> &num) {
+        sort(num.begin(), num.end());
+        int m = num.size();
+        vector<vector<int>> res;
+
+        for (int i = 0; i < m - 2; )
+        {
+            int a = num[i];
+
+            if (a > 0)
+            {
+                break;
+            }
+
+            int j = i + 1, k = m - 1;
+
+            while (j < k)
+            {
+                int b = num[j] + num[k];
+
+                if (b == -a)
+                {
+                    // using initialization list improve performance a little bit.
+                    vector<int> v = {a, num[j], num[k]};
+                    //v.push_back(a);
+                    //v.push_back(num[j]);
+                    //v.push_back(num[k]);
+                    res.push_back(v);
+
+                    while (++j < k && num[j] == num[j - 1])
+                    {
+                        ;
+                    }
+
+                    while (--k > j && num[k] == num[k + 1])
+                    {
+                        ;
+                    }
+                }
+                else if (b < -a)
+                {
+                    while (++j < k && num[j] == num[j - 1])
+                    {
+                        ;
+                    }
+                }
+                else
+                {
+                    while (--k > j && num[k] == num[k + 1])
+                    {
+                        ;
+                    }
+                }
+            }
+
+            while (++i < m && num[i] == num[i - 1])
+            {
+                ;
+            }
+        }
+
+        return res;
+    }
+
+    vector<vector<int> > threeSum1(vector<int> &num) {
         vector<vector<int> > result;
         sort(num.begin(), num.end());
         int size = num.size();
@@ -81,9 +143,8 @@ public:
 int main()
 {
     Solution sln;
-    //int a[LOCALLENGTH] = {-1, 0, 1, 2, -1, -4};
-    int a[LOCALLENGTH] = {0, 0, 0, 0};
-    vector<int> num(a, a + LOCALLENGTH);
+    std::vector<int> num = {-1, 0, 1, 2, -1, -4};
+    //std::vector<int> num = {0, 0, 0, 0};
     vector<vector<int> > v = sln.threeSum(num);
     print2DVector<int>(v);
     return 0;
