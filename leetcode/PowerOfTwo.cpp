@@ -10,9 +10,7 @@ public:
             return 0;
         }
 
-        long m = n;
-
-        return (m & (m - 1)) == 0;
+        return (n & (n - 1)) == 0;
     }
 };
 

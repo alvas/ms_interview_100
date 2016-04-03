@@ -52,14 +52,14 @@ public:
         }
 
         return abs(maxDepth2(root->left) - maxDepth2(root->right)) <= 1
-            && isBalanced(root->left) && isBalanced(root->right);
+            && isBalanced2(root->left) && isBalanced2(root->right);
     }
 
     int maxDepth2(TreeNode *root)
     {
         if (root == NULL)
         {
-            return true;
+            return 1;
         }
 
         return max(maxDepth2(root->left), maxDepth2(root->right)) + 1;

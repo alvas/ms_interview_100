@@ -10,10 +10,11 @@ public:
 
         while (n > 0)
         {
-            result = result + (n / 5);
+            n /= 5;
+            result = result + n;
             // WATCH OUT!! Don't do this way, it is very slow.
             // int tmp = 5; n / tmp; tmp *= 5;
-            n /= 5;
+            //n /= 5;
         }
 
         return result;

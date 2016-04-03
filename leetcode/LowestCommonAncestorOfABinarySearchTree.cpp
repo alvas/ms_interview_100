@@ -22,6 +22,31 @@ public:
         {
             return NULL;
         }
+
+        int cur = root->val, v1 = p->val, v2 = q->val;
+
+        while ((cur < v1 && cur < v2) || (cur > v1 && cur > v2))
+        {
+            if (cur < v1 && cur < v2)
+            {
+                root = root->right;
+            }
+            else if (cur > v1 && cur > v2)
+            {
+                root = root->left;
+            }
+
+            cur = root->val;
+        }
+
+        return root;
+    }
+
+    TreeNode* lowestCommonAncestor1(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root == NULL || p == NULL || q == NULL)
+        {
+            return NULL;
+        }
         else if (p == q)
         {
             return p;
@@ -66,8 +91,8 @@ int main()
     vector<string> v = {"6", "2", "8", "0", "4", "7", "9", "#", "#", "3", "5"};
     TreeNode *root = NULL;
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
-    TreeNode *p = findNodeInBST(root, 2);
-    TreeNode *q = findNodeInBST(root, 4);
+    TreeNode *p = findNodeInBST(root, 3);
+    TreeNode *q = findNodeInBST(root, 9);
 
     //printTreeLevelOrder<TreeNode>(root);
 

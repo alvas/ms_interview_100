@@ -18,6 +18,46 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > levelOrder(TreeNode *root) {
+        vector<vector<int>> v;
+
+        if (!root)
+        {
+            return v;
+        }
+
+        queue<TreeNode *> q;
+        q.push(root);
+
+        while (!q.empty())
+        {
+            queue<TreeNode *> p;
+            vector<int> u;
+
+            while (!q.empty())
+            {
+                TreeNode *t = q.front();
+                q.pop();
+                u.push_back(t->val);
+
+                if (t->left)
+                {
+                    p.push(t->left);
+                }
+
+                if (t->right)
+                {
+                    p.push(t->right);
+                }
+            }
+
+            v.push_back(u);
+            q.swap(p);
+        }
+
+        return v;
+    }
+
+    vector<vector<int> > levelOrder1(TreeNode *root) {
         vector<vector<int> > v;
 
         if (root != NULL)

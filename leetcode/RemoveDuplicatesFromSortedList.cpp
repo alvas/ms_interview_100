@@ -14,8 +14,34 @@ using namespace std;
  */
 class Solution {
 public:
-    // May need to improve.
     ListNode *deleteDuplicates(ListNode *head) {
+        if (head == NULL || head->next == NULL)
+        {
+            return head;
+        }
+
+        ListNode *p1 = head, *p2 = head->next;
+
+        while (p1 && p2)
+        {
+            if (p1->val == p2->val)
+            {
+                p1->next = p2->next;
+                delete p2;
+                p2 = p1->next;
+            }
+            else
+            {
+                p1 = p2;
+                p2 = p1->next;
+            }
+        }
+
+        return head;
+    }
+
+    // May need to improve.
+    ListNode *deleteDuplicates1(ListNode *head) {
         if (head == NULL)
         {
             return head;
@@ -47,9 +73,7 @@ int main()
 {
     Solution sln;
     ListNode *head = NULL;
-    const int lengthA = 6;
-    int A[lengthA] = {1, 2, 3, 4, 4, 5};
-    vector<int> va(A, A + lengthA);
+    std::vector<int> va = {1, 1, 2, 3, 4, 4, 5, 5};
     initializeLinkList<ListNode>(va, &head);
     head = sln.deleteDuplicates(head);
     printLinkList<ListNode>(head);

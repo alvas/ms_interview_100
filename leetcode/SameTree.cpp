@@ -17,6 +17,21 @@ using namespace std;
 class Solution {
 public:
     bool isSameTree(TreeNode *p, TreeNode *q) {
+        if (!p && !q)
+        {
+            return true;
+        }
+        else if (!p || !q)
+        {
+            return false;
+        }
+
+        return (p->val== q->val) && 
+            isSameTree(p->left, q->left) && 
+            isSameTree(p->right, q->right);
+    }
+
+    bool isSameTree1(TreeNode *p, TreeNode *q) {
         if (p == NULL && q == NULL)
         {
             return true;

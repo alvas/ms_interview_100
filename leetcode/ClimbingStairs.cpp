@@ -1,11 +1,41 @@
+#include <cassert>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
-    // Fibonacci sequence
     int climbStairs(int n) {
+        if (n <= 0)
+        {
+            return 0;
+        }
+
+        // f(k - 1) is one step to f(k); f(k - 2) is one step or two steps to f(k).
+        // but f(k - 2) go one step, it is the same as f(k - 1), so f(k) = f(k - 1) + f(k - 2).
+        //vector<int> v = {1, 1};
+
+        //for (int i = 2; i <= n; ++i)
+        //{
+            //v.push_back(v[i - 1] + v[i - 2]);
+        //}
+
+        //return v[n];
+        int p1 = 1, p2 = 1;
+
+        for (int i = 2; i <= n; ++i)
+        {
+            int p3 = p1 + p2;
+            p1 = p2;
+            p2 = p3;
+        }
+
+        return p2;
+    }
+
+    // Fibonacci sequence
+    int climbStairs2(int n) {
         int A[3] = {1, 1, 0};
 
         if (n == 0)
@@ -53,9 +83,16 @@ public:
 int main()
 {
     Solution sln;
-    int n = 0;
-    std::cout << "Please enter number: ";
-    cin >> n;
-    std::cout << sln.climbStairs(n) << endl;
+    const int N = 20;
+
+    for (int i = 0; i < N; ++i)
+    {
+        std::cout << "i: " << i << " ,";
+        int a = sln.climbStairs(i);
+        int b = sln.climbStairs2(i);
+        std::cout << a << ", " << b << endl;
+        assert(a == b);
+    }
+
     return 0;
 }

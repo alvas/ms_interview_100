@@ -17,6 +17,81 @@ using namespace std;
 class Solution {
 public:
     int minDepth(TreeNode *root) {
+        if (!root)
+        {
+            return 0;
+        }
+
+        queue<TreeNode *> q;
+        q.push(root);
+        int depth = 0;
+
+        while (!q.empty())
+        {
+            queue<TreeNode *> p;
+            // Be careful, increase depth before we return. Otherwise,
+            // the return in the following while loop get wrong result.
+            depth++;
+
+            while (!q.empty())
+            {
+                TreeNode *t = q.front();
+                q.pop();
+
+                if (!t->left && !t->right)
+                {
+                    // Don't use break here, because there are 2 while loop. It doesn't really
+                    // terminate and return the right value.
+                    return depth;
+                }
+
+                if (t->left)
+                {
+                    p.push(t->left);
+                }
+
+                if (t->right)
+                {
+                    p.push(t->right);
+                }
+            }
+
+            q.swap(p);
+        }
+
+        return depth;
+    }
+
+    int minDepth_recursive(TreeNode *root) {
+        if (!root)
+        {
+            return 0;
+        }
+        else if (!root->left && !root->right)
+        {
+            return 1;
+        }
+
+        // Be careful about the initial value. Because we use min(), we can't set it to 0. Otherwise, 
+        // a node without left/right child would return 0 depth. This is wrong.
+        int leftD = INT_MAX;
+
+        if (root->left)
+        {
+            leftD = minDepth(root->left);
+        }
+
+        int rightD = INT_MAX;
+
+        if (root->right)
+        {
+            rightD = minDepth(root->right);
+        }
+
+        return min(leftD, rightD) + 1;
+    }
+
+    int minDepth3(TreeNode *root) {
         if (root == NULL)
         {
             return 0;
@@ -159,6 +234,7 @@ int main()
 
     ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
     std::cout << sln.minDepth(root) << endl;
+    std::cout << sln.minDepth_recursive(root) << endl;
     CleanUp(root);
     return 0;
 }

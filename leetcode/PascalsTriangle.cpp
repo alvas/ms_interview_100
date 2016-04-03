@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../NormalData.h"
+#include "NormalData.h"
 
 using namespace std;
 
@@ -9,8 +9,7 @@ class Solution {
 public:
     vector<vector<int> > generate(int numRows) {
         vector<vector<int> > tri;
-        int initialArray[1] = {1};
-        vector<int> tmp(initialArray, initialArray + 1);
+        vector<int> tmp = {1}; 
 
         for (int i = 0; i < numRows; ++i)
         {

@@ -1,36 +1,44 @@
 #include <iostream>
+#include <vector>
+
+#include "NormalData.h"
 
 using namespace std;
 
 class Solution {
 public:
     // Can be improved!
-    int removeDuplicates(int A[], int n) {
-        if (n <= 1)
+    int removeDuplicates(vector<int>& nums) {
+        size_t m = nums.size(); 
+
+        // Be careful about zero size. We should not return ++i for it.
+        if (!m)
         {
-            return n;
+            return 0;
         }
 
         int i = 0;
 
-        for (int j = 1; j < n; ++j)
+        for (int j = 1; j < m; ++j)
         {
-            if (A[i] != A[j])
+            if (nums[i] != nums[j])
             {
-                A[++i] = A[j];
+                nums[++i] = nums[j];
             }
         }
 
-        return ++i;
+        nums.resize(++i);
+        return i;
     }
 };
 
 int main()
 {
     Solution sln;
-    const int LENGTH = 8;
-    int A[LENGTH] = {1, 2, 2, 2, 3, 4, 5, 6};
-    std::cout << sln.removeDuplicates(A, LENGTH) << endl;
+    vector<int> A = {1, 2, 2, 2, 3, 4, 5, 6};
+    printVector<int>(A);
+    std::cout << sln.removeDuplicates(A) << endl;
+    printVector<int>(A);
     return 0;
 }
 

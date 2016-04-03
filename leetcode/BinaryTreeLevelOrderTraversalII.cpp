@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <vector>
 
 #include "NormalData.h"
 #include "Tree.h"
@@ -18,8 +19,50 @@ using namespace std;
  */
 class Solution {
 public:
-    // Need to improve performance.
     vector<vector<int> > levelOrderBottom(TreeNode *root) {
+        vector<vector<int>> v;
+
+        if (!root)
+        {
+            return v;
+        }
+
+        queue<TreeNode *> q;
+        q.push(root);
+
+        while (!q.empty())
+        {
+            queue<TreeNode *> p;
+            vector<int> u;
+
+            while (!q.empty())
+            {
+                TreeNode *t = q.front();
+                q.pop();
+                u.push_back(t->val);
+
+                // made a stupid mistake here checking not null by !t->left
+                if (t->left)
+                {
+                    p.push(t->left);
+                }
+
+                if (t->right)
+                {
+                    p.push(t->right);
+                }
+            }
+
+            v.push_back(u);
+            q.swap(p);
+        }
+
+        std::reverse(v.begin(), v.end());
+        return v;
+    }
+
+    // Need to improve performance.
+    vector<vector<int> > levelOrderBottom1(TreeNode *root) {
         vector<vector<int> > r;
 
         if (root != NULL)
@@ -87,8 +130,7 @@ int main()
 {
     Solution sln;
     TreeNode *root = NULL;
-    string s[7] = {"3", "9", "20", "#", "#", "15", "7"};
-    vector<string> v(s, s + 7);
+    vector<string> v = {"3", "9", "20", "#", "#", "15", "7"};
     ReBuildTreeFromOrderLevel<TreeNode>(v, root);
     vector<vector<int> > r = sln.levelOrderBottom(root);
     print2DVector<int>(r);
