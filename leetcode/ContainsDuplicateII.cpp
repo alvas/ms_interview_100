@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <unordered_set>
 #include <vector>
 
 #include "NormalData.h"
@@ -8,8 +9,34 @@ using namespace std;
 
 class Solution {
 public:
-    // Need to improve.
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        int m = nums.size();
+
+        unordered_set<int> s;
+
+        for (int i = 0; i < k + 1 && i < m; ++i)
+        {
+            if (!s.insert(nums[i]).second)
+            {
+                return true;
+            }
+        }
+
+        for (int i = k + 1; i < m; ++i)
+        {
+            s.erase(nums[i - k - 1]);
+
+            if (!s.insert(nums[i]).second)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // Need to improve.
+    bool containsNearbyDuplicate1(vector<int>& nums, int k) {
         map<int, vector<int> > m;
 
         int sz = nums.size();
@@ -60,14 +87,15 @@ public:
 int main()
 {
     Solution sln;
-    int k = 0;
     //vector<int> a = {};
     //vector<int> a = {1, 2};
     //vector<int> a = {1, 1};
     //vector<int> a = {1, 2, 3};
-    vector<int> nums = {1, 2, 6, 7, 2, 3};
-    std::cout << "Please enter k: ";
-    cin >> k;
+    //vector<int> nums = {1, 2, 6, 7, 2, 3};
+    vector<int> nums = {-1, -1};
+    int k = 1;
+    //std::cout << "Please enter k: ";
+    //cin >> k;
     std::cout << sln.containsNearbyDuplicate(nums, k) << endl;
     return 0;
 }

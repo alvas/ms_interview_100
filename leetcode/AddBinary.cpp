@@ -4,9 +4,36 @@ using namespace std;
 
 class Solution {
 public:
+    string addBinary(string a, string b) {
+        int m = a.size(), n = b.size();
+        int maxL = max(m, n);
+
+        int canary = 0;
+        reverse(a.begin(), a.end());
+        reverse(b.begin(), b.end());
+        string res;
+
+        for (int i = 0; i < maxL; ++i)
+        {
+            int ai = i < m ? a[i] - '0' : 0;
+            int bi = i < n ? b[i] - '0' : 0;
+            int c = ai + bi + canary;
+            res.push_back(c % 2 + '0');
+            canary = c / 2;
+        }
+
+        if (canary)
+        {
+            res.push_back(canary + '0');
+        }
+
+        reverse(res.begin(), res.end());
+        return res;
+    }
+
     // can't use bitset here, because it would get error: 
     // non-type template argument of type 'int' is not an integral constant expression
-    string addBinary(string a, string b) {
+    string addBinary1(string a, string b) {
         string c;
         int carry = 0;
         string::reverse_iterator rit1 = a.rbegin(), rit2 = b.rbegin();

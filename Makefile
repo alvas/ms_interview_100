@@ -92,7 +92,7 @@ MiscSort: RandomData.o
 	$(CC) MiscSort.cpp RandomData.o
 
 StringSearch: RandomData.o NormalData.o
-	$(CC) $(FLAGS) $(INCLUDES) StringSearch.cpp RandomData.o NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) StringSearch.cpp RandomData.o NormalData.o
 
 LinkList.o: RandomData.o NormalData.o
 	$(CC) $(CFLAGS) LinkList.cpp RandomData.o NormalData.o
@@ -1821,6 +1821,16 @@ CountingBits:
 339: NestedListWeightSum
 NestedListWeightSum:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NestedListWeightSum.cpp
+
+.PHONY: 340
+340: LongestSubstringWithAtMostKDistinctCharacters
+LongestSubstringWithAtMostKDistinctCharacters:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithAtMostKDistinctCharacters.cpp
+
+.PHONY: 341
+341: FlattenNestedListIterator
+FlattenNestedListIterator:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenNestedListIterator.cpp
 
 test:
 	echo "test test!!"

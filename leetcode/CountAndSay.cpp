@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -8,23 +9,14 @@ class Solution {
 public:
     string countAndSay(int n) {
         string seq = "1";
-        map<int, string> num;
-
-        num[1] = "1";
-        num[2] = "2";
-        num[3] = "3";
-        num[4] = "4";
-        num[5] = "5";
-        num[6] = "6";
-        num[7] = "7";
-        num[8] = "8";
-        num[9] = "9";
+        map<int, string> num = {{1, "1"}, {2, "2"}, {3, "3"}, {4, "4"}, {5, "5"}, 
+                                {6, "6"}, {7, "7"}, {8, "8"}, {9, "9"}}; 
 
         while (--n)
         {
             string::iterator itr = seq.begin();
             char digit = *itr++;
-            string tmp;
+            stringstream tmp;
             int count = 1;
 
             for ( ; itr != seq.end(); ++itr)
@@ -35,15 +27,14 @@ public:
                 }
                 else
                 {
-                    tmp = tmp + num[count] + string(1, digit);
+                    tmp << num[count] << digit;
                     digit = *itr;
                     count = 1;
                 }
             }
 
-            tmp = tmp + num[count] + string(1, digit);
-
-            seq = tmp;
+            tmp << num[count] << digit;
+            seq = tmp.str();
         }
 
         return seq;

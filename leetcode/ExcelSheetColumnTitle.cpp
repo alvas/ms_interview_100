@@ -9,6 +9,7 @@ public:
 
         while (n != 0)
         {
+            // use a simple example to verify this.
             // Need to be careful about n - 1
             char a = (n - 1) % 26;
             s.push_back(a + 'A');

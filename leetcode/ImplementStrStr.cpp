@@ -1,11 +1,73 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
-    void makeNext(char *needle, int lenNeedle, int next[])
+    void makeNext(string needle, vector<int> &next) {
+        int m = needle.size();
+
+        next[0] = -1;
+        int i = 0, j = -1;
+
+        while (i < m - 1)
+        {
+            if (j == -1 || needle[i] == needle[j])
+            {
+                i++;
+                j++;
+                next[i] = j;
+            }
+            else
+            {
+                j = next[j];
+            }
+        }
+    }
+
+    int strStr(string haystack, string needle) {
+        int m = haystack.size(), n = needle.size();
+
+        if (n == 0)
+        {
+            return 0;
+        }
+        else if (m == 0)
+        {
+            return -1;
+        }
+
+        vector<int> next(n, 0);
+        makeNext(needle, next);
+
+        int i = 0, j = 0;
+
+        while (i < m && j < n)
+        {
+            if (j == -1 || haystack[i] == needle[j])
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                j = next[j];
+            }
+        }
+
+        if (j >= n)
+        {
+            return i - n;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    void makeNext1(char *needle, int lenNeedle, int next[])
     {
         next[0] = -1;
         int i = 0, j = -1;
@@ -26,7 +88,7 @@ public:
     }
 
     // KMP
-    int strStr(char *haystack, char *needle)
+    int strStr1(char *haystack, char *needle)
     {
         if (needle == NULL || *needle == '\0')
         {
@@ -40,7 +102,7 @@ public:
         int lenHaystack = strlen(haystack);
         int lenNeedle = strlen(needle);
         int next[lenNeedle];
-        makeNext(needle, lenNeedle, next);
+        makeNext1(needle, lenNeedle, next);
 
         int i = 0, j = 0;
 
@@ -170,16 +232,17 @@ public:
 int main()
 {
     Solution sln;
-    char h[1000], n[1000];
-    //string h, n;
-    std::cout << "Please enter haystack: ";
-    //cin.getline(h, 256);
-    cin >> h;
-    std::cout << "Please enter needle: ";
-    //cin.getline(n, 256);
-    cin >> n;
+    //char h[1000], n[1000];
+    ////string h, n;
+    //std::cout << "Please enter haystack: ";
+    ////cin.getline(h, 256);
+    //cin >> h;
+    //std::cout << "Please enter needle: ";
+    ////cin.getline(n, 256);
+    //cin >> n;
     // don't encourage to use const_cast<char *>() here, because h.c_str() is not guarantee that the string is zero-terminated.
     //std::cout << sln.strStr(const_cast<char *>(h.c_str()), const_cast<char *>(n.c_str())) << endl;;
+    std::string h(""), n("");
     std::cout << sln.strStr(h, n) << endl;;
     return 0;
 }

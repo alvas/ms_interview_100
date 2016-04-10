@@ -369,77 +369,59 @@ int KMPSearch(char S[], int length, char pattern[], int patternLength)
 //                         ^
 //                         |
 // q = 5; pi[q] = 2; pi[q] restart here
-vector<int> COMPUTE_PREFIX_FUNCTION(const vector<char> &P)
+vector<int> COMPUTE_PREFIX_FUNCTION(const string &P)
 {
     int m = P.size();
     vector<int> pi(m, 0);
 
-    // !!!
-    int k = 0;
+    int j = 0;
 
     // pi[] is when the current position doesn't match,
     // what should be the next nearest position we should
     // start to match the current position.
-    for (int q = 1; q < m; ++q)
+    for (int i = 1; i < m; ++i)
     {
-        // !!!
-        pi[q] = k;
+        pi[i] = j;
         
-        // !!!
-        while (k > 0 && P[k] != P[q])
+        while (j > 0 && P[j] != P[i])
         {
-            k = pi[k];
+            j = pi[j];
         }
 
-        if (P[k] == P[q])
+        if (P[j] == P[i])
         {
-            k++;
+            j++;
         }
     }
 
     return pi;
 }
 
-int KMP_MATCHER(const vector<char> &T, const vector<char> &P)
+int KMP_MATCHER(const string &T, const string &P)
 {
-    int n = T.size();
-    int m = P.size();
+    int n = T.size(), m = P.size();
+    vector<int> &&pi = COMPUTE_PREFIX_FUNCTION(P);
 
-    cout << "Text string: " << endl;
-    string s1(T.begin(), T.end());
-    cout << s1 << endl;
-    cout << "Pattern string: " << endl;
-    string s2(P.begin(), P.end());
-    cout << s2 << endl;
-
-    vector<int> pi = COMPUTE_PREFIX_FUNCTION(P);
-
-    cout << "Prefix function: " << endl;
-    printVector<int>(pi);
-    cout << endl;
-
-    // !!!
-    int q = 0;
+    int j = 0;
 
     for (int i = 0; i < n; ++i)
     {
-        // !!!
-        while (q > 0 && P[q] != T[i])
+        while (j > 0 && P[j] != T[i])
         {
-            q = pi[q];
+            j = pi[j];
         }
 
-        if (P[q] == T[i])
+        if (P[j] == T[i])
         {
-            q++;
+            j++;
         }
 
-        if (q == m)
+        if (j == m)
         {
             // find all occurence
             cout << "Pattern occurs at index " << i - m + 1 << "\t"; 
-            // !!!
-            q = pi[q - 1];
+            j = pi[j - 1];
+
             //return i - m + 1;
         }
     }
@@ -742,15 +724,20 @@ int main()
 //    cout << "The Levenstein Distance is " << LevensteinDistance2(s, t) << "." << endl;
 //
 
-    string X, Y;
-    initializeRandomString(X, 30);
-    initializeRandomString(Y, 20);
-    cout << "X: " << X << endl;
-    cout << "Y: " << Y << endl;
-    pair<vector<vector<int> >, vector<vector<int> > > result = LCS_LENGTH(X, Y);
-    cout << "The length of LCS is: " << result.first[30][20] << endl;
-    LCS(result.second, X, 30, 20);
-    cout << endl;
+    //string X, Y;
+    //initializeRandomString(X, 30);
+    //initializeRandomString(Y, 20);
+    //cout << "X: " << X << endl;
+    //cout << "Y: " << Y << endl;
+    //pair<vector<vector<int> >, vector<vector<int> > > result = LCS_LENGTH(X, Y);
+    //cout << "The length of LCS is: " << result.first[30][20] << endl;
+    //LCS(result.second, X, 30, 20);
+    //cout << endl;
+
+    //string s("aaba");
+    string s("abdabd");
+    vector<int> &&pi = COMPUTE_PREFIX_FUNCTION(s);
+    printVector<int>(pi);
     return 0;
 }
 

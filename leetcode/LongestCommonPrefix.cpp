@@ -19,7 +19,7 @@ public:
 
         size_t len = INT_MAX;
         
-        for (auto s: strs)
+        for (auto &s: strs)
         {
             len = std::min(len, s.size());
         }

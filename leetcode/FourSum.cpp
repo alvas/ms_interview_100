@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <vector>
 
@@ -7,8 +8,165 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int> > fourSum(vector<int>& nums, int target) {
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>> res;
+        vector<int> v;
+        // soritng is important
+        sort(nums.begin(), nums.end());
+        kSum(nums, target, 4, 0, v, res);
+        return res;
+    }
+
+    void kSum(vector<int> &nums, int target, int k, int s, vector<int> &v, vector<vector<int>> &res) {
+        if (k <= 0)
+        {
+            return;
+        }
+
+        int m = nums.size();
+
+        if (k == 1)
+        {
+            assert(false);
+
+            for (int i = s; i < m; ++i)
+            {
+                if (nums[i] == target)
+                {
+                    v.push_back(nums[i]);
+                    res.push_back(v);
+                }
+            }
+
+            return;
+        }
+        else if (k == 2)
+        {
+            twoSum(nums, target, s, v, res);
+            return;
+        }
+
+        int i = s;
+
+        while (i < m - k + 1)
+        {
+            v.push_back(nums[i]);
+
+            // new start value i + 1, new target - nums[i]
+            kSum(nums, target - nums[i], k - 1, i + 1, v, res);
+            v.pop_back();
+
+            while (++i < m - k + 1 && nums[i] == nums[i - 1])
+            {
+                ;
+            }
+        }
+    }
+
+    void twoSum(vector<int>& nums, int target, int s, vector<int> &v, vector<vector<int>> &res) {
+        int m = nums.size();
+        int l = s, r = m - 1;
+
+        while (l < r)
+        {
+            int t = nums[l] + nums[r];
+
+            if (t == target)
+            {
+                v.push_back(nums[l]);
+                v.push_back(nums[r]);
+                res.push_back(v);
+
+                // be careful to pop out the element
+                v.pop_back();
+                v.pop_back();
+
+                while (++l < r && nums[l] == nums[l - 1])
+                {
+                    ;
+                }
+
+                while (l < --r && nums[r] == nums[r + 1])
+                {
+                    ;
+                }
+            }
+            else if (t < target)
+            {
+                while (++l < r && nums[l] == nums[l - 1])
+                {
+                    ;
+                }
+            }
+            else
+            {
+                while (l < --r && nums[r] == nums[r + 1])
+                {
+                    ;
+                }
+            }
+        }
+    }
+
+    // We can recursive solve k sum problem through k - 1 sum.
+    vector<vector<int> > fourSum2(vector<int>& nums, int target) {
+        vector<vector<int>> res;
+        sort(nums.begin(), nums.end());
+
+        int m = nums.size(), i = 0;
+        
+        while (i < m - 3)
+        {
+            int j = i + 1;
+
+            while (j < m - 2)
+            {
+                int t = target - nums[i] - nums[j];
+
+                int l = j + 1, r = m - 1;
+
+                while (l < r)
+                {
+                    int s = nums[l] + nums[r];
+
+                    if (s == t)
+                    {
+                        vector<int> v = {nums[i], nums[j], nums[l], nums[r]};
+                        res.push_back(v);
+
+                        while (++l < r && nums[l] == nums[l - 1])
+                        {
+                            ;
+                        }
+
+                    }
+                    else if (s < t)
+                    {
+                        while (++l < r && nums[l] == nums[l - 1])
+                        {
+                            ;
+                        }
+                    }
+                    else
+                    {
+                        while (l < --r && nums[r] == nums[r + 1])
+                        {
+                            ;
+                        }
+                    }
+                }
+
+                while (++j < m - 2 && nums[j] == nums[j - 1])
+                {
+                    ;
+                }
+            }
+
+            while (++i < m - 3 && nums[i] == nums[i - 1])
+            {
+                ;
+            }
+        }
 
         return res;
     }
@@ -158,7 +316,7 @@ int main()
     for (auto t : targets)
     {
         std::cout << "target is : " << t << std::endl;
-        vector<vector<int> > v = sln.fourSum_naive(nums, t);
+        vector<vector<int> > v = sln.fourSum1(nums, t);
         std::cout << "fourSum_naive:" << endl;
         print2DVector(v);
         vector<vector<int> > v1 = sln.fourSum(nums, t);

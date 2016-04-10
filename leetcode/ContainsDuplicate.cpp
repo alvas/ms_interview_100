@@ -27,12 +27,10 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 4;
-    //int a[LOCAL_LENGTH] = {1, 2};
-    //int a[LOCAL_LENGTH] = {1, 1};
-    //int a[LOCAL_LENGTH] = {1, 2, 3};
-    int a[LOCAL_LENGTH] = {1, 2, 2, 3};
-    vector<int> nums(a, a + LOCAL_LENGTH);
+    //vector<int> nums = {1, 2};
+    //vector<int> nums = {1, 1};
+    //vector<int> nums = {1, 2, 3};
+    vector<int> nums = {1, 2, 2, 3};
     std::cout << sln.containsDuplicate(nums) << endl;
     return 0;
 }

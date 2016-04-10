@@ -17,6 +17,11 @@ public:
 
     // what should be the top if stack is empty
     void pop() {
+        if (data.empty())
+        {
+            return;
+        }
+
         int top = data.top();
         data.pop();
 
