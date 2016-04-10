@@ -419,10 +419,10 @@ int KMP_MATCHER(const string &T, const string &P)
         if (j == m)
         {
             // find all occurence
-            cout << "Pattern occurs at index " << i - m + 1 << "\t"; 
-            j = pi[j - 1];
+            //cout << "Pattern occurs at index " << i - m + 1 << "\t"; 
+            //j = pi[j - 1];
 
-            //return i - m + 1;
+            return i - m + 1;
         }
     }
 
@@ -735,9 +735,11 @@ int main()
     //cout << endl;
 
     //string s("aaba");
-    string s("abdabd");
-    vector<int> &&pi = COMPUTE_PREFIX_FUNCTION(s);
+    string p("ababa");
+    string t("ddtafwetababacfadijgaabababiojfiuaet");
+    vector<int> &&pi = COMPUTE_PREFIX_FUNCTION(p);
     printVector<int>(pi);
+    std::cout << KMP_MATCHER(t, p) << std::endl;
     return 0;
 }
 
