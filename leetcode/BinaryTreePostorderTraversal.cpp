@@ -18,6 +18,57 @@ using namespace std;
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode *> stk;
+        TreeNode *prev = root;
+
+        while (!stk.empty() || root)
+        {
+            if (root)
+            {
+                stk.push(root);
+                root = root->left;
+            }
+            else
+            {
+                root = stk.top();
+
+                if (root->right && root->right != prev)
+                {
+                    root = root->right;
+                }
+                else
+                {
+                    stk.pop();
+                    res.push_back(root->val);
+                    prev = root;
+                    root = NULL;
+                }
+            }
+        }
+
+        return res;
+    }
+
+    vector<int> postorderTraversal2(TreeNode* root) {
+        vector<int> res;
+        postorderTraversal_recursive(root, res);
+        return res;
+    }
+
+    void postorderTraversal_recursive(TreeNode *root, vector<int> &res)
+    {
+        if (!root)
+        {
+            return;
+        }
+
+        postorderTraversal_recursive(root->left, res);
+        postorderTraversal_recursive(root->right, res);
+        res.push_back(root->val);
+    }
+
+    vector<int> postorderTraversal1(TreeNode* root) {
         vector<int> v;
 
         if (root == NULL)

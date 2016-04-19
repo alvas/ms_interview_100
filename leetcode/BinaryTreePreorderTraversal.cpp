@@ -19,6 +19,51 @@ using namespace std;
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode *> stk;
+
+        while (!stk.empty() || root)
+        {
+            if (root)
+            {
+                res.push_back(root->val);
+
+                if (root->right)
+                {
+                    stk.push(root->right);
+                }
+
+                root = root->left;
+            }
+            else
+            {
+                root = stk.top();
+                stk.pop();
+            }
+        }
+
+        return res;
+    }
+
+    vector<int> preorderTraversal2(TreeNode* root) {
+        vector<int> res;
+        preorderTraversal_recursive(root, res);
+        return res;
+    }
+
+    void preorderTraversal_recursive(TreeNode *root, vector<int> &res)
+    {
+        if (!root)
+        {
+            return;
+        }
+
+        res.push_back(root->val);
+        preorderTraversal_recursive(root->left, res);
+        preorderTraversal_recursive(root->right, res);
+    }
+
+    vector<int> preorderTraversal1(TreeNode* root) {
         vector<int> r;
 
         if (root == NULL)

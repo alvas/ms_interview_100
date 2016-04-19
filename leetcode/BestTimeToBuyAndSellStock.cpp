@@ -6,8 +6,26 @@ using namespace std;
 
 class Solution {
 public:
-    // DP
     int maxProfit(vector<int>& prices) {
+        int profit = 0, size = prices.size();
+
+        if (size <= 1)
+        {
+            return profit;
+        }
+
+        int minV = prices[0];
+
+        for (int i = 1; i < size; ++i)
+        {
+            minV = min(minV, prices[i]);
+            profit = max(profit, prices[i] - minV);
+        }
+
+        return profit;
+    }
+
+    int maxProfit2(vector<int>& prices) {
         int profit = 0, size = prices.size();
 
         if (size <= 1)
@@ -135,8 +153,6 @@ public:
         {
             return profit;
         }
-
-        vector<int> v(size, 0);
 
         for (int i = 0; i < size; ++i)
         {

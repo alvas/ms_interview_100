@@ -8,6 +8,96 @@ using namespace std;
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> v(n, 1);
+
+        for (int i = 1; i < n; ++i)
+        {
+            v[i] = v[i - 1] * nums[i - 1];
+        }
+
+        int tmp = 1;
+
+        for (int i = n - 1; i >= 0; --i)
+        {
+            v[i] = v[i] * tmp;
+            tmp *= nums[i];
+        }
+
+        return v;
+    }
+
+    vector<int> productExceptSelf4(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> v;
+
+        if (n == 0)
+        {
+            return v;
+        }
+
+        int tmp = 1;
+        v.push_back(1);
+
+        for (int i = 1; i < n; ++i)
+        {
+            tmp *= nums[i - 1];
+            v.push_back(tmp);
+        }
+
+        tmp = 1;
+
+        for (int i = n - 2; i >= 0; --i)
+        {
+            tmp *= nums[i + 1];
+            v[i] = v[i] * tmp;
+        }
+
+        return v;
+    }
+
+    vector<int> productExceptSelf3(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> v;
+
+        if (n == 0)
+        {
+            return v;
+        }
+
+        v.assign(nums.rbegin(), nums.rend());
+
+        int prev = nums[0];
+        nums[0] = 1;
+
+        for (int i = 1; i < n; ++i)
+        {
+            int tmp = nums[i];
+            nums[i] = prev * nums[i - 1];
+            prev = tmp;
+        }
+
+        prev = v[0];
+        v[0] = 1;
+
+        for (int i = 1; i < n; ++i)
+        {
+            int tmp = v[i];
+            v[i] = prev * v[i - 1];
+            prev = tmp;
+        }
+
+        reverse(v.begin(), v.end());
+
+        for (int i = 0; i < n; ++i)
+        {
+            v[i] *= nums[i];
+        }
+
+        return v;
+    }
+
+    vector<int> productExceptSelf2(vector<int>& nums) {
         int sz = nums.size();
         vector<int> v(sz, 1);
 
@@ -113,8 +203,8 @@ int main()
 {
     Solution sln;
     vector<int> nums = {1, 2, 3, 4};
-    vector<int> v1 = sln.productExceptSelf1(nums);
-    printVector<int>(v1);
+    //vector<int> v1 = sln.productExceptSelf1(nums);
+    //printVector<int>(v1);
     vector<int> v = sln.productExceptSelf(nums);
     printVector<int>(v);
     return 0;

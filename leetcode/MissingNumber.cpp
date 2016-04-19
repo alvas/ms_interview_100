@@ -17,6 +17,8 @@ public:
 
         int ret = 0;
 
+        // We can use summation. (0 + n) * (n + 1) / 2, and them minors the sum of all number in the array.
+        // We can also use xor operation.
         for (int i = 0; i <= n; ++i)
         {
             ret ^= i;

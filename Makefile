@@ -30,10 +30,8 @@ SRCS = *.cpp
 #OBJS = $(SRCS:.cpp=.o)
 
 all:
-#	@for i in {1..341}; 
-	@i=1 ; while [[ $$i -le 341 ]] ;  do \
+	@for i in {1..341}; do \
 		make $$i ; \
-		((i = i + 1)) ; \
 	done
 
 	rm *.o

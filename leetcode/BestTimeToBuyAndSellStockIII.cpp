@@ -8,12 +8,11 @@ using namespace std;
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int profit = 0;
         int sz = prices.size();
         
         if (sz <= 1)
         {
-            return profit;
+            return 0;
         }
 
         vector<int> g(3, 0);
@@ -25,12 +24,47 @@ public:
 
             for (int j = 2; j >= 1; --j)
             {
+                // local max, the jth selling transaction happens on day i.
                 l[j] = max(g[j - 1] + max(diff, 0), l[j] + diff);
+
+                // global max by day i, there are at most j transaction.
                 g[j] = max(g[j], l[j]);
             }
         }
 
-        return profit;
+        return g[2];
+    }
+
+    int maxProfit1(vector<int>& prices) {
+        int n = prices.size();
+
+        if (n <= 1)
+        {
+            return 0;
+        }
+
+        vector<int> profit(n, 0);
+        int minV = prices[0];
+
+        for (int i = 1; i < n; ++i)
+        {
+            // profit[i] is the max profit in [0, i];
+            profit[i] = max(profit[i - 1], prices[i] - minV);
+            minV = min(minV, prices[i]);
+        }
+
+        int maxV = prices[n - 1], res = 0;
+
+        for (int i = n - 2; i >= 0; --i)
+        {
+            // Don't have to use profit[i - 1] here, because if
+            // profit[i] and prices[i] take the same day, it is
+            // one transaction.
+            res = max(res, maxV - prices[i] + profit[i]);
+            maxV = max(maxV, prices[i]);
+        }
+
+        return res;
     }
 
     int maxProfit_two_way(vector<int>& prices) {
@@ -51,7 +85,8 @@ public:
         // from the same i such that forwardMax[i] + backwardMax[i]
 
         // boundary
-        // minV is the min among [1, i)
+        // minV is the min among [0, i]
+        // the selling transaction may not happen on day i.
         for (int i = 1; i < sz; ++i)
         {
             forwardMax[i] = max(forwardMax[i - 1], prices[i] - minV);
@@ -60,10 +95,8 @@ public:
             minV = min(minV, prices[i]);
         }
 
-        printVector<int>(forwardMax);
-
         // boundary
-        // maxV is the max among (i, sz - 1]
+        // maxV is the max among [i, sz)
         for (int i = sz - 2; i >= 0; --i)
         {
             backwardMax[i] = max(backwardMax[i + 1], maxV - prices[i]);
@@ -71,8 +104,6 @@ public:
             // aver we calculate backwardMax[i]
             maxV = max(maxV, prices[i]);
         }
-
-        printVector<int>(backwardMax);
 
         for (int i = 0; i < sz; ++i)
         {
