@@ -6,8 +6,7 @@ using namespace std;
 class Solution {
 public:
     int numTrees(int n) {
-        int a[3] = {0, 1, 2};
-        vector<int> v(a, a + 3);
+        vector<int> v = {0, 1, 2};
 
         // Be careful about the index i
         for (int i = 3; i <= n; ++i)
@@ -25,7 +24,7 @@ public:
             v.push_back(sum);
         }
 
-        return v[n];
+        return v.back();
     }
 
     int numTrees_recursive(int n) {

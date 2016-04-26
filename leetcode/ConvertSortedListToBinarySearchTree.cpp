@@ -37,6 +37,7 @@ public:
         return sortedListToBST(head, 0, n - 1);
     }
 
+    // ListNode *& is important, because we need to change head's value.
     TreeNode *sortedListToBST(ListNode *&head, int start, int end)
     {
         if (start > end)

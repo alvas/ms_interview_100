@@ -7,13 +7,20 @@ using namespace std;
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
-        int l = 0, r = nums.size() - 1;
+        int l = 0, r = nums.size();
+
+        // be careful about <= here for [1] case, target is 0
+        bool ascending = nums.front() <= nums.back();
 
         while (l < r)
         {
-            int m = (l + r) / 2;
+            int m = l + (r - l) / 2;
 
-            if (nums[m] < target)
+            if (nums[m] == target)
+            {
+                return r;
+            }
+            else if ((nums[m] < target && ascending) || (nums[m] > target && !ascending))
             {
                 l = m + 1;
             }
@@ -23,7 +30,7 @@ public:
             }
         }
 
-        return nums[l] < target ? l + 1 : l;
+        return r;
     }
 
     // be careful about the corner conditions
@@ -122,15 +129,13 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 5;
-    //int a[LOCAL_LENGTH] = {1, 3, 5, 6};
-    //int a[LOCAL_LENGTH] = {6, 5, 3, 1};
-    //int a[LOCAL_LENGTH] = {6};
-    //int a[LOCAL_LENGTH] = {1, 3};
-    //int a[LOCAL_LENGTH] = {3, 1};
-    //int a[LOCAL_LENGTH] = {1, 3, 5, 6, 8};
-    int a[LOCAL_LENGTH] = {8, 6, 5, 3, 1};
-    vector<int> nums(a, a + LOCAL_LENGTH);;
+    //vector<int> nums = {1, 3, 5, 6};
+    //vector<int> nums = {6, 5, 3, 1};
+    //vector<int> nums = {6};
+    //vector<int> nums = {1, 3};
+    //vector<int> nums = {3, 1};
+    //vector<int> nums = {1, 3, 5, 6, 8};
+    vector<int> nums = {8, 6, 5, 3, 1};
     printVector<int>(nums);
     int target = 0;
     std::cout << "Please enter target: ";

@@ -1832,6 +1832,26 @@ LongestSubstringWithAtMostKDistinctCharacters:
 FlattenNestedListIterator:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenNestedListIterator.cpp
 
+.PHONY: 342
+342: PowerOfFour
+PowerOfFour:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PowerOfFour.cpp
+
+.PHONY: 343
+343: IntegerBreak
+IntegerBreak:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntegerBreak.cpp
+
+.PHONY: 344
+344: ReverseString
+ReverseString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseString.cpp
+
+.PHONY: 345
+345: ReverseVowelsOfAString
+ReverseVowelsOfAString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseVowelsOfAString.cpp
+
 test:
 	echo "test test!!"
 

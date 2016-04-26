@@ -16,9 +16,46 @@ using namespace std;
  */
 class Solution {
 public:
+    vector<TreeNode*> generateTrees(int n) {
+        return generateT(1, n);
+    }
+
+    vector<TreeNode *> generateT(int minV, int maxV)
+    {
+        // When minV == maxV, we still need to generate trees.
+        if (minV > maxV)
+        {
+            return vector<TreeNode *>(1, NULL);
+        }
+
+        vector<TreeNode *> res;
+
+        for (int i = minV; i <= maxV; ++i)
+        {
+            vector<TreeNode *> &&left = generateT(minV, i - 1);
+            vector<TreeNode *> &&right = generateT(i + 1, maxV);
+            int lsz = left.size(), rsz = right.size();
+
+            for (int j = 0; j < lsz; ++j)
+            {
+                for (int k = 0; k < rsz; ++k)
+                {
+                    // Be careful about the position where to create the node.
+                    // We need to generate a new node for each root.
+                    TreeNode *root = new TreeNode(i);
+                    root->left = left[j];
+                    root->right = right[k];
+                    res.push_back(root);
+                }
+            }
+        }
+
+        return res;
+    }
+
     // This problem is really difficult to me. Shame on me. I can't find out the soluton.
     // Need to improve.
-    vector<TreeNode*> generateTrees(int n) {
+    vector<TreeNode*> generateTrees1(int n) {
         if (n == 0)
         {
             return buildSubTree(1, 0);
@@ -106,10 +143,10 @@ int main()
         std::cout << endl;
     }
 
-    for (vector<TreeNode *>::iterator itr = v.begin(); itr != v.end(); ++itr)
-    {
-        CleanUp2(*itr);
-    }
+    //for (vector<TreeNode *>::iterator itr = v.begin(); itr != v.end(); ++itr)
+    //{
+        //CleanUp2(*itr);
+    //}
 
     return 0;
 }

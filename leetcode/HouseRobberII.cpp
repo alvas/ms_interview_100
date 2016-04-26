@@ -8,6 +8,36 @@ using namespace std;
 class Solution {
 public:
     int rob(vector<int>& nums) {
+        int m = nums.size();
+
+        if (m <= 1)
+        {
+            return m == 0 ? 0 : nums[0];
+        }
+
+        return max(rob(nums, 0, m - 1), rob(nums, 1, m));
+    }
+
+    int rob(vector<int> &nums, int s, int e)
+    {
+        if (e - s <= 1)
+        {
+            return nums[s];
+        }
+
+        vector<int> dp(e, 0);
+        dp[s] = nums[s];
+        dp[s + 1] = max(nums[s], nums[s + 1]);
+
+        for (int i = s + 2; i < e; ++i)
+        {
+            dp[i] = max(nums[i] + dp[i - 2], dp[i - 1]);
+        }
+
+        return dp.back();
+    }
+
+    int rob2(vector<int>& nums) {
         int sz = nums.size();
 
         if (sz == 0)
