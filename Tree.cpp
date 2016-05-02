@@ -494,7 +494,7 @@ void CleanUp(TreeNode *&root)
         CleanUp(root->right);
     }
 
-    cout << "Freeing node: " << root->val << endl;
+    //cout << "Freeing node: " << root->val << endl;
     delete root;
     root = NULL;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include <vector>
 
 #include "RandomData.h"
@@ -16,6 +17,28 @@ public:
     } myObject;
 
     int findKthLargest(vector<int>& nums, int k) {
+        int m = nums.size();
+
+        if (m == 0 || m < k)
+        {
+            return 0;
+        }
+
+        priority_queue<int, vector<int>, myClass> pq(nums.begin(), nums.begin() + k);
+
+        for (int i = k; i < m; ++i)
+        {
+            if (nums[i] > pq.top())
+            {
+                pq.pop();
+                pq.push(nums[i]);
+            }
+        }
+
+        return pq.top();
+    }
+
+    int findKthLargest1(vector<int>& nums, int k) {
         int size = nums.size();
 
         if (size == 0 || size < k)
@@ -61,6 +84,7 @@ int main()
     initializeRandomVector(nums, n);
     printVector<int>(nums);
     std::cout << sln.findKthLargest(nums, k) << endl;
+    std::cout << sln.findKthLargest1(nums, k) << endl;
     sort(nums.begin(), nums.end());
     printVector<int>(nums);
     return 0;

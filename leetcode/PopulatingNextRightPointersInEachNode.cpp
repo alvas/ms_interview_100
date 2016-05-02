@@ -15,6 +15,26 @@ using namespace std;
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
+        if (root == nullptr)
+        {
+            return;
+        }
+
+        if (root->left != nullptr)
+        {
+            root->left->next = root->right;
+        }
+
+        if (root->right != nullptr)
+        {
+            root->right->next = root->next != nullptr ? root->next->left : nullptr;
+        }
+
+        connect(root->left);
+        connect(root->right);
+    }
+
+    void connect1(TreeLinkNode *root) {
         // assumption is perfect binary tree, so if either its children is NULL, both of them should be NULL.
         if (root == NULL || root->left == NULL || root->right == NULL)
         {

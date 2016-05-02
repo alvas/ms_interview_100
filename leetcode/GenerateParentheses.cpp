@@ -9,6 +9,50 @@ public:
     vector<string> generateParenthesis(int n) {
         vector<string> v;
         string s;
+        findParenthesis(v, s, 0, 0, n);
+        return v;
+    }
+
+    void findParenthesis(vector<string> &v, string s, int l, int r, int n)
+    {
+        if (r == n)
+        {
+            v.push_back(s);
+            return;
+        }
+
+        if (l < n)
+        {
+            findParenthesis(v, s + '(', l + 1, r, n);
+        }
+
+        if (r < l)
+        {
+            findParenthesis(v, s + ')', l, r + 1, n);
+        }
+
+        //if (r == n)
+        //{
+            //v.push_back(s);
+        //}
+        //else if (l == n)
+        //{
+            //findParenthesis(v, s + ')', l, r + 1, n);
+        //}
+        //else
+        //{
+            //if (l > r)
+            //{
+                //findParenthesis(v, s + ')', l, r + 1, n);
+            //}
+
+            //findParenthesis(v, s + '(', l + 1, r, n);
+        //}
+    }
+
+    vector<string> generateParenthesis1(int n) {
+        vector<string> v;
+        string s;
         // Be careful 2 * n.
         build(v, s, 0, 2 * n);
         return v;

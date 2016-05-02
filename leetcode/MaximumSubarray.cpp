@@ -5,8 +5,49 @@ using namespace std;
 
 class Solution {
 public:
-    // Could be improved??
     int maxSubArray(vector<int>& nums) {
+        int m = nums.size();
+        return maxSub(nums, 0, m);
+    }
+
+    int maxSub(vector<int> &nums, int b, int e)
+    {
+        if (e - b <= 0)
+        {
+            return INT_MIN;
+        }
+        else if (e - b == 1)
+        {
+            return nums[b];
+        }
+
+        int m = b + (e - b) / 2;
+        int maxV = max(maxSub(nums, b, m), maxSub(nums, m, e));
+        int lMax = INT_MIN, rMax = INT_MIN;
+        int sum = 0;
+
+        for (int i = m - 1; i >= b; --i)
+        {
+            sum += nums[i];
+            lMax = max(sum, lMax);
+        }
+
+        sum = 0;
+
+        for (int i = m; i < e; ++i)
+        {
+            sum += nums[i];
+            rMax = max(sum, rMax);
+        }
+
+        maxV = max(maxV, lMax);
+        maxV = max(maxV, rMax);
+        maxV = max(maxV, lMax + rMax);
+        return maxV;
+    }
+
+    // Could be improved??
+    int maxSubArray1(vector<int>& nums) {
         int size = nums.size();
 
         if (size == 0)
@@ -42,17 +83,15 @@ public:
 int main()
 {
     Solution sln;
-    const int LOCAL_LENGTH = 4;
-    //int a[LOCAL_LENGTH] = {-2, -1, -3, 4, -1, 2, 1, -5, 4};
-    //int a[LOCAL_LENGTH] = {-1};
-    //int a[LOCAL_LENGTH] = {-1, -2};
-    //int a[LOCAL_LENGTH] = {-2, -1};
-    //int a[LOCAL_LENGTH] = {-3, -2, -1};
-    //int a[LOCAL_LENGTH] = {-3, -1, -2};
-    //int a[LOCAL_LENGTH] = {-2, -3, -1};
-    //int a[LOCAL_LENGTH] = {-1, -3, -2};
-    int a[LOCAL_LENGTH] = {-1, -3, -2, 2};
-    vector<int> v(a, a + LOCAL_LENGTH);
-    std::cout << sln.maxSubArray(v) << endl;
+    vector<int> nums = {-2, -1, -3, 4, -1, 2, 1, -5, 4};
+    //vector<int> nums = {-1};
+    //vector<int> nums = {-1, -2};
+    //vector<int> nums = {-2, -1};
+    //vector<int> nums = {-3, -2, -1};
+    //vector<int> nums = {-3, -1, -2};
+    //vector<int> nums = {-2, -3, -1};
+    //vector<int> nums = {-1, -3, -2};
+    //vector<int> nums = {-1, -3, -2, 2};
+    std::cout << sln.maxSubArray(nums) << endl;
     return 0;
 }

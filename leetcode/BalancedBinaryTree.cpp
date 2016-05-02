@@ -162,8 +162,7 @@ int main()
     //int szPostOrder[TREELEN] = {3, 4, 2, 6, 7, 5, 1};
     //ReBuildTreeFromInPost2(szInOrder, szPostOrder, TREELEN, root);
 
-    string leaf[11] = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "#", "4"};
-    vector<string> s(leaf, leaf + 11);
+    vector<string> s = {"1", "2", "2", "3", "#", "#", "3", "4", "#", "#", "4"};
     ReBuildTreeFromOrderLevel<TreeNode>(s, root);
     std::cout << sln.isBalanced(root) << endl;
     CleanUp(root);

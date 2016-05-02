@@ -1809,8 +1809,8 @@ PalindromePairs:
 
 .PHONY: 337
 337: HouseRobberIII
-HouseRobberIII:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberIII.cpp
+HouseRobberIII: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberIII.cpp Tree.o
 
 .PHONY: 338
 338: CountingBits
@@ -1851,6 +1851,11 @@ ReverseString:
 345: ReverseVowelsOfAString
 ReverseVowelsOfAString:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseVowelsOfAString.cpp
+
+.PHONY: 346
+346: MovingAverageFromDataStream
+MovingAverageFromDataStream:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MovingAverageFromDataStream.cpp
 
 test:
 	echo "test test!!"

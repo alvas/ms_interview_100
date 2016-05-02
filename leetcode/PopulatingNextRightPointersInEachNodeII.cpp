@@ -17,6 +17,46 @@ using namespace std;
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
+        if (root == nullptr)
+        {
+            return;
+        }
+
+        TreeLinkNode *p = root->next;
+
+        while (p != nullptr)
+        {
+            if (p->left != nullptr)
+            {
+                p = p->left;
+                break;
+            }
+
+            if (p->right != nullptr)
+            {
+                p = p->right;
+                break;
+            }
+
+            p = p->next;
+        }
+
+        if (root->left != nullptr)
+        {
+            root->left->next = root->right ? root->right : p;
+        }
+
+        if (root->right != nullptr)
+        {
+            root->right->next = p;
+        }
+
+        // process right child first
+        connect(root->right);
+        connect(root->left);
+    }
+
+    void connect1(TreeLinkNode *root) {
         if (root == NULL)
         {
             return;
