@@ -145,6 +145,9 @@ Shift: NormalData.o
 BinarySearch: RandomData.o
 	$(CC) $(DFLAGS) BinarySearch.cpp RandomData.o NormalData.o
 
+RotationallySymmetricNumbers:
+	$(CC) $(DFLAGS) RotationallySymmetricNumbers.cpp
+
 .PHONY: 1
 1: TwoSum
 TwoSum:
@@ -1856,6 +1859,11 @@ ReverseVowelsOfAString:
 346: MovingAverageFromDataStream
 MovingAverageFromDataStream:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MovingAverageFromDataStream.cpp
+
+.PHONY: 347
+347: TopKFrequentElements
+TopKFrequentElements:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TopKFrequentElements.cpp
 
 test:
 	echo "test test!!"
