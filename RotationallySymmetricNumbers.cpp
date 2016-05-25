@@ -94,7 +94,7 @@ int main()
         std::cout << isRotationallySymmetricNumber(num) << std::endl;
     }
 
-    set<string> s = generateRotationallySymmetricNumbers(3);
+    set<string> s = generateRotationallySymmetricNumbers(4);
 
     for (auto str : s)
     {

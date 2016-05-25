@@ -10,18 +10,20 @@ public:
         {
             return 0;
         }
-        // Be careful about the corner case.
-        else if (m == 1 && n == 1)
-        {
-            return 1;
-        }
+        //// Be careful about the corner case.
+        //else if (m == 1 && n == 1)
+        //{
+            //return 1;
+        //}
 
-        vector<vector<int> > v(n, vector<int>(m, 0));
+        // With a better initial value, we can avoid some special checking and initial setting.
+        // Use a one dimention array, the code is even simpler.
+        vector<vector<int> > v(n, vector<int>(m, 1));
 
-        for (int i = 1; i < m; ++i)
-        {
-            v[0][i] = 1;
-        }
+        //for (int i = 1; i < m; ++i)
+        //{
+            //v[0][i] = 1;
+        //}
 
         for (int i = 1; i < n; ++i)
         {

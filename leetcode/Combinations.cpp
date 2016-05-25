@@ -8,6 +8,28 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > combine(int n, int k) {
+        vector<int> sol;
+        vector<vector<int>> res;
+        combine(n, 1, k, sol, res);
+        return res;
+    }
+
+    void combine(int n, int s, int k, vector<int> &sol, vector<vector<int>> &res) {
+        if (k == 0)
+        {
+            res.push_back(sol);
+            return;
+        }
+
+        for (int i = s; i < n - k + 1; ++i)
+        {
+            sol.push_back(i);
+            combine(n, i + 1, k - 1, sol, res);
+            sol.pop_back();
+        }
+    }
+
+    vector<vector<int> > combine1(int n, int k) {
         vector<vector<int> > r;
 
         if (n == 0 || k == 0)

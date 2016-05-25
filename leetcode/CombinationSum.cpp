@@ -34,6 +34,12 @@ public:
             // start index is importatnt for non-descending order
             for (int i = start; i < size; ++i)
             {
+                // avoid duplicate
+                if (i > start && candidates[i] == candidates[i - 1])
+                {
+                    continue;
+                }
+
                 tmp.push_back(candidates[i]);
                 calculate(v, i, tmp, candidates, target - candidates[i]);
                 // remember to pop out the element.

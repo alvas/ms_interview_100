@@ -8,6 +8,45 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > generateMatrix(int n) {
+        vector<vector<int>> ret(n, vector<int>(n, 0));
+
+        int half = n / 2;
+        int val = 1;
+
+        for (int i = 0; i < half; ++i)
+        {
+            int last = n - 1 - i;
+
+            for (int j = i; j < last; ++j)
+            {
+                ret[i][j] = val++;
+            }
+
+            for (int j = i; j < last; ++j)
+            {
+                ret[j][last] = val++;
+            }
+
+            for (int j = last; j > i; --j)
+            {
+                ret[last][j] = val++;
+            }
+
+            for (int j = last; j > i; --j)
+            {
+                ret[j][i] = val++;
+            }
+        }
+
+        if (n % 2 == 1)
+        {
+            ret[half][half] = val;
+        }
+
+        return ret;
+    }
+
+    vector<vector<int> > generateMatrix1(int n) {
         vector<vector<int> > v(n, vector<int>(n, 0));
         int count = 1, start = 0, end = n;
 

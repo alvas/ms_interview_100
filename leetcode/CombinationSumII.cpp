@@ -39,15 +39,20 @@ public:
 
         for (int i = b; i < sz; )
         {
+            if (i > b && candidates[i] == candidates[i - 1])
+            {
+                continue;
+            }
+
             int tmp = candidates[i];
             a.push_back(tmp);
             compute(i + 1, candidates, target - tmp, a, v);
             a.pop_back();
 
-            while (++i < sz && tmp == candidates[i])
-            {
-                ;
-            }
+            //while (++i < sz && tmp == candidates[i])
+            //{
+                //;
+            //}
         }
     }
 };

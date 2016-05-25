@@ -32,7 +32,7 @@ public:
                 v.push_back(matrix[row][++col]);
             }
 
-            if (--r)
+            if (--r == 0)
             {
                 break;
             }
@@ -42,7 +42,7 @@ public:
                 v.push_back(matrix[++row][col]);
             }
 
-            if (--c)
+            if (--c == 0)
             {
                 break;
             }
@@ -52,7 +52,7 @@ public:
                 v.push_back(matrix[row][--col]);
             }
 
-            if (--r)
+            if (--r == 0)
             {
                 break;
             }

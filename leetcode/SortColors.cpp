@@ -8,6 +8,28 @@ using namespace std;
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
+        int m = nums.size();
+        int r = 0, b = m - 1;
+        int i = 0;
+
+        while (i <= b)
+        {
+            if (nums[i] == 0)
+            {
+                swap(nums[i++], nums[r++]);
+            }
+            else if (nums[i] == 1)
+            {
+                i++;
+            }
+            else if (nums[i] == 2)
+            {
+                swap(nums[i], nums[b--]);
+            }
+        }
+    }
+
+    void sortColors1(vector<int>& nums) {
         int size = nums.size();
 
         if (size == 0)
