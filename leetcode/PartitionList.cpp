@@ -16,8 +16,39 @@ using namespace std;
  */
 class Solution {
 public:
-    // Need to improve.
     ListNode* partition(ListNode* head, int x) {
+        ListNode *leftDummy = new ListNode(0);
+        ListNode *rightDummy = new ListNode(0);
+        ListNode *leftTail = leftDummy;
+        ListNode *rightTail = rightDummy;
+
+        while (head != nullptr)
+        {
+            if (head->val < x)
+            {
+                leftTail->next = head;
+                leftTail = head;
+            }
+            else
+            {
+                rightTail->next = head;
+                rightTail = head;
+            }
+
+            head = head->next;
+        }
+
+        leftTail->next = rightDummy->next;
+        rightTail->next = NULL;
+
+        head = leftDummy->next;
+        delete leftDummy;
+        delete rightDummy;
+        return head;
+    }
+
+    // Need to improve.
+    ListNode* partition1(ListNode* head, int x) {
         if (head != NULL)
         {
             ListNode *node = head;

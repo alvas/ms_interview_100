@@ -9,6 +9,29 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> tmp;
+        res.push_back(tmp);
+        std::sort(nums.begin(), nums.end());
+        findSubsets(nums, 0, tmp, res);
+        return res;
+    }
+
+    void findSubsets(vector<int> &nums, int s, vector<int> &tmp, vector<vector<int>> &res)
+    {
+        int m = nums.size();
+
+        for (int i = s; i < m; ++i)
+        {
+            tmp.push_back(nums[i]);
+            res.push_back(tmp);
+            // IMPORTANT!! start from i + 1, not s + 1
+            findSubsets(nums, i + 1, tmp, res);
+            tmp.pop_back();
+        }
+    }
+
+    vector<vector<int> > subsets1(vector<int>& nums) {
         vector<vector<int> > v;
 
         vector<int> a;

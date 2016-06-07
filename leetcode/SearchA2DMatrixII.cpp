@@ -8,6 +8,34 @@ using namespace std;
 class Solution {
 public:
     bool searchMatrix(vector<vector<int> >& matrix, int target) {
+        if (matrix.size() == 0 || matrix[0].size() == 0)
+        {
+            return false;
+        }
+
+        int m = matrix.size(), n = matrix[0].size();
+        int row = m - 1, col = 0;
+
+        while (row >= 0 && col < n)
+        {
+            if (target < matrix[row][col])
+            {
+                row--;
+            }
+            else if (target > matrix[row][col])
+            {
+                col++;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    bool searchMatrix1(vector<vector<int> >& matrix, int target) {
         int row = matrix.size();
 
         if (row == 0)
@@ -32,7 +60,7 @@ public:
         {
             return false;
         }
-        else if (target < matrix[t][l] || matrix[b - 1][r - 1] < target)
+        else if (target < matrix[t][l] || matrix[t - 1][r - 1] < target)
         {
             return false;
         }

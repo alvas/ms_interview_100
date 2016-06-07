@@ -27,8 +27,13 @@ public:
             }
         }
 
-        nums.resize(++i);
-        return i;
+        //nums.resize(++i);
+        return ++i;
+    }
+
+    int removeDuplicates_stl(vector<int> &nums) {
+        auto it = std::unique(nums.begin(), nums.end());
+        return std::distance(nums.begin(), it);
     }
 };
 
@@ -38,6 +43,7 @@ int main()
     vector<int> A = {1, 2, 2, 2, 3, 4, 5, 6};
     printVector<int>(A);
     std::cout << sln.removeDuplicates(A) << endl;
+    std::cout << sln.removeDuplicates_stl(A) << endl;
     printVector<int>(A);
     return 0;
 }

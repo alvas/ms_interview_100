@@ -4,8 +4,43 @@ using namespace std;
 
 class Solution {
 public:
-    // Need to improve it.
     int rangeBitwiseAnd(int m, int n) {
+        int d = INT_MAX;
+
+        while ((m & d) != (n & d))
+        {
+            d <<= 1;
+        }
+
+        return m & d;
+    }
+
+    int rangeBitwiseAnd3(int m, int n) {
+        if (n > m)
+        {
+            return rangeBitwiseAnd(m >> 1, n >> 1) << 1;
+        }
+        else
+        {
+            return m;
+        }
+    }
+
+    int rangeBitwiseAnd2(int m, int n) {
+        int k = 0;
+
+        while (m != n)
+        {
+            m >>= 1;
+            n >>= 1;
+            k++;
+        }
+
+        return m << k;
+    }
+
+    // Need to improve it.
+    int rangeBitwiseAnd1(int m, int n) {
         int val = m & n;
 
         if (val == 0)

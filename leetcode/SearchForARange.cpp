@@ -8,6 +8,24 @@ using namespace std;
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
+        auto itr1 = lower_bound(nums.begin(), nums.end(), target);
+        vector<int> res(2, -1);
+
+        if (itr1 == nums.end() || *itr1 != target)
+        {
+            return res;
+        }
+        else
+        {
+            res[0] = std::distance(nums.begin(), itr1);
+            auto itr2 = upper_bound(nums.begin(), nums.end(), target);
+            res[1] = std::distance(nums.begin(), itr2) - 1;
+        }
+
+        return res;
+    }
+
+    vector<int> searchRange1(vector<int>& nums, int target) {
         vector<int> r(2, -1);
         int size = nums.size();
         int startIdx = binarySearch(nums, 0, size, target);

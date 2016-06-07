@@ -8,8 +8,37 @@ using namespace std;
 
 class Solution {
 public:
-    // May need to improve.
     int minimumTotal(vector<vector<int> > &triangle) {
+        int m = triangle.size();
+
+        if (m == 0)
+        {
+            return 0;
+        }
+
+        vector<int> res(triangle[m - 1].size());
+
+        for (int i = m - 1; i >= 0; --i)
+        {
+            int col = triangle[i].size();
+
+            for (int j = 0; j < col; ++j)
+            {
+                if (i == m - 1)
+                {
+                    res[j] = triangle[i][j];
+                    continue;
+                }
+
+                res[i] = min(res[j], res[j + 1]) + triangle[i][j];
+            }
+        }
+
+        return res[0];
+    }
+
+    // May need to improve.
+    int minimumTotal1(vector<vector<int> > &triangle) {
         int row = triangle.size();
         // Initial value INT_MAX is important. If initialize it to 0, then it will always get the wrong answer 0.
         int min = INT_MAX;

@@ -11,6 +11,30 @@ using namespace std;
 class Solution {
 public:
     int maxArea(vector<int>& height) {
+        int maxA = 0;
+        int l = 0, r = height.size() - 1;
+
+        while (l < r)
+        {
+            maxA = max(min(l, r) * (r - l), maxA);
+
+            if (height[l] < height[r])
+            {
+                l++;
+            }
+            else if (height[l] > height[r])
+            {
+                r--;
+            }
+            else
+            {
+                l++;
+                r--;
+            }
+        }
+    }
+
+    int maxArea2(vector<int>& height) {
         int n = height.size();
 
         if (n <= 0)

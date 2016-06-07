@@ -41,6 +41,8 @@ public:
                 }
 
                 tmp.push_back(candidates[i]);
+                
+                // be careful about the index i here, not i + 1.
                 calculate(v, i, tmp, candidates, target - candidates[i]);
                 // remember to pop out the element.
                 tmp.pop_back();

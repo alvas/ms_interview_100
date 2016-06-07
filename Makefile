@@ -1865,6 +1865,31 @@ MovingAverageFromDataStream:
 TopKFrequentElements:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TopKFrequentElements.cpp
 
+.PHONY: 348
+348: DesignTicTacToe
+DesignTicTacToe:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DesignTicTacToe.cpp
+
+.PHONY: 349
+349: IntersectionOfTwoArrays
+IntersectionOfTwoArrays:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntersectionOfTwoArrays.cpp
+
+.PHONY: 350
+350: IntersectionOfTwoArraysII
+IntersectionOfTwoArraysII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntersectionOfTwoArraysII.cpp
+
+.PHONY: 351
+351: AndroidUnlockPatterns
+AndroidUnlockPatterns:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AndroidUnlockPatterns.cpp
+
+.PHONY: 352
+352: DataStreamAsDisjointIntervals
+DataStreamAsDisjointIntervals:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DataStreamAsDisjointIntervals.cpp
+
 test:
 	echo "test test!!"
 

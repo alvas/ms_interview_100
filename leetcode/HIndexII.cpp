@@ -6,6 +6,31 @@
 class Solution {
 public:
     int hIndex(vector<int>& citations) {
+        int n = citations.size(), l = 0, r = n - 1;
+
+        if (n == 0)
+        {
+            return 0;
+        }
+
+        while (l <= r)
+        {
+            int m = (l + r) / 2;
+
+            if (citations[m] < n - m)
+            {
+                l = m + 1;
+            }
+            else
+            {
+                r = m - 1;
+            }
+        }
+
+        return n - l;
+    }
+
+    int hIndex1(vector<int>& citations) {
         int l = 0, r = citations.size();
         int sz = r, idx = 0;
 

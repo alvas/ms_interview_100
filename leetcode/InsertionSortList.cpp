@@ -16,6 +16,29 @@ using namespace std;
  */
 class Solution {
 public:
+    ListNode* insertionSortList(ListNode* head) {
+        ListNode *newHead = new ListNode(INT_MIN);
+
+        while (head)
+        {
+            ListNode *cur = head;
+            ListNode *p = newHead;
+            head = head->next;
+
+            while (p->next && p->next->val <= cur->val)
+            {
+                p = p->next;
+            }
+
+            cur->next = p->next;
+            p->next = cur;
+        }
+
+        head = newHead->next;
+        delete newHead;
+        return head;
+    }
+
     ListNode* insertionSortList_not_insertion(ListNode* head) {
         if (head == NULL)
         {
@@ -61,7 +84,7 @@ public:
     }
 
     // This implementation exceeds time limit.
-    ListNode* insertionSortList(ListNode* head) {
+    ListNode* insertionSortList2(ListNode* head) {
         if (head == NULL || head->next == NULL)
         {
             return head;

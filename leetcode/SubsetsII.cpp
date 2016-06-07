@@ -9,8 +9,37 @@ using namespace std;
 
 class Solution {
 public:
-    // Need to improve it without using a set.
     vector<vector<int> > subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> tmp;
+        res.push_back(tmp);
+        std::sort(nums.begin(), nums.end());
+        findSubsets(nums, 0, tmp, res);
+        return res;
+    }
+
+    void findSubsets(vector<int> &nums, int s, vector<int> &tmp, vector<vector<int>> &res)
+    {
+        int m = nums.size();
+
+        for (int i = s; i < m; ++i)
+        {
+            if (i > s && nums[i] == nums[i - 1])
+            {
+                continue;
+            }
+
+            tmp.push_back(nums[i]);
+            res.push_back(tmp);
+
+            // IMPORTANT!! start from i + 1, not s + 1
+            findSubsets(nums, i + 1, tmp, res);
+            tmp.pop_back();
+        }
+    }
+
+    // Need to improve it without using a set.
+    vector<vector<int> > subsetsWithDup1(vector<int>& nums) {
         vector<vector<int> > v;
         vector<int> a;
         v.push_back(a);

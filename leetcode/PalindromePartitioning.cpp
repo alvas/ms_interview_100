@@ -9,6 +9,49 @@ using namespace std;
 class Solution {
 public:
     vector<vector<string> > partition(string s) {
+        int n = s.size();
+        vector<vector<string>> res;
+        vector<string> sol;
+        vector<vector<bool>> isPal(n, vector<bool>(n, false));
+
+        // IMPORTANT!! construct DP palindrome checking array
+        for (int i = n - 1; i >= 0; --i)
+        {
+            for (int j = i; j < n; j++)
+            {
+                // j <= i + 2
+                if ((i + 1 >= j - 1 || isPal[i + 1][j - 1]) && s[i] == s[j])
+                {
+                    isPal[i][j] = true;
+                }
+            }
+        }
+
+        findPartitions(s, 0, isPal, sol, res);
+        return res;
+    }
+
+    void findPartitions(string &s, int b, vector<vector<bool>> &isPal, vector<string> &sol, vector<vector<string>> &res)
+    {
+        if (b == s.size())
+        {
+            res.push_back(sol);
+            return;
+        }
+
+        for (int i = b; i < s.size(); ++i)
+        {
+            if (isPal[b][i])
+            {
+                int len = i - b + 1;
+                sol.push_back(s.substr(b, len));
+                findPartitions(s, i + 1, isPal, sol, res);
+                sol.pop_back();
+            }
+        }
+    }
+
+    vector<vector<string> > partition1(string s) {
         vector<string> v;
         vector<vector<string> > r;
 
