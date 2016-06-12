@@ -9,17 +9,54 @@ using namespace std;
 
 class Solution {
 public:
-    // DP
     bool wordBreak(string s, unordered_set<string>& wordDict) {
         if (s.empty())
         {
             return false;
         }
 
-        // !! Pitfall !! don't use index vector, because it needs to depends on the previous value
+        return wordBreaker(s, wordDict, 0);
+    }
+
+    bool wordBreaker(string &s, unordered_set<string> &workDict, int start)
+    {
+        int n = s.size();
+
+        if (start == n)
+        {
+            return true;
+        }
+
+        for (int i = start; i < n; ++i)
+        {
+            string s2 = s.substr(start, i - start + 1);
+
+            if (workDict.find(s2) != workDict.end())
+            {
+                bool finished = wordBreaker(s, workDict, i + 1);
+
+                if (finished)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // DP
+    bool wordBreak1(string s, unordered_set<string>& wordDict) {
+        if (s.empty())
+        {
+            return false;
+        }
+
+        // !! Pitfall !! don't use index vector, because it needs to depend on the previous value
         int size = s.size();
         // vector v indicates that whether all characters before and include v[i] can be broken into words.
         vector<bool> v(size + 1, false);
+        v[0] = true;
 
         for (int i = 1; i <= size; ++i)
         {
@@ -30,7 +67,7 @@ public:
 
                 // Be careful about the condition that when the first true value is set and the previous value
                 // v[j - 1] || j == 1
-                v[i] = (wordDict.find(str) != wordDict.end()) && (v[j - 1] || j == 1);
+                v[i] = (wordDict.find(str) != wordDict.end()) && (v[j - 1]);
 
                 if (v[i])
                 {
@@ -106,13 +143,16 @@ int main()
 {
     Solution sln;
 
-    //string s1("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab");
+    string s1("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab");
  
-    string s1("baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    //string s1("baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     // This uses unordered_set initialier list which needs c++11 support
     // g++ -std=c++11 WordBreak.cpp
     unordered_set<string> dict1({"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa", "aaaaaaaaaaa", "aaaaaaaaaaaa", "aaaaaaaaaaaaa"});
 
+    //string s1("leetcode");
+
+    //unordered_set<string> dict1({"leet", "code"});
 
 /*
     string s;
@@ -134,8 +174,9 @@ int main()
     }
 */
 
-    //std::cout << sln.wordBreak_naive(s, dict) << endl;
     //std::cout << sln.wordBreak(s, dict) << endl;
-    std::cout << sln.wordBreak(s1, dict1) << endl;
+    //std::cout << sln.wordBreak(s1, dict1) << endl;
+    std::cout << sln.wordBreak1(s1, dict1) << endl;
+    //std::cout << sln.wordBreak_naive(s1, dict1) << endl;
     return 0;
 }

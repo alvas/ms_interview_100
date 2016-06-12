@@ -7,6 +7,55 @@ using namespace std;
 
 class Solution {
 public:
+    int minSubArrayLenNlogN(int s, vector<int>& nums) {
+        int n = nums.size();
+        vector<int> sums(n + 1, 0);
+        int res = n + 1;
+
+        // sum[i] : sum of nums[0] till nums[i - 1]
+        for (int i = 1; i < n + 1; ++i)
+        {
+            sums[i] = sums[i - 1] + nums[i -1];
+        }
+
+        for (int i = 0; i < n + 1; ++i)
+        {
+            // binary search for sums[right] > sums[i] + s,
+            // so sum of nums[i + 1] ... nums[right] > s
+            // IMPORTANT!! because all numbers are positive, so sums[] is in ascending order.
+            // This is the requirement that we can use binary search.
+            int right = searchRight(i + 1, n, sums[i] + s, sums);
+            
+            if (right == n + 1)
+            {
+                break;
+            }
+
+            res = min(res, right - i);
+        }
+
+        return res == n + 1 ? 0 : res;
+    }
+
+    int searchRight(int left, int right, int key, vector<int> &sums)
+    {
+        while (left <= right)
+        {
+            int m = (left + right) / 2;
+
+            if (sums[m] >= key)
+            {
+                right = m - 1;
+            }
+            else
+            {
+                left = m + 1;
+            }
+        }
+
+        return left;
+    }
+
     int minSubArrayLen(int s, vector<int>& nums) {
         int sz = nums.size();
 
@@ -23,6 +72,7 @@ public:
 
         while (end < sz)
         {
+            // expanding the range on the right
             while (start < sz && sum < s)
             {
                 sum += nums[start++];
@@ -34,6 +84,7 @@ public:
                 minV = min(minV, start - end);
             }
 
+            // shrinking the range on the left
             while (end < start && sum >= s)
             {
                 sum -= nums[end++];
@@ -57,6 +108,32 @@ public:
         }
 
         return minV;
+    }
+
+
+    int minSubArrayLen1(int s, vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> sum(n, vector<int>(n, 0));
+
+        for (int i = 0; i < n; ++i)
+        {
+            sum[i][i] = nums[i];
+        }
+
+        for (int i = 1; i < n; ++i)
+        {
+            for (int j = 0; j + i < n; ++j)
+            {
+                sum[j][i + j] = sum[j][i + j - 1] + nums[j];
+
+                if ((sum[j][i + j]) > s)
+                {
+                    return i;
+                }
+            }
+        }
+
+        return 0;
     }
 };
 

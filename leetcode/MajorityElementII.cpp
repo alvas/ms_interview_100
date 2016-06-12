@@ -8,6 +8,45 @@ using namespace std;
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
+        vector<int> res;
+        int a = 0, b = 0, ca = 0, cb = 0;
+
+        for (auto i : nums)
+        {
+            if (i == a || ca == 0)
+            {
+                a = i;
+                ca++;
+            }
+            else if (i == b || cb == 0)
+            {
+                b = i;
+                cb++;
+            }
+            else
+            {
+                ca--;
+                cb--;
+            }
+        }
+
+        ca = std::count(nums.begin(), nums.end(), a);
+        cb = std::count(nums.begin(), nums.end(), b);
+
+        if (ca > nums.size() / 3)
+        {
+            res.push_back(a);
+        }
+
+        if (cb > nums.size() / 3)
+        {
+            res.push_back(b);
+        }
+
+        return res;
+    }
+
+    vector<int> majorityElement1(vector<int>& nums) {
         int sz = nums.size();
         vector<int> v;
         

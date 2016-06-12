@@ -10,6 +10,45 @@ using namespace std;
 
 class Solution {
 public:
+    vector<string> wordBreak(string s, unordered_set<string>& wordDict) {
+        string result;
+        vector<string> sols;
+        int len = s.size();
+        vector<bool> possible(len + 1, true);
+        findWordBreak(0, s, wordDict, len, result, sols, possible);
+        return sols;
+    }
+
+    void findWordBreak(int start, string &s, unordered_set<string> &dict, int len, string &result, vector<string> &sols, vector<bool> &possible)
+    {
+        if (start == len)
+        {
+            sols.push_back(result.substr(0, result.size() - 1));
+            return;
+        }
+
+        for (int i = start; i < len; ++i)
+        {
+            string piece = s.substr(start, i - start + 1);
+
+            if (dict.find(piece) != dict.end() && possible[i + 1])
+            {
+                result.append(piece).append(" ");
+
+                int beforeChange = sols.size();
+
+                findWordBreak(i + 1, s, dict, len, result, sols, possible);
+
+                if (sols.size() == beforeChange)
+                {
+                    possible[i + 1] = false;
+                }
+
+                result.resize(result.size() - piece.size() - 1);
+            }
+        }
+    }
+
     vector<string> wordBreak_slow(string s, unordered_set<string>& wordDict) {
         vector<string> ret;
         int nS = s.size(), nD = wordDict.size();
@@ -101,19 +140,21 @@ public:
         string c;
         // use possible to prune the calculation, possible[i] = true means [i, n] has solution
         vector<bool> possible(nS + 1, true);
-        breakWord(s, nS, 0, wordDict, c, ret, possible);
+        breakWord(s, 0, wordDict, c, ret, possible);
         return ret;
     }
 
-    void breakWord(string &s, int nS, int sIdx, unordered_set<string> &w, string &c, vector<string> &ret, vector<bool> &possible)
+    void breakWord(string &s, int sIdx, unordered_set<string> &w, string &c, vector<string> &ret, vector<bool> &possible)
     {
-        if (sIdx == nS)
+        int n = s.size();
+
+        if (sIdx == n)
         {
             ret.push_back(c);
             return;
         }
 
-        for (int i = sIdx; i < nS; ++i)
+        for (int i = sIdx; i < n; ++i)
         {
             string c2 = s.substr(sIdx, i - sIdx + 1);
 
@@ -121,10 +162,11 @@ public:
             {
                 string c3 = c + (sIdx == 0 ? "" : " ") + c2;
                 int size1 = ret.size();
-                breakWord(s, nS, i + 1, w, c3, ret, possible);
+                breakWord(s, i + 1, w, c3, ret, possible);
 
                 if (ret.size() == size1)
                 {
+                    // set possible[i + 1] to false
                     possible[i + 1] = false;
                 }
             }
@@ -139,7 +181,9 @@ int main()
     std::unordered_set<string> word = {"cat", "cats", "and", "sand", "dog"};
     std::vector<string> v = sln.wordBreak_dp(s, word);
     std::vector<string> v1 = sln.wordBreak_slow(s, word);
+    std::vector<string> v2 = sln.wordBreak(s, word);
     printVector<string>(v);
     printVector<string>(v1);
+    printVector<string>(v2);
     return 0;
 }

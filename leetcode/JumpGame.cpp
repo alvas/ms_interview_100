@@ -8,6 +8,23 @@ using namespace std;
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
+        int maxIdx = 0;
+        int n = nums.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (i > maxIdx || maxIdx >= (n - 1))
+            {
+                break;
+            }
+
+            maxIdx = max(maxIdx, i + nums[i]);
+        }
+
+        return maxIdx >= (n - 1) ? true : false;
+    }
+
+    bool canJump1(vector<int>& nums) {
         int size = nums.size();
         int max = INT_MIN;
 

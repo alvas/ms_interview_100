@@ -37,7 +37,7 @@ public:
 
         int sz = candidates.size();
 
-        for (int i = b; i < sz; )
+        for (int i = b; i < sz; ++i)
         {
             if (i > b && candidates[i] == candidates[i - 1])
             {

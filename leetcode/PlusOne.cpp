@@ -7,9 +7,6 @@ using namespace std;
 class Solution {
 public:
     vector<int> plusOne(vector<int> &digits) {
-    }
-
-    vector<int> plusOne1(vector<int> &digits) {
         vector<int> result;
         int carry = 1, size = digits.size();
 

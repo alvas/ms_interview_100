@@ -15,6 +15,38 @@ using namespace std;
  */
 class Solution {
 public:
+    ListNode* reverseBetween1(ListNode* head, int m, int n) {
+        if (m < 1 || m >= n || !head)
+        {
+            return head;
+        }
+
+        ListNode *dummy = new ListNode(0);
+        dummy->next = head;
+        head = dummy;
+
+        for (int i = 0; i < m - 1; ++i)
+        {
+            head = head->next;
+        }
+
+        ListNode *pre = head->next, *cur = pre->next;
+
+        for (int i = 0; i < n - m; ++i)
+        {
+            ListNode *tmp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+
+        head->next->next = cur;
+        head->next = pre;
+        head = dummy->next;
+        delete dummy;
+        return head;
+    }
+
     ListNode* reverseBetween(ListNode* head, int m, int n) {
         ListNode *newHead = head;
 

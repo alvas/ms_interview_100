@@ -5,6 +5,37 @@ using namespace std;
 class Solution {
 public:
     double myPow(double x, int n) {
+        if (n < 0)
+        {
+            return 1.0 / power(x, -n);
+        }
+        else
+        {
+            return power(x, n);
+        }
+    }
+
+    double power(double x, int n)
+    {
+        if (n == 0)
+        {
+            return 1;
+        }
+
+        double v = power(x, n / 2);
+        v *= v;
+
+        if (n % 2)
+        {
+            return v * x;
+        }
+        else
+        {
+            return v;
+        }
+    }
+
+    double myPow1(double x, int n) {
         // When x is 0, then the result is always 0.
         if (x == 0.0)
         {

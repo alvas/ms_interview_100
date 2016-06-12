@@ -103,7 +103,7 @@ public:
 int main()
 {
     Solution sln;
-    std::vector<vector<int>> nums = {/*{1, 1, 1}, {1, 1, 2}, {3, 3, 0, 0, 2, 3, 2}*/ {3, 0, 3, 0}};
+    std::vector<vector<int>> nums = {/*{1, 1, 1}, {1, 1, 2},*/ {3, 3, 0, 0, 2, 3, 2}/*, {3, 0, 3, 0}*/};
 
     for (auto a : nums)
     {

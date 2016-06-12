@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <queue>
 #include <set>
 #include <utility>
 #include <vector>
@@ -8,8 +9,104 @@ using namespace std;
 
 class Solution {
 public:
-    // Need to improve.
+    bool canFinishDFS(int numCourses, vector<pair<int, int> >& prerequisites) {
+        vector<vector<int>> graph(numCourses, vector<int>(0));
+        vector<int> visit(numCourses, 0);
+
+        for (auto a : prerequisites)
+        {
+            graph[a.second].push_back(a.second);
+        }
+
+        for (int i = 0; i < numCourses; ++i)
+        {
+            if (!canFinishDFS(graph, visit, i))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    bool canFinishDFS(vector<vector<int>> &graph, vector<int> &visit, int i)
+    {
+        if (visit[i] == -1)
+        {
+            return false;
+        }
+
+        // If the visited node is OK, then just return, don't waste time to traverse it again.
+        if (visit[i] == 1)
+        {
+            return true;
+        }
+
+        visit[i] = -1;
+
+        for (auto a : graph[i])
+        {
+            if (!canFinishDFS(graph, visit, a))
+            {
+                return false;
+            }
+        }
+
+        // Set the successful visisted node to 1 to shotcut traverse
+        visit[i] = 1;
+
+        return true;
+    }
+
     bool canFinish(int numCourses, vector<pair<int, int> >& prerequisites) {
+        vector<vector<int>> graph(numCourses, vector<int>(0));
+        vector<int> in(numCourses, 0);
+
+        for (auto a : prerequisites)
+        {
+            graph[a.second].push_back(a.second);
+            ++in[a.second];
+        }
+
+        queue<int> q;
+
+        for (int i = 0; i < numCourses; ++i)
+        {
+            if (in[i] == 0)
+            {
+                q.push(i);
+            }
+        }
+
+        while (!q.empty())
+        {
+            int t = q.front();
+            q.pop();
+
+            for (auto a : graph[t])
+            {
+                --in[a];
+
+                if (in[a] == 0)
+                {
+                    q.push(a);
+                }
+            }
+        }
+
+        for (int i = 0; i < numCourses; ++i)
+        {
+            if (in[i] != 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    // Need to improve.
+    bool canFinish1(int numCourses, vector<pair<int, int> >& prerequisites) {
         bool possible = true;
         int sz = prerequisites.size();
         vector<vector<bool> > g(numCourses, vector<bool>(numCourses));

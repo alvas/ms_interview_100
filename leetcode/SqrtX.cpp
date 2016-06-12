@@ -44,6 +44,7 @@ public:
             return 0;
         }
 
+        // Newton-Raphson method
         int res = 0;
         int bit = 1 << 30;
 

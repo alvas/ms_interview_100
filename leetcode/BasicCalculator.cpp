@@ -1,12 +1,54 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
     int calculate(string s) {
+        stack<int, vector<int>> stk(vector<int>(2, 1));
+        int res = 0;
+        int n = s.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            char c = s[i];
+
+            if (isdigit(c))
+            {
+                int num = c - '0';
+                int j = i + 1;
+
+                while (j < n && isdigit(s[j]))
+                {
+                    num = num * 10 + (s[j] - '0');
+                    j++;
+                }
+
+                res += stk.top() * num;
+                stk.pop();
+                i = j - 1;
+            }
+            else if (c == '+' || c == '(')
+            {
+                stk.push(stk.top());
+            }
+            else if (c == '-')
+            {
+                stk.push(-1 * stk.top());
+            }
+            else if (c == ')')
+            {
+                stk.pop();
+            }
+        }
+
+        return res;
+    }
+
+    int calculate1(string s) {
         int sz = s.size();
 
         if (sz == 0)

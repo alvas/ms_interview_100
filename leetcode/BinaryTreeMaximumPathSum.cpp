@@ -35,6 +35,8 @@ public:
         int left = findMax(root->left, maxSum);
         int right = findMax(root->right, maxSum);
         maxSum = max(root->val + left + right, maxSum);
+
+        // IMPORTANT!! We are not returning maxSumhere. 
         int ret = root->val + max(left, right);
         return ret ? ret : 0;
     }

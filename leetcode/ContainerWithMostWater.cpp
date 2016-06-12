@@ -32,6 +32,8 @@ public:
                 r--;
             }
         }
+
+        return maxA;
     }
 
     int maxArea2(vector<int>& height) {

@@ -6,7 +6,28 @@ using namespace std;
 
 class Solution {
 public:
-    vector<string> anagrams(vector<string>& strs) {
+    vector<vector<string>> anagrams(vector<string>& strs) {
+        vector<vector<string>> res;
+
+        int n = strs.size();
+        map<string, vector<string>> m;
+
+        for (int i = 0; i < n; ++i)
+        {
+            string a = strs[i];
+            sort(a.begin(), a.end());
+            m[a].push_back(strs[i]);
+        }
+
+        for (auto itr = m.begin(); itr != m.end(); ++itr)
+        {
+            res.push_back(itr->second);
+        }
+
+        return res;
+    }
+
+    vector<string> anagrams1(vector<string>& strs) {
         vector<string> v;
         int sz = strs.size();
 

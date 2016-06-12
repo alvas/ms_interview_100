@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 #include <set>
 #include <string>
 #include <vector>
@@ -9,8 +10,34 @@ using namespace std;
 
 class Solution {
 public:
-    // Need to improve.
     vector<string> findRepeatedDnaSequences(string s) {
+        int n = s.size();
+        vector<string> res;
+        // use unordered map would improve performance a lot here
+        unordered_map<string, int> m;
+
+        // be careful about the boundary here.
+        for (int i = 0; i <= n - 10; ++i)
+        {
+            string tmp = s.substr(i, 10);
+            auto itr = m.find(tmp);
+
+            if (itr == m.end())
+            {
+                m[tmp] = 1;
+            }
+            else if (itr->second == 1)
+            {
+                res.push_back(tmp);
+                m[tmp] = 2;
+            }
+        }
+
+        return res;
+    }
+
+    // Need to improve.
+    vector<string> findRepeatedDnaSequences1(string s) {
         int sz = s.size();
         vector<string> v;
 
@@ -144,7 +171,8 @@ int main()
 {
     Solution sln;
     //string s("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT");
-    string s("AAAAAAAAAAAA");
+    //string s("AAAAAAAAAAAA");
+    string s("AAAAAAAAAAA");
     std::cout << s << endl;
     vector<string> v = sln.findRepeatedDnaSequences(s);
     printVector<string>(v);
