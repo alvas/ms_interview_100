@@ -9,6 +9,56 @@ using namespace std;
 class Solution {
 public:
     vector<string> restoreIpAddresses(string s) {
+        vector<string> res;
+        int n = s.size();
+
+        for (int i = 1; i <= 3; ++i)
+        {
+            for (int j = 1; j <= 3; ++j)
+            {
+                for (int k = 1; k <= 3; ++k)
+                {
+                    for (int l = 1; l <= 3; ++l)
+                    {
+                        if (i + j + k +l == n)
+                        {
+                            auto itr = s.begin();
+                            string a(itr + 0, itr + i);
+                            string b(itr + i, itr + i + j);
+                            string c(itr + i + j, itr + i + j + k);
+                            string d(itr + i + j + k, itr + n);
+
+                            if (ok(a) && ok(b) && ok(c) && ok(d))
+                            {
+                                res.push_back(a + "." + b + "." + c + "." + d);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+
+    bool ok(string x)
+    {
+        if (x.size() != 1 && x[0] == '0')
+        {
+            return false;
+        }
+
+        int res = 0;
+        
+        for (auto i : x)
+        {
+            res = res * 10 + i - '0';
+        }
+
+        return res < 256;
+    }
+
+    vector<string> restoreIpAddresses1(string s) {
         vector<string> r;
         int sz = s.size();
 

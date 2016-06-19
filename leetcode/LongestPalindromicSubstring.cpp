@@ -6,10 +6,41 @@ using namespace std;
 
 class Solution {
 public:
+    string longestPalindrome(string s) {
+        int n = s.size();
+
+        if (n <= 1)
+        {
+            return s;
+        }
+
+        int start = 0, maxLen = 1;
+        vector<vector<bool>> isPal(n, vector<bool>(n, false));
+
+        for (int i = n - 1; i >= 0; --i)
+        {
+            for (int j = i; j < n; ++j)
+            {
+                if ((i + 1 > j - 1 || isPal[i + 1][j - 1]) && s[i] == s[j])
+                {
+                    isPal[i][j] = true;
+
+                    if (j - i + 1 > maxLen)
+                    {
+                        maxLen = j - i + 1;
+                        start = i;
+                    }
+                }
+            }
+        }
+
+        return s.substr(start, maxLen);
+    }
+
     // use O(n^2) time and space time complexity
     //
     // expand around center
-    string longestPalindrome(string s) {
+    string longestPalindrome2(string s) {
         int sz = s.size(), maxLen = 0, b = 0;
 
         for (int i = 0; i < sz; ++i)

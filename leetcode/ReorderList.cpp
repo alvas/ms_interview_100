@@ -14,8 +14,60 @@ using namespace std;
  */
 class Solution {
 public:
-    // Need to improve performance.
     void reorderList(ListNode* head) {
+        ListNode *fast = head, *slow = head;
+
+        while (true)
+        {
+            fast = fast->next;
+
+            if (fast == nullptr)
+            {
+                break;
+            }
+
+            fast = fast->next;
+
+            if (fast == nullptr)
+            {
+                break;
+            }
+
+            slow = slow->next;
+        }
+
+        if (slow == nullptr)
+        {
+            return;
+        }
+
+        ListNode *cur = slow;
+        ListNode *pre = slow->next;
+        cur->next = nullptr;
+
+        while (pre != nullptr)
+        {
+            ListNode *tmp = pre->next;
+            pre->next = cur;
+            cur = pre;
+            pre = tmp;
+        }
+
+        ListNode *first = head;
+        ListNode *second = cur;
+
+        while (second != nullptr && first != nullptr && first != second)
+        {
+            ListNode *tmp = second->next;
+            second->next = first->next;
+            first->next = second;
+            first = second->next;
+            second = tmp;
+        }
+    }
+
+    // Need to improve performance.
+    void reorderList1(ListNode* head) {
         if (head == NULL || head->next == NULL)
         {
             return;

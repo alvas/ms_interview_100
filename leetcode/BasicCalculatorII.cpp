@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <stack>
 
@@ -6,7 +7,98 @@ using namespace std;
 
 class Solution {
 public:
+    int calculate2(string s) {
+        int result = 0, inter_res = 0;
+        char op = '+';
+        int n = s.size();
+
+        for (int pos = s.find_first_not_of(' '); pos < n; pos = s.find_first_not_of(' '))
+        {
+            char c = s[pos];
+
+            if (isdigit(c))
+            {
+                int num = c - '0';
+
+                while (isdigit(s[++pos]))
+                {
+                    num = num * 10 + s[pos] - '0';
+                }
+
+                switch (op)
+                {
+                    case '+':
+                        {
+                            inter_res += num;
+                            break;
+                        }
+                    case '-':
+                        {
+                            inter_res -= num;
+                            break;
+                        }
+                    case '*':
+                        {
+                            inter_res *= num;
+                            break;
+                        }
+                    case '/':
+                        {
+                            inter_res /= num;
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                if (c == '+' || c == '-')
+                {
+                    result += inter_res;
+                    inter_res = 0;
+                }
+
+                op = s[pos++];
+            }
+        }
+
+        return result + inter_res;
+    }
+
     int calculate(string s) {
+        istringstream in(s + "+");
+        long long total = 0, term = 0, sign = 1, n = 0;
+        // if the first term is '+' or '-', it would have problem.
+        in >> term;
+        char op;
+
+        while (in >> op)
+        {
+            if (op == '+' || op == '-')
+            {
+                total += sign * term;
+                //sign = 44 - op; // op == '+' ? 1 : -1
+                sign = (op == '+' ? 1 : -1);
+                in >> term;
+            }
+            else
+            {
+                in >> n;
+
+                if (op == '*')
+                {
+                    term *= n;
+                }
+                else
+                {
+                    term /= n;
+                }
+            }
+        }
+
+        return total;
+    }
+
+    int calculate1(string s) {
         int sz = s.size();
 
         if (sz == 0)

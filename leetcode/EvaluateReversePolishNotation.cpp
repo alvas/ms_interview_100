@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <map>
 #include <stack>
@@ -11,6 +12,51 @@ using namespace std;
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
+        stack<int> stk;
+        int n = tokens.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            string s = tokens[i];
+
+            if (s == "+" || s == "-" || s == "*" || s == "/")
+            {
+                int y = stk.top();
+                stk.pop();
+                int x = stk.top();
+                stk.push(evaluate(x, y, s));
+            }
+            else
+            {
+               stk.push(stoi(tokens[i], nullptr, 10)); 
+            }
+        }
+
+        return stk.top();
+    }
+
+    int evaluate(int x, int y, string op)
+    {
+        if (op == "+")
+        {
+            return x + y;
+        }
+        else if (op == "-")
+        {
+            return x - y;
+        }
+        else if (op == "*")
+        {
+            return x * y;
+        }
+        else if (op == "/")
+        {
+            assert(y != 0);
+            return x / y;
+        }
+    }
+
+    int evalRPN1(vector<string>& tokens) {
         int val = 0;
         int sz = tokens.size();
         map<string, int> m;

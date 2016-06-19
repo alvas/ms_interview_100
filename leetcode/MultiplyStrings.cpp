@@ -6,6 +6,47 @@ using namespace std;
 class Solution {
 public:
     string multiply(string num1, string num2) {
+        if (num1.empty() || num2.empty())
+        {
+            return "";
+        }
+
+        reverse(num1.begin(), num1.end());
+        reverse(num2.begin(), num2.end());
+        string res(num1.size() + num2.size(), '0');
+
+        for (int j = 0; j < num2.size(); ++j)
+        {
+            int carry = 0;
+            int val = num2[j] - '0';
+
+            for (int i = 0; i < num1.size(); ++i)
+            {
+                carry += ((num1[i] - '0') * val + (res[i + j] - '0'));
+                res[i + j] = carry % 10 + '0';
+                carry /= 10;
+            }
+
+            if (carry != 0)
+            {
+                res[num1.size() + j] = carry + '0';
+            }
+        }
+
+        reverse(res.begin(), res.end());
+
+        int count = 0;
+
+        while (count < res.size() - 1 && res[count] == '0')
+        {
+            count++;
+        }
+
+        res.erase(0, count);
+        return res;
+    }
+
+    string multiply1(string num1, string num2) {
         int sz1 = num1.size(), sz2 = num2.size();
         string result;
 

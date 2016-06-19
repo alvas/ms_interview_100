@@ -18,8 +18,94 @@ public:
     TrieNode *next;
 };
 
+class TrieNode1 {
+public:
+    TrieNode1()
+    {
+        for (int i = 0; i < 26; ++i)
+        {
+            next[i] = nullptr;
+        }
+
+        isString = false;
+    }
+
+    TrieNode1 *next[26];
+    bool isString;
+};
+
+class Trie1 {
+public:
+    Trie1() {
+        root = new TrieNode1();
+    }
+
+    void insert(string word)
+    {
+        TrieNode1 *p = root;
+        int n = word.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (p->next[word[i] - 'a'] == nullptr)
+            {
+                p->next[word[i] - 'a'] = new TrieNode1();
+            }
+
+            p = p->next[word[i] - 'a'];
+        }
+
+        p->isString = true;
+    }
+
+    bool search(string word)
+    {
+        TrieNode1 *p = root;
+        int n = word.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (p == nullptr)
+            {
+                return false;
+            }
+
+            p = p->next[word[i] - 'a'];
+        }
+
+        if (p == nullptr || p->isString == false)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    bool startsWith(string prefix)
+    {
+        TrieNode1 *p = root;
+        int n = prefix.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            p = p->next[prefix[i] - 'a'];
+
+            if (p == nullptr)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+private:
+    TrieNode1 *root;
+};
+
 class Trie {
 public:
+
     Trie() {
         root = new TrieNode();
     }

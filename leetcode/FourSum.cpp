@@ -56,6 +56,7 @@ public:
             kSum(nums, target - nums[i], k - 1, i + 1, v, res);
             v.pop_back();
 
+            // remove duplicated
             while (++i < m - k + 1 && nums[i] == nums[i - 1])
             {
                 ;

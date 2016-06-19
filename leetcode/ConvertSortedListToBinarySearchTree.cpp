@@ -50,6 +50,8 @@ public:
         TreeNode *leftChild = sortedListToBST(head, start, mid - 1);
         TreeNode *parent = new TreeNode(head->val);
         parent->left = leftChild;
+
+        // we need to move head ahead, so we need to use ListNode *&
         head = head->next;
         parent->right = sortedListToBST(head, mid + 1, end);
         return parent;

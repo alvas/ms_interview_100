@@ -16,6 +16,89 @@ using namespace std;
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr)
+        {
+            return head;
+        }
+
+        ListNode *fast = head, *slow = head;
+
+        while (fast->next != nullptr && fast->next->next != nullptr)
+        {
+            fast = fast->next;
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+        ListNode *mid = slow->next;
+        // set the tail next to null
+        slow->next = nullptr;
+
+        ListNode *list1 = sortList(head);
+        ListNode *list2 = sortList(mid);
+
+        ListNode *sorted = merge(list1, list2);
+        return sorted;
+    }
+
+    ListNode *merge(ListNode *list1, ListNode *list2)
+    {
+        if (list1 == nullptr)
+        {
+            return list2;
+        }
+
+        if (list2 == nullptr)
+        {
+            return list1;
+        }
+
+        // process head fist
+        ListNode *head = nullptr;
+
+        if (list1->val < list2->val)
+        {
+            head = list1;
+            list1 = list1->next;
+        }
+        else
+        {
+            head = list2;
+            list2 = list2->next;
+        }
+
+        ListNode *tmp = head;
+
+        while (list1 != nullptr && list2 != nullptr)
+        {
+            if (list1->val < list2->val)
+            {
+                tmp->next = list1;
+                tmp = list1;
+                list1 = list1->next;
+            }
+            else
+            {
+                tmp->next = list2;
+                tmp = list2;
+                list2 = list2->next;
+            }
+        }
+
+        if (list1 != nullptr)
+        {
+            tmp->next = list1;
+        }
+
+        if (list2 != nullptr)
+        {
+            tmp->next = list2;
+        }
+
+        return head;
+    }
+
+    ListNode* sortList1(ListNode* head) {
         if (head == NULL || head->next == NULL)
         {
             return head;
@@ -50,7 +133,7 @@ public:
         h = mergeSortList(h, m1);
         h2 = mergeSortList(h2, m2);
 
-        return merge(h, m1, h2, m2);
+        return merge1(h, m1, h2, m2);
     }
 
     int getLen(const ListNode *h)
@@ -79,7 +162,7 @@ public:
         return h;
     }
 
-    ListNode *merge(ListNode *h1, int m1, ListNode *h2, int m2)
+    ListNode *merge1(ListNode *h1, int m1, ListNode *h2, int m2)
     {
         ListNode *newHead = NULL, *t = NULL, *cur = NULL;
 
