@@ -3,81 +3,80 @@
 #
 # The source code example is from https://sourcemaking.com/design_patterns
 # creational patterns
+CFLAGS = -std=c++11
+
+# In order to compile the AFTER section, instead of BEFORE section, 
+# use this command: make METHOD=-DAFTER AbstractFactory
+METHOD=-DNORMAL
 AbstractFactory:
-	g++ -DSIMPLE AbstractFactory.cpp
+	g++ $(CFLAGS) $(METHOD) -DSIMPLE AbstractFactory.cpp
 
 Builder:
-	g++ Builder.cpp
+	g++ $(CFLAGS) Builder.cpp
 
 FactoryMethod:
-	g++ FactoryMethod.cpp
+	g++ $(CFLAGS) $(METHOD) FactoryMethod.cpp
 
 Prototype:
-	g++ Prototype.cpp
+	g++ $(CFLAGS) $(METHOD) Prototype.cpp
 
 Singleton:
-	g++ Singleton.cpp
-
-ObjectPool:
-	g++ ObjectPool.cpp
+	g++ $(CFLAGS) $(METHOD) Singleton.cpp
 
 
 # structural patterns
 Adaptor:
-	g++ Adaptor.cpp
+	g++ $(CFLAGS) Adaptor.cpp
 
 Composite:
-	g++ Composite.cpp
+	g++ $(CFLAGS) Composite.cpp
 
 Decorator:
-	g++ Decorator.cpp
+	g++ $(CFLAGS) Decorator.cpp
 
 Facade:
-	g++ Facade.cpp
+	g++ $(CFLAGS) Facade.cpp
 
 Flyweight:
-	g++ Flyweight.cpp
+	g++ $(CFLAGS) Flyweight.cpp
 
 Proxy:
-	g++ Proxy.cpp
-
-PrivateClassData:
-	g++ PrivateClassData.cpp
+	g++ $(CFLAGS) Proxy.cpp
 
 
 # behavioral patterns
+Bridge:
+	g++ $(CFLAGS) Bridge.cpp
+
 ChainOfResponsibility:
-	g++ ChainOfResponsibility.cpp
+	g++ $(CFLAGS) ChainOfResponsibility.cpp
 
 Command:
-	g++ Command.cpp
+	g++ $(CFLAGS) Command.cpp
 
 Interpreter:
-	g++ Interpreter.cpp
+	g++ $(CFLAGS) Interpreter.cpp
 
 Iterator:
-	g++ Iterator.cpp
+	g++ $(CFLAGS) Iterator.cpp
 
 Mediator:
-	g++ Mediator.cpp
+	g++ $(CFLAGS) Mediator.cpp
 
 Memento:
-	g++ Memento.cpp
+	g++ $(CFLAGS) Memento.cpp
 
 Observer:
-	g++ Observer.cpp
+	g++ $(CFLAGS) Observer.cpp
 
 State:
-	g++ State.cpp
+	g++ $(CFLAGS) State.cpp
 
 Strategy:
-	g++ Strategy.cpp
+	g++ $(CFLAGS) Strategy.cpp
 
 TemplateMethod:
-	g++ TemplateMethod.cpp
+	g++ $(CFLAGS) TemplateMethod.cpp
 
 Visitor:
-	g++ Visitor.cpp
-
-NullObject:
-	g++ NullObject.cpp
+	g++ $(CFLAGS) Visitor.cpp
