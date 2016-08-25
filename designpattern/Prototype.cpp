@@ -11,33 +11,42 @@ enum imageType {
 class Image {
     public:
         virtual void draw() = 0;
-        virtual ~Image() {}
-        static Image *findAndClone(imageType);
+        // Can't delete pointer in _prototypes vector, because
+        // if it is a pointer to subclass, it would cause circular
+        // destruction.
+        virtual ~Image() { }
+
+        static Image* findAndClone(imageType);
+
     protected:
         virtual imageType returnType() = 0;
         virtual Image* clone() = 0;
 
-        static void addPrototype(Image* image)
-        {
-            _prototypes[_nextSlot++] = image;
+        static void addPrototype(Image* image) {
+            _prototypes.push_back(image);
         }
 
     private:
-        static Image* _prototypes[10];
-        static int _nextSlot;
+        // client side use shared_ptr to manage instance of Image and free it
+        // If we use vector<shared_ptr<Image>>, it would require a default instance
+        // for shared_ptr<Image>(). And Image is a pure virtual class, we can NOT
+        // instantiate it.
+        static vector<Image*> _prototypes;
 };
 
-Image* Image::_prototypes[];
-int Image::_nextSlot;
+vector<Image*>Image::_prototypes;
 
 Image* Image::findAndClone(imageType type) {
-    for (int i = 0; i < _nextSlot; ++i) {
-        if (_prototypes[i]->returnType() == type) {
-            return _prototypes[i]->clone();
+    auto itr = find_if(_prototypes.begin(), _prototypes.end(), [&type](Image* i) { 
+        if (i->returnType() == type) {
+            return true;
         }
-    }
+        else {
+            return false;
+        }
+    });
 
-    return nullptr;
+    return itr != _prototypes.end() ? (*itr)->clone() : nullptr;
 }
 
 class LandSatImage: public Image {
@@ -61,7 +70,7 @@ class LandSatImage: public Image {
 
     private:
         static LandSatImage _landSatImage;
-
+        // this ctor will be called by static variable instantiation
         LandSatImage() {
             addPrototype(this);
         }
@@ -93,11 +102,12 @@ class SpotImage: public Image {
         }
 
     private:
+        static SpotImage _spotImage;
+        // this ctor will be called by static variable instantiation
         SpotImage() {
             addPrototype(this);
         }
 
-        static SpotImage _spotImage;
         int _id;
         static int _count;
 };
@@ -105,25 +115,20 @@ class SpotImage: public Image {
 SpotImage SpotImage::_spotImage;
 int SpotImage::_count = 1;
 
-const int NUM_IMAGES = 8;
-imageType input[NUM_IMAGES] = {
+const vector<imageType> input = {
     LSAT, LSAT, LSAT, SPOT, LSAT, SPOT, SPOT, LSAT
 };
 
-int main()
-{
-    Image *images[NUM_IMAGES];
+int main() {
+    vector<shared_ptr<Image>> images;
 
-    for (int i = 0; i < NUM_IMAGES; ++i) {
-        images[i] = Image::findAndClone(input[i]);
+    for (auto &i: input) {
+        images.push_back(shared_ptr<Image>(Image::findAndClone(i)));
     }
 
-    for (int i = 0; i < NUM_IMAGES; ++i) {
-        images[i]->draw();
-    }
-
-    for (int i = 0; i < NUM_IMAGES; ++i) {
-        delete images[i];
+    for (auto &i: images)
+    {
+        i->draw();
     }
 }
 #endif
@@ -156,13 +161,11 @@ class Curly: public Stooge {
         }
 };
 
-int main()
-{
-    vector<Stooge*> roles;
+int main() {
+    vector<shared_ptr<Stooge>> roles;
     int choice;
 
-    while (true)
-    {
+    while (true) {
         cout << "Larry(1) Moe(2) Curly(3) Go(0): ";
         cin >> choice;
 
@@ -173,17 +176,17 @@ int main()
         switch (choice) {
             case 1:
                 {
-                    roles.push_back(new Larry);
+                    roles.push_back(shared_ptr<Stooge>(new Larry));
                     break;
                 }
             case 2:
                 {
-                    roles.push_back(new Moe);
+                    roles.push_back(shared_ptr<Stooge>(new Moe));
                     break;
                 }
             case 3:
                 {
-                    roles.push_back(new Curly);
+                    roles.push_back(shared_ptr<Stooge>(new Curly));
                     break;
                 }
             default:
@@ -195,10 +198,6 @@ int main()
 
     for (auto &a: roles) {
         a->slap_stick();
-    }
-
-    for (auto &a: roles) {
-        delete a;
     }
 }
 #endif
@@ -215,11 +214,13 @@ class Factory {
     public:
         static Stooge* make_stooge(int choice);
     private:
-        static Stooge* s_prototypes[4];
+        // Because Stooge is a pure virtual class, it can't be instantiated.
+        // We can NOT use vector<Stooge> that needs to instantiate Stooge.
+        static vector<Stooge *> s_prototypes;
 };
 
 int main() {
-    vector<Stooge*> roles;
+    vector<shared_ptr<Stooge>> roles;
     int choice = 0;
 
     while (true) {
@@ -230,15 +231,11 @@ int main() {
             break;
         }
 
-        roles.push_back(Factory::make_stooge(choice));
+        roles.push_back(shared_ptr<Stooge>(Factory::make_stooge(choice)));
     }
 
     for (auto &a: roles) {
         a->slap_stick();
-    }
-
-    for (auto &a: roles) {
-        delete a;
     }
 }
 
@@ -266,8 +263,8 @@ class Curly: public Stooge {
         }
 };
 
-Stooge* Factory::s_prototypes[] = {
-    0, new Larry, new Moe, new Curly
+vector<Stooge*> Factory::s_prototypes = {
+    nullptr, new Larry, new Moe, new Curly
 };
 
 Stooge* Factory::make_stooge(int choice) {

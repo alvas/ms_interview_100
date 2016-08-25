@@ -3,48 +3,118 @@
 
 using namespace std;
 
+#ifdef NORMAL
+class Document {
+    public:
+        Document(const string &fn): name(fn) { }
+
+        virtual void Open() = 0;
+        virtual void Close() = 0;
+        virtual ~Document() {}
+
+        string GetName() {
+            return name;
+        }
+
+    private:
+        string name;
+};
+
+class MyDocument: public Document {
+    public:
+        MyDocument(const string &fn): Document(fn) {}
+        void Open() {
+            cout << "    MyDocument: Open()" << endl;
+        }
+
+        void Close() {
+            cout << "    MyDocument: Close()" << endl;
+        }
+};
+
+class Application {
+    public:
+        Application() {
+            cout << "Application: ctor" << endl;
+        }
+
+        void NewDocument(const string &name) {
+            cout << "Application: NewDocument()" << endl;
+            _docs.push_back(shared_ptr<Document>(CreateDocument(name)));
+            _docs.back()->Open();
+        }
+
+        void OpenDocument() {}
+        void ReportDocs();
+
+        virtual Document *CreateDocument(const string &) = 0;
+    private:
+        // Document is a virtual base class, we can't use vector<Document> _docs,
+        // because we can't allocate an object of abstract class type Document
+        vector<shared_ptr<Document>> _docs;
+};
+
+void Application::ReportDocs() {
+    cout << "Application: ReportDocs()" << endl;
+
+    for (auto &a: _docs) {
+        cout << "    " << a->GetName() << endl;
+    }
+}
+
+class MyApplication: public Application {
+    public:
+        MyApplication() {
+            cout << "MyApplication: ctor" << endl;
+        }
+
+        Document *CreateDocument(const string &fn) {
+            cout << "    MyApplication: CreateDocument()" << endl;
+            return new MyDocument(fn);
+        }
+};
+
+int main() {
+    MyApplication myApp;
+    myApp.NewDocument("foo");
+    myApp.NewDocument("bar");
+    myApp.ReportDocs();
+}
+#endif
+
 #ifdef BEFORE
-class Stooge
-{
+class Stooge {
     public:
         virtual void slap_stick() = 0;
         virtual ~Stooge() {}
 };
 
-class Larry: public Stooge
-{
+class Larry: public Stooge {
     public:
-        void slap_stick()
-        {
+        void slap_stick() {
             cout << "Larry: poke eyes" << endl;
         }
 };
 
-class Moe: public Stooge
-{
+class Moe: public Stooge {
     public:
-        void slap_stick()
-        {
+        void slap_stick() {
             cout << "Moe: slap head" << endl;
         }
 };
 
-class Curly: public Stooge
-{
+class Curly: public Stooge {
     public:
-        void slap_stick()
-        {
+        void slap_stick() {
             cout << "Curly: suffer abuse" << endl;
         }
 };
 
-int main()
-{
-    vector<Stooge *> roles;
+int main() {
+    vector<shared_ptr<Stooge>> roles;
     int choice;
 
-    while (true)
-    {
+    while (true) {
         cout << "Larry(1) Moe(2) Curly(3) Go(0): ";
         cin >> choice;
 
@@ -55,50 +125,41 @@ int main()
         switch (choice) {
             case 1:
                 {
-                    roles.push_back(new Larry);
+                    roles.push_back(shared_ptr<Stooge>(new Larry));
                     break;
                 }
             case 2:
                 {
-                    roles.push_back(new Moe);
+                    roles.push_back(shared_ptr<Stooge>(new Moe));
                     break;
                 }
             case 3:
                 {
-                    roles.push_back(new Curly);
+                    roles.push_back(shared_ptr<Stooge>(new Curly));
                     break;
                 }
         }
     }
 
-    for (auto &a: roles)
-    {
+    for (auto &a: roles) {
         a->slap_stick();
-    }
-
-    for (auto &a: roles)
-    {
-        delete a;
     }
 }
 #endif
 
 #ifdef AFTER
-class Stooge
-{
+class Stooge {
     public:
         static Stooge *make_stooge(int choice);
         virtual void slap_stick() = 0;
         virtual ~Stooge() {}
 };
 
-int main()
-{
-    vector<Stooge *> roles;
+int main() {
+    vector<shared_ptr<Stooge>> roles;
     int choice;
 
-    while (true)
-    {
+    while (true) {
         cout << "Larry(1) Moe(2) Curly(3) Go(0): ";
         cin >> choice;
 
@@ -106,49 +167,36 @@ int main()
             break;
         }
 
-        roles.push_back(Stooge::make_stooge(choice));
+        roles.push_back(shared_ptr<Stooge>(Stooge::make_stooge(choice)));
     }
 
-    for (auto &a: roles)
-    {
+    for (auto &a: roles) {
         a->slap_stick();
-    }
-
-    for (auto &a: roles)
-    {
-        delete a;
     }
 }
 
-class Larry: public Stooge
-{
+class Larry: public Stooge {
     public:
-        void slap_stick()
-        {
+        void slap_stick() {
             cout << "Larry: poke eyes";
         }
 };
 
-class Moe: public Stooge
-{
+class Moe: public Stooge {
     public:
-        void slap_stick()
-        {
+        void slap_stick() {
             cout << "Moe: slap head";
         }
 };
 
-class Curly: public Stooge
-{
+class Curly: public Stooge {
     public:
-        void slap_stick()
-        {
+        void slap_stick() {
             cout << "Curly: suffer abuse";
         }
 };
 
-Stooge *Stooge::make_stooge(int choice)
-{
+Stooge *Stooge::make_stooge(int choice) {
     if (choice == 1) {
         return new Larry;
     }
@@ -158,96 +206,5 @@ Stooge *Stooge::make_stooge(int choice)
     else {
         return new Curly;
     }
-}
-#endif
-
-#ifdef NORMAL
-class Document
-{
-    public:
-        Document(const string &fn): name(fn)
-        {
-        }
-
-        virtual void Open() = 0;
-        virtual void Close() = 0;
-        string GetName()
-        {
-            return name;
-        }
-    private:
-        string name;
-};
-
-class MyDocument: public Document
-{
-    public:
-        MyDocument(const string &fn): Document(fn) {}
-        void Open()
-        {
-            cout << "    MyDocument: Open()" << endl;
-        }
-
-        void Close()
-        {
-            cout << "    MyDocument: Close()" << endl;
-        }
-};
-
-class Application
-{
-    public:
-        Application(): _index(0)
-        {
-            cout << "Application: ctor" << endl;
-        }
-
-        void NewDocument(const string &name)
-        {
-            cout << "Application: NewDocument()" << endl;
-            _docs[_index] = CreateDocument(name);
-            _docs[_index++]->Open();
-        }
-
-        void OpenDocument() {}
-        void ReportDocs();
-
-        virtual Document *CreateDocument(const string &) = 0;
-    private:
-        int _index;
-        Document *_docs[10];
-};
-
-void Application::ReportDocs()
-{
-    cout << "Application: ReportDocs()" << endl;
-
-    for (int i = 0; i < _index; ++i) {
-        cout << "    " << _docs[i]->GetName() << endl;
-    }
-}
-
-class MyApplication: public Application
-{
-    public:
-        MyApplication()
-        {
-            cout << "MyApplication: ctor" << endl;
-        }
-
-        Document *CreateDocument(const string &fn)
-        {
-            cout << "    MyApplication: CreateDocument()" << endl;
-            return new MyDocument(fn);
-        }
-};
-
-int main()
-{
-    MyApplication myApp;
-
-    myApp.NewDocument("foo");
-    myApp.NewDocument("bar");
-    myApp.ReportDocs();
 }
 #endif

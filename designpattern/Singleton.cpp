@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -7,11 +8,20 @@ using namespace std;
 class Number {
     public:
         static Number *instance();
+        // We can call delete inst in destructor ~Number(),
+        // because if inst points to a subclass, it would trigger
+        // circular destruction.
+        virtual ~Number() { }
 
+        // here we would delete the previous instance
         static void setType(string t) {
             type = t;
             delete inst;
             inst = 0;
+        }
+
+        static void cleanUp() {
+            delete inst;
         }
 
         virtual void setValue(int in) {
@@ -34,17 +44,20 @@ class Number {
         static Number* inst;
 };
 
-string Number::type = "decimal";
-Number* Number::inst = 0;
+string Number::type("decimal");
+Number* Number::inst(nullptr);
 
 class Octal: public  Number {
     public:
+        // friend to call Octal in Number::instance()
         friend class Number;
 
         void setValue(int in) {
-            char buf[10];
-            sprintf(buf, "%o", in);
-            sscanf(buf, "%d", &value);
+            ostringstream oss;
+            oss << oct << in;
+
+            // in = 64, oct.str() == 100
+            value = stoi(oss.str(), nullptr, 10);
         }
 
     protected:
@@ -70,6 +83,7 @@ int main() {
     Number::setType("octal");
     Number::instance()->setValue(64);
     cout << "value is " << Number::instance()->getValue() << endl;
+    Number::cleanUp();
 }
 #endif
 
@@ -78,9 +92,7 @@ class GlobalClass {
     int m_value;
 
     public:
-    GlobalClass(int v = 0) {
-        m_value = v;
-    }
+    GlobalClass(int v = 0): m_value(v) { }
 
     int get_value() {
         return m_value;
@@ -91,7 +103,7 @@ class GlobalClass {
     }
 };
 
-GlobalClass* global_ptr = 0;
+GlobalClass* global_ptr = nullptr;
 
 void foo() {
     if (!global_ptr) {
@@ -127,9 +139,8 @@ class GlobalClass {
     int m_value;
     static GlobalClass* s_instance;
     
-    GlobalClass(int v = 0) {
-        m_value = v;
-    }
+    GlobalClass(int v = 0): m_value(v) { }
+    ~GlobalClass() { delete s_instance; }
 
     public:
     int get_value() {
@@ -149,7 +160,7 @@ class GlobalClass {
     }
 };
 
-GlobalClass* GlobalClass::s_instance = 0;
+GlobalClass* GlobalClass::s_instance = nullptr;
 
 void foo() {
     GlobalClass::instance()->set_value(1);

@@ -1,15 +1,15 @@
 #include <iostream>
+#include <memory>
+#include <vector>
 
 using namespace std;
 
 #ifdef NORMAL
 class Shape {
     public:
-        Shape() {
-            id_ = total_++;
-        }
-
+        Shape() { id_ = total_++; }
         virtual void draw() = 0;
+        virtual ~Shape() {}
     protected:
         int id_;
         static int total_;
@@ -74,76 +74,65 @@ class RobustShapeFactor : public Factory {
 };
 
 int main() {
+    Factory* factory = nullptr;
 #ifdef SIMPLE
-    Factory* factory = new SimpleShapeFactory;
+    factory = new SimpleShapeFactory;
 #elif ROBUST
-    Factory* factory = new RobustShapeFactory;
+    factory = new RobustShapeFactory;
 #endif
 
-    Shape* shapes[3];
+    // It is not vector<shared_ptr<Shape*>> shapes;
+    vector<shared_ptr<Shape>> shapes;
+    shapes.push_back(shared_ptr<Shape>(factory->createCurvedInstance()));
+    shapes.push_back(shared_ptr<Shape>(factory->createStraightInstance()));
+    shapes.push_back(shared_ptr<Shape>(factory->createCurvedInstance()));
 
-    shapes[0] = factory->createCurvedInstance();
-    shapes[1] = factory->createStraightInstance();
-    shapes[2] = factory->createCurvedInstance();
-
-    for (int i = 0; i < 3; ++i)
-    {
-        shapes[i]->draw();
+    for (auto &s: shapes) {
+        s->draw();
     }
 
     return 0;
 }
 #endif
 
-class Widget
-{
+class Widget {
     public:
         virtual void draw() = 0;
 };
 
-class LinuxButton: public Widget
-{
+class LinuxButton: public Widget {
     public:
-        void draw()
-        {
+        void draw() {
             cout << "LinuxButton" << endl;
         }
 };
 
-class LinuxMenu: public Widget
-{
+class LinuxMenu: public Widget {
     public:
-        void draw()
-        {
+        void draw() {
             cout << "LinuxMenu" << endl;
         }
 
 };
 
-class WindowsButton: public Widget
-{
+class WindowsButton: public Widget {
     public:
-        void draw()
-        {
+        void draw() {
             cout << "WindowsButton" << endl;
         }
 };
 
-class WindowsMenu: public Widget
-{
+class WindowsMenu: public Widget {
     public:
-        void draw()
-        {
+        void draw() {
             cout << "WindowMenu" << endl;
         }
 };
 
 #ifdef BEFORE
-class Client
-{
+class Client {
     public:
-        void draw()
-        {
+        void draw() {
 #ifdef LINUX
             Widget* w = new LinuxButton;
 #else
@@ -155,8 +144,7 @@ class Client
             display_window_two();
         }
 
-        void display_window_one()
-        {
+        void display_window_one() {
 #ifdef LINUX
             Widget *w[] = {
                 new LinuxButton,
@@ -173,8 +161,7 @@ class Client
             w[1]->draw();
         }
 
-        void display_window_two()
-        {
+        void display_window_two() {
 #ifdef LINUX
             Widget *w[] = {
                 new LinuxMenu,
@@ -192,67 +179,56 @@ class Client
         }
 };
 
-int main()
-{
-    Client* c = new Client();
-    c->draw();
+int main() {
+    Client c;
+    c.draw();
 }
 #endif
 
 #ifdef AFTER
-class Factory
-{
+class Factory {
     public:
         virtual Widget* create_button() = 0;
         virtual Widget* create_menu() = 0;
 };
 
-class LinuxFactory: public Factory
-{
+class LinuxFactory: public Factory {
     public:
-        Widget* create_button()
-        {
+        Widget* create_button() {
             return new LinuxButton;
         }
 
-        Widget* create_menu()
-        {
+        Widget* create_menu() {
             return new LinuxMenu;
         }
 };
 
-class WindowsFactory: public Factory
-{
+class WindowsFactory: public Factory {
     public:
-        Widget* create_button()
-        {
+        Widget* create_button() {
             return new WindowsButton;
         }
 
-        Widget* create_menu()
-        {
+        Widget* create_menu() {
             return new WindowsMenu;
         }
 };
 
-class Client
-{
+class Client {
     private:
         Factory* factory;
 
     public:
         Client(Factory* f): factory(f) { }
 
-        void draw()
-        {
+        void draw() {
             Widget* w = factory->create_button();
             w->draw();
             display_window_one();
             display_window_two();
         }
 
-        void display_window_one()
-        {
+        void display_window_one() {
             Widget *w[] = {
                 factory->create_button(),
                 factory->create_menu()
@@ -262,8 +238,7 @@ class Client
             w[1]->draw();
         }
 
-        void display_window_two()
-        {
+        void display_window_two() {
             Widget *w[] = {
                 factory->create_menu(),
                 factory->create_button()
@@ -274,8 +249,7 @@ class Client
         }
 };
 
-int main()
-{
+int main() {
     Factory* factory = nullptr;
 
 #ifdef LINUX
@@ -284,7 +258,7 @@ int main()
     factory = new WindowsFactory;
 #endif
 
-    Client* c = new Client(factory);
-    c->draw();
+    Client c(factory);
+    c.draw();
 }
 #endif

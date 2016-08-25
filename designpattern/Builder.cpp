@@ -6,36 +6,31 @@ using namespace std;
 
 class DistrWorkPackage {
     public:
-        DistrWorkPackage(const string &type)
-        {
+        DistrWorkPackage(const string &type) {
             ostringstream oss;
             oss << "Distributed Work Package for: " << type;
             _desc = oss.str();
         }
 
-        void setFile(const string &f, const string &v)
-        {
+        void setFile(const string &f, const string &v) {
             ostringstream oss;
             oss << "\n File(" << f << "): " << v;
             _desc += oss.str();
         }
 
-        void setQueue(const string &q, const string &v)
-        {
+        void setQueue(const string &q, const string &v) {
             ostringstream oss;
             oss << "\n Queue(" << q << "): " << v;
             _desc += oss.str();
         }
 
-        void setPathway(const string &p, const string &v)
-        {
+        void setPathway(const string &p, const string &v) {
             ostringstream oss;
             oss << "\n Pathway(" << p << "): " << v;
             _desc += oss.str();
         }
 
-        const string& getState()
-        {
+        const string& getState() {
             return _desc;
         }
 
@@ -48,8 +43,8 @@ class Builder {
         virtual void configureFile(const string&) = 0;
         virtual void configureQueue(const string&) = 0;
         virtual void configurePathway(const string&)= 0;
-        DistrWorkPackage* getResult()
-        {
+
+        DistrWorkPackage* getResult() {
             return _result;
         }
 
@@ -59,65 +54,58 @@ class Builder {
 
 class UnixBuilder: public Builder {
     public:
-        UnixBuilder()
-        {
+        UnixBuilder() {
             _result = new DistrWorkPackage("Unix");
         }
 
-        void configureFile(const string &name)
-        {
+        ~UnixBuilder() { delete _result; }
+
+        void configureFile(const string &name) {
             _result->setFile("flatFile", name);
         }
 
-        void configureQueue(const string &queue)
-        {
+        void configureQueue(const string &queue) {
             _result->setQueue("FIFO", queue);
         }
 
-        void configurePathway(const string &type)
-        {
+        void configurePathway(const string &type) {
             _result->setPathway("thread", type);
         }
 };
 
 class VmsBuilder: public Builder {
     public:
-        VmsBuilder()
-        {
+        VmsBuilder() {
             _result = new DistrWorkPackage("Vms");
         }
 
-        void configureFile(const string &name)
-        {
+        ~VmsBuilder() { delete _result; }
+
+        void configureFile(const string &name) {
             _result->setFile("ISAM", name);
         }
 
-        void configureQueue(const string &queue)
-        {
+        void configureQueue(const string &queue) {
             _result->setQueue("priority", queue);
         }
 
-        void configurePathway(const string &type)
-        {
+        void configurePathway(const string &type) {
             _result->setPathway("LWP", type);
         }
 };
 
-enum PersistenceType
-{
+enum PersistenceType {
     File, Queue, Pathway
 };
 
-struct PersistenceAttribute
-{
+struct PersistenceAttribute {
     PersistenceType type;
-    char value[30];
+    string value;
 };
 
 class Reader {
     public:
-        void setBuilder(Builder *b)
-        {
+        void setBuilder(Builder *b) {
             _builder = b;
         }
 
@@ -127,27 +115,21 @@ class Reader {
         Builder* _builder;
 };
 
-void Reader::construct(const vector<PersistenceAttribute> &list)
-{
-    for (int i = 0; i < list.size(); ++i)
-    {
-        if (list[i].type == File)
-        {
+void Reader::construct(const vector<PersistenceAttribute> &list) {
+    for (int i = 0; i < list.size(); ++i) {
+        if (list[i].type == File) {
             _builder->configureFile(list[i].value);
         }
-        else if (list[i].type == Queue)
-        {
+        else if (list[i].type == Queue) {
             _builder->configureQueue(list[i].value);
         }
-        else if (list[i].type == Pathway)
-        {
+        else if (list[i].type == Pathway) {
             _builder->configurePathway(list[i].value);
         }
     }
 }
 
-const vector<PersistenceAttribute> input =
-{
+const vector<PersistenceAttribute> input = {
     {File, "state.dat"},
     {File, "config.sys"},
     {Queue, "computer"},

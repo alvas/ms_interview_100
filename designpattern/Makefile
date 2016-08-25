@@ -28,6 +28,9 @@ Singleton:
 Adaptor:
 	g++ $(CFLAGS) Adaptor.cpp
 
+Bridge:
+	g++ $(CFLAGS) Bridge.cpp
+
 Composite:
 	g++ $(CFLAGS) Composite.cpp
 
@@ -45,20 +48,17 @@ Proxy:
 
 
 # behavioral patterns
-Bridge:
-	g++ $(CFLAGS) Bridge.cpp
-
 ChainOfResponsibility:
-	g++ $(CFLAGS) ChainOfResponsibility.cpp
+	g++ $(CFLAGS) $(METHOD) ChainOfResponsibility.cpp
 
 Command:
-	g++ $(CFLAGS) Command.cpp
+	g++ $(CFLAGS) $(METHOD) Command.cpp
 
 Interpreter:
-	g++ $(CFLAGS) Interpreter.cpp
+	g++ $(CFLAGS) $(METHOD) Interpreter.cpp
 
 Iterator:
-	g++ $(CFLAGS) Iterator.cpp
+	g++ $(CFLAGS) $(METHOD) Iterator.cpp
 
 Mediator:
 	g++ $(CFLAGS) Mediator.cpp
