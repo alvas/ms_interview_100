@@ -48,11 +48,11 @@ class RNInterpreter {
         }
 
     protected:
-        virtual char one() {}
-        virtual char *four() {}
-        virtual char five() {}
-        virtual char *nine() {}
-        virtual int multiplier() {}
+        virtual char one() { return '0'; }
+        virtual char* four() { return nullptr; }
+        virtual char five() { return '0'; }
+        virtual char* nine() { return nullptr; }
+        virtual int multiplier() { return 0; }
 
     private:
         RNInterpreter* thousands;
@@ -71,15 +71,15 @@ class Thousand: public RNInterpreter {
         }
 
         char* four() {
-            return "";
+            return nullptr;
         }
 
         char five() {
             return '\0';
         }
 
-        char *nine() {
-            return "";
+        char* nine() {
+            return nullptr;
         }
 
         int multiplier() {
@@ -96,16 +96,16 @@ class Hundred: public RNInterpreter {
             return 'C';
         }
 
-        char *four() {
-            return "CD";
+        char* four() {
+            return strdup("CD");
         }
 
         char five() {
             return 'D';
         }
 
-        char *nine() {
-            return "CM";
+        char* nine() {
+            return strdup("CM");
         }
 
         int multiplier() {
@@ -122,16 +122,16 @@ class Ten: public RNInterpreter {
             return 'X';
         }
 
-        char *four() {
-            return "XL";
+        char* four() {
+            return strdup("XL");
         }
 
         char five() {
             return 'L';
         }
 
-        char *nine() {
-            return "XC";
+        char* nine() {
+            return strdup("XC");
         }
 
         int multiplier() {
@@ -148,16 +148,16 @@ class One: public RNInterpreter {
             return 'I';
         }
 
-        char *four() {
-            return "IV";
+        char* four() {
+            return strdup("IV");
         }
 
         char five() {
             return 'V';
         }
 
-        char *nine() {
-            return "IX";
+        char* nine() {
+            return strdup("IX");
         }
 
         int multiplier() {
@@ -172,7 +172,7 @@ RNInterpreter::RNInterpreter() {
     ones = new One(1);
 }
 
-int RNInterpreter::interpret(char *input) {
+int RNInterpreter::interpret(char* input) {
     int total = 0;
     thousands->interpret(input, total);
     hundreds->interpret(input, total);

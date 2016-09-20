@@ -2,12 +2,13 @@
 # $grep cpp Makefile | tail -n 24 | awk '{print $(NF)}' | xargs touch
 #
 # The source code example is from https://sourcemaking.com/design_patterns
-# creational patterns
+#
 CFLAGS = -std=c++11
-
 # In order to compile the AFTER section, instead of BEFORE section, 
 # use this command: make METHOD=-DAFTER AbstractFactory
 METHOD=-DNORMAL
+
+# creational patterns
 AbstractFactory:
 	g++ $(CFLAGS) $(METHOD) -DSIMPLE AbstractFactory.cpp
 

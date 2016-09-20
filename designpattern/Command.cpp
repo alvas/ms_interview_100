@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,7 +19,12 @@ class Command {
     }
 
     void execute() {
-        (object->*method)();
+        if (method != nullptr) {
+            (object->*method)();
+        }
+        else {
+            assert(method != nullptr);
+        }
     }
 };
 
@@ -27,7 +33,7 @@ class Person {
     Command cmd;
 
     public:
-    Person(string n, Command c): cmd(c) {
+    Person(const string& n, Command c): cmd(c) {
         name = n;
     }
 
@@ -125,14 +131,13 @@ template<typename T> class Queue {
 
 int main() {
     Queue<Giant> que;
-    Giant input[6], *bad_guy = nullptr;
 
     for (int i = 0; i < 6; ++i) {
-        que.enque(&input[i]);
+        que.enque(new Giant);
     }
 
     for (int i = 0; i < 6; ++i) {
-        bad_guy = que.deque();
+        Giant* bad_guy = que.deque();
 
         if (bad_guy->get_type() == Giant::Fee) {
             bad_guy->fee();
@@ -143,6 +148,8 @@ int main() {
         else if (bad_guy->get_type() == Giant::Pheaux) {
             bad_guy->pheaux();
         }
+
+        delete bad_guy;;
     }
 
     cout << endl;
@@ -184,7 +191,16 @@ class Command {
         }
 
         void execute() {
-            (m_object->*m_method)();
+            if (m_method != nullptr) {
+                (m_object->*m_method)();
+            }
+            else {
+                assert(m_method != nullptr);
+            }
+        }
+
+        ~Command() {
+            delete m_object;
         }
 
     private:
@@ -221,7 +237,7 @@ template<typename T> class Queue {
 int main() {
     Queue<Command> que;
 
-    Command *input[] = {
+    vector<Command*> input = {
         new Command(new Giant, &Giant::fee),
         new Command(new Giant, &Giant::phi),
         new Command(new Giant, &Giant::pheaux),
@@ -235,7 +251,9 @@ int main() {
     }
 
     for (int i = 0; i < 6; ++i) {
-        que.deque()->execute();
+        Command* tmp = que.deque();
+        tmp->execute();
+        delete tmp;
     }
 
     cout << endl;
@@ -245,14 +263,14 @@ int main() {
 #ifdef SIMPLE
 class Number {
     public:
-        void dubble(int &value) {
+        void dubble(int& value) {
             value *= 2;
         }
 };
 
 class Command {
     public:
-        virtual void execute(int &) = 0;
+        virtual void execute(int&) = 0;
 };
 
 class SimpleCommand: public Command {
@@ -288,26 +306,31 @@ class MacroCommand: public Command {
 
 int main() {
     Number object;
-    Command* commands[3];
+    vector<Command*> commands;
     
     SimpleCommand one(&object, &Number::dubble);
-    commands[0] = &one;
+    commands.push_back(&one);
 
     MacroCommand two;
     two.add(commands[0]);
     two.add(commands[0]);
-    commands[1] = &two;
+    commands.push_back(&two);
 
     MacroCommand four;
     four.add(&two);
     four.add(&two);
-    commands[2] = &four;
+    commands.push_back(&four);
 
     int num = 0, index = 0;
 
     while (true) {
         cout << "Enter number selection (0=2x, 1=4x 2=16x): ";
         cin >> num >> index;
+
+        if (index < 0 || 3 <= index) {
+            continue; 
+        }
+
         commands[index]->execute(num);
         cout << "    " << num << endl;
     }

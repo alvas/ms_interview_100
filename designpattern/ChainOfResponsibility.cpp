@@ -6,15 +6,15 @@ using namespace std;
 #ifdef COMPONENT
 class Component {
     int value;
-    Component *next;
+    Component* next;
 
     public:
-    Component(int v, Component *n) {
+    Component(int v, Component* n) {
         value = v;
         next = n;
     }
 
-    void setNext(Component *n) {
+    void setNext(Component* n) {
         next = n;
     }
 
@@ -29,7 +29,7 @@ class Component {
 
 class Primitive: public Component {
     public:
-        Primitive(int val, Component *n = nullptr): Component(val, n) {}
+        Primitive(int val, Component* n = nullptr): Component(val, n) {}
 
         void volunteer() {
             Component::traverse();
@@ -96,18 +96,18 @@ int main() {
 
 #ifdef NORMAL
 class Base {
-    Base *next;
+    Base* next;
 
     public:
     Base() {
         next = nullptr;
     }
 
-    void setNext(Base *n) {
+    void setNext(Base* n) {
         next = n;
     }
 
-    void add(Base *n) {
+    void add(Base* n) {
         if (next) {
             next->add(n);
         }
