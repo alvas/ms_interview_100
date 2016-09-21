@@ -1890,6 +1890,261 @@ AndroidUnlockPatterns:
 DataStreamAsDisjointIntervals:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DataStreamAsDisjointIntervals.cpp
 
+.PHONY: 353
+353: DesignSnakeGame
+DesignSnakeGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DesignSnakeGame.cpp
+
+.PHONY: 354
+354: RussianDollEnvelopes
+RussianDollEnvelopes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RussianDollEnvelopes.cpp
+
+.PHONY: 355
+355: DesignTwitter
+DesignTwitter:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DesignTwitter.cpp
+
+.PHONY: 356
+356: LineReflection
+LineReflection:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LineReflection.cpp
+
+.PHONY: 357
+357: CountNumbersWithUniqueDigits
+CountNumbersWithUniqueDigits:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountNumbersWithUniqueDigits.cpp
+
+.PHONY: 358
+358: RearrangeStringKDistanceApart
+RearrangeStringKDistanceApart:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RearrangeStringKDistanceApart.cpp
+
+.PHONY: 359
+359: LoggerRateLimiter
+LoggerRateLimiter:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LoggerRateLimiter.cpp
+
+.PHONY: 360
+360: SortTransformedArray
+SortTransformedArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortTransformedArray.cpp
+
+.PHONY: 361
+361: BombEnemy
+BombEnemy:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BombEnemy.cpp
+
+.PHONY: 362
+362: DesignHitCounter
+DesignHitCounter:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DesignHitCounter.cpp
+
+.PHONY: 363
+363: MaxSumOfRectangleNoLargerThanK
+MaxSumOfRectangleNoLargerThanK:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaxSumOfRectangleNoLargerThanK.cpp
+
+.PHONY: 364
+364: NestedListWeightSumII
+NestedListWeightSumII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NestedListWeightSumII.cpp
+
+.PHONY: 365
+365: WaterAndJugProblem
+WaterAndJugProblem:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WaterAndJugProblem.cpp
+
+.PHONY: 366
+366: FindLeavesOfBinaryTree
+FindLeavesOfBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindLeavesOfBinaryTree.cpp
+
+.PHONY: 367
+367: ValidPerfectSquare
+ValidPerfectSquare:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidPerfectSquare.cpp
+
+.PHONY: 368
+368: LargestDivisibleSubset
+LargestDivisibleSubset:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestDivisibleSubset.cpp
+
+.PHONY: 369
+369: PlusOneLinkedList
+PlusOneLinkedList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PlusOneLinkedList.cpp
+
+.PHONY: 370
+370: RangeAddition
+RangeAddition:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RangeAddition.cpp
+
+.PHONY: 371
+371: SumOfTwoIntegers
+SumOfTwoIntegers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumOfTwoIntegers.cpp
+
+.PHONY: 372
+372: SuperPow
+SuperPow:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SuperPow.cpp
+
+.PHONY: 373
+373: FindKPairsWithSmallestSums
+FindKPairsWithSmallestSums:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindKPairsWithSmallestSums.cpp
+
+.PHONY: 374
+374: GuessNumberHigherOrLower
+GuessNumberHigherOrLower:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GuessNumberHigherOrLower.cpp
+
+.PHONY: 375
+375: GuessNumberHigherOrLowerII
+GuessNumberHigherOrLowerII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)GuessNumberHigherOrLowerII.cpp
+
+.PHONY: 376
+376: WiggleSubsequence
+WiggleSubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WiggleSubsequence.cpp
+
+.PHONY: 377
+377: CombinationSumIV
+CombinationSumIV:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CombinationSumIV.cpp
+
+.PHONY: 378
+378: KthSmallestElementInASortedMatrix
+KthSmallestElementInASortedMatrix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestElementInASortedMatrix.cpp
+
+.PHONY: 379
+379: DesignPhoneDirectory
+DesignPhoneDirectory:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DesignPhoneDirectory.cpp
+
+.PHONY: 380
+380: InsertDeleteGetRandomO1
+InsertDeleteGetRandomO1:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertDeleteGetRandomO1.cpp
+
+.PHONY: 381
+381: InsertDeleteGetRandomO1DuplicatedAllowed
+InsertDeleteGetRandomO1DuplicatedAllowed:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InsertDeleteGetRandomO1DuplicatedAllowed.cpp
+
+.PHONY: 382
+382: LinkedListRandomNode
+LinkedListRandomNode:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LinkedListRandomNode.cpp
+
+.PHONY: 383
+383: RansomNote
+RansomNote:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RansomNote.cpp
+
+.PHONY: 384
+384: ShuffleAnArray
+ShuffleAnArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShuffleAnArray.cpp
+
+.PHONY: 385
+385: MiniParser
+MiniParser:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MiniParser.cpp
+
+.PHONY: 386
+386: LexicographicalNumbers
+LexicographicalNumbers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LexicographicalNumbers.cpp
+
+.PHONY: 387
+387: FirstUniqueCharacterInAString
+FirstUniqueCharacterInAString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FirstUniqueCharacterInAString.cpp
+
+.PHONY: 388
+388: LongestAbsoluteFilePath
+LongestAbsoluteFilePath:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestAbsoluteFilePath.cpp
+
+.PHONY: 389
+389: FindTheDifference
+FindTheDifference:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindTheDifference.cpp
+
+.PHONY: 390
+390: EliminationGame
+EliminationGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EliminationGame.cpp
+
+.PHONY: 391
+391: PerfectRectangle
+PerfectRectangle:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PerfectRectangle.cpp
+
+.PHONY: 392
+392: IsSubsequence
+IsSubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IsSubsequence.cpp
+
+.PHONY: 393
+393: UTF8Validation
+UTF8Validation:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)UTF8Validation.cpp
+
+.PHONY: 394
+394: DecodeString
+DecodeString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DecodeString.cpp
+
+.PHONY: 395
+395: LongestSubstringWithAtLeastKRepeatingCharacters
+LongestSubstringWithAtLeastKRepeatingCharacters:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestSubstringWithAtLeastKRepeatingCharacters.cpp
+
+.PHONY: 396
+396: RotateFunction
+RotateFunction:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RotateFunction.cpp
+
+.PHONY: 397
+397: IntegerReplacement
+IntegerReplacement:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IntegerReplacement.cpp
+
+.PHONY: 398
+398: RandomPickIndex
+RandomPickIndex:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RandomPickIndex.cpp
+
+.PHONY: 399
+399: EvaluateDivision
+EvaluateDivision:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EvaluateDivision.cpp
+
+.PHONY: 400
+400: NthDigit
+NthDigit:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NthDigit.cpp
+
+.PHONY: 401
+401: BinaryWatch
+BinaryWatch:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryWatch.cpp
+
+.PHONY: 402
+402: RemoveKDigits
+RemoveKDigits:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RemoveKDigits.cpp
+
+.PHONY: 403
+403: FrogJump
+FrogJump:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FrogJump.cpp
+
 test:
 	echo "test test!!"
 
