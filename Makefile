@@ -124,7 +124,7 @@ StringProcess:
 DataProcess: NormalData.o
 	$(CC) $(DFLAGS) DataProcess.cpp NormalData.o
 
-Tree.o: NormalData.o
+: NormalData.o
 	$(CC) $(CFLAGS) Tree.cpp NormalData.o
 
 Tree: NormalData.o
@@ -615,8 +615,8 @@ RestoreIPAddresses:
 
 .PHONY: 94
 94: BinaryTreeInorderTraversal
-BinaryTreeInorderTraversal: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeInorderTraversal.cpp Tree.o
+BinaryTreeInorderTraversal: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeInorderTraversal.cpp
 
 .PHONY: 95
 95: UniqueBinarySearchTreesII
@@ -635,8 +635,8 @@ InterleavingString:
 
 .PHONY: 98
 98: ValidateBinarySearchTree
-ValidateBinarySearchTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidateBinarySearchTree.cpp Tree.o
+ValidateBinarySearchTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidateBinarySearchTree.cpp
 
 .PHONY: 99
 99: RecoverBinarySearchTree
@@ -645,28 +645,28 @@ RecoverBinarySearchTree:
 
 .PHONY: 100
 100: SameTree
-SameTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SameTree.cpp Tree.o
+SameTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SameTree.cpp
 
 .PHONY: 101
 101: SymmetricTree
-SymmetricTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SymmetricTree.cpp Tree.o
+SymmetricTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SymmetricTree.cpp
 
 .PHONY: 102
 102: BinaryTreeLevelOrderTraversal
-BinaryTreeLevelOrderTraversal: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversal.cpp Tree.o
+BinaryTreeLevelOrderTraversal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversal.cpp
 
 .PHONY: 103
 103: BinaryTreeZigzagLevelOrderTraversal
-BinaryTreeZigzagLevelOrderTraversal: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeZigzagLevelOrderTraversal.cpp Tree.o
+BinaryTreeZigzagLevelOrderTraversal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeZigzagLevelOrderTraversal.cpp
 
 .PHONY: 104
 104: MaximumDepthOfBinaryTree
-MaximumDepthOfBinaryTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDepthOfBinaryTree.cpp Tree.o
+MaximumDepthOfBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDepthOfBinaryTree.cpp 
 
 .PHONY: 105
 105: ConstructBinaryTreeFromPreorderAndInorderTraversal
@@ -680,13 +680,13 @@ ConstructBinaryTreeFromInorderAndPostorderTraversal:
 
 .PHONY: 107
 107: BinaryTreeLevelOrderTraversalII
-BinaryTreeLevelOrderTraversalII: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversalII.cpp Tree.o
+BinaryTreeLevelOrderTraversalII: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLevelOrderTraversalII.cpp 
 
 .PHONY: 108
 108: ConvertSortedArrayToBinarySearchTree
-ConvertSortedArrayToBinarySearchTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedArrayToBinarySearchTree.cpp Tree.o
+ConvertSortedArrayToBinarySearchTree: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertSortedArrayToBinarySearchTree.cpp 
 
 .PHONY: 109
 109: ConvertSortedListToBinarySearchTree
@@ -695,28 +695,28 @@ ConvertSortedListToBinarySearchTree:
 
 .PHONY: 110
 110: BalancedBinaryTree
-BalancedBinaryTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BalancedBinaryTree.cpp Tree.o
+BalancedBinaryTree: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BalancedBinaryTree.cpp 
 
 .PHONY: 111
 111: MinimumDepthOfBinaryTree
-MinimumDepthOfBinaryTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumDepthOfBinaryTree.cpp Tree.o
+MinimumDepthOfBinaryTree: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumDepthOfBinaryTree.cpp 
 
 .PHONY: 112
 112: PathSum
-PathSum: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSum.cpp Tree.o
+PathSum: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSum.cpp 
 
 .PHONY: 113
 113: PathSumII
-PathSumII: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSumII.cpp Tree.o
+PathSumII: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSumII.cpp 
 
 .PHONY: 114
-114: FlattenBinaryTreeToLinkedList
-FlattenBinaryTreeToLinkedList:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenBinaryTreeToLinkedList.cpp
+114: FlattenBinaryLinkedList
+FlattenBinaryLinkedList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FlattenBinaryLinkedList.cpp
 
 .PHONY: 115
 115: DistinctSubsequences
@@ -725,13 +725,13 @@ DistinctSubsequences:
 
 .PHONY: 116
 116: PopulatingNextRightPointersInEachNode
-PopulatingNextRightPointersInEachNode: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp Tree.o
+PopulatingNextRightPointersInEachNode: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNode.cpp 
 
 .PHONY: 117
 117: PopulatingNextRightPointersInEachNodeII
-PopulatingNextRightPointersInEachNodeII: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNodeII.cpp Tree.o
+PopulatingNextRightPointersInEachNodeII: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PopulatingNextRightPointersInEachNodeII.cpp 
 
 .PHONY: 118
 118: PascalsTriangle
@@ -765,8 +765,8 @@ BestTimeToBuyAndSellStockIII:
 
 .PHONY: 124
 124: BinaryTreeMaximumPathSum
-BinaryTreeMaximumPathSum: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeMaximumPathSum.cpp Tree.o
+BinaryTreeMaximumPathSum: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeMaximumPathSum.cpp 
 
 .PHONY: 125
 125: ValidPalindrome
@@ -790,8 +790,8 @@ LongestConsecutiveSequence:
 
 .PHONY: 129
 129: SumRootToLeafNumbers
-SumRootToLeafNumbers: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumRootToLeafNumbers.cpp Tree.o
+SumRootToLeafNumbers: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumRootToLeafNumbers.cpp 
 
 .PHONY: 130
 130: SurroundedRegions
@@ -865,13 +865,13 @@ ReorderList: LinkList.o
 
 .PHONY: 144
 144: BinaryTreePreorderTraversal
-BinaryTreePreorderTraversal: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePreorderTraversal.cpp Tree.o
+BinaryTreePreorderTraversal: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePreorderTraversal.cpp 
 
 .PHONY: 145
-145: BinaryTreePostorderTraversal
-BinaryTreePostorderTraversal: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreePostorderTraversal.cpp Tree.o
+145: BinarystorderTraversal
+BinarystorderTraversal: Tree.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinarystorderTraversal.cpp Tree.o
 
 .PHONY: 146
 146: LRUCache
@@ -979,9 +979,9 @@ FractionToRecurringDecimal:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FractionToRecurringDecimal.cpp
 
 .PHONY: 167
-167: TwoSumII
-TwoSumII:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSumII.cpp
+167: TwoSumIIInputArrayIsSorted
+TwoSumIIInputArrayIsSorted:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSumIIInputArrayIsSorted.cpp
 
 .PHONY: 168
 168: ExcelSheetColumnTitle
@@ -1124,8 +1124,8 @@ HouseRobber:
 
 .PHONY: 199
 199: BinaryTreeRightSideView
-BinaryTreeRightSideView: Tree.o NormalData.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeRightSideView.cpp Tree.o NormalData.o
+BinaryTreeRightSideView:  NormalData.o
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeRightSideView.cpp  NormalData.o
 
 .PHONY: 200
 200: NumberOfIslands
@@ -1238,9 +1238,9 @@ MaximalSquare:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximalSquare.cpp
 
 .PHONY: 222
-222: CountCompleteTreeNodes
-CountCompleteTreeNodes:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountCompleteTreeNodes.cpp
+222: CountCompletedes
+CountCompletedes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CountCompletedes.cpp
 
 .PHONY: 223
 223: RectangleArea
@@ -1259,8 +1259,8 @@ ImplementStackUsingQueues:
 
 .PHONY: 226
 226: InvertBinaryTree
-InvertBinaryTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InvertBinaryTree.cpp Tree.o
+InvertBinaryTree: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)InvertBinaryTree.cpp 
 
 .PHONY: 227
 227: BasicCalculatorII
@@ -1279,8 +1279,8 @@ MajorityElementII: RandomData.o NormalData.o
 
 .PHONY: 230
 230: KthSmallestElementInABST
-KthSmallestElementInABST: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestElementInABST.cpp Tree.o
+KthSmallestElementInABST: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestElementInABST.cpp 
 
 .PHONY: 231
 231: PowerOfTwo
@@ -1304,13 +1304,13 @@ PalindromeLinkedList: RandomData.o NormalData.o
 
 .PHONY: 235
 235: LowestCommonAncestorOfABinarySearchTree
-LowestCommonAncestorOfABinarySearchTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinarySearchTree.cpp Tree.o
+LowestCommonAncestorOfABinarySearchTree: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinarySearchTree.cpp 
 
 .PHONY: 236
 236: LowestCommonAncestorOfABinaryTree
-LowestCommonAncestorOfABinaryTree: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinaryTree.cpp Tree.o
+LowestCommonAncestorOfABinaryTree: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LowestCommonAncestorOfABinaryTree.cpp 
 
 .PHONY: 237
 237: DeleteNodeInALinkedList
@@ -1616,9 +1616,9 @@ SerializeAndDeserializeBinaryTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SerializeAndDeserializeBinaryTree.cpp
 
 .PHONY: 298
-298: BinaryTreeLongestConsecutiveSequence
-BinaryTreeLongestConsecutiveSequence:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLongestConsecutiveSequence.cpp
+298: BinaryngestConsecutiveSequence
+BinaryngestConsecutiveSequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryngestConsecutiveSequence.cpp
 
 .PHONY: 299
 299: BullsAndCows
@@ -1812,8 +1812,8 @@ PalindromePairs:
 
 .PHONY: 337
 337: HouseRobberIII
-HouseRobberIII: Tree.o
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberIII.cpp Tree.o
+HouseRobberIII: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HouseRobberIII.cpp 
 
 .PHONY: 338
 338: CountingBits
@@ -2144,6 +2144,16 @@ RemoveKDigits:
 403: FrogJump
 FrogJump:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FrogJump.cpp
+
+.PHONY: 404
+404: SumOfLeftLeaves
+SumOfLeftLeaves:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumOfLeftLeaves.cpp
+
+.PHONY: 405
+405: ConvertANumberToHexadecimal
+ConvertANumberToHexadecimal:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertANumberToHexadecimal.cpp
 
 test:
 	echo "test test!!"
