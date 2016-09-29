@@ -2155,6 +2155,11 @@ SumOfLeftLeaves:
 ConvertANumberToHexadecimal:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertANumberToHexadecimal.cpp
 
+.PHONY: 406
+406: QueueReconstructionByHeight
+QueueReconstructionByHeight:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)QueueReconstructionByHeight.cpp
+
 test:
 	echo "test test!!"
 
