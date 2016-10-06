@@ -29,12 +29,12 @@ SRCS = *.cpp
 
 #OBJS = $(SRCS:.cpp=.o)
 
-all:
-	@for i in {1..341}; do \
-		make $$i ; \
-	done
+#all:
+#	@for i in {1..341}; do \
+#		make $$i ; \
+#	done
 
-	rm *.o
+#   rm *.o
 
 exec1: 
 	g++ exec1.cpp
@@ -124,7 +124,7 @@ StringProcess:
 DataProcess: NormalData.o
 	$(CC) $(DFLAGS) DataProcess.cpp NormalData.o
 
-: NormalData.o
+Tree.o: NormalData.o
 	$(CC) $(CFLAGS) Tree.cpp NormalData.o
 
 Tree: NormalData.o
