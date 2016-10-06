@@ -1,4 +1,4 @@
-default: all
+#default: all
 
 #CFLAGS =-std=c++11 -stdlib=libc++
 EXPORTED = -DEXPORTED
