@@ -1,6 +1,7 @@
 #ifndef NORMAL_DATA_HEADER_H
 #define NORMAL_DATA_HEADER_H
 #include <vector>
+#include <list>
 
 #pragma once
 
@@ -109,4 +110,12 @@ struct factorial<0> {
     enum { value = 1 };
 };
 
+template<typename T>
+void printList(list<T> &l) {
+    for (auto &i: l) {
+        cout << "(" << i.first << ", " << i.second << ")"<< "\t";
+    }
+
+    cout << endl;
+}
 #endif

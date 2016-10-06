@@ -16,7 +16,6 @@ public:
             return profit;
         }
 
-        // If k is bigger than sz, then it is only possible to make sz - 1 transaction.
         if (k >= sz / 2)
         {
             for (int i = 1; i < sz; ++i)

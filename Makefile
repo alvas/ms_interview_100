@@ -148,6 +148,9 @@ BinarySearch: RandomData.o
 RotationallySymmetricNumbers:
 	$(CC) $(DFLAGS) RotationallySymmetricNumbers.cpp
 
+ZigZagArray:
+	$(CC) $(DFLAGS) ZigZagArray.cpp
+	
 .PHONY: 1
 1: TwoSum
 TwoSum:
@@ -2159,6 +2162,19 @@ ConvertANumberToHexadecimal:
 406: QueueReconstructionByHeight
 QueueReconstructionByHeight:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)QueueReconstructionByHeight.cpp
+
+.PHONY: 407
+407: 
+	echo "No 407"
+
+.PHONY: 408
+408: 
+	echo "No 408"
+
+.PHONY: 409
+409: LongestPalindrome
+LongestPalindrome:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestPalindrome.cpp
 
 test:
 	echo "test test!!"

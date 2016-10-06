@@ -104,15 +104,11 @@ public:
 
     int findMax(const vector<int> &v, int end)
     {
-        int max = 0;
+        int max = v[0];
 
-        for (int i = 0; i < end; ++i)
+        for (int i = 1; i < end; ++i)
         {
-            if (i == 0)
-            {
-                max = v[i];
-            }
-            else if (v[i] > max)
+            if (v[i] > max)
             {
                 max = v[i];
             }

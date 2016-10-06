@@ -6,7 +6,13 @@ using namespace std;
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        return 0; 
+        int sz = prices.size();
+        int profit = 0;
+
+        for (int i = 0; i < sz; ++i) {
+        }
+
+        return profit; 
     }
 };
 

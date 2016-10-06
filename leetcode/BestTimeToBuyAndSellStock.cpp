@@ -35,7 +35,7 @@ public:
 
         int local = 0;
 
-        for (int i = 0; i < size; ++i)
+        for (int i = 0; i < size - 1; ++i)
         {
             // when ever we meet a new local min, local will be reset to 0
             local = max(0, local + prices[i + 1] - prices[i]);
@@ -55,9 +55,9 @@ public:
             return profit;
         }
 
-        int minV = INT_MAX;
+        int minV = prices[0];
 
-        for (int i = 0; i < size; ++i)
+        for (int i = 1; i < size; ++i)
         {
             // update min
             if (prices[i] < minV)
