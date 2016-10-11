@@ -2218,6 +2218,9 @@ PacificAtlanticWaterFlow:
 SentenceScreenFitting:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SentenceScreenFitting.cpp
 
+test:
+	echo "test"
+
 tags:
 	ctags -R .
 
