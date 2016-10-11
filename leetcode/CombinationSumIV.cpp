@@ -1,4 +1,4 @@
-#include <iostream>
+include <iostream>
 #include <vector>
 
 using namespace std;
@@ -37,6 +37,7 @@ int main() {
     Solution sln;
     int target = 36;
     vector<int> nums = {1, 2, 3};
+    cout << sln.combinationSum4_slow(nums, target) << endl;
     cout << sln.combinationSum4(nums, target) << endl;
     return 0;
 }

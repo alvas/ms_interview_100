@@ -88,11 +88,7 @@ public:
                 // then g[i - 2][j - 1] happens on day i - 2.
                 l[j] = max(g[j - 1] + max(diff, 0), l[j] + diff);
                 g[j] = max(g[j], l[j]);
-
-                cout << l[j] << ", " << g[j] << "\t";
             }
-
-            cout << endl;
         }
 
         return g[k];

@@ -2176,8 +2176,47 @@ QueueReconstructionByHeight:
 LongestPalindrome:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestPalindrome.cpp
 
-test:
-	echo "test test!!"
+.PHONY: 410
+410: SplitArrayLargestSum
+SplitArrayLargestSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SplitArrayLargestSum.cpp
+
+.PHONY: 411
+411: MinimumUniqueWordAbbreviation
+MinimumUniqueWordAbbreviation:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumUniqueWordAbbreviation.cpp
+
+.PHONY: 412
+412: 
+	echo "No 412"
+
+.PHONY: 413
+413: 
+	echo "No 413"
+
+.PHONY: 414
+414: 
+	echo "No 414"
+
+.PHONY: 415
+415: AddStrings
+AddStrings:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AddStrings.cpp
+
+.PHONY: 416
+416: PartitionEqualSubsetSum
+PartitionEqualSubsetSum:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PartitionEqualSubsetSum.cpp
+
+.PHONY: 417
+417: PacificAtlanticWaterFlow
+PacificAtlanticWaterFlow:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PacificAtlanticWaterFlow.cpp
+
+.PHONY: 418
+418: SentenceScreenFitting
+SentenceScreenFitting:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SentenceScreenFitting.cpp
 
 tags:
 	ctags -R .
