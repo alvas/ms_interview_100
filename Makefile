@@ -2187,8 +2187,10 @@ MinimumUniqueWordAbbreviation:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumUniqueWordAbbreviation.cpp
 
 .PHONY: 412
-412: 
-	echo "No 412"
+412: FizzBuzz
+FizzBuzz:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FizzBuzz.cpp
+
 
 .PHONY: 413
 413: 

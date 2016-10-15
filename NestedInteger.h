@@ -1,3 +1,5 @@
+#ifndef NESTEDINTEGER
+#define NESTEDINTEGER
 #include <vector>
 
 #include "NormalData.h"
@@ -48,26 +50,14 @@ void printNestedInteger(NestedInteger& a) {
         vector<NestedInteger> l = a.getList();
 
         for (auto i: l) {
-            if (i.isInteger()) {
-                if (firstElement) {
-                    firstElement = false;
-                }
-                else {
-                    cout << ", ";
-                }
-
-                printNestedInteger(i);
+            if (firstElement) {
+                firstElement = false;
             }
             else {
-                if (firstElement) {
-                    firstElement = false;
-                }
-                else {
-                    cout << ", ";
-                }
-
-                printNestedInteger(i);
+                cout << ", ";
             }
+
+            printNestedInteger(i);
         }
 
         cout << "]";
@@ -92,4 +82,4 @@ void printVector<NestedInteger>(const vector<NestedInteger> &a) {
 
     cout << "]" << endl;
 }
-
+#endif
