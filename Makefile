@@ -2193,8 +2193,9 @@ FizzBuzz:
 
 
 .PHONY: 413
-413: 
-	echo "No 413"
+413: ArithmeticSlices
+ArithmeticSlices:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArithmeticSlices.cpp
 
 .PHONY: 414
 414: 
