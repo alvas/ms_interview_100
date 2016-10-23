@@ -7,7 +7,23 @@ using namespace std;
 
 class Solution {
 public:
+    // I didn't get this solution.
     vector<int> getModifiedArray(int length, vector<vector<int>>& updates) {
+        vector<int> res(length + 1, 0);
+
+        for (auto update: updates) {
+            // add update[0] at the first
+            res[update[0]] += update[2];
+            // minus it at the end
+            res[update[1] + 1] -= update[2];
+        }
+
+        for (int i = 1; i < length; ++i) {
+            res[i] += res[i - 1];
+        }
+
+        res.resize(length);
+        return res;
     }
 
     vector<int> getModifiedArray1(int length, vector<vector<int>>& updates) {
@@ -35,8 +51,8 @@ int main() {
         {0, 2, -2}
     };
 
-    vector<int> v = sln.getModifiedArray1(len, updates);
     vector<int> v = sln.getModifiedArray(len, updates);
+    vector<int> v1 = sln.getModifiedArray1(len, updates);
     printVector<int>(v);
     return 0;
 }

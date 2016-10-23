@@ -2221,6 +2221,11 @@ PacificAtlanticWaterFlow:
 SentenceScreenFitting:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SentenceScreenFitting.cpp
 
+.PHONY: 419
+419: BattleshipsInABoard
+BattleshipsInABoard:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BattleshipsInABoard.cpp
+
 test:
 	echo "test"
 
