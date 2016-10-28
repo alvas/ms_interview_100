@@ -31,7 +31,7 @@ public:
         int depth = 1 + max(helper(root->left, res), helper(root->right, res));
 
         if (depth >= res.size()) {
-            res.resize(depth = 1);
+            res.resize(depth + 1);
         }
 
         res[depth].push_back(root->val);

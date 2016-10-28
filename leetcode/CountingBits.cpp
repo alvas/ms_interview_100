@@ -7,6 +7,48 @@ using namespace std;
 class Solution {
 public:
     vector<int> countBits(int num) {
+        vector<int> cnt(num + 1, 0);
+        
+        for (int i = 1; i <= num; i++) {
+            cnt[i] = cnt[i & (i - 1)] + 1;      // i & (i - 1) is i without lowest 1 bit
+        }
+        
+        return cnt;
+    }
+
+    vector<int> countBits5(int num) {
+        vector<int> cnt(num + 1, 0);
+
+        for (int i = 1, k = 0, bound = 1; i <= num; i++) {
+            cnt[i] = cnt[k] + 1;                            // k is i without highest 1 bit
+            if (++k == bound) { k = 0, bound <<= 1; }       // update k
+        }
+
+        return cnt;
+    }
+
+    vector<int> countBits4(int num) {
+        vector<int> cnt (num + 1, 0);
+
+        for (int i = 1; i <= num; i++) {
+            cnt[i] = cnt[i >> 1] + (i & 1);         // isolate i's lowest bit
+        }
+
+        return cnt;
+    }
+
+    vector<int> countBits3(int num) {
+        vector<int> res;
+
+        for (int i = 0; i <= num; ++i) {
+            res.push_back(bitset<32>(i).count());
+        }
+
+        return res;
+    }
+
+    // This solution is very hard to understand and not faster than the first solution.
+    vector<int> countBits2(int num) {
        vector<int> res(num + 1, 0);
 
        for (int i = 0; i <= num; ++i)

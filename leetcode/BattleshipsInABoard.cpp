@@ -30,6 +30,11 @@ public:
                         board[k][j] = '.';
                     }
                 }
+        
+                // This solution doesn't need to modify the board.
+                //if (board[i][j] == 'X' && !(i > 0 && board[i - 1][j] == 'X' || j > 0 && board[i][j - 1] == 'X')) {
+                    //count++;
+                //}
             }
         }
 
