@@ -2226,6 +2226,101 @@ SentenceScreenFitting:
 BattleshipsInABoard:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BattleshipsInABoard.cpp
 
+.PHONY: 420
+420: StrongPasswordChecker
+StrongPasswordChecker:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StrongPasswordChecker.cpp
+
+.PHONY: 421
+421: MaximumXOROfTwoNumbersInAnArray
+MaximumXOROfTwoNumbersInAnArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumXOROfTwoNumbersInAnArray.cpp
+
+.PHONY: 422
+422: ValidWordSquare
+ValidWordSquare:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidWordSquare.cpp
+
+.PHONY: 423
+423: ReconstructOriginalDigitsFromEnglish
+ReconstructOriginalDigitsFromEnglish:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReconstructOriginalDigitsFromEnglish.cpp
+
+.PHONY: 424
+424: LongestRepeatingCharacterReplacement
+LongestRepeatingCharacterReplacement:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestRepeatingCharacterReplacement.cpp
+
+.PHONY: 425
+425: WordSquares
+WordSquares:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)WordSquares.cpp
+
+.PHONY: 426
+426: 
+	echo "No 426"
+
+.PHONY: 427
+427: 
+	echo "No 427"
+
+.PHONY: 428
+428: 
+	echo "No 428"
+
+.PHONY: 429
+429: 
+	echo "No 429"
+
+.PHONY: 430
+430: 
+	echo "No 430"
+
+.PHONY: 431
+431: 
+	echo "No 431"
+
+.PHONY: 432
+432: AllOOneDataStructure
+AllOOneDataStructure:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AllOOneDataStructure.cpp
+
+.PHONY: 433
+433: 
+	echo "No 433"
+
+.PHONY: 434
+434: 
+	echo "No 434"
+
+.PHONY: 435
+435: 
+	echo "No 435"
+
+.PHONY: 436
+436: 
+	echo "No 436"
+
+.PHONY: 437
+437: PathSumIII
+PathSumIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PathSumIII.cpp
+
+.PHONY: 438
+438: FindAllAnagramsInAString
+FindAllAnagramsInAString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindAllAnagramsInAString.cpp
+
+.PHONY: 439
+439: TernaryExpressionParser
+TernaryExpressionParser:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TernaryExpressionParser.cpp
+
+.PHONY: 440
+440: KthSmallestInLexicographicalOrder
+KthSmallestInLexicographicalOrder:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestInLexicographicalOrder.cpp
+
 test:
 	echo "test"
 
