@@ -34,6 +34,7 @@ public:
 
         list<pair<int, int>> l;
 
+        // sort the list according to count in ascending order
         for (auto a: people) {
             auto itr = l.begin();
 
@@ -47,12 +48,14 @@ public:
         auto itr2 = l.begin();
         itr2++;
 
+        // rearrange the list considering both high and count
         // Need to be very careful about logic here.
         while (itr2 != l.end()) {
             auto itr3 = l.begin();
             int count = 0;
 
             while (itr3 != l.end()) {
+                // insert itr2 to the right place
                 // need to check count and first both
                 // otherwise we would get (2, 0) (1, 0)
                 if (itr2->second <= count && itr3->first >= itr2->first) {
