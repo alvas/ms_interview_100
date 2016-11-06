@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -5,6 +6,14 @@ using namespace std;
 class Solution {
 public:
     int arrangeCoins(int n) {
+        // x^2 + x = 2n
+        // x^2 + x + 1/4 = 2n + 1/4
+        // (x + 1/2)^2 = 2n + 1/4
+        // x = -0.5 + sqrt(2n + 0.25)
+        return floor(-0.5 + sqrt((double)2 * n + 0.25));
+    }
+
+    int arrangeCoins1(int n) {
         if (n <= 0) {
             return 0;
         }
