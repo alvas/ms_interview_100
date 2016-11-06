@@ -2321,6 +2321,11 @@ TernaryExpressionParser:
 KthSmallestInLexicographicalOrder:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KthSmallestInLexicographicalOrder.cpp
 
+.PHONY: 441
+441: ArrangingCoins
+ArrangingCoins:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArrangingCoins.cpp
+
 test:
 	echo "test"
 

@@ -19,6 +19,76 @@ using namespace std;
 class Solution {
 public:
     int pathSum(TreeNode* root, int sum) {
+        if (!root) {
+            return 0;
+        }
+
+        int res = 0;
+        findPath(sum, root, 0, res);
+        res += pathSum(root->left, sum) + pathSum(root->right, sum);
+        return res;
+    }
+
+    void findPath(int sum, TreeNode* root, int preSum, int& res) {
+        if (!root) {
+            return;
+        }
+
+        preSum += root->val;
+        res += preSum == sum ? 1 : 0;
+        findPath(sum, root->left, preSum, res);
+        findPath(sum, root->right, preSum, res);
+        return;
+    }
+
+    int pathSum2(TreeNode* root, int sum) {
+        if (!root) {
+            return 0;
+        }
+
+        int res = 0;
+        solver(root, sum, res);
+        return res;
+    }
+
+    vector<int> solver(TreeNode* root, int sum, int& count) {
+        if (!root) {
+            return vector<int>();
+        }
+
+        vector<int> left = solver(root->left, sum, count);
+        vector<int> right = solver(root->right, sum, count);
+        vector<int> res;
+        res.push_back(root->val);
+
+        if (root->val == sum) {
+            count++;
+        }
+
+        for (int i = 0; i < left.size(); ++i) {
+            int num = left[i] + root->val;
+            
+            if (num == sum) {
+                count++;
+            }
+
+            res.push_back(num);
+        }
+
+        for (int i = 0; i < right.size(); ++i) {
+            int num = right[i] + root->val;
+
+            if (num == sum) {
+                count++;
+            }
+
+            res.push_back(num);
+        }
+
+        return res;
+    }
+
+    int pathSum1(TreeNode* root, int sum) {
         int res = 0;
         
         if (!root) {
