@@ -2326,6 +2326,41 @@ KthSmallestInLexicographicalOrder:
 ArrangingCoins:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArrangingCoins.cpp
 
+.PHONY: 444
+444: SequenceReconstruction
+SequenceReconstruction:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SequenceReconstruction.cpp
+
+.PHONY: 446
+446: ArithmeticSlicesIISubsequence
+ArithmeticSlicesIISubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArithmeticSlicesIISubsequence.cpp
+
+.PHONY: 447
+447: NumberOfBoomeranges
+NumberOfBoomeranges:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfBoomeranges.cpp
+
+.PHONY: 452
+452: MinimumNumberOfArrowsToBurstBalloons
+MinimumNumberOfArrowsToBurstBalloons:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumNumberOfArrowsToBurstBalloon.cpp
+
+.PHONY: 453
+453: MinimumMovesToEqualArrayElements
+MinimumMovesToEqualArrayElements:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumMovesToEqualArrayElements.cpp
+
+.PHONY: 454
+454: FourSumII
+FourSumII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FourSumII.cpp
+
+.PHONY: 455
+455: AssignCookies
+AssignCookies:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AssignCookies.cpp
+
 test:
 	echo "test"
 

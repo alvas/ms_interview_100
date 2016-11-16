@@ -8,6 +8,33 @@ using namespace std;
 class Solution {
 public:
     bool validWordSquare(vector<string>& words) {
+        if (words.empty()) {
+            return false;
+        }
+
+        int n = words.size();
+
+        for (int i = 0; i < n; ++i) {
+            int col = words[i].size();
+            int row = 0;
+
+            for (int j = 0; i < words[j].size() && j < n; ++j) {
+                if (words[i][j] != words[j][i]) {
+                    return false;
+                }
+
+                ++row;
+            }
+
+            if (row != col) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    bool validWordSquare1(vector<string>& words) {
         int r = words.size();
 
         if (r == 0) {
