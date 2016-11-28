@@ -2337,9 +2337,9 @@ ArithmeticSlicesIISubsequence:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArithmeticSlicesIISubsequence.cpp
 
 .PHONY: 447
-447: NumberOfBoomeranges
-NumberOfBoomeranges:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfBoomeranges.cpp
+447: NumberOfBoomerangs
+NumberOfBoomerangs:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfBoomerangs.cpp
 
 .PHONY: 452
 452: MinimumNumberOfArrowsToBurstBalloons
@@ -2360,6 +2360,16 @@ FourSumII:
 455: AssignCookies
 AssignCookies:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AssignCookies.cpp
+
+.PHONY: 456
+456: OneThreeTwoPattern
+OneThreeTwoPattern:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OneThreeTwoPattern.cpp
+
+.PHONY: 459
+459: RepeatedSubstringPattern
+RepeatedSubstringPattern:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RepeatedSubstringPattern.cpp
 
 test:
 	echo "test"
