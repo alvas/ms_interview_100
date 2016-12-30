@@ -2290,8 +2290,9 @@ AllOOneDataStructure:
 	echo "No 433"
 
 .PHONY: 434
-434: 
-	echo "No 434"
+434: NumberOfSegmentsInAString
+NumberOfSegmentsInAString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfSegmentsInAString.cpp
 
 .PHONY: 435
 435: 
@@ -2326,10 +2327,22 @@ KthSmallestInLexicographicalOrder:
 ArrangingCoins:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArrangingCoins.cpp
 
+.PHONY: 442
+442: 
+	echo "No 442"
+
+.PHONY: 443
+443: 
+	echo "No 443"
+
 .PHONY: 444
 444: SequenceReconstruction
 SequenceReconstruction:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SequenceReconstruction.cpp
+
+.PHONY: 445
+445: 
+	echo "No 445"
 
 .PHONY: 446
 446: ArithmeticSlicesIISubsequence
@@ -2340,6 +2353,22 @@ ArithmeticSlicesIISubsequence:
 447: NumberOfBoomerangs
 NumberOfBoomerangs:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfBoomerangs.cpp
+
+.PHONY: 448
+448: 
+	echo "No 448"
+
+.PHONY: 449
+449: 
+	echo "No 449"
+
+.PHONY: 450
+450: 
+	echo "No 450"
+
+.PHONY: 451
+451: 
+	echo "No 451"
 
 .PHONY: 452
 452: MinimumNumberOfArrowsToBurstBalloons
@@ -2366,10 +2395,35 @@ AssignCookies:
 OneThreeTwoPattern:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OneThreeTwoPattern.cpp
 
+.PHONY: 457
+457: 
+	echo "No 457"
+
+.PHONY: 458
+458: 
+	echo "No 458"
+
 .PHONY: 459
 459: RepeatedSubstringPattern
 RepeatedSubstringPattern:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RepeatedSubstringPattern.cpp
+
+.PHONY: 460
+460: 
+	echo "No 460"
+
+.PHONY: 461
+461: 
+	echo "No 461"
+
+.PHONY: 462
+462: 
+	echo "No 462"
+
+.PHONY: 463
+463: IslandPerimeter
+IslandPerimeter:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IslandPerimeter.cpp
 
 test:
 	echo "test"
