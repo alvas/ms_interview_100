@@ -7,6 +7,7 @@ EXPORTED = -DEXPORTED
 # -c: compile or assemble the source files, but do not link.
 CFLAGS = -c -Wall -DDEBUG -DEXPORTED
 DFLAGS = -std=c++11 -Wall -g -DDEBUG
+#DFLAGS = -std=c++11 -Wall -g -DDEBUG -L/usr/local/lib -lUnitTest++
 LFLAGS = -Wall
 #CC = /usr/local/bin/g++-4.7
 #CC = /usr/bin/g++
@@ -15,13 +16,15 @@ LFLAGS = -Wall
 # use distcc to distribute compile
 #CC = distcc clang++
 CC = clang++
+#CC = clang++ main.cpp
 # using boost
 LEETCODE = ./leetcode/
 mkfile_path :=$(shell pwd)
 # using this, so the header file could be found in the ms_interview_100 folder.
 INCLUDES = -I/usr/include -I/usr/local/include -I$(mkfile_path)
 OPTS=-ggdb -pg -fprofile-arcs -ftest-coverage
-UNITE_TEST = -L/usr/local/lib/ -lboost_unit_test_framework
+#UNIT_TEST = -L/usr/local/lib/ -lboost_unit_test_framework
+#UNIT_TEST1 = -L/usr/local/lib -lUnitTest++
 
 LIBS = 
 
@@ -2355,8 +2358,9 @@ NumberOfBoomerangs:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberOfBoomerangs.cpp
 
 .PHONY: 448
-448: 
-	echo "No 448"
+448: FindAllNumbersDisappearedInAnArray
+FindAllNumbersDisappearedInAnArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindAllNumbersDisappearedInAnArray.cpp
 
 .PHONY: 449
 449: 
@@ -2413,8 +2417,9 @@ RepeatedSubstringPattern:
 	echo "No 460"
 
 .PHONY: 461
-461: 
-	echo "No 461"
+461: HammingDistance
+HammingDistance:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)HammingDistance.cpp
 
 .PHONY: 462
 462: 
@@ -2424,6 +2429,56 @@ RepeatedSubstringPattern:
 463: IslandPerimeter
 IslandPerimeter:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IslandPerimeter.cpp
+
+.PHONY: 476
+476: NumberComplement
+NumberComplement:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberComplement.cpp
+
+.PHONY: 485
+485: MaxConsecutiveOnes
+MaxConsecutiveOnes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaxConsecutiveOnes.cpp
+
+.PHONY: 496
+496: NextGreaterElementI
+NextGreaterElementI:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NextGreaterElementI.cpp
+
+.PHONY: 500
+500: KeyboardRow
+KeyboardRow:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KeyboardRow.cpp
+
+.PHONY: 521
+521: LongestUncommonSubsequenceI
+LongestUncommonSubsequenceI:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestUncommonSubsequenceI.cpp
+
+.PHONY: 557
+557: ReverseWordsInAStringIII
+ReverseWordsInAStringIII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAStringIII.cpp
+
+.PHONY: 561
+561: ArrayPartitionI
+ArrayPartitionI:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArrayPartitionI.cpp
+
+.PHONY: 566
+566: ReshapeTheMatrix
+ReshapeTheMatrix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReshapeTheMatrix.cpp
+
+.PHONY: 575
+575: DistributeCandies
+DistributeCandies:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistributeCandies.cpp
+
+.PHONY: 606
+606: ConstructStringFromBinaryTree
+ConstructStringFromBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructStringFromBinaryTree.cpp
 
 test:
 	echo "test"
