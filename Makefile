@@ -2440,6 +2440,11 @@ NumberComplement:
 MaxConsecutiveOnes:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaxConsecutiveOnes.cpp
 
+.PHONY: 492
+492: ConstructTheRectangle
+ConstructTheRectangle:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructTheRectangle.cpp
+
 .PHONY: 496
 496: NextGreaterElementI
 NextGreaterElementI:
@@ -2450,10 +2455,25 @@ NextGreaterElementI:
 KeyboardRow:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KeyboardRow.cpp
 
+.PHONY: 506
+506: RelativeRanks
+RelativeRanks:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RelativeRanks.cpp
+
+.PHONY: 520
+520: DetectCapital
+DetectCapital:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DetectCapital.cpp
+
 .PHONY: 521
 521: LongestUncommonSubsequenceI
 LongestUncommonSubsequenceI:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestUncommonSubsequenceI.cpp
+
+.PHONY: 530
+530: MinimumAbsoluteDifferenceInBST
+MinimumAbsoluteDifferenceInBST:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumAbsoluteDifferenceInBST.cpp
 
 .PHONY: 557
 557: ReverseWordsInAStringIII
@@ -2465,6 +2485,11 @@ ReverseWordsInAStringIII:
 ArrayPartitionI:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArrayPartitionI.cpp
 
+.PHONY: 563
+563: BinaryTreeTilt
+BinaryTreeTilt:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeTilt.cpp
+
 .PHONY: 566
 566: ReshapeTheMatrix
 ReshapeTheMatrix:
@@ -2475,10 +2500,25 @@ ReshapeTheMatrix:
 DistributeCandies:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistributeCandies.cpp
 
+.PHONY: 598
+598: RangeAdditionII
+RangeAdditionII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RangeAdditionII.cpp
+
+kPHONY: 599
+599: MinimumIndexSumOfTwoLists
+MinimumIndexSumOfTwoLists:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumIndexSumOfTwoLists.cpp
+
 .PHONY: 606
 606: ConstructStringFromBinaryTree
 ConstructStringFromBinaryTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructStringFromBinaryTree.cpp
+
+.PHONY: 617
+617: MergeTwoBinaryTrees
+MergeTwoBinaryTrees:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeTwoBinaryTrees.cpp
 
 test:
 	echo "test"
