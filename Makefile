@@ -935,9 +935,9 @@ BinaryTreeUpsideDown:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeUpsideDown.cpp 
 	
 .PHONY: 157
-157: ReadNCharactersGivenRead
-ReadNCharactersGivenRead: 
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead.cpp 
+157: ReadNCharactersGivenRead4
+ReadNCharactersGivenRead4: 
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReadNCharactersGivenRead4.cpp 
 
 .PHONY: 158
 158: ReadNCharactersGivenReadII
@@ -1000,9 +1000,9 @@ MajorityElement:
 	$(CC) $(DFLAGS) $(LEETCODE)MajorityElement.cpp
 
 .PHONY: 170
-170: TwoSumIII
-TwoSumIII:
-	$(CC) $(DFLAGS) $(LEETCODE)TwoSumIII.cpp
+170: TwoSumIIIDataStructureDesign
+TwoSumIIIDataStructureDesign:
+	$(CC) $(DFLAGS) $(LEETCODE)TwoSumIIIDataStructureDesign.cpp
 
 .PHONY: 171
 171: ExcelSheetColumnNumber
@@ -2171,8 +2171,9 @@ QueueReconstructionByHeight:
 	echo "No 407"
 
 .PHONY: 408
-408: 
-	echo "No 408"
+408: ValidWordAbbreviation
+ValidWordAbbreviation:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ValidWordAbbreviation.cpp
 
 .PHONY: 409
 409: LongestPalindrome
@@ -2194,15 +2195,15 @@ MinimumUniqueWordAbbreviation:
 FizzBuzz:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FizzBuzz.cpp
 
-
 .PHONY: 413
 413: ArithmeticSlices
 ArithmeticSlices:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArithmeticSlices.cpp
 
 .PHONY: 414
-414: 
-	echo "No 414"
+414: ThirdMaximumNumber
+ThirdMaximumNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ThirdMaximumNumber.cpp
 
 .PHONY: 415
 415: AddStrings
@@ -2430,6 +2431,11 @@ HammingDistance:
 IslandPerimeter:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)IslandPerimeter.cpp
 
+.PHONY: 475
+475: Heaters
+Heaters:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Heaters.cpp
+
 .PHONY: 476
 476: NumberComplement
 NumberComplement:
@@ -2455,10 +2461,25 @@ NextGreaterElementI:
 KeyboardRow:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KeyboardRow.cpp
 
+.PHONY: 501
+501: FindModeInBinarySearchTree
+FindModeInBinarySearchTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindModeInBinarySearchTree.cpp
+
+.PHONY: 504
+504: Base7
+Base7:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)Base7.cpp
+
 .PHONY: 506
 506: RelativeRanks
 RelativeRanks:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)RelativeRanks.cpp
+
+.PHONY: 507
+507: PerfectNumber
+PerfectNumber:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PerfectNumber.cpp
 
 .PHONY: 520
 520: DetectCapital
@@ -2474,6 +2495,31 @@ LongestUncommonSubsequenceI:
 530: MinimumAbsoluteDifferenceInBST
 MinimumAbsoluteDifferenceInBST:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumAbsoluteDifferenceInBST.cpp
+
+.PHONY: 532
+532: KdiffPairsInAnArray
+KdiffPairsInAnArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KdiffPairsInAnArray.cpp
+
+.PHONY: 538
+538: ConvertBSTToGreaterTree
+ConvertBSTToGreaterTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertBSTToGreaterTree.cpp
+
+.PHONY: 541
+541: ReverseStringII
+ReverseStringII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseStringII.cpp
+
+.PHONY: 543
+543: DiameterOfBinaryTree
+DiameterOfBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DiameterOfBinaryTree.cpp
+
+.PHONY: 551
+551: StudentAttendanceRecordI
+StudentAttendanceRecordI:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StudentAttendanceRecordI.cpp
 
 .PHONY: 557
 557: ReverseWordsInAStringIII
@@ -2495,10 +2541,25 @@ BinaryTreeTilt:
 ReshapeTheMatrix:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReshapeTheMatrix.cpp
 
+.PHONY: 572
+572: SubtreeOfAnotherTree
+SubtreeOfAnotherTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SubtreeOfAnotherTree.cpp
+
 .PHONY: 575
 575: DistributeCandies
 DistributeCandies:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DistributeCandies.cpp
+
+.PHONY: 581
+581: ShortestUnsortedContinuousSubarray
+ShortestUnsortedContinuousSubarray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ShortestUnsortedContinuousSubarray.cpp
+
+.PHONY: 594
+594: LongestHarmoniousSubsequence
+LongestHarmoniousSubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestHarmoniousSubsequence.cpp
 
 .PHONY: 598
 598: RangeAdditionII
@@ -2510,6 +2571,16 @@ kPHONY: 599
 MinimumIndexSumOfTwoLists:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumIndexSumOfTwoLists.cpp
 
+.PHONY: 604
+604: DesignCompressedStringIterator
+DesignCompressedStringIterator:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DesignCompressedStringIterator.cpp
+
+.PHONY: 605
+605: CanPlaceFlowers
+CanPlaceFlowers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)CanPlaceFlowers.cpp
+
 .PHONY: 606
 606: ConstructStringFromBinaryTree
 ConstructStringFromBinaryTree:
@@ -2519,6 +2590,31 @@ ConstructStringFromBinaryTree:
 617: MergeTwoBinaryTrees
 MergeTwoBinaryTrees:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MergeTwoBinaryTrees.cpp
+
+.PHONY: 624
+624: MaximumDistanceInArrays
+MaximumDistanceInArrays:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumDistanceInArrays.cpp
+
+.PHONY: 628
+628: MaximumProductOfThreeNumbers
+MaximumProductOfThreeNumbers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumProductOfThreeNumbers.cpp
+
+.PHONY: 633
+633: SumOfSquareNumbers
+SumOfSquareNumbers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SumOfSquareNumbers.cpp
+
+.PHONY: 637
+637: AverageOfLevelsInBinaryTree
+AverageOfLevelsInBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)AverageOfLevelsInBinaryTree.cpp
+
+.PHONY: 643
+643: MaximumAverageSubarrayI
+MaximumAverageSubarrayI:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumAverageSubarrayI.cpp
 
 test:
 	echo "test"

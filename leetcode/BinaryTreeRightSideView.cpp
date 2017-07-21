@@ -65,7 +65,7 @@ public:
 int main()
 {
     Solution sln;
-    TreeNode *p = NULL;
+    TreeNode *p = nullptr;
     string leaf[11] = {"1", "2", "3", "#", "5", "#", "4"};
     vector<string> v(leaf, leaf + 7);
     ReBuildTreeFromOrderLevel<TreeNode>(v, p);
