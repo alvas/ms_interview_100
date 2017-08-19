@@ -1622,9 +1622,9 @@ SerializeAndDeserializeBinaryTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SerializeAndDeserializeBinaryTree.cpp
 
 .PHONY: 298
-298: BinaryngestConsecutiveSequence
-BinaryngestConsecutiveSequence:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryngestConsecutiveSequence.cpp
+298: BinaryTreeLongestConsecutiveSequence
+BinaryTreeLongestConsecutiveSequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLongestConsecutiveSequence.cpp
 
 .PHONY: 299
 299: BullsAndCows
@@ -1632,9 +1632,9 @@ BullsAndCows:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BullsAndCows.cpp
 
 .PHONY: 300
-300: LongestIncreasingSubsequence
-LongestIncreasingSubsequence:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestIncreasingSubsequence.cpp
+300: BinaryTreeLongestIncreasingSubsequence
+BinaryTreeLongestIncreasingSubsequence:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BinaryTreeLongestIncreasingSubsequence.cpp
 
 .PHONY: 301
 301: RemoveInvalidParenthese
@@ -2332,8 +2332,9 @@ ArrangingCoins:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ArrangingCoins.cpp
 
 .PHONY: 442
-442: 
-	echo "No 442"
+442: FindAllDuplicatesInAnArray
+FindAllDuplicatesInAnArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindAllDuplicatesInAnArray.cpp
 
 .PHONY: 443
 443: 
@@ -2441,6 +2442,21 @@ Heaters:
 NumberComplement:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NumberComplement.cpp
 
+.PHONY: 479
+479: LargestPalindromeProduct
+LargestPalindromeProduct:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LargestPalindromeProduct.cpp
+
+.PHONY: 482
+482: LicenseKeyFormatting
+LicenseKeyFormatting:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LicenseKeyFormatting.cpp
+
+.PHONY: 484
+484: FindPermutation
+FindPermutation:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindPermutation.cpp
+
 .PHONY: 485
 485: MaxConsecutiveOnes
 MaxConsecutiveOnes:
@@ -2481,6 +2497,16 @@ RelativeRanks:
 PerfectNumber:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PerfectNumber.cpp
 
+.PHONY: 513
+513: FindBottomLeftTreeValue
+FindBottomLeftTreeValue:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindBottomLeftTreeValue.cpp
+
+.PHONY: 515
+515: FindLargestValueInEachTreeRow
+FindLargestValueInEachTreeRow:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindLargestValueInEachTreeRow.cpp
+
 .PHONY: 520
 520: DetectCapital
 DetectCapital:
@@ -2491,20 +2517,45 @@ DetectCapital:
 LongestUncommonSubsequenceI:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LongestUncommonSubsequenceI.cpp
 
+.PHONY: 526
+526: BeautifulArrangement
+BeautifulArrangement:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BeautifulArrangement.cpp
+
 .PHONY: 530
 530: MinimumAbsoluteDifferenceInBST
 MinimumAbsoluteDifferenceInBST:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MinimumAbsoluteDifferenceInBST.cpp
+
+.PHONY: 531
+531: LonelyPixelI
+LonelyPixelI:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)LonelyPixelI.cpp
 
 .PHONY: 532
 532: KdiffPairsInAnArray
 KdiffPairsInAnArray:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)KdiffPairsInAnArray.cpp
 
+.PHONY: 535
+535: EncodeAndDecodeTinyURL
+EncodeAndDecodeTinyURL:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)EncodeAndDecodeTinyURL.cpp
+
+.PHONY: 537
+537: ComplexNumberMultiplication
+ComplexNumberMultiplication:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ComplexNumberMultiplication.cpp
+
 .PHONY: 538
 538: ConvertBSTToGreaterTree
 ConvertBSTToGreaterTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConvertBSTToGreaterTree.cpp
+
+.PHONY: 540
+540: SingleElementInASortedArray
+SingleElementInASortedArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SingleElementInASortedArray.cpp
 
 .PHONY: 541
 541: ReverseStringII
@@ -2516,10 +2567,20 @@ ReverseStringII:
 DiameterOfBinaryTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)DiameterOfBinaryTree.cpp
 
+.PHONY: 544
+544: OutputContestMatches
+OutputContestMatches:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OutputContestMatches.cpp
+
 .PHONY: 551
 551: StudentAttendanceRecordI
 StudentAttendanceRecordI:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)StudentAttendanceRecordI.cpp
+
+.PHONY: 553
+553: OptimalDivision
+OptimalDivision:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)OptimalDivision.cpp
 
 .PHONY: 557
 557: ReverseWordsInAStringIII
@@ -2586,6 +2647,11 @@ CanPlaceFlowers:
 ConstructStringFromBinaryTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ConstructStringFromBinaryTree.cpp
 
+.PHONY: 609
+609: FindDuplicateFileInSystem
+FindDuplicateFileInSystem:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindDuplicateFileInSystem.cpp
+
 .PHONY: 617
 617: MergeTwoBinaryTrees
 MergeTwoBinaryTrees:
@@ -2615,6 +2681,31 @@ AverageOfLevelsInBinaryTree:
 643: MaximumAverageSubarrayI
 MaximumAverageSubarrayI:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumAverageSubarrayI.cpp
+
+.PHONY: 645
+645: SetMismatch
+SetMismatch:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SetMismatch.cpp
+
+.PHONY: 647
+647: PalindromicSubstrings
+PalindromicSubstrings:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromicSubstrings.cpp
+
+.PHONY: 653
+653: TwoSumIVInputIsABST
+TwoSumIVInputIsABST:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TwoSumIVInputIsABST.cpp
+
+.PHONY: 654
+654: MaximumBinaryTree
+MaximumBinaryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MaximumBinaryTree.cpp
+
+.PHONY: 657
+657: JudgeRouteCircle
+JudgeRouteCircle:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JudgeRouteCircle.cpp
 
 test:
 	echo "test"
