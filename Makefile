@@ -967,7 +967,7 @@ FindPeakElement: RandomData.o NormalData.o
 .PHONY: 163
 163: MissingRanges
 MissingRanges:
-	$(CC) $(DFLAGS) $(LEETCODE)MissingRanges.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)MissingRanges.cpp
 
 .PHONY: 164
 164: MaximumGap
@@ -2373,8 +2373,9 @@ FindAllNumbersDisappearedInAnArray:
 	echo "No 450"
 
 .PHONY: 451
-451: 
-	echo "No 451"
+451: SortCharactersByFrequency
+SortCharactersByFrequency:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SortCharactersByFrequency.cpp
 
 .PHONY: 452
 452: MinimumNumberOfArrowsToBurstBalloons
@@ -2706,6 +2707,11 @@ MaximumBinaryTree:
 657: JudgeRouteCircle
 JudgeRouteCircle:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)JudgeRouteCircle.cpp
+
+.PHONY: 661
+661: ImageSmoother
+ImageSmoother:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImageSmoother.cpp
 
 test:
 	echo "test"

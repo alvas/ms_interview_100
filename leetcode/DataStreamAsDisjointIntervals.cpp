@@ -26,7 +26,8 @@ public:
     }
     
     vector<Interval> getIntervals() {
-        
+        vector<Interval> a;
+        return a;
     }
 };
 
