@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CC7F975B1F523E9000932198 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC7F975A1F523E9000932198 /* main.cpp */; };
-		CC7F97621F523EB100932198 /* NumberOfConnectedComponentsInAnUndirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC7F97611F523EB100932198 /* NumberOfConnectedComponentsInAnUndirectedGraph.cpp */; };
+		CC7F97691F5335D400932198 /* NormalData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC7F97681F5335D400932198 /* NormalData.cpp */; };
+		CC7F976B1F5380E400932198 /* 4KeysKeyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC7F976A1F5380E400932198 /* 4KeysKeyboard.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +27,9 @@
 /* Begin PBXFileReference section */
 		CC7F97571F523E9000932198 /* leetcode_debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = leetcode_debug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7F975A1F523E9000932198 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		CC7F97611F523EB100932198 /* NumberOfConnectedComponentsInAnUndirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NumberOfConnectedComponentsInAnUndirectedGraph.cpp; path = ../../leetcode/NumberOfConnectedComponentsInAnUndirectedGraph.cpp; sourceTree = "<group>"; };
+		CC7F97671F53357700932198 /* NormalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalData.h; path = ../../NormalData.h; sourceTree = "<group>"; };
+		CC7F97681F5335D400932198 /* NormalData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalData.cpp; path = ../../NormalData.cpp; sourceTree = "<group>"; };
+		CC7F976A1F5380E400932198 /* 4KeysKeyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = 4KeysKeyboard.cpp; path = ../../leetcode/4KeysKeyboard.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +62,9 @@
 		CC7F97591F523E9000932198 /* leetcode_debug */ = {
 			isa = PBXGroup;
 			children = (
-				CC7F97611F523EB100932198 /* NumberOfConnectedComponentsInAnUndirectedGraph.cpp */,
+				CC7F976A1F5380E400932198 /* 4KeysKeyboard.cpp */,
+				CC7F97681F5335D400932198 /* NormalData.cpp */,
+				CC7F97671F53357700932198 /* NormalData.h */,
 				CC7F975A1F523E9000932198 /* main.cpp */,
 			);
 			path = leetcode_debug;
@@ -122,8 +127,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7F976B1F5380E400932198 /* 4KeysKeyboard.cpp in Sources */,
 				CC7F975B1F523E9000932198 /* main.cpp in Sources */,
-				CC7F97621F523EB100932198 /* NumberOfConnectedComponentsInAnUndirectedGraph.cpp in Sources */,
+				CC7F97691F5335D400932198 /* NormalData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +258,7 @@
 				CC7F97601F523E9000932198 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
