@@ -1,4 +1,5 @@
 #include <iostream>
+#include <numeric>
 #include <set>
 #include <utility>
 #include <vector>
@@ -7,10 +8,29 @@ using namespace std;
 
 class Solution {
 public:
-    //int countComponents(int n, vector<pair<int, int>>& edges) {
-    //}
-
     int countComponents(int n, vector<pair<int, int>>& edges) {
+        vector<int> p(n);
+        iota(p.begin(), p.end(), 0);
+
+        for (auto &e: edges) {
+            int v = e.first, w = e.second;
+
+            while (p[v] != v) {
+                v = p[v] = p[p[v]];
+            }
+
+            while (p[w] != w) {
+                w = p[w] = p[p[w]];
+            }
+
+            p[v] = w;
+            n -= v != w;
+        }
+
+        return n;
+    }
+
+    int countComponents1(int n, vector<pair<int, int>>& edges) {
         int ans = n;
         vector<int> node(n, -1);
 
@@ -65,10 +85,11 @@ public:
 int main()
 {
     Solution sln;
-    int n = 4;
+    int n = 6;
     //vector<pair<int, int>> edges = {{0, 1}, {1, 2}, {3, 4}};
     //vector<pair<int, int>> edges = {{0, 1}, {1, 2}, {2, 3}, {3, 4}};
-    vector<pair<int, int>> edges = {{0, 1}, {2, 3}, {1, 2}};
+    //vector<pair<int, int>> edges = {{0, 1}, {2, 3}, {1, 2}};
+    vector<pair<int, int>> edges = {{0, 1}, {2, 3}, {4, 5}, {1, 2}, {3, 4}};
     cout << sln.countComponents(n, edges) << endl;
     return 0;
 }

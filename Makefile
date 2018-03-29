@@ -2483,6 +2483,11 @@ KeyboardRow:
 FindModeInBinarySearchTree:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)FindModeInBinarySearchTree.cpp
 
+.PHONY: 503
+503: NextGreaterElementII
+NextGreaterElementII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NextGreaterElementII.cpp
+
 .PHONY: 504
 504: Base7
 Base7:
@@ -2693,6 +2698,11 @@ SetMismatch:
 PalindromicSubstrings:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)PalindromicSubstrings.cpp
 
+.PHONY: 651
+651: 4KeysKeyboard
+4KeysKeyboard:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)4KeysKeyboard.cpp
+
 .PHONY: 653
 653: TwoSumIVInputIsABST
 TwoSumIVInputIsABST:
@@ -2712,6 +2722,31 @@ JudgeRouteCircle:
 661: ImageSmoother
 ImageSmoother:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImageSmoother.cpp
+
+.PHONY: 665
+665: NonDecreasingArray
+NonDecreasingArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)NonDecreasingArray.cpp
+
+.PHONY: 667
+667: BeautifulArrangementII
+BeautifulArrangementII:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BeautifulArrangementII.cpp
+
+.PHONY: 669
+669: TrimABinarySearchTree
+TrimABinarySearchTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TrimABinarySearchTree.cpp
+
+.PHONY: 682
+682: BaseballGame
+BaseballGame:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BaseballGame.cpp
+
+.PHONY: 728
+728: SelfDividingNumbers
+SelfDividingNumbers:
+	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SelfDividingNumbers.cpp
 
 test:
 	echo "test"
