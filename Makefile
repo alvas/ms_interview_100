@@ -23,8 +23,8 @@ mkfile_path :=$(shell pwd)
 # using this, so the header file could be found in the ms_interview_100 folder.
 INCLUDES = -I/usr/include -I/usr/local/include -I$(mkfile_path)
 OPTS=-ggdb -pg -fprofile-arcs -ftest-coverage
-#UNIT_TEST = -L/usr/local/lib/ -lboost_unit_test_framework
-#UNIT_TEST1 = -L/usr/local/lib -lUnitTest++
+UNIT_TEST = -L/usr/local/lib/ -lboost_unit_test_framework
+UNIT_TEST1 = -L/usr/local/lib -lUnitTest++ main.cpp
 
 LIBS = 
 
@@ -157,7 +157,7 @@ ZigZagArray:
 .PHONY: 1
 1: TwoSum
 TwoSum:
-	$(CC) $(DFLAGS) $(INCLUDES) $(UNITE_TEST) $(LEETCODE)TwoSum.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST) $(LEETCODE)TwoSum.cpp
 
 .PHONY: 2
 2: AddTwoNumbers
@@ -2747,6 +2747,11 @@ BaseballGame:
 728: SelfDividingNumbers
 SelfDividingNumbers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SelfDividingNumbers.cpp
+
+.PHONY: 771
+771: JewelsAndStones
+JewelsAndStones:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)JewelsAndStones.cpp
 
 test:
 	echo "test"
