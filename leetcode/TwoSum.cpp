@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "NormalData.h"
+#include "UnitTest.h"
 
 class Solution {
 public:
@@ -74,19 +75,49 @@ public:
     }
 };
 
-int main()
+//int main()
+//{
+    //Solution sln;
+    //std::vector<int> nums = {0, 4, 3, 0};
+    //int target = 0;
+    //std::cout << "Please enter target: ";
+    //std::cin >> target;
+    ////vector<int> v = sln.twoSum_sort(nums, target);
+    //std::vector<int> v1 = sln.twoSum(nums, target);
+    //printVector<int>(nums);
+    ////printVector<int>(v);
+    //printVector<int>(v1);
+    //return 0;
+//}
+
+
+SUITE(TEST_CASES)
 {
-    Solution sln;
-    std::vector<int> nums = {0, 4, 3, 0};
-    int target = 0;
-    std::cout << "Please enter target: ";
-    std::cin >> target;
-    //vector<int> v = sln.twoSum_sort(nums, target);
-    std::vector<int> v1 = sln.twoSum(nums, target);
-    printVector<int>(nums);
-    //printVector<int>(v);
-    printVector<int>(v1);
-    return 0;
+    class MyFixture
+    {
+    public:
+        Solution sln;
+    };
+
+    TEST_FIXTURE(MyFixture, CASE1)
+    {
+        std::vector<int> nums = {0, 4, 3, 0};
+        int target = 7;
+        std::cout << "Please enter target: " << target << std::endl;
+        //vector<int> v = sln.twoSum_sort(nums, target);
+        std::vector<int> v1 = sln.twoSum(nums, target);
+        std::vector<int> v2 = {1, 2};
+        CHECK_EQUAL(v1 == v2, true);
+    }
+
+    TEST_FIXTURE(MyFixture, CASE2)
+    {
+        std::vector<int> nums = {0, 4, 3, 0};
+        int target = 8;
+        std::cout << "Please enter target: " << target << std::endl;
+        //vector<int> v = sln.twoSum_sort(nums, target);
+        std::vector<int> v1 = sln.twoSum(nums, target);
+        std::vector<int> v2;
+        CHECK_EQUAL(v1 == v2, true);
+    }
 }
-
-

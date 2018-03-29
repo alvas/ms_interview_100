@@ -157,7 +157,7 @@ ZigZagArray:
 .PHONY: 1
 1: TwoSum
 TwoSum:
-	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST) $(LEETCODE)TwoSum.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)TwoSum.cpp
 
 .PHONY: 2
 2: AddTwoNumbers

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "UnitTest++/UnitTest++.h"
+#include "UnitTest.h"
 
 using namespace std;
 
@@ -23,15 +23,20 @@ public:
 
 SUITE(TEST_CASES)
 {
-    TEST(CASE1)
+    class MyFixture
     {
+    public:
         Solution sln;
+    };
+
+    TEST_FIXTURE(MyFixture, CASE1)
+    {
         string J("aA");
         string S("aAAbbbb");
         CHECK_EQUAL(sln.numJewelsInStones(J, S), 3);
     }
 
-    TEST(CASE2)
+    TEST_FIXTURE(MyFixture, CASE2)
     {
         Solution sln;
         string J("z");
