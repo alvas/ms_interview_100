@@ -2736,12 +2736,17 @@ BeautifulArrangementII:
 .PHONY: 669
 669: TrimABinarySearchTree
 TrimABinarySearchTree:
-	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)TrimABinarySearchTree.cpp
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)TrimABinarySearchTree.cpp
 
 .PHONY: 682
 682: BaseballGame
 BaseballGame:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)BaseballGame.cpp
+
+.PHONY: 709
+709: ToLowerCase
+ToLowerCase:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)ToLowerCase.cpp
 
 .PHONY: 728
 728: SelfDividingNumbers
@@ -2752,6 +2757,51 @@ SelfDividingNumbers:
 771: JewelsAndStones
 JewelsAndStones:
 	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)JewelsAndStones.cpp
+
+.PHONY: 804
+804: UniqueMorseCodeWords
+UniqueMorseCodeWords:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)UniqueMorseCodeWords.cpp
+
+.PHONY: 806
+806: NumberOfLinesToWriteString
+NumberOfLinesToWriteString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)NumberOfLinesToWriteString.cpp
+
+.PHONY: 807
+807: MaxIncreaseToKeepCitySkyline
+MaxIncreaseToKeepCitySkyline:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)MaxIncreaseToKeepCitySkyline.cpp
+
+.PHONY: 811
+811: SubdomainVisitCount
+SubdomainVisitCount:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)SubdomainVisitCount.cpp
+
+.PHONY: 814
+814: BinaryTreePruning
+BinaryTreePruning:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)BinaryTreePruning.cpp
+
+.PHONY: 821
+821: ShortestDistanceToACharacter
+ShortestDistanceToACharacter:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)ShortestDistanceToACharacter.cpp
+
+.PHONY: 832
+832: FlippingAnImage
+FlippingAnImage:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)FlippingAnImage.cpp
+
+.PHONY: 852
+852: PeakIndexInAMountainArray
+PeakIndexInAMountainArray:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)PeakIndexInAMountainArray.cpp
+
+.PHONY: 861
+861: ScoreAfterFlippingMatrix
+ScoreAfterFlippingMatrix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)ScoreAfterFlippingMatrix.cpp
 
 test:
 	echo "test"
