@@ -1,0 +1,225 @@
+morden_c++_note.txt
+
+:Author: qingyun
+:Email: qingyun.oracle@gmail.com
+:Date: 2018-07-17 21:14
+
+template <class T, class U> class SmartPtr {…};
+template <class U> class SmartPtr<Widget, U> {…};
+
+template <class T>
+struct OpNewCreator {
+	static *T Create() {
+		return new T;
+	}
+};
+
+template <class T>
+struct MallocCreator {
+    struct T* Create() {
+        void *buf = std::malloc(sizeof(T));
+        if (!buf) return 0;
+        return new(buf) T;
+    }
+};
+
+template <class T>
+struct PrototypeCreator {
+    PrototypeCreator(T *pObj = 0): pPrototype_(pObj) {}
+    T* Create() {
+        return pPrototype_ ? pPrototype_->Clone() : 0;
+    }
+    T* GetPrototype() { return pPrototype_; }
+    void SetPrototype(T *pObj) { pPrototype_ = pObj; }
+private:
+    T* pPrototype_;
+}
+
+tempalte <class CreationPolicy>
+class WidgetManager: public CreationPolicy {...};
+typedef WidgetManager<OpNewCreator<Widget>> MyWidgetMgr;
+
+template <template <class Created> class CreationPolicy>
+class WidgetManager: public CreationPolicy<Widget> {
+    void DoSomething() {
+        Gadget *pW = CreationPolicy<Gadget>().Create();
+    }
+
+    void SwitchPrototype(Widget *pNewPrototype) {
+        CreationPolicy<Widget> &myPolicy = *this;
+        delete myPolicy.GetPrototype();
+        myPolicy.SetPrototype(pNewPrototype);
+    }
+};
+typedef WidgetManager<OpNewCreator> MyWidgetMgr;
+
+template <template <class> class CreationPolicy = OpNewCreator>
+class WidgetManager: public CreationPolicy<Widget> {...};
+
+
+struct OpNewCreator {
+    template <class T>
+        static T* Create() {
+            return new T;
+        }
+protected:
+    ~OpNewCreator() {}
+};
+
+template <class T> struct NoChecking {
+    static void Check(T*) {}
+};
+
+template <class T> struct EnforceNotNull {
+    class NullPointerException: public std::exception {...};
+    static void Check(T* ptr) {
+        if (!ptr) throw NullPointerException();
+    }
+    static void Check(T*& ptr) {
+        if (!ptr) ptr = GetDefaultValue();
+    }
+};
+
+template <class T>
+class DefaultSmartPtrStorage {
+public:
+    typedef T* PointerType;
+    typedef T& ReferenceType;
+protected:
+    PointerType GetPointer() { return ptr_; }
+    void SetPointer(PointerType ptr) { ptr_ = ptr; }
+private:
+    PointerType pointee_;
+};
+
+template <class T, template <class> class CheckingPolicy, template <class> class ThreadingModel, template <class> class Storate = DefaultSmartPtrStorage>
+class SmartPtr: public CheckingPolicy<T>, public ThreadingModel<SmartPtr> {
+    T* operator->() {
+        typename ThreadingModel<SmartPtr>::Lock guard(*this);
+        CheckingPolicy<T>::Check(pointee_);
+        return pointee_;
+    }
+private:
+    T* pointee_;
+};
+
+typedef SmartPtr<Widget, NoChecking, SingleThread> WidgetPtr;
+typedef SmartPtr<Widget, EnforceNotNull, SingleThread> SafeWidgetPtr;
+
+
+template <class T, template <class> class CheckingPolicy>
+class SmartPtr: public CheckingPolicy<T> {
+    template<class T1, template <class> class CP1>
+        SmartPtr(const SmartPtr<T1, CP1> &other): pointee_(other.pointee_), CheckingPolicy<T>(other) {...}
+}
+
+
+
+
+template <class To, class From>
+To safe_reinterpret_cast(From from) {
+    assert(sizeof(From) <= sizeof(To));
+    return reinterpret_cast<To>(from);
+}
+
+#define STATIC_CHECK(expr) { char unnamed[(expr) ? 1 : 0]; }
+
+template <class To, class From>
+To safe_reinterpret_cast(From from) {
+    STATIC_CHECK(sizeof(From) < sizeof(To));
+    return reinterpret_cast<To>(from);
+}
+
+template<bool> struct CompileTimeError;
+template<> struct CompileTimeError<true> {};
+#define STATIC_CHECK(expr) (CompileTimeError<(expr) != 0>())
+
+template<bool> struct CompiletimeChecker {
+    CompileTimeChecker(...);
+}
+
+template<> struct CompileTimeChecker<false> {};
+
+#define STATIC_CHECK(expr, msg) \
+{\
+    class ERROR_##msg {};
+    (void)sizeof(CompileTimeChecker<(expr)>(ERROR_##msg()));\
+}
+
+template <class To, class From>
+To safe_reinterpret_cast(From from) {
+    STATIC_CHECK(sizeof(From) <= sizeof(To), Destination_Type_Too_Narrow);
+    return reinterpret_cast<To>(from);
+}
+
+int i = 5;
+char *p = safe_reinterpret_cast<char *>(i);
+
+
+template <class Window, class Controller>
+class Widget {
+    ...
+};
+
+template <>
+clas Widget<ModalDialog, MyController> {
+    ...
+};
+
+template <class Window>
+class Widget<Window, MyController> {
+    ...
+};
+
+template <class ButtonArg>
+class Widget<Button<ButtonArg>, MyController> {
+    ...
+};
+
+
+template <class T, class U> T Fun(U obj);
+template <class T> T Fun(Window obj);
+
+
+class Interface {
+public:
+    virtual void Fun() = 0;
+};
+
+template <class T, class P>
+Interface* MakeAdapter(const T& obj, const P& arg) {
+
+    class Local: public Interface {
+    public:
+        Local(const T& obj, const P&arg): obj_(obj), arg_(arg) {}
+        virtual void Fun() {
+            obj_.Call(arg_);
+        }
+    private:
+        T obj_;
+        P arg_;
+    };
+
+    return new Local(obj, arg);
+}
+
+
+template <int v>
+struct Int2Type {
+    enum {value = v};
+};
+
+template <typename T, bool isPolymorphic>
+class NiftyContainer {
+private:
+    void DoSomething(T* pObj, Int2Type<true>) {
+        T* pNewObj = pObj->Clone();
+    }
+    void DoSomething(T* pObj, Int2Type<false>) {
+        T* pNewObj = new T(*pObj);
+    }
+public:
+    void DoSomething(T* pObj) {
+        DoSomething(pObj, Int2Type<isPolymorphic>());
+    }
+}
