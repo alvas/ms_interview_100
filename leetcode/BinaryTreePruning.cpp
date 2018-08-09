@@ -25,7 +25,32 @@ using namespace std;
 class Solution {
 public:
     TreeNode* pruneTree(TreeNode* root) {
+        if (isEmpty(root)) {
+            root = nullptr;
+        }
+
         return root;
+    }
+
+    bool isEmpty(TreeNode *root) {
+        if (!root) {
+            return true;
+        }
+
+        bool leftNull = isEmpty(root->left);
+
+        if (leftNull) {
+            root->left = nullptr;
+        }
+
+        bool rightNull = isEmpty(root->right);
+
+        if (rightNull) {
+            root->right = nullptr;
+        }
+
+        // be careful about this checking condition
+        return root->val == 0 && leftNull && rightNull;
     }
 };
 

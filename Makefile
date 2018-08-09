@@ -2758,6 +2758,11 @@ SelfDividingNumbers:
 JewelsAndStones:
 	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)JewelsAndStones.cpp
 
+.PHONY: 797
+797: AllPathsFromSourceToTarget
+AllPathsFromSourceToTarget:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)AllPathsFromSourceToTarget.cpp
+
 .PHONY: 804
 804: UniqueMorseCodeWords
 UniqueMorseCodeWords:
@@ -2802,6 +2807,21 @@ PeakIndexInAMountainArray:
 861: ScoreAfterFlippingMatrix
 ScoreAfterFlippingMatrix:
 	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)ScoreAfterFlippingMatrix.cpp
+
+.PHONY: 867
+867: TransposeMatrix
+TransposeMatrix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)TransposeMatrix.cpp
+
+.PHONY: 876
+876: MiddleOfTheLinkedList
+MiddleOfTheLinkedList:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)MiddleOfTheLinkedList.cpp
+
+.PHONY: 887
+887: ProjectionAreaOf3DShapes
+ProjectionAreaOf3DShapes:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)ProjectionAreaOf3DShapes.cpp
 
 test:
 	echo "test"

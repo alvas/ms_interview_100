@@ -206,7 +206,7 @@ Interface* MakeAdapter(const T& obj, const P& arg) {
 
 template <int v>
 struct Int2Type {
-    enum {value = v};
+    enum { value = v };
 };
 
 template <typename T, bool isPolymorphic>
@@ -223,3 +223,232 @@ public:
         DoSomething(pObj, Int2Type<isPolymorphic>());
     }
 }
+
+
+
+
+template <typename T>
+struct Type2Type {
+    typedef T OriginalType;
+};
+
+template <class T, class U>
+T* Create(const U& arg, Type2Type<T>) {
+    return new T(arg);
+}
+
+template <class U>
+Widget* Create(const U& arg, Type2Type<Widget>) {
+    return new Widget(arg, -1);
+}
+
+String* pStr = Create("Hello", Type2Type<String>());
+Widget* pw = Create(100, Type2Type<Widget>());
+
+
+
+
+
+template <typename T, bool isPolymorphic>
+struct NiftyContainerValueTraits {
+    typedef T* ValueType;
+};
+
+template <typename T>
+struct NiftyContainerValueTraits<T, false> {
+    typedef T ValueType;
+};
+
+template <typename T, bool isPolymorphic>
+class NiftyContainer {
+    typedef NiftyContainerValueTraits<T, isPolymorphic> Traits;
+    typedef typename Traits::ValueType ValueType;
+};
+
+
+template <bool flag, typename T, typename U>
+struct Select {
+    typedef T Result;
+};
+
+template <typename T, typename U>
+struct Select<false, T, U> {
+    typename U Result;
+};
+
+template <typename T, bool isPolymorphic>
+class NiftyContainer {
+    typedef Select<isPolymorphic, T*, T>::Result ValueType;
+};
+
+
+
+
+
+typedef char Small;
+class Big { char dummy[2]; };
+
+Small Test(U);
+Bit Test(...);
+
+const bool convExists = sizeof(Test(T())) == sizeof(Small);
+
+T MakeT(); // if T doens't have default constructor, use this
+const bool convExists = sizeof(Test(MakeT())) == sizeof(Small);
+
+template <class T, class U>
+class Conversion {
+    typedef char Small;
+    class Big { char dummy[2]; };
+    static Small Test(U);
+    static Big Test(...);
+    static T MakeT();
+public:
+    enum { exists = sizeof(Test(MakeT())) == sizeof(Small) };
+    enum { exists2Way = exists && Conversoion<U, T>::exists };
+    enum { sameType = false };
+};
+
+template <class T>
+class Conversion<T, T> {
+public:
+    enum { exists = 1, exists2Way = 1, sameType = 1 };
+}
+
+#define SUPERSUBCLASS(T, U) \
+    (Conversion<const U*, const T*>::exists && \
+    !Conversion<const T*, const void*>::sameType)
+
+#define SUPERSUBCLASS_STRICT(T, U) \
+    (SUPERSUBCLASS(T, U) && \
+    !Conversion<const T, const U>::sameType)
+
+int main() {
+    using namespace std;
+    cout << Conversion<double, int>::exists << ' ' 
+         << Conversion<char, char*>::exists << ' '
+         << Conversion<size_t, vector<int>>::exists;
+}
+
+
+
+class TypeInfo {
+public:
+    TypeInfo();
+    TypeInfo(const std::type_info&);
+    TypeInfo(const TypeInfo&);
+    TypeInfo& operator=(const TypeInfo&);
+    bool before(const TypeInfo&) const;
+    const char* name() const;
+private:
+    const std::type_info* pInfo_;
+};
+
+bool operator==(const TypeInfo&, const TypeInfo&);
+bool operator!=(const TypeInfo&, const TypeInfo&);
+bool operator<(const TypeInfo&, const TypeInfo&);
+bool operator<=(const TypeInfo&, const TypeInfo&);
+bool operator>(const TypeInfo&, const TypeInfo&);
+bool operator>=(const TypeInfo&, const TypeInfo&);
+
+void Fun(Base* pObj) {
+    TypeInfo info = typeid(Derived);
+
+    if (typeid(*pObj) == info) {
+    }
+}
+
+
+
+class NullType; // no definition
+struct EmptyType {};
+
+
+template <typename T>
+class TypeTraits {
+private:
+    template <class U> struct PointerTraits {
+        enum { result = false };
+        typedef NullType PointeeType;
+    };
+    template <class U> struct PointerTraits<U*> {
+        enum { result = true };
+        typedef U PointeeType;
+    };
+    template <class U> struct PToMTraits {
+        enum { result = false };
+    };
+    template <class U, class V> struct PToMTraits<U V::*> {
+        enum { result = true };
+    };
+
+    template <class U> struct UnCost {
+        typedef U Result;
+    };
+    template <class U> struct UnCost<const U> {
+        typedef U Result;
+    };
+
+public:
+    enum { isPointer = PointerTraits<T>::result };
+    typedef PointerTraits<T>::PointeeType PointeeType;
+    enum { isMemberPointer = PToMTraits<T>::result };
+
+    typedef TYPELIST_4(unsigned char, unsigned short int, unsigned int, unsigned long int) UnsignedInts;
+    typedef TYPELIST_4(signed char, signed short int, signed int, signed long int) SignedInts;
+    typedef TYPELIST_3(bool, char, wchar_t) OtherInts;
+    typedef TYPELIST_3(float, double, long double) Floats;
+    enum { isStdUnsignedInt = TL::IndexOf<T, UnsignedInts>::value >= 0 };
+    enum { isStdSignedInt = TL::IndexOf<T, SignedInts>::value >= 0 };
+    enum { isStdIntegral = isStdUnsignedInt || isStdSignedInt || TL::IndexOf<T, OtherInts>::value >= 0 };
+    enum { isStdFloat = TL:<T, Floats>::value >= 0 };
+    enum { isStdArith = isStdIntegral || isStdFloat };
+    enum { isStdFundamental = isStdArith || isStdFloat || Conversion<T, void>::sameType };
+
+    typedef Select<isStdArith || isPointer || isMemberPointer, T, ReferencedType&>::Result ParameterType;
+    typedef UnConst<T>::Result NonConstType;
+};
+
+int main() {
+    const bool iterIsPtr = TypeTraits<vector<int>>::iterator>::isPointer;
+    cout << "vector<int>::iterator is " << iterIsPtr ? "fast" : "smart" << endl;
+}
+
+
+
+enum CopyAlgoSelector { Conservative, Fast };
+
+template <typename Init, typename OutIt>
+OutIt CopyImpl(InIt first, InIt last, OutIt result, Int2Type<Conservative>) {
+    for (; first != last; ++first, ++result)
+        *result = *first;
+}
+
+template <typename InIt, typename OutIt>
+OutIt CopyImpl(InIt first, InIt last, OutIt result, Int2Type<Fast>) {
+    const size_t n = last - first;
+    BitBlast(first, result, n * sizeof(*first));
+    return result + n;
+}
+
+template <typename T> struct SupportsBitwiseCopy {
+    enum { result = TypeTraits<T>::isStdFundamental };
+};
+
+template <> struct SupportBitwiseCopy<MyType> {
+    enum { result = true; }
+};
+
+template <typename InIt, typename OutIt>
+OutIt Copy(InIt first, InIt last, OutIt result) {
+    typedef TypeTraits<InIt>::PointeeType SrcPointee;
+    typedef TypeTraits<OutIt>::PointeeType DestPointee;
+    enum { copyAlgo = TypeTraits<InIt>::isPointer &&
+                      TypeTraits<OutIt>::isPointer &&
+                      SupportsBitwiseCopy<SrcPointee>::result &&
+                      SupportsBitwiseCopy<DestPointee>::result &&
+                      sizeof(SrcPointee) == sizeof(DestPointee) ? Fast : Conservative };
+                      
+    return CopyImpl(first, last, Int2Type<useBitBlast>);
+}
+
