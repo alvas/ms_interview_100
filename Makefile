@@ -2593,6 +2593,11 @@ OptimalDivision:
 ReverseWordsInAStringIII:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ReverseWordsInAStringIII.cpp
 
+.PHONY: 559
+559: MaximumDepthOfNAryTree
+MaximumDepthOfNAryTree:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)MaximumDepthOfNAryTree.cpp
+
 .PHONY: 561
 561: ArrayPartitionI
 ArrayPartitionI:
@@ -2723,6 +2728,11 @@ JudgeRouteCircle:
 ImageSmoother:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)ImageSmoother.cpp
 
+.PHONY: 763
+763: PartitionLabels
+PartitionLabels:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)PartitionLabels.cpp
+
 .PHONY: 665
 665: NonDecreasingArray
 NonDecreasingArray:
@@ -2753,10 +2763,20 @@ ToLowerCase:
 SelfDividingNumbers:
 	$(CC) $(DFLAGS) $(INCLUDES) $(LEETCODE)SelfDividingNumbers.cpp
 
+.PHONY: 766
+766: ToeplitzMatrix
+ToeplitzMatrix:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)ToeplitzMatrix.cpp
+
 .PHONY: 771
 771: JewelsAndStones
 JewelsAndStones:
 	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)JewelsAndStones.cpp
+
+.PHONY: 791
+791: CustomSortString
+CustomSortString:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)CustomSortString.cpp
 
 .PHONY: 797
 797: AllPathsFromSourceToTarget
@@ -2812,6 +2832,16 @@ ScoreAfterFlippingMatrix:
 867: TransposeMatrix
 TransposeMatrix:
 	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)TransposeMatrix.cpp
+
+.PHONY: 868
+868: BinaryGap
+BinaryGap:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)BinaryGap.cpp
+
+.PHONY: 872
+872: LeafSimilarTrees
+LeafSimilarTrees:
+	$(CC) $(DFLAGS) $(INCLUDES) $(UNIT_TEST1) $(LEETCODE)LeafSimilarTrees.cpp
 
 .PHONY: 876
 876: MiddleOfTheLinkedList
