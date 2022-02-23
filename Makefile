@@ -39,6 +39,9 @@ SRCS = *.cpp
 
 #   rm *.o
 
+# RedBlackTree: 
+#	g++ RedBlackTree.cpp
+
 exec1: 
 	g++ exec1.cpp
 
