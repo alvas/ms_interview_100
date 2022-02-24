@@ -44,6 +44,95 @@ void inorderMorrisTraversal(TreeNode* root) {
     }
 }
 
+void preorderMorrisTraversal(TreeNode* root) {
+    TreeNode *cur = root, *prev = nullptr;
+
+    while (cur) {
+        if (cur->left == nullptr) {
+            cout << cur->val << " ";
+            cur = cur->right;
+        }
+        else {
+            prev = cur->left;
+
+            while (prev->right && prev->right != cur) {
+                prev = prev->right;
+            }
+
+            if (prev->right == nullptr) {
+                cout << cur->val << " ";
+                prev->right = cur;
+                cur = cur->left;
+            }
+            else {
+                prev->right = nullptr;
+                cur = cur->right;
+            }
+        }
+    }
+}
+
+void reverse(TreeNode *from, TreeNode *to) // reverse the tree nodes 'from' -> 'to'.
+{
+    if (from == to)
+        return;
+
+    TreeNode *x = from, *y = from->right, *z;
+
+    while (true) {
+        z = y->right;
+        y->right = x;
+        x = y;
+        y = z;
+        if (x == to)
+            break;
+    }
+}
+
+void printReverse(TreeNode* from, TreeNode *to) // print the reversed tree nodes 'from' -> 'to'.
+{
+    reverse(from, to);
+
+    TreeNode *p = to;
+    while (true)
+    {
+        printf("%d ", p->val);
+        if (p == from)
+            break;
+        p = p->right;
+    }
+
+    reverse(to, from);
+}
+
+void postorderMorrisTraversal(TreeNode *root) {
+    TreeNode dump(0);
+    dump.left = root;
+    TreeNode *cur = &dump, *prev = NULL;
+
+    while (cur) {
+        if (cur->left == NULL) {
+            cur = cur->right;
+        }
+        else {
+            prev = cur->left;
+
+            while (prev->right != NULL && prev->right != cur)
+                prev = prev->right;
+
+            if (prev->right == NULL) {
+                prev->right = cur;
+                cur = cur->left;
+            }
+            else {
+                printReverse(cur->left, prev);  // call print
+                prev->right = NULL;
+                cur = cur->right;
+            }
+        }
+    }
+}
+
 int main() {
     TreeNode* node1 = new TreeNode(1);
     TreeNode* node2 = new TreeNode(2);
@@ -58,7 +147,9 @@ int main() {
     node2->right = node3;
     node6->left = node5;
     node6->right = node7;
-    inorderMorrisTraversal(node4);
+    //inorderMorrisTraversal(node4);
+    //preorderMorrisTraversal(node4);
+    postorderMorrisTraversal(node4);
     return 0;
 }
 
